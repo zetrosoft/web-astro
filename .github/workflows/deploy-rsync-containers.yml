@@ -1,0 +1,84 @@
+name: Build and Rsync directly into Running Docker Containers
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/**'
+      - '.github/workflows/deploy-rsync-containers.yml'
+  workflow_dispatch:
+
+jobs:
+  build-and-rsync-containers:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 11.5.2
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build All Projects
+        run: pnpm build:all
+
+      # Step 1: Rsync static dist ke container web-bijak-techno di VPS
+      - name: Rsync to web-bijak-techno Container
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          source: "packages/bijak/dist/*"
+          target: "/tmp/bijak-dist"
+          strip_components: 3
+
+      - name: Copy Files into web-bijak-techno Container Volume
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "Syncing static files into web-bijak-techno container..."
+            docker cp /tmp/bijak-dist/. web-bijak-techno:/usr/share/nginx/html/
+            rm -rf /tmp/bijak-dist
+            echo "Sync to web-bijak-techno container completed!"
+
+      # Step 2: Rsync static dist ke container web-samkarsa-porto di VPS
+      - name: Rsync to web-samkarsa-porto Container
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          source: "packages/samkarsa/dist/*"
+          target: "/tmp/samkarsa-dist"
+          strip_components: 3
+
+      - name: Copy Files into web-samkarsa-porto Container Volume
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "Syncing static files into web-samkarsa-porto container..."
+            docker cp /tmp/samkarsa-dist/. web-samkarsa-porto:/usr/share/nginx/html/
+            rm -rf /tmp/samkarsa-dist
+            echo "Sync to web-samkarsa-porto container completed!"

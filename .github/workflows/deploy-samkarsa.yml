@@ -1,13 +1,13 @@
-name: Deploy Bijak Technology to VPS Container
+name: Deploy Samkarsa to VPS Container
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'packages/bijak/**'
-      - '.github/workflows/deploy-bijak.yml'
-      - 'Dockerfile.bijak'
+      - 'packages/samkarsa/**'
+      - '.github/workflows/deploy-samkarsa.yml'
+      - 'Dockerfile.samkarsa'
       - 'package.json'
       - 'pnpm-lock.yaml'
   workflow_dispatch:
@@ -33,9 +33,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile.bijak
+          file: ./Dockerfile.samkarsa
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/web-bijak-techno:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/web-samkarsa-porto:latest
 
       - name: Deploy to VPS Container via SSH
         uses: appleboy/ssh-action@v1.0.3
@@ -45,17 +45,17 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
-            echo "Pulling latest image for web-bijak-techno..."
-            docker pull ${{ secrets.DOCKER_USERNAME }}/web-bijak-techno:latest
+            echo "Pulling latest image for web-samkarsa-porto..."
+            docker pull ${{ secrets.DOCKER_USERNAME }}/web-samkarsa-porto:latest
             
-            echo "Restarting container web-bijak-techno..."
-            docker stop web-bijak-techno || true
-            docker rm web-bijak-techno || true
+            echo "Restarting container web-samkarsa-porto..."
+            docker stop web-samkarsa-porto || true
+            docker rm web-samkarsa-porto || true
             
             docker run -d \
-              --name web-bijak-techno \
+              --name web-samkarsa-porto \
               --restart always \
-              -p 8080:80 \
-              ${{ secrets.DOCKER_USERNAME }}/web-bijak-techno:latest
+              -p 8081:80 \
+              ${{ secrets.DOCKER_USERNAME }}/web-samkarsa-porto:latest
             
-            echo "Deployment web-bijak-techno completed!"
+            echo "Deployment web-samkarsa-porto completed!"
