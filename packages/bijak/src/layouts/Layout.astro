@@ -34,7 +34,7 @@ const today = new Date().toLocaleDateString('id-ID', {
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
 
     <!-- Detect Language & System Theme -->
     <script is:inline>
@@ -69,17 +69,80 @@ const today = new Date().toLocaleDateString('id-ID', {
 
     <style is:global>
       body {
-        font-family: 'Inter', sans-serif;
-        background-color: #fcfbf7; /* Kertas koran antik */
-        color: #171717;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #faf9f6;
+        color: #1c1917;
         transition: background-color 0.3s, color 0.3s;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
       html.dark body {
-        background-color: #121212; /* Koran mode malam */
-        color: #e5e5e5;
+        background-color: #0f172a;
+        color: #f1f5f9;
       }
       .newspaper-title {
         font-family: 'Playfair Display', serif;
+      }
+      /* Modern Typographic Line Height & Spacing for Article Content */
+      article p {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1.1125rem;
+        line-height: 1.85;
+        color: #334155;
+        margin-bottom: 1.6rem;
+      }
+      html.dark article p {
+        color: #cbd5e1;
+      }
+      article h2, article h3, article h4 {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.02em;
+        margin-top: 2.2rem;
+        margin-bottom: 1rem;
+      }
+      html.dark article h2, html.dark article h3, html.dark article h4 {
+        color: #f8fafc;
+      }
+      article blockquote {
+        font-family: 'Merriweather', serif;
+        font-style: italic;
+        border-left: 4px solid #e11d48;
+        padding-left: 1.25rem;
+        margin: 2rem 0;
+        color: #475569;
+        background: #f1f5f9;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+        border-radius: 0 0.5rem 0.5rem 0;
+      }
+      html.dark article blockquote {
+        background: #1e293b;
+        color: #94a3b8;
+      }
+      article table {
+        width: 100%;
+        margin: 2rem 0;
+        border-collapse: collapse;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      }
+      article th {
+        background-color: #0f172a;
+        color: #ffffff;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        font-size: 0.9rem;
+      }
+      article td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 0.95rem;
+      }
+      html.dark article td {
+        border-bottom-color: #334155;
       }
     </style>
   </head>
