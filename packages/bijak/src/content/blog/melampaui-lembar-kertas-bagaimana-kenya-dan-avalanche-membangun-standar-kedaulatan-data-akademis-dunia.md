@@ -21,7 +21,7 @@ Agustus 2026 menjadi titik balik penting ketika **Kenya National Examinations Co
 
 ### Mengapa Langkah Kenya Ini Sangat Menarik?
 
-Proyek ini bukan sekadar ujicoba skala kecil. Kenya langsung mengunci lebih dari **15 juta rekam akademis sejarah sejak tahun 1989** ke dalam jaringan terdesentralisasi. Hampir satu juta lulusan ujian sekolah menengah (*KCSE*) tahun 2025 kini memegang sertifikat digital yang terikat ke sistem kriptografi mutlak [^1].
+Proyek ini bukan sekadar ujicoba skala kecil. Kenya langsung mengunci lebih dari **15 juta rekam akademis sejarah sejak tahun 1989** ke dalam jaringan terdesentralisasi. Hampir satu juta lulusan ujian sekolah menengah (*KCSE*) tahun 2025 kini memegang sertifikat digital yang terikat ke sistem kriptografi mutlak.
 
 Cakupan sistem baru ini mengamankan seluruh jalur pendidikan nasional:
 * Rekam kelulusan Sekolah Dasar (KCPE) dan Sekolah Menengah (KCSE)
@@ -30,7 +30,7 @@ Cakupan sistem baru ini mengamankan seluruh jalur pendidikan nasional:
 
 Dengan mengamankan rekam historis sekaligus angkatan lulusan baru, Kenya berhasil membangun infrastruktur data publik yang tidak bisa diubah, dimanipulasi, atau dipalsukan oleh siapapun.
 
-> *"Para lulusan tidak perlu lagi cemas memikirkan dokumen fisik yang hilang atau menunggu proses legalisir yang lama. Mereka bisa mengakses, mengunduh, dan memvalidasi ijazah secara online dalam hitungan detik secara aman."* [^1]  
+> *"Para lulusan tidak perlu lagi cemas memikirkan dokumen fisik yang hilang atau menunggu proses legalisir yang lama. Mereka bisa mengakses, mengunduh, dan memvalidasi ijazah secara online dalam hitungan detik secara aman."*  
 > — **Dr. David Njengere**, CEO KNEC.
 
 ---
@@ -42,7 +42,7 @@ Memilih infrastruktur blockchain untuk skala negara membutuhkan standar teknis t
 1. **Kecepatan Konfirmasi Instan (*Sub-Second Finality*)**: Verifikasi dokumen selesai dalam waktu kurang dari 1 detik. HRD perusahaan tidak perlu lagi menunggu konfirmasi berminggu-minggu.
 2. **Kapasitas Skala Besar (*High Throughput*)**: Sanggup memproses lonjakan jutaan permintaan validasi serentak saat musim rekrutmen tanpa hambatan performa.
 3. **Efisiensi Energi Tinggi**: Menggunakan mekanisme konsensus yang ramah lingkungan dengan konsumsi listrik minim.
-4. **Kompatibel dengan EVM**: Memudahkan tim pengembang lokal (seperti LegitDoc) membangun integrasi aplikasi dengan standar keamanan tinggi [^1].
+4. **Kompatibel dengan EVM**: Memudahkan tim pengembang lokal (seperti LegitDoc) membangun integrasi aplikasi dengan standar keamanan tinggi.
 
 ---
 
@@ -60,9 +60,9 @@ Memilih infrastruktur blockchain untuk skala negara membutuhkan standar teknis t
 
 Inisiatif Kenya ini mempertegas tren global di mana institusi publik di berbagai belahan dunia beralih ke jaringan Avalanche:
 
-* **California DMV (AS)**: Men-digitalkan **42 juta dokumen kepemilikan kendaraan (BPKB)** untuk memberantas penipuan hak milik [^2].
-* **Bergen County, New Jersey**: Memproses tokenisasi **370.000 sertifikat tanah** senilai $240 miliar [^3].
-* **Dantewada, India**: Mengamankan **700.000+ rekam tanah bersejarah** sejak tahun 1950-an, memangkas sengketa lahan dari hitungan bulan ke hitungan jam [^4].
+* **California DMV (AS)**: Men-digitalkan <a href="https://www.avax.network/about/blog/california-dmv-makes-history-digitizes-42-million-car-titles-on-avalanche-blockchain" target="_blank" rel="noopener noreferrer">42 juta dokumen kepemilikan kendaraan (BPKB)</a> untuk memberantas penipuan hak milik.
+* **Bergen County, New Jersey**: Memproses tokenisasi <a href="https://www.avax.network/about/blog/240b-in-real-estate-is-coming-on-chain-with-balcony-and-avalanche" target="_blank" rel="noopener noreferrer">370.000 sertifikat tanah senilai $240 miliar</a>.
+* **Dantewada, India**: Mengamankan <a href="https://www.avax.network/about/blog/dantewada-district-administration-launches-blockchain-secured-land-record-application" target="_blank" rel="noopener noreferrer">700.000+ rekam tanah bersejarah sejak tahun 1950-an</a>, memangkas sengketa lahan dari hitungan bulan ke hitungan jam.
 
 ---
 
@@ -78,13 +78,14 @@ Sistem nasional seperti PDDikti tetap memegang data utama dan legalitas UU ITE t
 
 Teknologi modern yang baik adalah teknologi yang memberikan rasa aman, kenyamanan, dan efisiensi nyata bagi penggunanya. Transformasi digital yang dilakukan Kenya adalah inspirasi berharga tentang bagaimana teknologi terdistribusi dapat digunakan untuk memulihkan kepercayaan publik.
 
-Bagi Anda yang ingin mengeksplorasi wawasan arsitektur sistem digital enterprise, metode integrasi data yang aman, serta solusi pengembangan perangkat lunak modern untuk bisnis Anda, silakan pelajari lebih lanjut di **[Samkarsa](https://samkarsa.com)**.
+Bagi Anda yang ingin mengeksplorasi wawasan arsitektur sistem digital enterprise, metode integrasi data yang aman, serta solusi pengembangan perangkat lunak modern untuk bisnis Anda, silakan pelajari lebih lanjut di **<a href="https://samkarsa.com" target="_blank" rel="noopener noreferrer">Samkarsa</a>**.
 
 ---
 
-### Catatan & Rujukan Berita
+### 📚 Catatan & Rujukan Berita Resmi
 
-[^1]: **Ava Labs Blog**: *"Securing a Nation's Credentials: Kenya Anchors Academic Records on Avalanche"*. Rujukan resmi: [avax.network/about/blog/securing-a-nations-credentials-kenya-anchors-academic-records-on-avalanche](https://www.avax.network/about/blog/securing-a-nations-credentials-kenya-anchors-academic-records-on-avalanche).
-[^2]: **California DMV Title Digitization**: [avax.network/about/blog/california-dmv-makes-history-digitizes-42-million-car-titles-on-avalanche-blockchain](https://www.avax.network/about/blog/california-dmv-makes-history-digitizes-42-million-car-titles-on-avalanche-blockchain).
-[^3]: **Bergen County Real Estate Tokenization**: [avax.network/about/blog/240b-in-real-estate-is-coming-on-chain-with-balcony-and-avalanche](https://www.avax.network/about/blog/240b-in-real-estate-is-coming-on-chain-with-balcony-and-avalanche).
-[^4]: **Dantewada District Land Record Application**: [avax.network/about/blog/dantewada-district-administration-launches-blockchain-secured-land-record-application](https://www.avax.network/about/blog/dantewada-district-administration-launches-blockchain-secured-land-record-application).
+* Ava Labs Blog: <a href="https://www.avax.network/about/blog/securing-a-nations-credentials-kenya-anchors-academic-records-on-avalanche" target="_blank" rel="noopener noreferrer">“Securing a Nation’s Credentials: Kenya Anchors Academic Records on Avalanche”</a>
+* Ava Labs Blog: <a href="https://www.avax.network/about/blog/california-dmv-makes-history-digitizes-42-million-car-titles-on-avalanche-blockchain" target="_blank" rel="noopener noreferrer">“California DMV Digitizes 42 Million Car Titles on Avalanche”</a>
+* Ava Labs Blog: <a href="https://www.avax.network/about/blog/240b-in-real-estate-is-coming-on-chain-with-balcony-and-avalanche" target="_blank" rel="noopener noreferrer">“$240B in Real Estate Coming On-Chain with Balcony and Avalanche”</a>
+* Ava Labs Blog: <a href="https://www.avax.network/about/blog/dantewada-district-administration-launches-blockchain-secured-land-record-application" target="_blank" rel="noopener noreferrer">“Dantewada District Launches Blockchain-Secured Land Record Application”</a>
+* Portal Resmi: <a href="https://ecertificate.knec.ac.ke/" target="_blank" rel="noopener noreferrer">“KNEC Official E-Certificate Portal Kenya”</a>
