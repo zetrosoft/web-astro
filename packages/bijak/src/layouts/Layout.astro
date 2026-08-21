@@ -1,0 +1,173 @@
+---
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: 'id' | 'en';
+}
+
+const { title, description = "Keep up to date with the latest in technology", lang = 'id' } = Astro.props;
+
+// Tanggal hari ini dalam format lokal Indonesia untuk header koran
+const today = new Date().toLocaleDateString('id-ID', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <title>{title} | Bijak Technology</title>
+    <meta name="description" content={description} />
+<!-- Rest of file head is preserved via targetContent -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
+
+    <!-- Detect Language & System Theme -->
+    <script is:inline>
+      (function() {
+        const storedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (storedTheme === 'dark' || (!storedTheme && systemDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+
+        if (window.location.pathname === '/' && !sessionStorage.getItem('lang_detected')) {
+          sessionStorage.setItem('lang_detected', 'true');
+          const browserLang = navigator.language || navigator.userLanguage;
+          const isEn = browserLang.startsWith('en');
+          fetch('https://ipapi.co/json/')
+            .then(res => res.json())
+            .then(data => {
+              if (data.country_code !== 'ID') {
+                window.location.href = '/en/';
+              }
+            })
+            .catch(() => {
+              if (isEn) {
+                window.location.href = '/en/';
+              }
+            });
+        }
+      })();
+    </script>
+
+    <style is:global>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #fcfbf7; /* Kertas koran antik */
+        color: #171717;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      html.dark body {
+        background-color: #121212; /* Koran mode malam */
+        color: #e5e5e5;
+      }
+      .newspaper-title {
+        font-family: 'Playfair Display', serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col selection:bg-rose-500 selection:text-white dark:bg-zinc-950 dark:text-zinc-150">
+    <!-- Top Bar metadata koran -->
+    <div class="border-b border-neutral-300 bg-neutral-900 text-neutral-100 py-1 text-xs px-4">
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <span>EDISI EKSPEDISI DIGITAL</span>
+        <span class="font-medium">Purwakarta, Indonesia</span>
+      </div>
+    </div>
+
+    <!-- Header Koran Utama -->
+    <header class="max-w-6xl mx-auto w-full px-4 pt-6 pb-2">
+      <div class="text-center py-4 border-b-2 border-neutral-900">
+        <h1 class="newspaper-title text-5xl md:text-7xl font-extrabold tracking-tight uppercase hover:text-rose-600 transition-colors">
+          <a href="/">Bijak Technology</a>
+        </h1>
+        <p class="mt-2 text-sm italic font-serif text-neutral-600">
+          "Because together, Everything is possible"
+        </p>
+      </div>
+
+      <!-- Detail Tanggal & Edisi ala Koran -->
+      <div class="flex flex-col sm:flex-row justify-between items-center py-2 text-xs border-b-4 border-double border-neutral-900 dark:border-neutral-700 font-serif text-neutral-800 dark:text-neutral-300 uppercase tracking-widest gap-2">
+        <div>Edisi Terkini</div>
+        <div class="font-bold text-sm text-rose-600">{today}</div>
+        <div class="flex items-center gap-3">
+          <LanguageSwitcher currentLang={lang} />
+          <ThemeToggle />
+        </div>
+      </div>
+
+      <!-- Menu Navigasi Bergaya Koran -->
+      <nav class="py-3 border-b border-neutral-900 dark:border-neutral-700">
+        <ul class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm font-semibold uppercase tracking-wider text-neutral-800 dark:text-neutral-300">
+          <li><a href="/" class="hover:text-rose-600 transition-colors">Utama</a></li>
+          <li class="text-neutral-400 dark:text-neutral-600">|</li>
+          <li><a href="/blog" class="hover:text-rose-600 transition-colors">Arsip Blog</a></li>
+          <li class="text-neutral-400 dark:text-neutral-600">|</li>
+          <li><a href="/project" class="hover:text-rose-600 transition-colors">Proyek & Portofolio</a></li>
+          <li class="text-neutral-400 dark:text-neutral-600">|</li>
+          <li><a href="/about" class="hover:text-rose-600 transition-colors">Tentang Kami</a></li>
+          <li class="text-neutral-400 dark:text-neutral-600">|</li>
+          <li><a href="/zetrosoft" class="hover:text-rose-600 transition-colors">Zetrosoft</a></li>
+          <li class="text-neutral-400 dark:text-neutral-600">|</li>
+          <li><a href="/contact" class="hover:text-rose-600 transition-colors">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Halaman Konten Utama -->
+    <main class="flex-grow max-w-6xl mx-auto w-full px-4 py-8">
+      <slot />
+    </main>
+
+    <!-- Footer Koran Klasik -->
+    <footer class="border-t-4 border-double border-neutral-900 dark:border-neutral-700 bg-[#f9f8f4] dark:bg-zinc-900 py-8 mt-12 text-neutral-800 dark:text-neutral-300 font-serif transition-colors duration-300">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-neutral-300 dark:border-neutral-700">
+          <div>
+            <h3 class="font-bold text-lg uppercase mb-3 text-neutral-900 dark:text-neutral-100">Bijak Technology</h3>
+            <p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+              Media dan penyedia solusi teknologi digital terdepan di Indonesia. Menyajikan edukasi seputar Web3, kecerdasan buatan, pengembangan perangkat lunak, dan transformasi digital yang berdaya guna.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg uppercase mb-3 text-neutral-900 dark:text-neutral-100">Navigasi Redaksi</h3>
+            <ul class="text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+              <li><a href="/blog" class="hover:underline">Daftar Semua Berita</a></li>
+              <li><a href="/project" class="hover:underline">Portofolio Kerja</a></li>
+              <li><a href="/about" class="hover:underline">Tentang Profil Kami</a></li>
+              <li><a href="/contact" class="hover:underline">Kirim Pesan Redaksi</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg uppercase mb-3 text-neutral-900 dark:text-neutral-100">Hubungi Kami</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Mempunyai ide proyek luar biasa atau ingin berkolaborasi bersama kami?<br />
+              Kunjungi halaman <a href="/contact" class="text-rose-600 hover:underline">Kontak Kami</a> untuk informasi korespondensi.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-between items-center pt-6 text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-widest gap-2">
+          <span>&copy; {new Date().getFullYear()} Bijak Technology. Seluruh hak cipta dilindungi.</span>
+          <span>Desain Premium Koran Terinspirasi Daily</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

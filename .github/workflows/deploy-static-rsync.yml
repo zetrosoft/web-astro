@@ -1,0 +1,40 @@
+# Alternatif deployment cepat via Static Build + rsync / SSH (Tanpa Docker Hub)
+name: Deploy Bijak Technology (Static Build to VPS)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-rsync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 11.5.2
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Bijak Website
+        run: pnpm --filter @web/bijak build
+
+      - name: Deploy Build Output to VPS Web Directory
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          source: "packages/bijak/dist/*"
+          target: "/var/www/bijaktechnology.com"
+          strip_components: 3

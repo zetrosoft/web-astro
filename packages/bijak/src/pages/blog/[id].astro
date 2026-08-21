@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Ambil artikel lain untuk rekomendasi di sidebar
+const allPosts = await getCollection('blog');
+const recentPosts = allPosts
+  .filter(p => p.id !== post.id)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 4);
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Konten Utama Halaman Berita -->
+    <div class="lg:col-span-2 space-y-6">
+      
+      <!-- Header Artikel -->
+      <header class="border-b border-neutral-300 pb-6">
+        <div class="flex flex-wrap gap-2 items-center mb-3">
+          <a href={`/blog?category=${post.data.category}`} class="bg-rose-600 text-white text-xs font-bold uppercase tracking-wider px-2 py-1 hover:bg-neutral-900 transition-colors">
+            {post.data.category}
+          </a>
+        </div>
+        <h1 class="newspaper-title text-3xl md:text-5xl font-extrabold text-neutral-900 leading-tight">
+          {post.data.title}
+        </h1>
+        <p class="text-neutral-500 italic text-base md:text-lg font-serif mt-3 leading-relaxed">
+          {post.data.description}
+        </p>
+        
+        <!-- Metadata Penulis & Tanggal -->
+        <div class="flex items-center gap-3 text-xs font-serif text-neutral-500 mt-6 pt-4 border-t border-neutral-200">
+          <span>Ditulis oleh: <strong class="text-neutral-800 uppercase">{post.data.author}</strong></span>
+          <span>&bull;</span>
+          <span>Tanggal Publikasi: {post.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        </div>
+      </header>
+
+      <!-- Isi Artikel Konten MDX -->
+      <article class="prose max-w-none prose-neutral prose-headings:font-serif prose-headings:font-bold prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-p:leading-relaxed prose-a:text-rose-600 hover:prose-a:text-neutral-900 prose-strong:text-neutral-900">
+        <Content />
+      </article>
+
+      <!-- Bagian Tag Artikel -->
+      {post.data.tags && post.data.tags.length > 0 && (
+        <div class="border-t border-b border-neutral-200 py-4 my-8">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-xs font-bold text-neutral-500 uppercase tracking-widest">Tag:</span>
+            {post.data.tags.map(tag => (
+              <span class="bg-neutral-100 border border-neutral-200 text-neutral-700 text-xs px-2.5 py-0.5 font-semibold hover:bg-rose-50 hover:text-rose-600 hover:border-rose-100 transition-colors cursor-pointer">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Tombol Kembali -->
+      <div class="pt-4">
+        <a href="/blog" class="inline-flex items-center text-sm font-bold text-rose-600 hover:text-neutral-900 uppercase tracking-widest">
+          &larr; Kembali ke Arsip Berita
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Sidebar Kanan Halaman Berita -->
+    <div class="space-y-8 lg:border-l lg:border-neutral-300 lg:pl-8">
+      
+      <!-- Widget Berita Lainnya -->
+      <div class="border-2 border-neutral-900 p-5 bg-[#faf9f5]">
+        <h3 class="newspaper-title text-lg font-bold uppercase border-b border-neutral-900 pb-2 mb-4 text-center">
+          Kabar Terkait Lainnya
+        </h3>
+        <div class="space-y-4">
+          {recentPosts.map((p) => (
+            <div class="border-b border-dashed border-neutral-300 pb-3 last:border-0 last:pb-0">
+              <span class="text-[10px] uppercase font-bold text-rose-600 tracking-wider">
+                {p.data.category}
+              </span>
+              <h4 class="font-bold text-sm text-neutral-900 hover:underline leading-snug">
+                <a href={`/blog/${p.id}`}>{p.data.title}</a>
+              </h4>
+              <div class="text-[9px] font-serif text-neutral-400 mt-1">
+                {p.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Widget Hubungi Redaksi -->
+      <div class="bg-neutral-900 text-neutral-100 p-6 border-4 border-double border-neutral-800">
+        <h4 class="newspaper-title text-lg font-bold uppercase tracking-wider mb-2 text-rose-500">
+          Umpan Balik
+        </h4>
+        <p class="text-xs font-serif italic leading-relaxed text-neutral-300 mb-4">
+          Ingin memberikan tanggapan atau informasi tambahan terkait laporan berita di atas? Hubungi meja redaksi kami segera.
+        </p>
+        <a href="/contact" class="inline-block bg-rose-600 text-white font-bold text-[10px] uppercase tracking-widest px-4 py-2 hover:bg-white hover:text-neutral-900 transition-colors">
+          Kirim Umpan Balik &rarr;
+        </a>
+      </div>
+
+    </div>
+  </div>
+</Layout>

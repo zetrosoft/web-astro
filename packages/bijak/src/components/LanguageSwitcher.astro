@@ -1,0 +1,23 @@
+---
+// Language Switcher untuk website Bijak
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+interface Props {
+  currentLang: 'id' | 'en';
+}
+
+const { currentLang } = Astro.props;
+const oppositeLang = currentLang === 'id' ? 'en' : 'id';
+const pathname = Astro.url.pathname;
+const cleanPathname = pathname.replace(/^\/en/, '') || '/';
+const targetUrl = oppositeLang === 'id' ? cleanPathname : getRelativeLocaleUrl('en', cleanPathname);
+---
+
+<a 
+  href={targetUrl} 
+  class="inline-flex items-center gap-1.5 px-3 py-1 text-xs border border-neutral-900 dark:border-neutral-700 bg-transparent hover:bg-neutral-900 hover:text-white dark:hover:bg-neutral-100 dark:hover:text-black transition-colors font-serif uppercase tracking-widest"
+  title={currentLang === 'id' ? 'Change to English' : 'Ubah ke Bahasa Indonesia'}
+>
+  <span>🌐</span>
+  <span>{oppositeLang}</span>
+</a>

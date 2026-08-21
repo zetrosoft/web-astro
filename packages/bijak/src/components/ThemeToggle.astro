@@ -1,0 +1,42 @@
+---
+// Dark / Light Mode Switcher untuk website Bijak (klasik retro style)
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  class="inline-flex items-center gap-1.5 px-3 py-1 text-xs border border-neutral-900 dark:border-neutral-700 bg-transparent hover:bg-neutral-900 hover:text-white dark:hover:bg-neutral-100 dark:hover:text-black transition-colors font-serif uppercase tracking-widest"
+  aria-label="Toggle theme"
+>
+  <span id="theme-toggle-light-icon" class="hidden">☀️ SIANG</span>
+  <span id="theme-toggle-dark-icon" class="hidden">🌙 MALAM</span>
+</button>
+
+<script>
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+  function updateToggleIcons() {
+    if (document.documentElement.classList.contains('dark')) {
+      themeToggleLightIcon?.classList.remove('hidden');
+      themeToggleDarkIcon?.classList.add('hidden');
+    } else {
+      themeToggleLightIcon?.classList.add('hidden');
+      themeToggleDarkIcon?.classList.remove('hidden');
+    }
+  }
+
+  updateToggleIcons();
+
+  themeToggleBtn?.addEventListener('click', () => {
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+    updateToggleIcons();
+  });
+</script>

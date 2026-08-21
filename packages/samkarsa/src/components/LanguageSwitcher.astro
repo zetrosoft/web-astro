@@ -1,0 +1,28 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+interface Props {
+  currentLang: 'id' | 'en';
+}
+
+const { currentLang } = Astro.props;
+const oppositeLang = currentLang === 'id' ? 'en' : 'id';
+
+// Ambil path URL saat ini tanpa bagian bahasa
+const pathname = Astro.url.pathname;
+const cleanPathname = pathname.replace(/^\/en/, '') || '/';
+
+// Target URL switcher
+const targetUrl = oppositeLang === 'id' 
+  ? cleanPathname 
+  : getRelativeLocaleUrl('en', cleanPathname);
+---
+
+<a 
+  href={targetUrl} 
+  class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors"
+  title={currentLang === 'id' ? 'Change to English' : 'Ubah ke Bahasa Indonesia'}
+>
+  <span class="text-base">🌐</span>
+  <span class="uppercase font-mono">{oppositeLang}</span>
+</a>

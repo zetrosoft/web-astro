@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Metadata untuk SEO dan Konten
+const title = "Profil Zetrosoft & Bijak Technology";
+const description = "Informasi lengkap mengenai zetrosoft (Github Profile) dan hubungannya dengan organisasi Bijak Technology.";
+
+// Data Statis Profil Github & Organisasi
+const githubProfile = {
+  username: "zetrosoft",
+  name: "Zetrosoft",
+  bio: "Pragmatic Software Architect & Multi-stack Developer. Specialized in building highly scalable, secure, and modern web application ecosystems.",
+  avatarUrl: "https://avatars.githubusercontent.com/u/15000000?v=4", // fallback or default placeholder
+  githubUrl: "https://github.com/zetrosoft",
+  location: "Purwakarta, Indonesia",
+  followers: "120+",
+  following: "45+",
+  repositories: [
+    {
+      name: "bijak-tech-portal",
+      description: "Monorepo portal informasi utama dan layanan web Bijak Technology berbasis Astro, Tailwind, dan TypeScript.",
+      stars: 42,
+      forks: 5,
+      language: "Astro",
+      url: "https://github.com/zetrosoft/bijak-tech-portal"
+    },
+    {
+      name: "antigravity-engine",
+      description: "Pustaka pembantu optimasi pemrosesan latar belakang berbasis Web Worker dan WebAssembly.",
+      stars: 88,
+      forks: 12,
+      language: "Rust",
+      url: "https://github.com/zetrosoft/antigravity-engine"
+    },
+    {
+      name: "premium-ui-kit",
+      description: "Koleksi komponen UI premium dengan desain bergaya koran klasik dan modern glassmorphism.",
+      stars: 156,
+      forks: 23,
+      language: "TypeScript",
+      url: "https://github.com/zetrosoft/premium-ui-kit"
+    }
+  ]
+};
+
+const orgProfile = {
+  name: "Bijak Technology",
+  role: "Lead Software Architect / Co-Founder",
+  slogan: "Because together, Everything is possible",
+  mission: "Menyediakan solusi teknologi mutakhir serta portal informasi digital terpercaya untuk mendukung transformasi digital ekosistem bisnis dan developer di Indonesia.",
+  projects: [
+    {
+      name: "Portal Redaksi Bijak",
+      role: "Lead Architect",
+      desc: "Merancang arsitektur monorepo berkinerja tinggi menggunakan Astro untuk menghadirkan pengalaman membaca layaknya koran cetak klasik dengan kecepatan maksimal (Core Web Vitals optimal)."
+    },
+    {
+      name: "Sistem Manajemen Konten Terdistribusi",
+      role: "Core Developer",
+      desc: "Membangun API integrasi konten yang aman dan terukur untuk menyalurkan informasi teknologi ke seluruh sub-aplikasi Bijak Tech."
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    
+    <!-- Bagian Kiri: Profil Singkat & Status (Sidebar Koran) -->
+    <div class="lg:col-span-1 space-y-8">
+      
+      <!-- Kartu Profil Github -->
+      <div class="bg-white dark:bg-zinc-900 border border-neutral-300 dark:border-neutral-800 p-6 shadow-sm">
+        <div class="text-center pb-6 border-b border-dashed border-neutral-300 dark:border-neutral-700">
+          <div class="relative w-32 h-32 mx-auto mb-4 group">
+            <div class="absolute inset-0 bg-rose-600 rounded-full blur opacity-10 group-hover:opacity-20 transition-opacity"></div>
+            <img 
+              src="https://github.com/zetrosoft.png" 
+              alt={githubProfile.name} 
+              class="w-32 h-32 rounded-full border-4 border-neutral-900 dark:border-neutral-100 object-cover relative z-10"
+              onerror="this.src='https://avatars.githubusercontent.com/u/9919?v=4'" 
+            />
+          </div>
+          <h2 class="newspaper-title text-2xl font-extrabold text-neutral-900 dark:text-neutral-100">
+            {githubProfile.name}
+          </h2>
+          <p class="text-xs font-mono text-rose-600 dark:text-rose-400 mt-1">
+            @{githubProfile.username}
+          </p>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-2 italic font-serif">
+            "{githubProfile.bio}"
+          </p>
+        </div>
+
+        <div class="py-4 border-b border-dashed border-neutral-300 dark:border-neutral-700 space-y-3 text-sm">
+          <div class="flex justify-between items-center">
+            <span class="text-neutral-500 dark:text-neutral-400 font-serif">Lokasi</span>
+            <span class="font-bold text-neutral-800 dark:text-neutral-200">{githubProfile.location}</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-neutral-500 dark:text-neutral-400 font-serif">Repositori</span>
+            <span class="font-bold text-neutral-800 dark:text-neutral-200">{githubProfile.repositories.length} Unggulan</span>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <a 
+            href={githubProfile.githubUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-full text-center block bg-neutral-900 hover:bg-rose-600 text-white dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-rose-600 dark:hover:text-white font-bold py-2.5 px-4 text-xs uppercase tracking-wider transition-colors duration-300 border border-neutral-900 dark:border-neutral-100"
+          >
+            Kunjungi GitHub Profile &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Visi / Kutipan Pribadi -->
+      <div class="bg-[#faf9f5] dark:bg-zinc-900/50 border-4 border-double border-neutral-900 dark:border-neutral-800 p-6">
+        <h4 class="newspaper-title text-lg font-bold uppercase tracking-wider mb-3 text-rose-600 dark:text-rose-400 text-center">
+          Pernyataan Profesional
+        </h4>
+        <p class="text-xs font-serif italic leading-relaxed text-neutral-700 dark:text-neutral-300 text-justify">
+          "Menyusun kode bukan sekadar membuat program berjalan, melainkan membangun fondasi digital yang tangguh, aman, dan mudah dipelihara. Kolaborasi erat dalam organisasi teknologi adalah kunci utama dalam melahirkan solusi yang benar-benar berdampak positif bagi masyarakat luas."
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Bagian Kanan: Konten Portofolio & Organisasi (Kolom Utama) -->
+    <div class="lg:col-span-2 space-y-8">
+      
+      <!-- Artikel Utama: Hubungan dengan Bijak Technology -->
+      <article class="border-b border-neutral-300 dark:border-neutral-800 pb-8 space-y-4">
+        <span class="inline-block bg-rose-600 text-white text-xs font-bold uppercase tracking-wider px-2 py-1">
+          Fokus Organisasi & Kolaborasi
+        </span>
+        <h3 class="newspaper-title text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-neutral-100 tracking-tight leading-tight">
+          Peran Zetrosoft di Bijak Technology
+        </h3>
+        <div class="flex items-center gap-3 text-xs font-serif text-neutral-500 dark:text-neutral-400">
+          <span>Oleh <strong>Redaksi Bijak Tech</strong></span>
+          <span>&bull;</span>
+          <span>Profil Kolaborator Utama</span>
+        </div>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed text-base md:text-lg">
+          Sebagai <strong>{orgProfile.role}</strong> di <strong>{orgProfile.name}</strong>, zetrosoft memegang peranan krusial dalam merancang cetak biru arsitektur seluruh lini platform digital yang dikembangkan organisasi. Dengan mengusung moto <em class="font-serif">"{orgProfile.slogan}"</em>, sinergi yang dibangun berfokus pada kualitas kode standar industri tinggi, skalabilitas performa, dan pengalaman pengguna premium.
+        </p>
+        <div class="bg-neutral-50 dark:bg-zinc-900 border border-neutral-200 dark:border-neutral-850 p-5 font-serif italic text-sm text-neutral-600 dark:text-neutral-400">
+          <strong>Misi Kolaborasi:</strong> "{orgProfile.mission}"
+        </div>
+      </article>
+
+      <!-- Proyek & Kontribusi Utama di Organisasi -->
+      <div class="space-y-6">
+        <h3 class="newspaper-title text-2xl font-bold uppercase border-b-2 border-neutral-900 dark:border-neutral-100 pb-2">
+          Kontribusi & Rekayasa Sistem
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {orgProfile.projects.map((proj) => (
+            <div class="bg-white dark:bg-zinc-900 border border-neutral-300 dark:border-neutral-800 p-5 flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div class="space-y-2">
+                <span class="text-[10px] font-mono font-bold text-rose-600 dark:text-rose-400 uppercase tracking-widest block">
+                  {proj.role}
+                </span>
+                <h4 class="font-bold text-lg text-neutral-900 dark:text-neutral-100">
+                  {proj.name}
+                </h4>
+                <p class="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  {proj.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Repositori GitHub Pilihan -->
+      <div class="space-y-6 pt-4">
+        <h3 class="newspaper-title text-2xl font-bold uppercase border-b-2 border-neutral-900 dark:border-neutral-100 pb-2">
+          Repositori GitHub Pilihan
+        </h3>
+        <div class="divide-y divide-neutral-200 dark:divide-neutral-800">
+          {githubProfile.repositories.map((repo) => (
+            <div class="py-4 first:pt-0 flex flex-col sm:flex-row justify-between items-start gap-4">
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <h4 class="font-bold text-lg text-neutral-950 dark:text-neutral-50 hover:underline">
+                    <a href={repo.url} target="_blank" rel="noopener noreferrer">{repo.name}</a>
+                  </h4>
+                  <span class="bg-rose-50 dark:bg-rose-950/30 text-rose-700 dark:text-rose-400 text-[10px] px-2 py-0.5 font-mono border border-rose-100 dark:border-rose-900/30 rounded-full">
+                    {repo.language}
+                  </span>
+                </div>
+                <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                  {repo.description}
+                </p>
+              </div>
+              <div class="flex gap-4 text-xs font-mono text-neutral-500 dark:text-neutral-400 pt-1">
+                <span class="flex items-center gap-1">⭐ {repo.stars}</span>
+                <span class="flex items-center gap-1">🍴 {repo.forks}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>

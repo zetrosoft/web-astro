@@ -1,0 +1,204 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  lang?: 'id' | 'en';
+}
+
+const {
+  title = 'Samkarsa — ERPNext Consulting & Digital Transformation',
+  description = 'Spesialis implementasi ERPNext untuk bisnis Indonesia. Solusi ERP terintegrasi: Akuntansi, Keuangan, HR, Payroll, Penjualan, dan Pengadaan.',
+  ogImage = '/og-default.png',
+  lang = 'id',
+} = Astro.props;
+
+const canonical = Astro.url.href;
+---
+
+<!DOCTYPE html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- OG Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Detect Language & System Theme -->
+    <script is:inline>
+      (function() {
+        const storedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (storedTheme === 'dark' || (!storedTheme && systemDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+
+        if (window.location.pathname === '/' && !sessionStorage.getItem('lang_detected')) {
+          sessionStorage.setItem('lang_detected', 'true');
+          const browserLang = navigator.language || navigator.userLanguage;
+          const isEn = browserLang.startsWith('en');
+          fetch('https://ipapi.co/json/')
+            .then(res => res.json())
+            .then(data => {
+              if (data.country_code !== 'ID') {
+                window.location.href = '/en/';
+              }
+            })
+            .catch(() => {
+              if (isEn) {
+                window.location.href = '/en/';
+              }
+            });
+        }
+      })();
+    </script>
+
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-white text-slate-800 font-sans antialiased dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
+
+    <!-- NAVBAR -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 dark:border-slate-900">
+      <div class="max-w-6xl mx-auto px-6">
+        <nav class="flex items-center justify-between h-16 md:h-20">
+
+          <!-- Logo -->
+          <a href="/" class="flex items-center gap-2 group">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-600 to-accent-500 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+              <span class="text-white font-bold text-sm font-heading">S</span>
+            </div>
+            <span class="font-heading font-bold text-brand-900 dark:text-white text-lg tracking-tight">Samkarsa</span>
+          </a>
+
+          <!-- Desktop Nav -->
+          <ul class="hidden md:flex items-center gap-8">
+            <li><a href="/#layanan" class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">Layanan</a></li>
+            <li><a href="/#kenapa" class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">Kenapa Kami</a></li>
+            <li><a href="/blog" class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">Blog</a></li>
+            <li><a href="/about" class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">Tentang</a></li>
+          </ul>
+
+          <div class="flex items-center gap-3">
+            <!-- Language & Theme Toggle -->
+            <LanguageSwitcher currentLang={lang} />
+            <ThemeToggle />
+
+            <a href="/#kontak" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+              Konsultasi
+            </a>
+          </div>
+
+          <!-- Mobile hamburger -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-3">
+          <a href="/#layanan" class="py-2 text-slate-700 font-medium hover:text-brand-600 transition-colors">Layanan</a>
+          <a href="/#kenapa" class="py-2 text-slate-700 font-medium hover:text-brand-600 transition-colors">Kenapa Kami</a>
+          <a href="/blog" class="py-2 text-slate-700 font-medium hover:text-brand-600 transition-colors">Blog</a>
+          <a href="/about" class="py-2 text-slate-700 font-medium hover:text-brand-600 transition-colors">Tentang</a>
+          <a href="/#kontak" class="mt-2 py-3 text-center bg-brand-600 text-white rounded-xl font-semibold text-sm">Konsultasi Gratis</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-900 text-white mt-24">
+      <div class="max-w-6xl mx-auto px-6 py-16">
+        <div class="grid md:grid-cols-4 gap-10 mb-12">
+          <!-- Brand -->
+          <div class="md:col-span-2">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-400 to-accent-500 flex items-center justify-center">
+                <span class="text-white font-bold text-sm">S</span>
+              </div>
+              <span class="font-heading font-bold text-xl">Samkarsa</span>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+              Spesialis implementasi ERPNext untuk transformasi digital bisnis Indonesia. Kami hadir untuk menyederhanakan operasional dan memperkuat pengambilan keputusan berbasis data.
+            </p>
+            <div class="flex gap-3 mt-5">
+              <a href="https://github.com/zetrosoft" target="_blank" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors" aria-label="GitHub">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Links -->
+          <div>
+            <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-slate-400 mb-4">Layanan</h4>
+            <ul class="space-y-2.5 text-sm text-slate-400">
+              <li><a href="/#layanan" class="hover:text-white transition-colors">ERPNext Implementation</a></li>
+              <li><a href="/#layanan" class="hover:text-white transition-colors">Akuntansi & Keuangan</a></li>
+              <li><a href="/#layanan" class="hover:text-white transition-colors">HR & Payroll</a></li>
+              <li><a href="/#layanan" class="hover:text-white transition-colors">Penjualan & Pembelian</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-slate-400 mb-4">Perusahaan</h4>
+            <ul class="space-y-2.5 text-sm text-slate-400">
+              <li><a href="/about" class="hover:text-white transition-colors">Tentang Kami</a></li>
+              <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
+              <li><a href="/#kontak" class="hover:text-white transition-colors">Kontak</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+          <p>&copy; {new Date().getFullYear()} Samkarsa. Semua hak dilindungi.</p>
+          <p>Dibuat dengan ❤️ menggunakan <a href="https://erpnext.com" class="hover:text-white transition-colors">ERPNext</a> & <a href="https://astro.build" class="hover:text-white transition-colors">Astro</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          navbar?.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-100');
+        } else {
+          navbar?.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-100');
+        }
+      });
+
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

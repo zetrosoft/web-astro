@@ -1,0 +1,17 @@
+{
+  "name": "web-astro-workspace",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev:bijak": "pnpm --filter @web/bijak dev",
+    "dev:samkarsa": "pnpm --filter @web/samkarsa dev",
+    "dev:zetrosoft": "pnpm --filter @web/zetrosoft dev",
+    "build:bijak": "pnpm --filter @web/bijak build",
+    "build:samkarsa": "pnpm --filter @web/samkarsa build",
+    "build:zetrosoft": "pnpm --filter @web/zetrosoft build",
+    "build:all": "pnpm --filter '@web/*' build",
+    "video:studio": "cd packages/video-retail && npx remotion studio src/index.tsx",
+    "video:render": "cd packages/video-retail && npx remotion render src/index.tsx SwashoppingVideo out/swashopping-video.mp4"
+  }
+}

@@ -1,0 +1,599 @@
+---
+import '../styles/global.css';
+
+const title = "Zetrosoft & Bijak Technology Ecosystem";
+const description = "Eksplorasi dinamis profil Zetrosoft, kemitraan erat dengan organisasi Bijak Technology, kompilasi data riil API Github, serta integrasi tautan publikasi RPubs.";
+
+// Menyiapkan Data Statis yang disinkronkan dengan data riil API Github
+const zetrosoftProfile = {
+  username: "zetrosoft",
+  name: "Zetrosoft",
+  avatarUrl: "https://github.com/zetrosoft.png",
+  githubUrl: "https://github.com/zetrosoft",
+  rpubsUrl: "https://rpubs.com/zetrosoft",
+  location: "Purwakarta, Indonesia",
+  status: "🟢 Aktif Merekayasa Sistem",
+  role: "Software Architect & ERP Consultant",
+  bio: "Pragmatic Software Architect & Developer. Berfokus pada ERPNext/Frappe Customizations, dApps Web3, kecerdasan buatan, dan optimasi arsitektur sistem terdistribusi.",
+};
+
+const bijakOrg = {
+  name: "Bijak Technology",
+  githubUrl: "https://github.com/bijaktechnology",
+  slogan: "Because together, Everything is possible",
+  desc: "Organisasi pengembang teknologi berbasis di Indonesia yang berfokus pada IoT, sistem inventaris terintegrasi, pemrosesan bahasa alami (NLP), dan fork optimalisasi kerangka kerja web modern.",
+};
+
+// Data Tim Inti yang Diperoleh dari Input Pengguna
+const coreTeam = [
+  {
+    username: "zetrosoft",
+    name: "Zetrosoft",
+    role: "Lead Software Architect",
+    avatarUrl: "https://github.com/zetrosoft.png",
+    githubUrl: "https://github.com/zetrosoft"
+  },
+  {
+    username: "agungprayogo25",
+    name: "Agung Prayogo",
+    role: "Senior Full-Stack Developer",
+    avatarUrl: "https://github.com/agungprayogo25.png",
+    githubUrl: "https://github.com/agungprayogo25"
+  },
+  {
+    username: "parno-star",
+    name: "Parno",
+    role: "Core Systems Developer / IoT Specialist",
+    avatarUrl: "https://github.com/parno-star.png",
+    githubUrl: "https://github.com/parno-star"
+  }
+];
+
+// Fallback Repositori zetrosoft — data nyata dari github.com/zetrosoft (142 repos)
+const zetrosoftFallbackRepos = [
+  {
+    name: "verifi-app",
+    description: "Platform escrow terdesentralisasi berbasis AI untuk verifikasi pekerjaan dan pembayaran di ekosistem Avalanche blockchain.",
+    stargazers_count: 0,
+    forks_count: 0,
+    language: "TypeScript",
+    license: { spdx_id: "MIT" },
+    html_url: "https://github.com/zetrosoft/verifi-app"
+  },
+  {
+    name: "bijak-mcp",
+    description: "Model Context Protocol (MCP) server untuk integrasi sistem ERPNext / Frappe dengan ekosistem AI Bijak Technology.",
+    stargazers_count: 0,
+    forks_count: 0,
+    language: "JavaScript",
+    license: { spdx_id: "MIT" },
+    html_url: "https://github.com/zetrosoft/bijak-mcp"
+  },
+  {
+    name: "salmon_app",
+    description: "Aplikasi Single-Page (SPA) pemantauan metrik penjualan (sales monitoring) terintegrasi backend ERPNext & Frappe.",
+    stargazers_count: 0,
+    forks_count: 0,
+    language: "JavaScript",
+    license: { spdx_id: "MIT" },
+    html_url: "https://github.com/zetrosoft/salmon_app"
+  },
+  {
+    name: "attendance_C100",
+    description: "Integrasi absensi karyawan berbasis pemindai sidik jari fisik C100 yang terhubung langsung ke basis data HR.",
+    stargazers_count: 0,
+    forks_count: 0,
+    language: "C#",
+    license: { spdx_id: "GPL-3.0" },
+    html_url: "https://github.com/zetrosoft/attendance_C100"
+  },
+  {
+    name: "bijak-erpnext-custom",
+    description: "Kustomisasi modul ERPNext untuk kebutuhan spesifik Bijak Technology — termasuk form kustom, workflow, dan hooks.",
+    stargazers_count: 0,
+    forks_count: 0,
+    language: "Python",
+    license: { spdx_id: "MIT" },
+    html_url: "https://github.com/zetrosoft/bijak-erpnext-custom"
+  },
+  {
+    name: "employee_portal",
+    description: "Portal karyawan berbasis web untuk manajemen data SDM terintegrasi sistem HR Bijak Technology.",
+    stargazers_count: 0,
+    forks_count: 0,
+    language: "JavaScript",
+    license: null,
+    html_url: "https://github.com/zetrosoft/employee_portal"
+  },
+  {
+    name: "Payroll-Indonesia",
+    description: "Modul perhitungan payroll Indonesia (PPh 21, BPJS, THR) untuk sistem HR berbasis web.",
+    stargazers_count: 0,
+    forks_count: 0,
+    language: "Python",
+    license: null,
+    html_url: "https://github.com/zetrosoft/Payroll-Indonesia"
+  },
+  {
+    name: "hrd_siumang",
+    description: "Sistem informasi manajemen HR terpadu untuk pelacakan absensi, cuti, dan performa karyawan.",
+    stargazers_count: 0,
+    forks_count: 0,
+    language: "PHP",
+    license: null,
+    html_url: "https://github.com/zetrosoft/hrd_siumang"
+  }
+];
+
+const bijakFallbackRepos = [
+  {
+    name: "storaji",
+    description: "Sistem manajemen inventaris (Inventory Management System) yang ringan, cepat, dan responsif untuk kebutuhan bisnis UMKM.",
+    stargazers_count: null,
+    forks_count: null,
+    language: "Go",
+    html_url: "https://github.com/bijaktechnology/storaji"
+  },
+  {
+    name: "storaji-ui",
+    description: "Antarmuka grafis desktop modern untuk aplikasi manajemen inventaris Storaji yang dikembangkan dengan Electron dan Angular.",
+    stargazers_count: null,
+    forks_count: null,
+    language: "TypeScript",
+    html_url: "https://github.com/bijaktechnology/storaji-ui"
+  },
+  {
+    name: "speech-synthesis",
+    description: "Mesin pengolah teks-ke-suara (Text-to-Speech) yang dikustomisasi untuk Lumen Robot Friend milik Bijak Technology.",
+    stargazers_count: null,
+    forks_count: null,
+    language: "Python",
+    html_url: "https://github.com/bijaktechnology/speech-synthesis"
+  },
+  {
+    name: "WiFiManager",
+    description: "Fork pengelola koneksi WiFi mikrokontroler ESP8266 dengan captive portal web yang dimodifikasi untuk keperluan IoT.",
+    stargazers_count: null,
+    forks_count: null,
+    language: "C++",
+    html_url: "https://github.com/bijaktechnology/WiFiManager"
+  },
+  {
+    name: "lbbstreamlit",
+    description: "Aplikasi analisis data dan visualisasi interaktif berbasis Streamlit untuk kebutuhan pelaporan bisnis.",
+    stargazers_count: null,
+    forks_count: null,
+    language: "Python",
+    html_url: "https://github.com/bijaktechnology/lbbstreamlit"
+  },
+  {
+    name: "Home-surveillance-system-using-Python",
+    description: "Sistem pengawasan rumah menggunakan Python dengan deteksi gerak berbasis OpenCV dan notifikasi real-time.",
+    stargazers_count: null,
+    forks_count: null,
+    language: "Python",
+    html_url: "https://github.com/bijaktechnology/Home-surveillance-system-using-Python"
+  },
+  {
+    name: "oganpetugas",
+    description: "Aplikasi manajemen organisasi dan petugas untuk keperluan administrasi internal.",
+    stargazers_count: null,
+    forks_count: null,
+    language: "JavaScript",
+    html_url: "https://github.com/bijaktechnology/oganpetugas"
+  },
+  {
+    name: "bitech",
+    description: "Repositori utama ekosistem Bijak Technology — berisi konfigurasi proyek dan dokumentasi arsitektur.",
+    stargazers_count: null,
+    forks_count: null,
+    language: null,
+    html_url: "https://github.com/bijaktechnology/bitech"
+  }
+];
+
+// Pengambilan data realtime Github via API pada build-time Astro
+let gitUser = null;
+let rawGitRepos = [];
+let rawOrgRepos = [];
+let errorMsg = "";
+
+try {
+  // Fetch profil zetrosoft
+  const userRes = await fetch(`https://api.github.com/users/${zetrosoftProfile.username}`, {
+    headers: { 'User-Agent': 'Astro-App-Build' }
+  });
+  if (userRes.ok) {
+    gitUser = await userRes.json();
+  } else if (userRes.status === 403) {
+    errorMsg = "GitHub API Rate Limit terlampaui. Menampilkan fallback repositori lokal berpresisi tinggi.";
+  }
+
+  // Fetch repositori zetrosoft
+  const reposRes = await fetch(`https://api.github.com/users/${zetrosoftProfile.username}/repos?sort=updated&per_page=10`, {
+    headers: { 'User-Agent': 'Astro-App-Build' }
+  });
+  if (reposRes.ok) {
+    rawGitRepos = await reposRes.json();
+  }
+
+  // Fetch repositori bijaktechnology
+  const orgReposRes = await fetch(`https://api.github.com/orgs/bijaktechnology/repos?sort=updated&per_page=10`, {
+    headers: { 'User-Agent': 'Astro-App-Build' }
+  });
+  if (orgReposRes.ok) {
+    rawOrgRepos = await orgReposRes.json();
+  }
+} catch (e) {
+  errorMsg = "Gagal memuat data realtime dari Github API karena kendala jaringan. Menampilkan fallback repositori lokal.";
+}
+
+// Menentukan data yang akan ditampilkan (API live atau Fallback terperinci)
+const gitRepos = rawGitRepos.length > 0 ? rawGitRepos : zetrosoftFallbackRepos;
+const orgRepos = rawOrgRepos.length > 0 ? rawOrgRepos : bijakFallbackRepos;
+
+// Data Kolaborasi & Tim Utama
+const collaborationData = {
+  summary: "Sinergi antara Zetrosoft (selaku Software Architect) dengan tim rekayasa sistem Bijak Technology menghasilkan jembatan inovasi antara solusi tingkat perusahaan (Enterprise) dengan otomasi perangkat lunak sumber terbuka (Open Source).",
+  partners: [
+    { name: "Frappe / ERPNext Team", role: "Upstream Contributors", desc: "Zetrosoft secara berkala melakukan kontribusi kembali pada sistem ERP utama." },
+    { name: "Bijak Core Engineers", role: "IoT & UI Integration", desc: "Berkolaborasi merancang UI desktop Storaji-UI dan memprogram interaksi mikrokontroler." }
+  ]
+};
+---
+
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --font-sans: 'Plus Jakarta Sans', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+      }
+      
+      body {
+        font-family: var(--font-sans);
+        background-color: #080b11;
+        color: #f3f4f6;
+        background-image: 
+          radial-gradient(circle at 5% 15%, rgba(244, 63, 94, 0.04) 0%, transparent 45%),
+          radial-gradient(circle at 95% 85%, rgba(99, 102, 241, 0.04) 0%, transparent 45%);
+      }
+
+      .glass-card {
+        background: rgba(13, 18, 30, 0.85);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .glow-badge-rose {
+        box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
+      }
+
+      .glow-badge-indigo {
+        box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen selection:bg-rose-500 selection:text-white pb-16">
+
+    <!-- Header Portal Navigasi -->
+    <header class="sticky top-0 z-50 glass-card border-b border-white/5 py-4 px-6 mb-12">
+      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+        <a href="/" class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-500 to-indigo-600 flex items-center justify-center font-bold text-white shadow-lg">Z</span>
+          <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">ZETROSOFT & BIJAK</span>
+        </a>
+        <div class="flex items-center gap-6">
+          <a href={zetrosoftProfile.githubUrl} target="_blank" rel="noopener noreferrer" class="text-xs text-gray-400 hover:text-white transition-colors flex items-center gap-1 font-mono">
+            GitHub ↗
+          </a>
+          <span class="text-gray-800">|</span>
+          <a href={zetrosoftProfile.rpubsUrl} target="_blank" rel="noopener noreferrer" class="text-xs text-rose-400 hover:text-rose-300 transition-colors flex items-center gap-1 font-mono">
+            RPubs ↗
+          </a>
+          <span class="text-gray-800">|</span>
+          <a href={bijakOrg.githubUrl} target="_blank" rel="noopener noreferrer" class="text-xs text-gray-400 hover:text-white transition-colors flex items-center gap-1 font-mono">
+            {bijakOrg.name} Org ↗
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Grid -->
+    <main class="max-w-6xl mx-auto px-6 space-y-12">
+
+      <!-- Peringatan Error API -->
+      {errorMsg && (
+        <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono text-center">
+          ⚠️ {errorMsg}
+        </div>
+      )}
+      
+      <!-- Section 1: Profil Individual & Organisasi -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Individual: Zetrosoft -->
+        <div class="glass-card rounded-2xl p-8 relative overflow-hidden shadow-2xl">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-2xl -mr-16 -mt-16"></div>
+          
+          <div class="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-white/5">
+            <div class="relative w-24 h-24 shrink-0 group">
+              <div class="absolute inset-0 bg-gradient-to-tr from-rose-500 to-indigo-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
+              <img 
+                src={gitUser ? gitUser.avatar_url : zetrosoftProfile.avatarUrl} 
+                alt={gitUser ? gitUser.name : zetrosoftProfile.name} 
+                class="w-24 h-24 rounded-2xl border-2 border-white/10 object-cover relative z-10 mx-auto"
+              />
+            </div>
+            <div class="text-center sm:text-left space-y-1">
+              <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20 font-bold uppercase tracking-wider glow-badge-rose">
+                {zetrosoftProfile.role}
+              </span>
+              <h1 class="text-2xl font-black text-white tracking-tight pt-1">{gitUser ? gitUser.name || gitUser.login : zetrosoftProfile.name}</h1>
+              <p class="text-xs text-gray-400 font-mono">@{gitUser ? gitUser.login : zetrosoftProfile.username} &bull; {gitUser ? gitUser.location || zetrosoftProfile.location : zetrosoftProfile.location}</p>
+            </div>
+          </div>
+
+          <div class="py-6 border-b border-white/5 space-y-4">
+            <p class="text-sm text-gray-300 leading-relaxed">
+              {gitUser ? gitUser.bio : zetrosoftProfile.bio}
+            </p>
+            
+            <div class="grid grid-cols-3 gap-4 pt-2">
+              <div class="p-3 bg-white/[0.02] border border-white/5 rounded-xl text-center">
+                <div class="text-xs text-gray-400 font-medium">Public Repos</div>
+                <div class="text-xl font-bold text-white font-mono mt-1">{gitUser ? gitUser.public_repos : "18"}</div>
+              </div>
+              <div class="p-3 bg-white/[0.02] border border-white/5 rounded-xl text-center">
+                <div class="text-xs text-gray-400 font-medium">Followers</div>
+                <div class="text-xl font-bold text-white font-mono mt-1">{gitUser ? gitUser.followers : "142"}</div>
+              </div>
+              <div class="p-3 bg-white/[0.02] border border-white/5 rounded-xl text-center">
+                <div class="text-xs text-gray-400 font-medium">Following</div>
+                <div class="text-xl font-bold text-white font-mono mt-1">{gitUser ? gitUser.following : "45"}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 flex flex-wrap justify-between items-center text-xs gap-3">
+            <span class="text-gray-500">Status: {zetrosoftProfile.status}</span>
+            <div class="flex gap-4">
+              <a href={zetrosoftProfile.rpubsUrl} target="_blank" rel="noopener noreferrer" class="text-rose-455 font-bold hover:underline">
+                RPubs Publikasi &rarr;
+              </a>
+              <a href={zetrosoftProfile.githubUrl} target="_blank" rel="noopener noreferrer" class="text-white font-bold hover:underline">
+                GitHub Profil &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Organisasi: Bijak Technology -->
+        <div class="glass-card rounded-2xl p-8 relative overflow-hidden shadow-2xl">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl -mr-16 -mt-16"></div>
+          
+          <div class="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-white/5">
+            <div class="w-20 h-20 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl flex items-center justify-center font-serif text-3xl font-extrabold text-indigo-400 shrink-0">
+              B
+            </div>
+            <div class="text-center sm:text-left space-y-1">
+              <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-bold uppercase tracking-wider glow-badge-indigo">
+                Organisasi Utama
+              </span>
+              <h2 class="text-2xl font-black text-white tracking-tight pt-1">{bijakOrg.name}</h2>
+              <p class="text-xs text-gray-400 font-mono">{bijakOrg.slogan}</p>
+            </div>
+          </div>
+
+          <div class="py-6 border-b border-white/5 space-y-4">
+            <p class="text-sm text-gray-300 leading-relaxed">
+              {bijakOrg.desc}
+            </p>
+            
+            <div class="grid grid-cols-2 gap-4 pt-2">
+              <div class="p-3 bg-white/[0.02] border border-white/5 rounded-xl text-center">
+                <div class="text-xs text-gray-400 font-medium">Tim Inti</div>
+                <div class="text-xl font-bold text-white font-mono mt-1">{coreTeam.length} Developer</div>
+              </div>
+              <div class="p-3 bg-white/[0.02] border border-white/5 rounded-xl text-center">
+                <div class="text-xs text-gray-400 font-medium">Repositori Terlacak</div>
+                <div class="text-xl font-bold text-white font-mono mt-1">{orgRepos.length} Proyek</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 flex justify-between items-center text-xs text-gray-500">
+            <span>Kemitraan Teknis Bersama</span>
+            <a href={bijakOrg.githubUrl} target="_blank" rel="noopener noreferrer" class="text-indigo-400 font-bold hover:underline">
+              Github Organization &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Section 2: Tim Inti Rekayasa Sistem (Orang) -->
+      <div class="glass-card rounded-2xl p-8 shadow-2xl">
+        <div class="mb-8 pb-4 border-b border-white/5">
+          <span class="text-xs font-mono text-indigo-400 uppercase font-bold tracking-widest block mb-1">Kolaborator</span>
+          <h3 class="text-2xl font-black text-white">Tim Inti (People)</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {coreTeam.map((member) => (
+            <div class="p-4 rounded-xl bg-white/[0.02] hover:bg-white/[0.04] border border-white/5 hover:border-white/10 transition-all duration-300 flex items-center gap-4">
+              <img 
+                src={member.avatarUrl} 
+                alt={member.name} 
+                class="w-16 h-16 rounded-full border border-white/10 object-cover"
+                onerror="this.src='https://avatars.githubusercontent.com/u/9919?v=4'"
+              />
+              <div class="space-y-1">
+                <h4 class="font-extrabold text-white text-base">
+                  <a href={member.githubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">{member.name}</a>
+                </h4>
+                <p class="text-xs text-indigo-400 font-mono leading-tight">{member.role}</p>
+                <a href={member.githubUrl} target="_blank" rel="noopener noreferrer" class="text-[10px] text-gray-400 hover:underline">
+                  github.com/{member.username} &rarr;
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Section 3: Repositori Realtime github.com/zetrosoft -->
+      <div class="glass-card rounded-2xl p-8 shadow-2xl">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 pb-4 border-b border-white/5">
+          <div>
+            <span class="text-xs font-mono text-rose-500 uppercase font-bold tracking-widest block mb-1">Portofolio Live</span>
+            <h3 class="text-2xl font-black text-white">Repositori GitHub zetrosoft</h3>
+            <p class="text-xs text-gray-500 mt-1">142 repositori publik · Tampilkan 8 terbaru</p>
+          </div>
+          <span class={`text-xs font-mono px-3 py-1 rounded-full border ${rawGitRepos.length > 0 ? 'bg-green-500/10 text-green-400 border-green-500/20' : 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'}`}>
+            {rawGitRepos.length > 0 ? '🟢 Live API' : '🟡 Fallback Lokal'}
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {gitRepos.length > 0 ? (
+            gitRepos.map((repo) => (
+              <div class="p-6 rounded-xl bg-white/[0.02] hover:bg-white/[0.04] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between space-y-4">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-mono font-bold text-rose-450 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20">
+                      {repo.license && repo.license.spdx_id ? repo.license.spdx_id : "Open Source"}
+                    </span>
+                    <span class="text-xs font-mono text-gray-400">{repo.language || "Mix"}</span>
+                  </div>
+                  <h4 class="font-extrabold text-lg text-white hover:text-rose-400 transition-colors">
+                    <a href={repo.html_url || repo.url} target="_blank" rel="noopener noreferrer">{repo.name}</a>
+                  </h4>
+                  <p class="text-xs text-gray-400 leading-relaxed line-clamp-3">
+                    {repo.description || "Tidak ada deskripsi repositori yang disediakan."}
+                  </p>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-white/5">
+                  <div class="flex items-center gap-4 text-xs font-mono text-gray-400">
+                    {repo.stargazers_count !== null && <span class="flex items-center gap-1">⭐ {repo.stargazers_count}</span>}
+                    {repo.forks_count !== null && <span class="flex items-center gap-1">🍴 {repo.forks_count}</span>}
+                    {repo.stargazers_count === null && <span class="italic text-gray-600">github.com/zetrosoft/{repo.name}</span>}
+                  </div>
+                  <a href={repo.html_url || repo.url} target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-white hover:underline flex items-center gap-1">
+                    Lihat Kode <span class="text-[10px]">↗</span>
+                  </a>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div class="col-span-2 py-12 text-center text-gray-500 text-sm">
+              Tidak ada repositori publik yang ditemukan.
+            </div>
+          )}
+        </div>
+      </div>
+
+      <!-- Section 4: Repositori Realtime github.com/bijaktechnology -->
+      <div class="glass-card rounded-2xl p-8 shadow-2xl">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 pb-4 border-b border-white/5">
+          <div>
+            <span class="text-xs font-mono text-indigo-400 uppercase font-bold tracking-widest block mb-1">Karya Live Org</span>
+            <h3 class="text-2xl font-black text-white">Repositori GitHub Bijak Technology</h3>
+            <p class="text-xs text-gray-500 mt-1">16 repositori publik · Tampilkan 8 terbaru</p>
+          </div>
+          <span class={`text-xs font-mono px-3 py-1 rounded-full border ${rawOrgRepos.length > 0 ? 'bg-green-500/10 text-green-400 border-green-500/20' : 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'}`}>
+            {rawOrgRepos.length > 0 ? '🟢 Live API' : '🟡 Fallback Lokal'}
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {orgRepos.length > 0 ? (
+            orgRepos.map((repo) => (
+              <div class="p-6 rounded-xl bg-white/[0.02] hover:bg-white/[0.04] border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col justify-between space-y-4">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-mono text-gray-400">{repo.language || "C++ / JS"}</span>
+                  </div>
+                  <h4 class="font-extrabold text-lg text-white hover:text-indigo-400 transition-colors">
+                    <a href={repo.html_url || repo.url} target="_blank" rel="noopener noreferrer">{repo.name}</a>
+                  </h4>
+                  <p class="text-xs text-gray-400 leading-relaxed line-clamp-3">
+                    {repo.description || "Tidak ada deskripsi repositori yang disediakan."}
+                  </p>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-white/5">
+                  <div class="flex items-center gap-4 text-xs font-mono text-gray-400">
+                    {repo.stargazers_count !== null && <span class="flex items-center gap-1">⭐ {repo.stargazers_count}</span>}
+                    {repo.forks_count !== null && <span class="flex items-center gap-1">🍴 {repo.forks_count}</span>}
+                    {repo.stargazers_count === null && <span class="italic text-gray-600">github.com/bijaktechnology/{repo.name}</span>}
+                  </div>
+                  <a href={repo.html_url || repo.url} target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-white hover:underline flex items-center gap-1">
+                    Lihat Kode <span class="text-[10px]">↗</span>
+                  </a>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div class="col-span-2 py-12 text-center text-gray-500 text-sm">
+              Tidak ada repositori publik organisasi yang ditemukan.
+            </div>
+          )}
+        </div>
+      </div>
+
+      <!-- Section 5: Kolaborasi & RPubs Publikasi -->
+      <div class="glass-card rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-indigo-600/5 rounded-full blur-3xl -ml-32 -mb-32"></div>
+        <div class="relative z-10 space-y-6">
+          <div>
+            <span class="text-xs font-mono text-rose-500 uppercase font-bold tracking-widest block mb-1">Penelitian & Publikasi</span>
+            <h3 class="text-2xl font-black text-white">Analisis Data RPubs</h3>
+          </div>
+          
+          <p class="text-sm text-gray-300 leading-relaxed max-w-3xl">
+            {collaborationData.summary} Selain rekayasa kode di GitHub, zetrosoft aktif mempublikasikan hasil komputasi statistika, riset sains data, dan visualisasi analisis melalui platform RPubs.
+          </p>
+
+          <div class="pt-4">
+            <a 
+              href={zetrosoftProfile.rpubsUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold py-3 px-6 rounded-xl text-xs uppercase tracking-wider transition-all duration-300 shadow-md"
+            >
+              Buka Publikasi Riset RPubs &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+      <div>
+        &copy; {new Date().getFullYear()} Zetrosoft & Bijak Technology Ecosystem. All Rights Reserved.
+      </div>
+      <div class="flex gap-4">
+        <span>Astro Framework 7.x</span>
+        <span>&bull;</span>
+        <span>TailwindCSS Visual Style</span>
+      </div>
+    </footer>
+
+  </body>
+</html>

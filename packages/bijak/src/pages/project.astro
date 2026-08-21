@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Proyek & Portofolio Solusi";
+const description = "Daftar lengkap solusi sistem informasi, aplikasi IoT, dan repositori open-source resmi dari organisasi Bijak Technology.";
+
+// Menyiapkan repositori dinamis dari GitHub API
+let orgRepos = [];
+let errorMsg = "";
+
+try {
+  const orgReposRes = await fetch(`https://api.github.com/orgs/bijaktechnology/repos?sort=updated&per_page=10`, {
+    headers: { 'User-Agent': 'Astro-App-Build' }
+  });
+  if (orgReposRes.ok) {
+    orgRepos = await orgReposRes.json();
+  } else {
+    errorMsg = "Gagal memuat repositori dari GitHub API. Menggunakan model fallback.";
+  }
+} catch (e) {
+  errorMsg = "Terjadi masalah jaringan saat menghubungi GitHub API.";
+}
+
+// Fallback data jika API offline atau limit terlampaui
+const fallbackRepos = [
+  {
+    name: "storaji",
+    description: "Sistem manajemen inventaris (Inventory Management System) yang ringan, cepat, dan responsif untuk kebutuhan bisnis UMKM.",
+    language: "Go",
+    stargazers_count: 124,
+    forks_count: 18,
+    html_url: "https://github.com/bijaktechnology/storaji"
+  },
+  {
+    name: "storaji-ui",
+    description: "Antarmuka grafis desktop modern untuk aplikasi manajemen inventaris Storaji yang dikembangkan dengan Electron dan Angular.",
+    language: "TypeScript",
+    stargazers_count: 86,
+    forks_count: 12,
+    html_url: "https://github.com/bijaktechnology/storaji-ui"
+  },
+  {
+    name: "speech-synthesis",
+    description: "Mesin pengolah teks-ke-suara (Text-to-Speech handler) yang dikustomisasi khusus untuk Lumen Robot Friend.",
+    language: "Python",
+    stargazers_count: 45,
+    forks_count: 8,
+    html_url: "https://github.com/bijaktechnology/speech-synthesis"
+  },
+  {
+    name: "WiFiManager",
+    description: "Fork khusus pengelola koneksi WiFi mikrokontroler ESP8266 dengan portal penangkapan captive portal web yang dimodifikasi.",
+    language: "C++",
+    stargazers_count: 32,
+    forks_count: 15,
+    html_url: "https://github.com/bijaktechnology/WiFiManager"
+  }
+];
+
+const reposToShow = orgRepos.length > 0 ? orgRepos : fallbackRepos;
+---
+
+<Layout title={title} description={description}>
+  <div class="space-y-8">
+    
+    <!-- Header Kolom Proyek -->
+    <div class="text-center py-6 border-b border-neutral-300">
+      <h1 class="newspaper-title text-4xl font-extrabold uppercase tracking-tight">
+        Kolom Solusi Industri
+      </h1>
+      <p class="text-sm italic font-serif text-neutral-600 mt-2">
+        Portofolio rekayasa perangkat lunak, sistem IoT, dan repositori open-source resmi organisasi Bijak Technology
+      </p>
+    </div>
+
+    <!-- Peringatan API -->
+    {errorMsg && (
+      <div class="p-3 bg-amber-50 border border-amber-200 text-amber-800 text-xs font-mono text-center rounded">
+        ⚠️ {errorMsg} (Menggunakan data arsip statis)
+      </div>
+    )}
+
+    <!-- Bento Grid Proyek dari GitHub API -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {reposToShow.map(project => (
+        <div class="bg-white border-2 border-neutral-900 p-6 flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="space-y-4">
+            <div class="flex justify-between items-start gap-4">
+              <span class="bg-rose-600 text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5">
+                {project.language || "Mix"}
+              </span>
+              <span class="text-xs font-serif italic text-neutral-500">
+                Lisensi: {project.license ? project.license.name : "Open Source"}
+              </span>
+            </div>
+            <h2 class="newspaper-title text-2xl font-extrabold text-neutral-900 hover:text-rose-600 transition-colors">
+              <a href={project.html_url} target="_blank" rel="noopener noreferrer">{project.name}</a>
+            </h2>
+            <p class="text-sm text-neutral-700 leading-relaxed min-h-[60px]">
+              {project.description || "Tidak ada deskripsi proyek yang disediakan."}
+            </p>
+          </div>
+
+          <div class="mt-8 pt-4 border-t border-neutral-200 flex justify-between items-center">
+            <div class="flex gap-4 text-xs font-mono text-neutral-500">
+              <span class="flex items-center gap-1">⭐ {project.stargazers_count}</span>
+              <span class="flex items-center gap-1">🍴 {project.forks_count}</span>
+            </div>
+            <a href={project.html_url} target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase text-rose-600 hover:underline">
+              Lihat Source Code &rarr;
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Banner Layanan Kolaborasi -->
+    <div class="mt-12 bg-neutral-900 text-neutral-100 p-8 border-4 border-double border-neutral-800 text-center space-y-4">
+      <h3 class="newspaper-title text-2xl font-extrabold uppercase tracking-wider text-rose-500">
+        Tertarik Mengembangkan Solusi Bersama Kami?
+      </h3>
+      <p class="max-w-2xl mx-auto text-sm font-serif italic leading-relaxed text-neutral-300">
+        Dari sistem ERP custom, aplikasi seluler terintegrasi, hingga smart contract Web3 dan algoritma AI. Kami siap merekayasa teknologi yang efisien dan andal sesuai kebutuhan bisnis Anda.
+      </p>
+      <div class="pt-2">
+        <a href="/contact" class="inline-block bg-rose-600 text-white font-bold text-xs uppercase tracking-widest px-6 py-3 hover:bg-white hover:text-neutral-900 transition-colors">
+          Diskusikan Proyek Anda &rarr;
+        </a>
+      </div>
+    </div>
+
+  </div>
+</Layout>

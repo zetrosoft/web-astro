@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Hubungi Kami - Meja Redaksi" description="Hubungi redaksi Bijak Technology untuk kolaborasi proyek, publikasi berita, atau konsultasi solusi IT.">
+  <div class="max-w-4xl mx-auto space-y-8">
+    
+    <!-- Header Kontak -->
+    <div class="text-center py-6 border-b border-neutral-300">
+      <h1 class="newspaper-title text-4xl font-extrabold uppercase tracking-tight">
+        Hubungi Meja Redaksi
+      </h1>
+      <p class="text-sm italic font-serif text-neutral-600 mt-2">
+        Kirimkan tanggapan, konsultasi proyek, atau pertanyaan kerja sama bisnis Anda
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Info Kontak / Media Redaksi -->
+      <div class="space-y-6">
+        <div class="border-2 border-neutral-900 p-5 bg-[#faf9f5]">
+          <h2 class="newspaper-title text-lg font-bold uppercase border-b border-neutral-900 pb-2 mb-4 text-center">
+            Korespondensi
+          </h2>
+          <div class="space-y-4 text-sm">
+            <div>
+              <h3 class="font-bold text-neutral-800 uppercase text-xs">Lokasi Redaksi</h3>
+              <p class="text-neutral-600 mt-0.5">Kabupaten Purwakarta, Jawa Barat, Indonesia</p>
+            </div>
+            <div>
+              <h3 class="font-bold text-neutral-800 uppercase text-xs">Saluran Kode Sumber</h3>
+              <p class="text-neutral-600 mt-0.5">
+                <a href="https://github.com/bijaktechnology" target="_blank" class="text-rose-600 hover:underline">
+                  github.com/bijaktechnology
+                </a>
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-neutral-800 uppercase text-xs">Kontributor Utama</h3>
+              <p class="text-neutral-600 mt-0.5">
+                <a href="https://github.com/zetrosoft" target="_blank" class="text-rose-600 hover:underline">
+                  github.com/zetrosoft
+                </a>
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-neutral-800 uppercase text-xs">Portofolio Lain</h3>
+              <p class="text-neutral-600 mt-0.5">
+                <a href="https://zetrosoft.medium.com/" target="_blank" class="text-rose-600 hover:underline block">
+                  Medium Blog
+                </a>
+                <a href="https://rpubs.com/Zetrosoft" target="_blank" class="text-rose-600 hover:underline block mt-1">
+                  RPubs Data Science
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-neutral-900 text-neutral-100 p-5 text-center border border-neutral-800">
+          <h3 class="font-bold uppercase text-xs text-rose-500 tracking-widest mb-1">Respons Waktu</h3>
+          <p class="text-xs font-serif italic text-neutral-400">
+            Redaksi kami biasanya menanggapi pesan masuk dalam waktu 1x24 jam pada hari kerja.
+          </p>
+        </div>
+      </div>
+
+      <!-- Form Pengiriman Pesan -->
+      <div class="md:col-span-2 border border-neutral-300 p-6 bg-white shadow-sm">
+        <h2 class="newspaper-title text-xl font-bold uppercase border-b-2 border-neutral-900 pb-2 mb-6">
+          Formulir Surat Elektronik
+        </h2>
+        
+        <form class="space-y-4 text-sm" onsubmit="alert('Terima kasih atas pesan Anda! Redaksi kami akan segera memprosesnya.'); return false;">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label for="name" class="font-bold text-neutral-700 uppercase text-xs">Nama Lengkap</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                placeholder="cth. Budi Santoso"
+                class="w-full border border-neutral-300 px-3 py-2 focus:outline-none focus:border-rose-600 bg-neutral-50"
+              />
+            </div>
+            <div class="space-y-1.5">
+              <label for="email" class="font-bold text-neutral-700 uppercase text-xs">Alamat Surel (Email)</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                placeholder="cth. budi@domain.com"
+                class="w-full border border-neutral-300 px-3 py-2 focus:outline-none focus:border-rose-600 bg-neutral-50"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="subject" class="font-bold text-neutral-700 uppercase text-xs">Subjek / Perihal</label>
+            <input 
+              type="text" 
+              id="subject" 
+              name="subject" 
+              required 
+              placeholder="cth. Konsultasi ERP Proyek"
+              class="w-full border border-neutral-300 px-3 py-2 focus:outline-none focus:border-rose-600 bg-neutral-50"
+            />
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="message" class="font-bold text-neutral-700 uppercase text-xs">Pesan Anda</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="6" 
+              required 
+              placeholder="Tuliskan detail pertanyaan atau keperluan kolaborasi Anda secara terperinci..."
+              class="w-full border border-neutral-300 px-3 py-2 focus:outline-none focus:border-rose-600 bg-neutral-50 resize-none"
+            ></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button 
+              type="submit" 
+              class="w-full bg-neutral-900 text-white font-bold uppercase tracking-wider py-3 hover:bg-rose-600 transition-colors"
+            >
+              Kirim Surat Redaksi
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</Layout>

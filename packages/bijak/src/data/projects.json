@@ -1,0 +1,34 @@
+[
+  {
+    "id": "simande",
+    "title": "SiMANDE (Sistem Management Dealer)",
+    "description": "Sistem informasi manajemen dealer sepeda motor terintegrasi untuk wilayah Kalimantan Selatan & Tengah. Mengelola alur inventaris, penjualan unit, servis, hingga laporan keuangan konsolidasi.",
+    "client": "Main Dealer Sepeda Motor Kalsel & Kalteng",
+    "tech": ["PHP", "Laravel", "MySQL", "Bootstrap", "REST API"],
+    "type": "Web Application"
+  },
+  {
+    "id": "statistik-apps",
+    "title": "Statistik Apps",
+    "description": "Aplikasi portal pengolah data statistik daerah secara real-time untuk visualisasi infografis data spasial dan kependudukan tingkat kabupaten.",
+    "client": "Dinas Statistik Kab. Purwakarta",
+    "tech": ["JavaScript", "Vite", "D3.js", "PostgreSQL", "Node.js"],
+    "type": "Web Application"
+  },
+  {
+    "id": "oganlopian",
+    "title": "OganLopian Mobile App",
+    "description": "Aplikasi mobile layanan publik untuk pengaduan masyarakat, informasi pariwisata, dan direktori UMKM terintegrasi di Kabupaten Purwakarta.",
+    "client": "Dinas Komunikasi dan Informasi Kab. Purwakarta",
+    "tech": ["Java", "Android SDK", "Firebase Cloud Messaging", "REST API"],
+    "type": "Mobile Application (Android)"
+  },
+  {
+    "id": "watermelon-pos",
+    "title": "Watermelon Point of Sales",
+    "description": "Perangkat lunak POS (Kasir) khusus untuk manajemen stok, penjualan ritel bahan bangunan dengan multi-gudang dan sistem diskon bertingkat.",
+    "client": "Toko Ritel Bahan Bangunan",
+    "tech": ["PHP", "CodeIgniter 2", "MySQL", "jQuery"],
+    "type": "Web Application"
+  }
+]
