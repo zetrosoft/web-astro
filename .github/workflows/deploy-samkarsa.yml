@@ -52,14 +52,13 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
           message: |
-            *🚀 DEPLOYMENT NOTIFICATION: SAMKARSA*
+            🚀 DEPLOYMENT NOTIFICATION: SAMKARSA
             
-            *Status:* ${{ job.status == 'success' && '✅ SUCCESS' || '❌ FAILED' }}
-            *Website:* https://samkarsa.com
-            *Container:* `web-samkarsa-porto`
-            *Target User:* @zetro_21 (ID: 326009233)
-            *Commit:* `${{ github.sha }}`
-            *Author:* `${{ github.actor }}`
-            *Message:* `${{ github.event.head_commit.message }}`
+            Status: ${{ job.status == 'success' && '✅ SUCCESS' || '❌ FAILED' }}
+            Website: https://samkarsa.com
+            Container: web-samkarsa-porto
+            Target User: @zetro_21 (ID: 326009233)
+            Commit: ${{ github.sha }}
+            Author: ${{ github.actor }}
+            Message: ${{ github.event.head_commit.message }}

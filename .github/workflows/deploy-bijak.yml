@@ -52,14 +52,13 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
           message: |
-            *🚀 DEPLOYMENT NOTIFICATION: BIJAK TECHNOLOGY*
+            🚀 DEPLOYMENT NOTIFICATION: BIJAK TECHNOLOGY
             
-            *Status:* ${{ job.status == 'success' && '✅ SUCCESS' || '❌ FAILED' }}
-            *Website:* https://bijaktechnology.com
-            *Container:* `web-bijak-techno`
-            *Target User:* @zetro_21 (ID: 326009233)
-            *Commit:* `${{ github.sha }}`
-            *Author:* `${{ github.actor }}`
-            *Message:* `${{ github.event.head_commit.message }}`
+            Status: ${{ job.status == 'success' && '✅ SUCCESS' || '❌ FAILED' }}
+            Website: https://bijaktechnology.com
+            Container: web-bijak-techno
+            Target User: @zetro_21 (ID: 326009233)
+            Commit: ${{ github.sha }}
+            Author: ${{ github.actor }}
+            Message: ${{ github.event.head_commit.message }}
