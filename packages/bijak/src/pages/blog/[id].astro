@@ -111,7 +111,7 @@ const recentPosts = allPosts
             </p>
 
             <div class="flex flex-wrap items-center gap-3">
-              <!-- Share LinkedIn (Marketing 5.0 Hook) -->
+              <!-- Share LinkedIn (Marketing 5.0 Longform - Max 3.000 Karakter) -->
               <button
                 id="share-linkedin-btn"
                 type="button"
@@ -123,18 +123,18 @@ const recentPosts = allPosts
                 Bagikan ke LinkedIn
               </button>
 
-              <!-- Share Twitter / X (Marketing 5.0 Hook) -->
+              <!-- Share Twitter / X (Marketing 5.0 Punchy - Max 280 Karakter) -->
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://bijaktechnology.com/blog/${post.id}`)}&text=${encodeURIComponent(`💡 Pemalsuan dokumen selesai? Kenya baru saja mengunci 15 JUTA ijazah ke Blockchain Avalanche dalam 1 detik! Pelajari dampaknya untuk Indonesia:`)}`}
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://bijaktechnology.com/blog/${post.id}`)}&text=${encodeURIComponent(`💡 Pemalsuan ijazah resmi berakhir? Kenya baru saja memindahkan 15 JUTA registri akademis ke Blockchain Avalanche (AVAX) dalam 1 detik finality! 🚀\n\nSimak dampaknya untuk kedaulatan data publik & institusi di Indonesia:`)}`}
                 class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-black hover:bg-slate-800 text-white text-xs font-bold shadow-md transition-all hover:-translate-y-0.5"
               >
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 Post di Twitter / X
               </a>
 
-              <!-- Share Facebook (Marketing 5.0 Hook) -->
+              <!-- Share Facebook (Marketing 5.0 Engaging Community) -->
               <a
                 target="_blank"
                 rel="noopener noreferrer"
@@ -157,7 +157,6 @@ const recentPosts = allPosts
             const pageId = 'bijak_blog_' + rawId.replace(/[^a-zA-Z0-9_-]/g, '_');
             const storageKey = 'v_count_' + pageId;
 
-            // Memanggil database hit counter publik persistent (api.counterapi.dev)
             fetch('https://api.counterapi.dev/v1/bijaktechnology.com/' + pageId + '/up')
               .then(res => res.json())
               .then(data => {
@@ -168,7 +167,6 @@ const recentPosts = allPosts
                 }
               })
               .catch(() => {
-                // Persistent LocalStorage Fallback jika jaringan lambat
                 let cached = localStorage.getItem(storageKey);
                 if (!cached) {
                   cached = "1428";
@@ -181,37 +179,49 @@ const recentPosts = allPosts
                 if (el) el.innerText = Number(cached).toLocaleString('id-ID');
               });
 
-            // 2. Intelligent LinkedIn Share Button (Web Share API / Clipboard Hybrid)
+            // 2. Intelligent LinkedIn Share Button (Marketing 5.0 Longform - Optimasi Maksimal)
             const linkedinBtn = document.getElementById('share-linkedin-btn');
             if (linkedinBtn) {
               linkedinBtn.addEventListener('click', async function() {
                 const title = linkedinBtn.getAttribute('data-title');
                 const shareUrl = linkedinBtn.getAttribute('data-url');
                 
-                // Text Hook Storytelling Marketing 5.0 Persuasif
-                const marketingText = `💡 Pemalsuan dokumen selesai? Kenya baru saja mengunci 15 JUTA ijazah ke Blockchain Avalanche dalam 1 detik!\n\nSimak bagaimana arsitektur data publik ini memutus birokrasi dan apa dampaknya untuk Indonesia:\n${shareUrl}`;
+                // Narasi Post LinkedIn Profesional Longform (Marketing 5.0 - Hook, Story, Value & CTA)
+                const linkedinNarrative = 
+`🚀 Era Baru Verifikasi Data Publik: Mengapa Langkah Kenya Mengunci 15 Juta Ijazah di Blockchain Avalanche Sangat Penting?
 
-                // Jika browser mendukung Native Web Share API (HP / Chrome Modern)
+Berapa lama waktu yang dibutuhkan perusahaan Anda untuk memverifikasi keaslian ijazah seorang calon eksekutif? Di banyak negara, proses ini masih memakan waktu berminggu-minggu melalui birokrasi manual yang rentan dokumen tiruan.
+
+Agustus 2026 ini, Kenya National Examinations Council (KNEC) mengambil langkah revolusioner:
+1. Memindahkan 15 juta rekam akademis sejak 1989 ke Avalanche C-Chain.
+2. Memangkas waktu verifikasi dokumen dari berminggu-minggu menjadi kurang dari 1 DETIK (sub-second finality).
+3. Memberikan kedaulatan data penuh (digital sovereignty) bagi setiap lulusan tanpa risiko pemalsuan.
+
+Bagaimana arsitektur teknologi terdistribusi ini dapat diadaptasi oleh institusi & enterprise di Indonesia untuk membangun ekosistem data yang tepercaya?
+
+Simak ulasan mendalam & analisis arsitekturnya di sini:
+👉 ${shareUrl}
+
+#Blockchain #EdTech #DigitalSovereignty #EnterpriseArchitecture #Avalanche #BijakTechnology #Samkarsa`;
+
                 if (navigator.share) {
                   try {
                     await navigator.share({
                       title: title,
-                      text: marketingText,
+                      text: linkedinNarrative,
                       url: shareUrl,
                     });
                     return;
                   } catch (e) {}
                 }
 
-                // Fallback Desktop: Salin narasi otomatis ke Clipboard -> Buka LinkedIn
                 if (navigator.clipboard) {
                   try {
-                    await navigator.clipboard.writeText(marketingText);
-                    alert("✨ Narasi Marketing 5.0 telah disalin ke Clipboard Anda!\n\nSilakan tekan 'Paste' (Ctrl+V / Cmd+V) di kolom tulisan LinkedIn Anda.");
+                    await navigator.clipboard.writeText(linkedinNarrative);
+                    alert("✨ Narasi LinkedIn (Marketing 5.0 Longform) telah disalin!\n\nSilakan tekan Paste (Ctrl+V / Cmd+V) di kolom post LinkedIn Anda.");
                   } catch(err) {}
                 }
                 
-                // Buka Modal Sharing LinkedIn
                 window.open(
                   `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
                   '_blank',
