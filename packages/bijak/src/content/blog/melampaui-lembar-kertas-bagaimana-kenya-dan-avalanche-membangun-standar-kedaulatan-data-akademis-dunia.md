@@ -82,10 +82,10 @@ Bagi Anda yang ingin mengeksplorasi wawasan arsitektur sistem digital enterprise
 
 ---
 
-### 📚 Catatan & Rujukan Berita Resmi
+### 📚 Catatan & Rujukan
 
-* Ava Labs Blog: <a href="https://www.avax.network/about/blog/securing-a-nations-credentials-kenya-anchors-academic-records-on-avalanche" target="_blank" rel="noopener noreferrer">“Securing a Nation’s Credentials: Kenya Anchors Academic Records on Avalanche”</a>
-* Ava Labs Blog: <a href="https://www.avax.network/about/blog/california-dmv-makes-history-digitizes-42-million-car-titles-on-avalanche-blockchain" target="_blank" rel="noopener noreferrer">“California DMV Digitizes 42 Million Car Titles on Avalanche”</a>
-* Ava Labs Blog: <a href="https://www.avax.network/about/blog/240b-in-real-estate-is-coming-on-chain-with-balcony-and-avalanche" target="_blank" rel="noopener noreferrer">“$240B in Real Estate Coming On-Chain with Balcony and Avalanche”</a>
-* Ava Labs Blog: <a href="https://www.avax.network/about/blog/dantewada-district-administration-launches-blockchain-secured-land-record-application" target="_blank" rel="noopener noreferrer">“Dantewada District Launches Blockchain-Secured Land Record Application”</a>
-* Portal Resmi: <a href="https://ecertificate.knec.ac.ke/" target="_blank" rel="noopener noreferrer">“KNEC Official E-Certificate Portal Kenya”</a>
+1. <a href="https://www.avax.network/about/blog/securing-a-nations-credentials-kenya-anchors-academic-records-on-avalanche" target="_blank" rel="noopener noreferrer">“Securing a Nation’s Credentials: Kenya Anchors Academic Records on Avalanche”</a>
+2. <a href="https://www.avax.network/about/blog/california-dmv-makes-history-digitizes-42-million-car-titles-on-avalanche-blockchain" target="_blank" rel="noopener noreferrer">“California DMV Digitizes 42 Million Car Titles on Avalanche”</a>
+3. <a href="https://www.avax.network/about/blog/240b-in-real-estate-is-coming-on-chain-with-balcony-and-avalanche" target="_blank" rel="noopener noreferrer">“$240B in Real Estate Coming On-Chain with Balcony and Avalanche”</a>
+4. <a href="https://www.avax.network/about/blog/dantewada-district-administration-launches-blockchain-secured-land-record-application" target="_blank" rel="noopener noreferrer">“Dantewada District Launches Blockchain-Secured Land Record Application”</a>
+5. <a href="https://ecertificate.knec.ac.ke/" target="_blank" rel="noopener noreferrer">“KNEC Official E-Certificate Portal Kenya”</a>
