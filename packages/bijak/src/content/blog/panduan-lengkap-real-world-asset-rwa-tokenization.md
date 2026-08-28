@@ -35,21 +35,126 @@ Token digital ini berfungsi sebagai klaim kepemilikan yang sah, tahan manipulasi
 
 Mengubah aset fisik dunia nyata menjadi token blockchain memerlukan pipeline terstruktur yang menggabungkan kepatuhan hukum (*legal compliance*), audit fisik, dan arsitektur *smart contract* yang teruji.
 
-```text
-[ Aset Fisik / Finansial ]
-         │
-         ▼
-[ Audit Legal & Appraisal ] ────► Pembentukan SPV (Special Purpose Vehicle)
-         │
-         ▼
-[ Smart Contract Architecture ] ─► Aturan Kepatuhan (KYC/AML, Dividen, Batasan Transfer)
-         │
-         ▼
-[ Minting Token ERC-3643 / ERC-1400 ]
-         │
-         ▼
-[ Distribusi & Perdagangan di Bursa Teregulasi ]
-```
+<div class="my-8 p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-white border border-slate-800 shadow-2xl overflow-hidden relative not-prose">
+  <div class="absolute -right-16 -top-16 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="text-center mb-8">
+    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold tracking-widest uppercase bg-rose-500/20 text-rose-300 border border-rose-500/30">
+      Pipeline Arsitektur
+    </span>
+    <h3 class="text-xl sm:text-2xl font-black mt-2 text-white tracking-tight">
+      Siklus End-to-End Tokenisasi RWA
+    </h3>
+    <p class="text-xs sm:text-sm text-slate-400 max-w-lg mx-auto mt-1">
+      Integrasi komprehensif antara audit legal fisik (off-chain) dan protokol smart contract (on-chain).
+    </p>
+  </div>
+
+  <div class="space-y-4 relative">
+    <!-- Step 1 -->
+    <div class="flex flex-col sm:flex-row items-center gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700/70 hover:border-rose-500/50 transition-all shadow-sm">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white font-black text-sm shrink-0 shadow">
+        01
+      </div>
+      <div class="flex-1 text-center sm:text-left">
+        <div class="font-extrabold text-slate-100 text-sm sm:text-base">Aset Fisik & Finansial (Underlying Asset)</div>
+        <div class="text-xs text-slate-400 mt-0.5">Real Estate, Obligasi Pemerintah, Ekuitas Swasta, Emas, Komoditas, & Faktur Dagang</div>
+      </div>
+      <span class="text-[11px] font-semibold bg-slate-900/90 text-amber-400 px-3 py-1 rounded-lg border border-slate-700 shrink-0">
+        World Asset
+      </span>
+    </div>
+
+    <!-- Arrow Connector -->
+    <div class="flex justify-center text-rose-400 py-0.5">
+      <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+      <div class="md:col-span-7 flex flex-col sm:flex-row items-center gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700/70 hover:border-rose-500/50 transition-all shadow-sm">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white font-black text-sm shrink-0 shadow">
+          02
+        </div>
+        <div class="flex-1 text-center sm:text-left">
+          <div class="font-extrabold text-slate-100 text-sm sm:text-base">Audit Legal & Appraisal</div>
+          <div class="text-xs text-slate-400 mt-0.5">Valuasi harga pasar & verifikasi bebas sengketa</div>
+        </div>
+      </div>
+      <div class="md:col-span-5 flex items-center justify-center sm:justify-start gap-3 bg-rose-950/40 p-4 rounded-2xl border border-rose-800/50 text-rose-200">
+        <span class="text-base font-bold">➔</span>
+        <div>
+          <div class="text-xs font-black uppercase tracking-wider text-rose-300">Struktur SPV</div>
+          <div class="text-[11px] text-slate-300">Special Purpose Vehicle isolasi kepemilikan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow Connector -->
+    <div class="flex justify-center text-rose-400 py-0.5">
+      <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+      <div class="md:col-span-7 flex flex-col sm:flex-row items-center gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700/70 hover:border-rose-500/50 transition-all shadow-sm">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white font-black text-sm shrink-0 shadow">
+          03
+        </div>
+        <div class="flex-1 text-center sm:text-left">
+          <div class="font-extrabold text-slate-100 text-sm sm:text-base">Smart Contract Architecture</div>
+          <div class="text-xs text-slate-400 mt-0.5">Logika on-chain otomatis & audit kode keamanan</div>
+        </div>
+      </div>
+      <div class="md:col-span-5 flex items-center justify-center sm:justify-start gap-3 bg-emerald-950/40 p-4 rounded-2xl border border-emerald-800/50 text-emerald-200">
+        <span class="text-base font-bold">➔</span>
+        <div>
+          <div class="text-xs font-black uppercase tracking-wider text-emerald-300">Aturan Kepatuhan</div>
+          <div class="text-[11px] text-slate-300">KYC/AML Registry, dividen, & limit transfer</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow Connector -->
+    <div class="flex justify-center text-rose-400 py-0.5">
+      <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="flex flex-col sm:flex-row items-center gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700/70 hover:border-rose-500/50 transition-all shadow-sm">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white font-black text-sm shrink-0 shadow">
+        04
+      </div>
+      <div class="flex-1 text-center sm:text-left">
+        <div class="font-extrabold text-slate-100 text-sm sm:text-base">Minting Token Sekuritas Digital</div>
+        <div class="text-xs text-slate-400 mt-0.5">Penerbitan token standar kepatuhan ERC-3643 / ERC-1400 / Avalanche Subnet</div>
+      </div>
+      <span class="text-[11px] font-semibold bg-slate-900/90 text-rose-400 px-3 py-1 rounded-lg border border-slate-700 shrink-0">
+        On-Chain Token
+      </span>
+    </div>
+
+    <!-- Arrow Connector -->
+    <div class="flex justify-center text-rose-400 py-0.5">
+      <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="flex flex-col sm:flex-row items-center gap-4 bg-gradient-to-r from-rose-900/40 via-slate-800 to-amber-900/40 p-4 rounded-2xl border border-rose-500/40 shadow-lg">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white font-black text-sm shrink-0 shadow">
+        05
+      </div>
+      <div class="flex-1 text-center sm:text-left">
+        <div class="font-extrabold text-white text-sm sm:text-base">Distribusi & Likuiditas Bursa Teregulasi</div>
+        <div class="text-xs text-slate-300 mt-0.5">Perdagangan sekunder 24/7 di bursa digital berlisensi & Automated Liquidity Pools</div>
+      </div>
+      <span class="text-[11px] font-bold bg-emerald-500 text-slate-950 px-3 py-1 rounded-lg shrink-0 shadow">
+        Global Market
+      </span>
+    </div>
+  </div>
+</div>
 
 ### Tahapan Kunci dalam Proses Tokenisasi:
 
@@ -64,69 +169,103 @@ Mengubah aset fisik dunia nyata menjadi token blockchain memerlukan pipeline ter
 
 ---
 
-## 3. Contoh Implementasi Smart Contract Standar Kepatuhan RWA
+## 3. Anatomi Kepatuhan Digital: Bagaimana Protokol Pintar Bekerja di Balik Layar
 
-Berbeda dari token standar ERC-20 yang dapat ditransfer bebas tanpa izin, token RWA memerlukan verifikasi identitas pemegang sebelum transaksi dieksekusi:
+Berbeda dari aset kripto standar yang bebas ditransfer ke dompet anonim mana pun, instrumen **RWA Tokenization** dilengkapi dengan aturan kepatuhan (*embedded compliance*) yang terprogram secara ketat. Hal ini memastikan aset hanya dapat dimiliki dan diperdagangkan oleh pihak yang terverifikasi secara hukum.
 
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+<div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
+  <!-- Card 1 -->
+  <div class="bg-slate-50 dark:bg-slate-800/80 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between mb-3">
+        <span class="w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold text-sm">
+          ✓
+        </span>
+        <span class="text-[10px] uppercase font-extrabold tracking-wider bg-rose-50 dark:bg-rose-900/40 text-rose-600 dark:text-rose-300 px-2.5 py-1 rounded-full border border-rose-200 dark:border-rose-800">
+          KYC & AML
+        </span>
+      </div>
+      <h4 class="font-extrabold text-slate-900 dark:text-white text-base mb-1.5">
+        Registry Identitas On-Chain
+      </h4>
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+        Setiap transaksi jual-beli secara otomatis memeriksa status verifikasi identitas pengirim dan penerima. Transaksi dibatalkan secara otomatis jika salah satu pihak belum terakreditasi.
+      </p>
+    </div>
+    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-[11px] font-semibold text-rose-600 dark:text-rose-400">
+      Mencegah pencucian uang & kepemilikan ilegal
+    </div>
+  </div>
 
-interface IIdentityRegistry {
-    function isVerified(address userAddress) external view returns (bool);
-}
+  <!-- Card 2 -->
+  <div class="bg-slate-50 dark:bg-slate-800/80 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between mb-3">
+        <span class="w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">
+          ⚡
+        </span>
+        <span class="text-[10px] uppercase font-extrabold tracking-wider bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-300 px-2.5 py-1 rounded-full border border-amber-200 dark:border-amber-800">
+          Otomatisasi
+        </span>
+      </div>
+      <h4 class="font-extrabold text-slate-900 dark:text-white text-base mb-1.5">
+        Distribusi Dividen & Imbal Hasil
+      </h4>
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+        Hasil sewa properti atau kupon bunga obligasi disalurkan secara prorata langsung ke saldo dompet digital pemilik token sesuai porsi kepemilikannya tanpa potongan birokrasi manual.
+      </p>
+    </div>
+    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-[11px] font-semibold text-amber-600 dark:text-amber-400">
+      Efisiensi pembagian dividen hingga 100% instan
+    </div>
+  </div>
 
-/**
- * @title RWASecurityToken
- * @dev Contoh sederhana kontrak RWA dengan pengecekan kepatuhan identitas on-chain.
- */
-contract RWASecurityToken {
-    string public name;
-    string public symbol;
-    uint8 public decimals = 18;
-    uint256 public totalSupply;
-    
-    address public owner;
-    IIdentityRegistry public identityRegistry;
-    
-    mapping(address => uint256) private _balances;
-    mapping(address => mapping(address => uint256)) private _allowances;
+  <!-- Card 3 -->
+  <div class="bg-slate-50 dark:bg-slate-800/80 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between mb-3">
+        <span class="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">
+          ⚖
+        </span>
+        <span class="text-[10px] uppercase font-extrabold tracking-wider bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-300 px-2.5 py-1 rounded-full border border-indigo-200 dark:border-indigo-800">
+          Jurisdiction
+        </span>
+      </div>
+      <h4 class="font-extrabold text-slate-900 dark:text-white text-base mb-1.5">
+        Restriksi Wilayah & Batas Investor
+      </h4>
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+        Menerapkan batasan perundang-undangan sekuritas antarnegara, seperti batas maksimal jumlah pemegang saham (*shareholder cap*) dan masa penguncian modal (*lock-up period*).
+      </p>
+    </div>
+    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-[11px] font-semibold text-indigo-600 dark:text-indigo-400">
+      Kepatuhan regulasi sekuritas global (SEC, OJK, dsb.)
+    </div>
+  </div>
 
-    event Transfer(address indexed from, address indexed to, uint256 value);
-    event IdentityRegistryUpdated(address indexed newRegistry);
-
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Hanya pemilik kontrak yang diizinkan");
-        _;
-    }
-
-    constructor(
-        string memory _name, 
-        string memory _symbol, 
-        address _registry
-    ) {
-        name = _name;
-        symbol = _symbol;
-        owner = msg.sender;
-        identityRegistry = IIdentityRegistry(_registry);
-    }
-
-    function balanceOf(address account) public view returns (uint256) {
-        return _balances[account];
-    }
-
-    function transfer(address to, uint256 amount) public returns (bool) {
-        require(identityRegistry.isVerified(msg.sender), "Pengirim belum lolos verifikasi KYC/AML");
-        require(identityRegistry.isVerified(to), "Penerima belum lolos verifikasi KYC/AML");
-        require(_balances[msg.sender] >= amount, "Saldo token tidak mencukupi");
-
-        _balances[msg.sender] -= amount;
-        _balances[to] += amount;
-        emit Transfer(msg.sender, to, amount);
-        return true;
-    }
-}
-```
+  <!-- Card 4 -->
+  <div class="bg-slate-50 dark:bg-slate-800/80 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between mb-3">
+        <span class="w-8 h-8 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
+          🛡
+        </span>
+        <span class="text-[10px] uppercase font-extrabold tracking-wider bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-300 px-2.5 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
+          Proteksi Legal
+        </span>
+      </div>
+      <h4 class="font-extrabold text-slate-900 dark:text-white text-base mb-1.5">
+        Pemulihan Aset & Perlindungan Hukum
+      </h4>
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+        Jika investor kehilangan akses kunci privat atau terjadi putusan pengadilan yang sah, entitas pengelola berhak membekukan dan mencetak ulang (*force recovery*) token ke alamat baru yang sah.
+      </p>
+    </div>
+    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+      Jaminan kepemilikan tetap terlindungi hukum perdata
+    </div>
+  </div>
+</div>
 
 ---
 
