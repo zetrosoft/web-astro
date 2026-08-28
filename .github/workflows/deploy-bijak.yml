@@ -45,6 +45,8 @@ jobs:
           source: "packages/bijak/dist/*"
           target: "/root/web/bijak-techno-html"
           strip_components: 3
+          timeout: 120s
+          command_timeout: 30m
 
       - name: Send Telegram Notification
         if: always()
