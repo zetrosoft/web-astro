@@ -35,157 +35,160 @@ Token digital ini berfungsi sebagai klaim kepemilikan yang sah, tahan manipulasi
 
 Mengubah aset fisik dunia nyata menjadi token blockchain memerlukan pipeline terstruktur yang menggabungkan kepatuhan hukum (*legal compliance*), audit fisik, dan arsitektur *smart contract* yang teruji.
 
-<div class="my-10 p-[1px] rounded-3xl bg-gradient-to-br from-rose-500/40 via-purple-500/30 to-amber-500/40 shadow-2xl not-prose">
-  <div class="bg-slate-950/95 backdrop-blur-xl p-6 sm:p-10 rounded-[23px] text-white overflow-hidden relative">
-    
-    
-    <div class="absolute -top-24 -right-24 w-72 h-72 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none"></div>
-
-    
-    <div class="text-center max-w-xl mx-auto mb-10 relative">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest bg-gradient-to-r from-rose-500/20 to-amber-500/20 text-rose-300 border border-rose-500/30 shadow-inner">
-        <span class="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
-        Arsitektur Tokenisasi RWA
-      </div>
-      <h3 class="text-2xl sm:text-3xl font-black mt-3 text-white tracking-tight leading-tight">
-        Siklus Transformasi Aset Fisik ke Blockchain
-      </h3>
-      <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
-        Pemetaan komprehensif antara audit legal fisik di dunia nyata (*off-chain*) dengan protokol kontrak pintar terdesentralisasi (*on-chain*).
-      </p>
-    </div>
-
-    
-    <div class="relative mb-6">
-      <div class="flex items-center gap-3 mb-3">
-        <span class="text-[11px] font-black uppercase tracking-wider text-amber-400 bg-amber-950/60 px-3 py-1 rounded-md border border-amber-800/60">
-          Tahap 1: Off-Chain Layer (Fisik & Hukum)
-        </span>
-        <div class="flex-1 h-[1px] bg-gradient-to-r from-amber-500/30 to-transparent"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        
-        <div class="p-5 rounded-2xl bg-slate-900/90 border border-amber-500/30 hover:border-amber-500/60 transition-all shadow-lg group">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-black text-base shrink-0 group-hover:scale-105 transition-transform shadow-inner">
-              01
-            </div>
-            <div>
-              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-950/80 px-2 py-0.5 rounded">
-                Underlying Assets
-              </span>
-              <h4 class="font-extrabold text-white text-base mt-1.5 mb-1">
-                Aset Fisik & Finansial Riil
-              </h4>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Aset dasar bernilai tinggi: properti komersial, surat utang negara (SBN), ekuitas swasta, emas, atau faktur piutang dagang.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        
-        <div class="p-5 rounded-2xl bg-slate-900/90 border border-rose-500/30 hover:border-rose-500/60 transition-all shadow-lg group">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 font-black text-base shrink-0 group-hover:scale-105 transition-transform shadow-inner">
-              02
-            </div>
-            <div>
-              <span class="text-[10px] font-bold uppercase tracking-wider text-rose-400 bg-rose-950/80 px-2 py-0.5 rounded">
-                Audit & Legalitas
-              </span>
-              <h4 class="font-extrabold text-white text-base mt-1.5 mb-1">
-                Appraisal & Pembentukan SPV
-              </h4>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Penilaian harga pasar oleh auditor independen dan pendirian badan hukum khusus (*Special Purpose Vehicle*) untuk mengisolasi kepemilikan aset.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-    <div class="my-6 py-3 px-5 rounded-xl bg-gradient-to-r from-indigo-950/80 via-purple-950/80 to-slate-900 border border-indigo-500/40 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-      <div class="flex items-center gap-2.5 text-xs font-extrabold text-indigo-300">
-        <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-pulse"></span>
-        Jembatan Sinkronisasi: Oracle Network (Chainlink) & Proof of Reserve (PoR)
-      </div>
-      <span class="text-[11px] font-semibold text-slate-400 bg-slate-950 px-3 py-1 rounded-lg border border-indigo-900">
-        Validasi Data Fisik ke Blockchain ➔
-      </span>
-    </div>
-
-    
-    <div class="relative">
-      <div class="flex items-center gap-3 mb-3">
-        <span class="text-[11px] font-black uppercase tracking-wider text-indigo-400 bg-indigo-950/60 px-3 py-1 rounded-md border border-indigo-800/60">
-          Tahap 2: On-Chain Layer (Blockchain & Sekuritas)
-        </span>
-        <div class="flex-1 h-[1px] bg-gradient-to-r from-indigo-500/30 to-transparent"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        
-        <div class="p-5 rounded-2xl bg-slate-900/90 border border-indigo-500/30 hover:border-indigo-500/60 transition-all shadow-lg flex flex-col justify-between group">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-black text-sm mb-3 group-hover:scale-105 transition-transform">
-              03
-            </div>
-            <h4 class="font-extrabold text-white text-sm mb-1.5">
-              Smart Contract Architecture
-            </h4>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Program kepatuhan digital (*ERC-3643 / ERC-1400*) dengan aturan KYC/AML bawaan dan pembagian hasil otomatis.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-semibold text-indigo-400">
-            Protokol Otomatisasi
-          </div>
-        </div>
-
-        
-        <div class="p-5 rounded-2xl bg-slate-900/90 border border-rose-500/30 hover:border-rose-500/60 transition-all shadow-lg flex flex-col justify-between group">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 font-black text-sm mb-3 group-hover:scale-105 transition-transform">
-              04
-            </div>
-            <h4 class="font-extrabold text-white text-sm mb-1.5">
-              Minting Token Sekuritas
-            </h4>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Penerbitan token digital fraksional yang merepresentasikan porsi hak milik sah investor atas aset dasar.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-semibold text-rose-400">
-            Fraksionalisasi Terverifikasi
-          </div>
-        </div>
-
-        
-        <div class="p-5 rounded-2xl bg-gradient-to-br from-emerald-950/60 via-slate-900 to-slate-900 border border-emerald-500/40 hover:border-emerald-500/70 transition-all shadow-lg flex flex-col justify-between group">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-sm mb-3 group-hover:scale-105 transition-transform">
-              05
-            </div>
-            <h4 class="font-extrabold text-white text-sm mb-1.5">
-              Pasar Sekunder 24/7
-            </h4>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Perdagangan likuid di bursa digital teregulasi dengan penyelesaian transaksi (*settlement*) instan tanpa perantara.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-semibold text-emerald-400">
-            Likuiditas Global
-          </div>
-        </div>
-      </div>
-    </div>
-
+<div class="my-10 p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border-2 border-slate-200/90 dark:border-slate-800 shadow-lg not-prose">
+  
+  
+  <div class="text-center max-w-xl mx-auto mb-8">
+    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest bg-rose-100 text-rose-700 dark:bg-rose-950/70 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
+      <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+      Arsitektur Tokenisasi RWA
+    </span>
+    <h3 class="text-2xl sm:text-3xl font-black mt-3 text-slate-900 dark:text-white tracking-tight leading-tight">
+      Siklus Transformasi Aset Fisik ke Blockchain
+    </h3>
+    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+      Pemetaan terstruktur antara audit legal fisik di dunia nyata (<em>off-chain</em>) dengan protokol kontrak pintar terdesentralisasi (<em>on-chain</em>).
+    </p>
   </div>
+
+  
+  <div class="mb-6">
+    <div class="flex items-center gap-3 mb-3">
+      <span class="text-xs font-extrabold uppercase tracking-wider text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/80 px-3 py-1 rounded-lg border border-amber-200 dark:border-amber-800">
+        Tahap 1: Off-Chain Layer (Fisik & Hukum)
+      </span>
+      <div class="flex-1 h-[2px] bg-gradient-to-r from-amber-300 dark:from-amber-700 to-transparent"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border-2 border-amber-200/80 dark:border-amber-900/50 shadow-sm hover:shadow-md transition-all">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white font-black text-lg flex items-center justify-center shrink-0 shadow-md">
+            01
+          </div>
+          <div>
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800">
+              Underlying Assets
+            </span>
+            <h4 class="font-extrabold text-slate-900 dark:text-white text-base mt-1.5 mb-1">
+              Aset Fisik & Finansial Riil
+            </h4>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Aset bernilai tinggi: properti komersial, surat utang negara (SBN), ekuitas swasta, komoditas emas, atau faktur piutang dagang.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border-2 border-rose-200/80 dark:border-rose-900/50 shadow-sm hover:shadow-md transition-all">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-rose-500 text-white font-black text-lg flex items-center justify-center shrink-0 shadow-md">
+            02
+          </div>
+          <div>
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950 px-2 py-0.5 rounded border border-rose-200 dark:border-rose-800">
+              Audit & Legalitas
+            </span>
+            <h4 class="font-extrabold text-slate-900 dark:text-white text-base mt-1.5 mb-1">
+              Appraisal & Pembentukan SPV
+            </h4>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Penilaian harga pasar oleh auditor independen dan pendirian badan hukum khusus (<em>Special Purpose Vehicle</em>) untuk isolasi aset.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="my-6 p-4 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 border-2 border-indigo-200 dark:border-indigo-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left shadow-sm">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shrink-0">
+        ⚡
+      </div>
+      <div>
+        <div class="text-xs font-black uppercase tracking-wider text-indigo-900 dark:text-indigo-200">
+          Jembatan Sinkronisasi: Oracle Network & Proof of Reserve (PoR)
+        </div>
+        <div class="text-xs text-indigo-700 dark:text-indigo-300 mt-0.5">
+          Memastikan valuasi aset fisik dunia nyata terverifikasi secara akurat sebelum masuk ke blockchain.
+        </div>
+      </div>
+    </div>
+    <span class="text-xs font-extrabold text-indigo-700 dark:text-indigo-300 bg-white dark:bg-slate-900 px-3 py-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800 shrink-0">
+      Validasi Otomatis ➔
+    </span>
+  </div>
+
+  
+  <div>
+    <div class="flex items-center gap-3 mb-3">
+      <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-800 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-950/80 px-3 py-1 rounded-lg border border-indigo-200 dark:border-indigo-800">
+        Tahap 2: On-Chain Layer (Blockchain & Sekuritas)
+      </span>
+      <div class="flex-1 h-[2px] bg-gradient-to-r from-indigo-300 dark:from-indigo-700 to-transparent"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border-2 border-indigo-200/80 dark:border-indigo-900/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-black text-sm flex items-center justify-center mb-3 shadow">
+            03
+          </div>
+          <h4 class="font-extrabold text-slate-900 dark:text-white text-sm mb-1.5">
+            Smart Contract Engine
+          </h4>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Program kepatuhan digital (<em>ERC-3643 / ERC-1400</em>) dengan aturan KYC/AML bawaan dan pembagian hasil dividen otomatis.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-indigo-600 dark:text-indigo-400">
+          Protokol Otomatisasi
+        </div>
+      </div>
+
+      
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border-2 border-rose-200/80 dark:border-rose-900/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-rose-600 text-white font-black text-sm flex items-center justify-center mb-3 shadow">
+            04
+          </div>
+          <h4 class="font-extrabold text-slate-900 dark:text-white text-sm mb-1.5">
+            Minting Token Sekuritas
+          </h4>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Penerbitan token digital fraksional yang merepresentasikan porsi hak milik sah investor atas aset dasar.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-rose-600 dark:text-rose-400">
+          Fraksionalisasi Hak Milik
+        </div>
+      </div>
+
+      
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border-2 border-emerald-200/80 dark:border-emerald-900/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white font-black text-sm flex items-center justify-center mb-3 shadow">
+            05
+          </div>
+          <h4 class="font-extrabold text-slate-900 dark:text-white text-sm mb-1.5">
+            Pasar Sekunder 24/7
+          </h4>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Perdagangan likuid di bursa digital teregulasi dengan penyelesaian transaksi (<em>settlement</em>) instan tanpa perantara.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+          Likuiditas Global
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 ### Tahapan Kunci dalam Proses Tokenisasi:
@@ -207,93 +210,93 @@ Berbeda dari aset kripto standar yang bebas ditransfer ke dompet anonim mana pun
 
 <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-5 not-prose">
   
-  <div class="p-6 rounded-3xl bg-slate-900/60 dark:bg-slate-900/90 border border-rose-500/30 hover:border-rose-500/70 transition-all shadow-xl backdrop-blur-md flex flex-col justify-between group">
+  <div class="p-6 rounded-3xl bg-white dark:bg-slate-800/90 border-2 border-rose-200/80 dark:border-rose-900/50 shadow-md flex flex-col justify-between">
     <div>
       <div class="flex items-center justify-between mb-4">
-        <div class="w-10 h-10 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-500 dark:text-rose-400 flex items-center justify-center font-black text-lg group-hover:scale-105 transition-transform">
+        <div class="w-10 h-10 rounded-2xl bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800 flex items-center justify-center font-black text-lg">
           ✓
         </div>
-        <span class="text-[11px] uppercase font-black tracking-widest bg-rose-950/80 text-rose-300 px-3 py-1 rounded-full border border-rose-800">
+        <span class="text-[11px] uppercase font-black tracking-widest bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 px-3 py-1 rounded-full border border-rose-200 dark:border-rose-800">
           KYC & AML
         </span>
       </div>
-      <h4 class="font-black text-white text-lg mb-2 group-hover:text-rose-300 transition-colors">
+      <h4 class="font-black text-slate-900 dark:text-white text-lg mb-2">
         Registry Identitas On-Chain
       </h4>
-      <p class="text-xs text-slate-300 leading-relaxed">
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
         Setiap transaksi secara otomatis memvalidasi identitas pengirim dan penerima di tingkat kontrak pintar. Transaksi ditolak seketika bila salah satu pihak belum terakreditasi resmi.
       </p>
     </div>
-    <div class="mt-5 pt-3 border-t border-slate-800 text-xs font-bold text-rose-400 flex items-center gap-1.5">
+    <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
       <span>🛡</span> Mencegah pencucian uang & kepemilikan ilegal
     </div>
   </div>
 
   
-  <div class="p-6 rounded-3xl bg-slate-900/60 dark:bg-slate-900/90 border border-amber-500/30 hover:border-amber-500/70 transition-all shadow-xl backdrop-blur-md flex flex-col justify-between group">
+  <div class="p-6 rounded-3xl bg-white dark:bg-slate-800/90 border-2 border-amber-200/80 dark:border-amber-900/50 shadow-md flex flex-col justify-between">
     <div>
       <div class="flex items-center justify-between mb-4">
-        <div class="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-500 dark:text-amber-400 flex items-center justify-center font-black text-lg group-hover:scale-105 transition-transform">
+        <div class="w-10 h-10 rounded-2xl bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800 flex items-center justify-center font-black text-lg">
           ⚡
         </div>
-        <span class="text-[11px] uppercase font-black tracking-widest bg-amber-950/80 text-amber-300 px-3 py-1 rounded-full border border-amber-800">
+        <span class="text-[11px] uppercase font-black tracking-widest bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full border border-amber-200 dark:border-amber-800">
           Otomatisasi
         </span>
       </div>
-      <h4 class="font-black text-white text-lg mb-2 group-hover:text-amber-300 transition-colors">
+      <h4 class="font-black text-slate-900 dark:text-white text-lg mb-2">
         Distribusi Dividen & Imbal Hasil
       </h4>
-      <p class="text-xs text-slate-300 leading-relaxed">
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
         Hasil sewa properti atau kupon bunga obligasi disalurkan secara prorata langsung ke saldo dompet digital pemilik token secara instan tanpa potongan birokrasi manual.
       </p>
     </div>
-    <div class="mt-5 pt-3 border-t border-slate-800 text-xs font-bold text-amber-400 flex items-center gap-1.5">
+    <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
       <span>💰</span> Efisiensi pembagian dividen 100% instan
     </div>
   </div>
 
   
-  <div class="p-6 rounded-3xl bg-slate-900/60 dark:bg-slate-900/90 border border-indigo-500/30 hover:border-indigo-500/70 transition-all shadow-xl backdrop-blur-md flex flex-col justify-between group">
+  <div class="p-6 rounded-3xl bg-white dark:bg-slate-800/90 border-2 border-indigo-200/80 dark:border-indigo-900/50 shadow-md flex flex-col justify-between">
     <div>
       <div class="flex items-center justify-between mb-4">
-        <div class="w-10 h-10 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-500 dark:text-indigo-400 flex items-center justify-center font-black text-lg group-hover:scale-105 transition-transform">
+        <div class="w-10 h-10 rounded-2xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 flex items-center justify-center font-black text-lg">
           ⚖
         </div>
-        <span class="text-[11px] uppercase font-black tracking-widest bg-indigo-950/80 text-indigo-300 px-3 py-1 rounded-full border border-indigo-800">
+        <span class="text-[11px] uppercase font-black tracking-widest bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 px-3 py-1 rounded-full border border-indigo-200 dark:border-indigo-800">
           Jurisdiction
         </span>
       </div>
-      <h4 class="font-black text-white text-lg mb-2 group-hover:text-indigo-300 transition-colors">
+      <h4 class="font-black text-slate-900 dark:text-white text-lg mb-2">
         Restriksi Wilayah & Batas Investor
       </h4>
-      <p class="text-xs text-slate-300 leading-relaxed">
-        Menerapkan batasan perundang-undangan sekuritas antarnegara, seperti batas maksimal jumlah pemegang saham (*shareholder cap*) dan masa penguncian modal (*lock-up period*).
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+        Menerapkan batasan perundang-undangan sekuritas antarnegara, seperti batas maksimal jumlah pemegang saham (<em>shareholder cap</em>) dan masa penguncian modal (<em>lock-up period</em>).
       </p>
     </div>
-    <div class="mt-5 pt-3 border-t border-slate-800 text-xs font-bold text-indigo-400 flex items-center gap-1.5">
+    <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
       <span>🌐</span> Kepatuhan regulasi sekuritas global (SEC, OJK, dsb.)
     </div>
   </div>
 
   
-  <div class="p-6 rounded-3xl bg-slate-900/60 dark:bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-500/70 transition-all shadow-xl backdrop-blur-md flex flex-col justify-between group">
+  <div class="p-6 rounded-3xl bg-white dark:bg-slate-800/90 border-2 border-emerald-200/80 dark:border-emerald-900/50 shadow-md flex flex-col justify-between">
     <div>
       <div class="flex items-center justify-between mb-4">
-        <div class="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 dark:text-emerald-400 flex items-center justify-center font-black text-lg group-hover:scale-105 transition-transform">
+        <div class="w-10 h-10 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center font-black text-lg">
           🛡
         </div>
-        <span class="text-[11px] uppercase font-black tracking-widest bg-emerald-950/80 text-emerald-300 px-3 py-1 rounded-full border border-emerald-800">
+        <span class="text-[11px] uppercase font-black tracking-widest bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
           Proteksi Legal
         </span>
       </div>
-      <h4 class="font-black text-white text-lg mb-2 group-hover:text-emerald-300 transition-colors">
+      <h4 class="font-black text-slate-900 dark:text-white text-lg mb-2">
         Pemulihan Aset & Perlindungan Hukum
       </h4>
-      <p class="text-xs text-slate-300 leading-relaxed">
-        Jika investor kehilangan akses kunci privat atau terjadi putusan pengadilan yang sah, entitas pengelola berhak membekukan dan mencetak ulang (*force recovery*) token ke alamat baru yang sah.
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+        Jika investor kehilangan akses kunci privat atau terjadi putusan pengadilan yang sah, entitas pengelola berhak membekukan dan mencetak ulang (<em>force recovery</em>) token ke alamat baru yang sah.
       </p>
     </div>
-    <div class="mt-5 pt-3 border-t border-slate-800 text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+    <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
       <span>⚖️</span> Jaminan kepemilikan tetap terlindungi hukum perdata
     </div>
   </div>
