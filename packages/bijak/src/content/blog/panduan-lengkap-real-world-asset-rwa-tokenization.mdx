@@ -112,99 +112,29 @@ Ekosistem blockchain modern kini bahkan memungkinkan penerbitan aset institusion
 
 ## 4. Anatomi Kepatuhan Terprogram (*Embedded Compliance*)
 
-Perbedaan paling mendasar antara token RWA dengan token kripto standar terletak pada logika kepatuhan yang disematkan langsung di dalam *smart contract* (menggunakan standar seperti **ERC-3643** atau **ERC-1400**).
+Perbedaan paling mendasar antara token RWA dengan aset kripto biasa terletak pada proteksi hukum terprogram yang disematkan langsung di dalam *smart contract* (melalui standar seperti **ERC-3643** atau **ERC-1400**).
 
-Setiap kali transaksi transfer atau jual-beli dipicu, *smart contract* akan mengeksekusi pemeriksaan otomatis berikut:
+Berikut adalah model arsitektur 4 pilar kepatuhan terprogram pada kontrak pintar RWA:
 
-<div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-5 not-prose">
-  <div class="p-6 rounded-3xl bg-white dark:bg-slate-800/90 border-2 border-rose-200/80 dark:border-rose-900/50 shadow-md flex flex-col justify-between">
-    <div>
-      <div class="flex items-center justify-between mb-4">
-        <div class="w-10 h-10 rounded-2xl bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800 flex items-center justify-center font-black text-lg">
-          ✓
-        </div>
-        <span class="text-[11px] uppercase font-black tracking-widest bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 px-3 py-1 rounded-full border border-rose-200 dark:border-rose-800">
-          KYC & AML
-        </span>
-      </div>
-      <h4 class="font-black text-slate-900 dark:text-white text-lg mb-2">
-        Registry Identitas On-Chain
-      </h4>
-      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-        Setiap transaksi secara otomatis memvalidasi identitas pengirim dan penerima di tingkat kontrak pintar. Transaksi ditolak seketika bila salah satu pihak belum terakreditasi resmi.
-      </p>
-    </div>
-    <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
-      <span>🛡</span> Mencegah pencucian uang & kepemilikan ilegal
-    </div>
-  </div>
-
-  <div class="p-6 rounded-3xl bg-white dark:bg-slate-800/90 border-2 border-amber-200/80 dark:border-amber-900/50 shadow-md flex flex-col justify-between">
-    <div>
-      <div class="flex items-center justify-between mb-4">
-        <div class="w-10 h-10 rounded-2xl bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800 flex items-center justify-center font-black text-lg">
-          ⚡
-        </div>
-        <span class="text-[11px] uppercase font-black tracking-widest bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full border border-amber-200 dark:border-amber-800">
-          Otomatisasi
-        </span>
-      </div>
-      <h4 class="font-black text-slate-900 dark:text-white text-lg mb-2">
-        Distribusi Dividen & Imbal Hasil
-      </h4>
-      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-        Hasil sewa properti atau kupon bunga obligasi disalurkan secara prorata langsung ke saldo dompet digital pemilik token secara instan tanpa potongan birokrasi manual.
-      </p>
-    </div>
-    <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
-      <span>💰</span> Efisiensi pembagian dividen 100% instan
-    </div>
-  </div>
-
-  <div class="p-6 rounded-3xl bg-white dark:bg-slate-800/90 border-2 border-indigo-200/80 dark:border-indigo-900/50 shadow-md flex flex-col justify-between">
-    <div>
-      <div class="flex items-center justify-between mb-4">
-        <div class="w-10 h-10 rounded-2xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 flex items-center justify-center font-black text-lg">
-          ⚖
-        </div>
-        <span class="text-[11px] uppercase font-black tracking-widest bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 px-3 py-1 rounded-full border border-indigo-200 dark:border-indigo-800">
-          Jurisdiction
-        </span>
-      </div>
-      <h4 class="font-black text-slate-900 dark:text-white text-lg mb-2">
-        Restriksi Wilayah & Batas Investor
-      </h4>
-      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-        Menerapkan batasan perundang-undangan sekuritas antarnegara, seperti batas maksimal jumlah pemegang saham (<em>shareholder cap</em>) dan masa penguncian modal (<em>lock-up period</em>).
-      </p>
-    </div>
-    <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
-      <span>🌐</span> Kepatuhan regulasi sekuritas global (SEC, OJK, dsb.)
-    </div>
-  </div>
-
-  <div class="p-6 rounded-3xl bg-white dark:bg-slate-800/90 border-2 border-emerald-200/80 dark:border-emerald-900/50 shadow-md flex flex-col justify-between">
-    <div>
-      <div class="flex items-center justify-between mb-4">
-        <div class="w-10 h-10 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center font-black text-lg">
-          🛡
-        </div>
-        <span class="text-[11px] uppercase font-black tracking-widest bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
-          Proteksi Legal
-        </span>
-      </div>
-      <h4 class="font-black text-slate-900 dark:text-white text-lg mb-2">
-        Pemulihan Aset & Perlindungan Hukum
-      </h4>
-      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-        Jika investor kehilangan akses kunci privat atau terjadi putusan pengadilan yang sah, entitas pengelola berhak membekukan dan mencetak ulang (<em>force recovery</em>) token ke alamat baru yang sah.
-      </p>
-    </div>
-    <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-      <span>⚖️</span> Jaminan kepemilikan tetap terlindungi hukum perdata
-    </div>
+<div class="my-8 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-lg not-prose bg-slate-50 dark:bg-slate-900">
+  <img 
+    src="/images/rwa-embedded-compliance-infographic.jpg" 
+    alt="Infografis 4 Pilar Kepatuhan Terprogram Smart Contract RWA Tokenization" 
+    class="w-full h-auto object-contain"
+    loading="lazy"
+  />
+  <div class="px-5 py-3 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+    <span>Arsitektur Kepatuhan: 4 Pilar Pengamanan Smart Contract & Perlindungan Hukum Investor.</span>
+    <span class="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400">Security Architecture Matrix</span>
   </div>
 </div>
+
+### 4 Pilar Perlindungan Smart Contract RWA:
+
+* **1. Registry Identitas On-Chain (KYC/AML)**: Setiap transfer token secara otomatis memeriksa status akreditasi dompet pengirim dan penerima. Transaksi akan langsung dibatalkan bila salah satu pihak belum lolos verifikasi kepatuhan resmi.
+* **2. Distribusi Imbal Hasil Otomatis (*Instant Yield*)**: Pembagian dividen sewa atau kupon obligasi dikirimkan langsung ke saldo dompet investor secara prorata dan instan tanpa potongan birokrasi perantara.
+* **3. Pembatasan Yurisdiksi (*Jurisdictional Guardrails*)**: Kontrak pintar secara otomatis menegakkan batas maksimal investor per negara (*shareholder cap*) dan aturan masa penguncian modal (*lock-up period*) sesuai regulasi sekuritas global.
+* **4. Pemulihan Aset & Perlindungan Pengadilan (*Asset Recovery*)**: Apabila investor kehilangan kunci privat atau terdapat putusan pengadilan yang sah, penerbit memiliki otoritas legal untuk membekukan dan mencetak ulang token ke alamat dompet baru yang sah.
 
 Model tata kelola dan validasi kepemilikan berbasis identitas terverifikasi ini mirip dengan arsitektur sertifikasi kedaulatan data yang dipelopori di berbagai negara, seperti yang dapat Anda pelajari pada studi kasus [standar kedaulatan data akademis di Kenya](/blog/melampaui-lembar-kertas-bagaimana-kenya-dan-avalanche-membangun-standar-kedaulatan-data-akademis-dunia).
 
