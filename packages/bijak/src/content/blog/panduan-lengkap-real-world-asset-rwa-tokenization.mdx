@@ -73,154 +73,28 @@ Untuk memahami posisi unik RWA dalam portofolio modern, perhatikan tabel perband
 
 Menerbitkan token yang merepresentasikan aset nyata memerlukan sinergi antara kepatuhan hukum (*legal compliance*), audit fisik independen, serta logika *smart contract* yang aman. 
 
-Berikut adalah alur lengkap siklus tokenisasi RWA dari dunia nyata ke pasar blockchain:
+Berikut adalah visualisasi infografis siklus alur tokenisasi RWA dari dunia nyata ke pasar blockchain:
 
-<div class="my-10 p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border-2 border-slate-200/90 dark:border-slate-800 shadow-lg not-prose">
-  
-  <div class="text-center max-w-xl mx-auto mb-8">
-    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest bg-rose-100 text-rose-700 dark:bg-rose-950/70 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
-      <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-      Arsitektur Tokenisasi RWA
-    </span>
-    <h3 class="text-2xl sm:text-3xl font-black mt-3 text-slate-900 dark:text-white tracking-tight leading-tight">
-      Siklus Transformasi Aset Fisik ke Blockchain
-    </h3>
-    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-      Pemetaan terstruktur antara audit legal fisik di dunia nyata (<em>off-chain</em>) dengan protokol kontrak pintar terdesentralisasi (<em>on-chain</em>).
-    </p>
+<div class="my-8 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-lg not-prose bg-slate-50 dark:bg-slate-900">
+  <img 
+    src="/images/rwa-tokenization-lifecycle-infographic.jpg" 
+    alt="Infografis Siklus Alur Lengkap Tokenisasi Real World Asset (RWA)" 
+    class="w-full h-auto object-contain"
+    loading="lazy"
+  />
+  <div class="px-5 py-3 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+    <span>Infografis Arsitektur: 5 Tahapan Siklus Tokenisasi RWA (Off-Chain ke On-Chain).</span>
+    <span class="text-[11px] font-semibold text-rose-600 dark:text-rose-400">Bijak Technology Infographic</span>
   </div>
-
-  <div class="mb-6">
-    <div class="flex items-center gap-3 mb-3">
-      <span class="text-xs font-extrabold uppercase tracking-wider text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/80 px-3 py-1 rounded-lg border border-amber-200 dark:border-amber-800">
-        Tahap 1: Off-Chain Layer (Fisik & Hukum)
-      </span>
-      <div class="flex-1 h-[2px] bg-gradient-to-r from-amber-300 dark:from-amber-700 to-transparent"></div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border-2 border-amber-200/80 dark:border-amber-900/50 shadow-sm hover:shadow-md transition-all">
-        <div class="flex items-start gap-4">
-          <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white font-black text-lg flex items-center justify-center shrink-0 shadow-md">
-            01
-          </div>
-          <div>
-            <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800">
-              Underlying Assets
-            </span>
-            <h4 class="font-extrabold text-slate-900 dark:text-white text-base mt-1.5 mb-1">
-              Aset Fisik & Finansial Riil
-            </h4>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Aset bernilai tinggi: properti komersial, surat utang negara (SBN), ekuitas swasta, komoditas emas, atau faktur piutang dagang.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border-2 border-rose-200/80 dark:border-rose-900/50 shadow-sm hover:shadow-md transition-all">
-        <div class="flex items-start gap-4">
-          <div class="w-12 h-12 rounded-2xl bg-rose-500 text-white font-black text-lg flex items-center justify-center shrink-0 shadow-md">
-            02
-          </div>
-          <div>
-            <span class="text-[10px] font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950 px-2 py-0.5 rounded border border-rose-200 dark:border-rose-800">
-              Audit & Legalitas
-            </span>
-            <h4 class="font-extrabold text-slate-900 dark:text-white text-base mt-1.5 mb-1">
-              Appraisal & Pembentukan SPV
-            </h4>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Penilaian harga pasar oleh auditor independen dan pendirian badan hukum khusus (<em>Special Purpose Vehicle</em>) untuk isolasi aset.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="my-6 p-4 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 border-2 border-indigo-200 dark:border-indigo-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left shadow-sm">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shrink-0">
-        ⚡
-      </div>
-      <div>
-        <div class="text-xs font-black uppercase tracking-wider text-indigo-900 dark:text-indigo-200">
-          Jembatan Sinkronisasi: Oracle Network & Proof of Reserve (PoR)
-        </div>
-        <div class="text-xs text-indigo-700 dark:text-indigo-300 mt-0.5">
-          Memastikan valuasi aset fisik dunia nyata terverifikasi secara akurat sebelum masuk ke blockchain.
-        </div>
-      </div>
-    </div>
-    <span class="text-xs font-extrabold text-indigo-700 dark:text-indigo-300 bg-white dark:bg-slate-900 px-3 py-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800 shrink-0">
-      Validasi Otomatis ➔
-    </span>
-  </div>
-
-  <div>
-    <div class="flex items-center gap-3 mb-3">
-      <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-800 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-950/80 px-3 py-1 rounded-lg border border-indigo-200 dark:border-indigo-800">
-        Tahap 2: On-Chain Layer (Blockchain & Sekuritas)
-      </span>
-      <div class="flex-1 h-[2px] bg-gradient-to-r from-indigo-300 dark:from-indigo-700 to-transparent"></div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border-2 border-indigo-200/80 dark:border-indigo-900/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-        <div>
-          <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-black text-sm flex items-center justify-center mb-3 shadow">
-            03
-          </div>
-          <h4 class="font-extrabold text-slate-900 dark:text-white text-sm mb-1.5">
-            Smart Contract Engine
-          </h4>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            Program kepatuhan digital (<em>ERC-3643 / ERC-1400</em>) dengan aturan KYC/AML bawaan dan pembagian hasil dividen otomatis.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-indigo-600 dark:text-indigo-400">
-          Protokol Otomatisasi
-        </div>
-      </div>
-
-      <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border-2 border-rose-200/80 dark:border-rose-900/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-        <div>
-          <div class="w-10 h-10 rounded-xl bg-rose-600 text-white font-black text-sm flex items-center justify-center mb-3 shadow">
-            04
-          </div>
-          <h4 class="font-extrabold text-slate-900 dark:text-white text-sm mb-1.5">
-            Minting Token Sekuritas
-          </h4>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            Penerbitan token digital fraksional yang merepresentasikan porsi hak milik sah investor atas aset dasar.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-rose-600 dark:text-rose-400">
-          Fraksionalisasi Hak Milik
-        </div>
-      </div>
-
-      <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border-2 border-emerald-200/80 dark:border-emerald-900/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-        <div>
-          <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white font-black text-sm flex items-center justify-center mb-3 shadow">
-            05
-          </div>
-          <h4 class="font-extrabold text-slate-900 dark:text-white text-sm mb-1.5">
-            Pasar Sekunder 24/7
-          </h4>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            Perdagangan likuid di bursa digital teregulasi dengan penyelesaian transaksi (<em>settlement</em>) instan tanpa perantara.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs font-bold text-emerald-600 dark:text-emerald-400">
-          Likuiditas Global
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
+
+### 5 Tahapan Utama dalam Siklus Tokenisasi:
+
+1. **Identifikasi & Valuasi Aset Fisik (*Off-Chain*)**: Menilai nilai wajar aset melalui lembaga appraisal independen dan verifikasi keabsahan dokumen kepemilikan.
+2. **Pembentukan Entitas Legal (SPV)**: Membentuk *Special Purpose Vehicle* (SPV) berbadan hukum resmi untuk memegang hak milik atas aset fisik dan mengisolasi risiko kebangkrutan.
+3. **Penyusunan Aturan Kepatuhan & Smart Contract**: Menanamkan protokol *ERC-3643 / ERC-1400* dengan validasi identitas terprogram (*KYC/AML Registry*).
+4. **Pencetakan Token Digital (*Minting*)**: Menerbitkan token fraksional yang merepresentasikan porsi kepemilikan sah investor atas entitas SPV.
+5. **Perdagangan di Pasar Sekunder 24/7**: Mendistribusikan token ke bursa sekuritas digital teregulasi dengan likuiditas global dan penyelesaian instan.
 
 Ekosistem blockchain modern kini bahkan memungkinkan penerbitan aset institusional di atas jaringan khusus yang dapat dikustomisasi secara privat. Salah satu contoh implementasi nyatanya adalah program [inisiatif tokenisasi aset Avalanche Vista](/blog/avalanche-vista-era-baru-tokenisasi-aset) yang memfasilitasi transaksi sekuritas bernilai jutaan dolar dengan kepatuhan penuh terhadap yurisdiksi keuangan global.
 
