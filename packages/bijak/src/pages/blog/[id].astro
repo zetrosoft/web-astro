@@ -154,6 +154,7 @@ const recentPosts = allPosts
 
         <script is:inline>
           (function() {
+            // Inisialisasi Copy Link
             const copyBtn = document.getElementById('copy-link-btn');
             const copyText = document.getElementById('copy-btn-text');
             if (copyBtn && copyText) {
@@ -170,6 +171,14 @@ const recentPosts = allPosts
                 } catch (e) {}
               });
             }
+
+            // Inisialisasi Google AdSense slots
+            try {
+              const adElements = document.querySelectorAll('.adsbygoogle');
+              adElements.forEach(() => {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+              });
+            } catch (e) {}
           })();
         </script>
 
