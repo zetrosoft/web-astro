@@ -112,3 +112,7 @@ async function runAgentPipeline(task: AgentTask): Promise<string> {
 ## 5. Architectural Takeaway
 
 Building enterprise-ready Agentic AI is fundamentally a software engineering challenge rather than a prompt-engineering trick. By prioritizing **system design, tiered triage, context compaction, and specialized small models**, organizations can deploy scalable, highly resilient AI agents that remain economically sustainable.
+
+---
+
+> 📖 **Original Source & Reference:** This article is adapted and elaborated from our publication on [Medium: Agentic AI Adaptation: Building Intelligent Systems that are Cheap, Lightweight, and Efficient](https://medium.com/bijak-techno/agentic-ai-adaptation-building-intelligent-systems-that-are-cheap-lightweight-and-efficient-129ba07d5c7d).

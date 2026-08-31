@@ -114,3 +114,7 @@ async function executeAgenticWorkflow(task: TaskRequest): Promise<string> {
 Membangun sistem Agentic AI yang siap produksi bukanlah tentang seberapa pintar model tunggal yang Anda sewa melalui API, melainkan tentang **seberapa cerdas arsitektur sistem yang Anda bangun** untuk membatasi, menyaring, dan mengarahkan komputasi secara presisi.
 
 Dengan mengadopsi prinsip hemat, ringan, dan terarah, bisnis dapat menikmati keunggulan otomatisasi AI tanpa terbebani tagihan infrastruktur yang tidak rasional.
+
+---
+
+> 📖 **Sumber & Publikasi Asli:** Artikel ini disadur dan dikembangkan berdasarkan publikasi resmi redaksi di [Medium: Agentic AI Adaptation: Building Intelligent Systems that are Cheap, Lightweight, and Efficient](https://medium.com/bijak-techno/agentic-ai-adaptation-building-intelligent-systems-that-are-cheap-lightweight-and-efficient-129ba07d5c7d).
