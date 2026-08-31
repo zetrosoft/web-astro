@@ -4,80 +4,182 @@ import Layout from '../../../layouts/Layout.astro';
 const posts = [
   {
     slug: 'panduan-implementasi-erpnext-ukm',
-    title: 'Complete Guide to ERPNext Implementation for Indonesian SMEs',
-    description: 'ERPNext is the best open-source ERP solution for Indonesian SMEs. This guide discusses implementation steps from start to go-live.',
-    date: '2025-03-15',
-    category: 'ERPNext',
+    title: 'Complete Guide to ERPNext Implementation for Growing Enterprises',
+    description: 'A strategic blueprint for seamless ERP adoption: business process mapping (BPM), financial data migration, local tax compliance, and go-live risk mitigation.',
+    date: '2026-08-15',
+    category: 'ERP Implementation',
     readTime: 8,
+    featured: true,
+    author: 'Samkarsa Consulting Team',
+    tags: ['ERPNext', 'Enterprise', 'Digital Transformation']
   },
   {
     slug: 'erpnext-vs-sap-vs-odoo',
-    title: 'ERPNext vs SAP vs Odoo: Which is Right for Your Business?',
-    description: 'In-depth comparison of ERPNext, SAP, and Odoo in terms of features, cost, and suitability for Indonesian companies.',
-    date: '2025-02-20',
+    title: 'ERPNext vs SAP Business One vs Odoo: Architectural Analysis & Total Cost of Ownership (TCO)',
+    description: 'An objective architectural evaluation covering customization flexibility, long-term licensing overhead, and localization capabilities for Indonesian operations.',
+    date: '2026-07-20',
     category: 'ERP Comparison',
     readTime: 6,
+    featured: false,
+    author: 'Samkarsa Consulting Team',
+    tags: ['ERP', 'SAP B1', 'Odoo', 'TCO']
   },
 ];
+
+const categories = ['All Topics', 'ERP Implementation', 'ERP Comparison', 'Accounting & Compliance', 'Automation'];
 ---
 
 <Layout
-  title="Blog — Samkarsa ERP Insights"
-  description="Articles, guides, and tips about ERPNext, digital transformation, and business management for Indonesian companies."
+  title="ERP Knowledge Hub & Technical Insights — Samkarsa"
+  description="Technical guides, system architecture reviews, and open-source ERPNext implementation strategies for modern Indonesian businesses."
   lang="en"
 >
-  <section class="pt-32 pb-20">
-    <div class="max-w-5xl mx-auto px-6">
-      <!-- Header -->
-      <div class="mb-14">
-        <span class="inline-block px-4 py-1.5 bg-brand-50 text-brand-700 text-sm font-semibold rounded-full mb-4">Blog & Insights</span>
-        <h1 class="font-heading text-4xl md:text-5xl font-bold text-brand-900 mb-4">
-          ERP Knowledge Hub
+  <section class="pt-28 md:pt-36 pb-24 min-h-screen bg-slate-50/50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <!-- Hub Header Section -->
+      <div class="max-w-3xl mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-brand-50 dark:bg-brand-950/80 border border-brand-200/60 dark:border-brand-800/60 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-wider rounded-full mb-4">
+          <span class="w-2 h-2 rounded-full bg-brand-600 dark:bg-accent-400"></span>
+          ERP Research & Insights
+        </div>
+        <h1 class="font-heading text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 leading-tight">
+          Technical Insights & Digital Transformation
         </h1>
-        <p class="text-slate-500 text-lg max-w-xl leading-relaxed">
-          Articles, guides, and tips regarding ERPNext, digital transformation, and modern business management.
+        <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+          Deep-dive guides on enterprise software architecture, ERPNext deployment, financial automation, and supply chain scalability.
         </p>
       </div>
 
-      <!-- Posts Grid -->
-      <div class="grid md:grid-cols-2 gap-8">
-        {posts.map((post) => (
-          <article class="group bg-white rounded-2xl border border-slate-100 hover:border-brand-200 shadow-sm hover:shadow-xl overflow-hidden transition-all duration-300 hover:-translate-y-1">
-            <!-- Category bar -->
-            <div class="h-1.5 bg-gradient-to-r from-brand-600 to-accent-500"></div>
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2 mb-12 pb-6 border-b border-slate-200 dark:border-slate-800">
+        {categories.map((cat, idx) => (
+          <button
+            class={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
+              idx === 0
+                ? 'bg-brand-600 text-white shadow-sm'
+                : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-brand-400 hover:text-brand-600 dark:hover:text-white'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
 
-            <div class="p-7">
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-3 py-1 bg-brand-50 text-brand-700 text-xs font-semibold rounded-full">
+      <!-- Featured Story (Hero Card) -->
+      {posts.filter(p => p.featured).map((post) => (
+        <div class="mb-14 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-8 sm:p-10 md:p-12 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-500/10 via-accent-500/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+          
+          <div class="relative z-10 max-w-3xl">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="px-3 py-1 bg-accent-500/10 dark:bg-accent-500/20 text-accent-700 dark:text-accent-300 text-xs font-bold uppercase tracking-wider rounded-full">
+                ⭐ Featured Guide
+              </span>
+              <span class="text-xs text-slate-400 dark:text-slate-500 font-medium">
+                {post.readTime} min read
+              </span>
+              <span class="text-slate-300 dark:text-slate-700">•</span>
+              <time class="text-xs text-slate-400 dark:text-slate-500">
+                {new Date(post.date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </time>
+            </div>
+
+            <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors leading-tight">
+              <a href={`/blog/${post.slug}`}>{post.title}</a>
+            </h2>
+
+            <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+              {post.description}
+            </p>
+
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-brand-600 text-white font-bold flex items-center justify-center text-sm font-heading">
+                  S
+                </div>
+                <span class="text-xs font-semibold text-slate-700 dark:text-slate-300">{post.author}</span>
+              </div>
+
+              <a
+                href={`/blog/${post.slug}`}
+                class="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm rounded-xl shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5"
+              >
+                Read Full Blueprint
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      <!-- Standard Posts Grid -->
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        {posts.map((post) => (
+          <article class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 p-7 sm:p-8 flex flex-col justify-between hover:border-brand-300 dark:hover:border-brand-700 shadow-xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-wider rounded-full">
                   {post.category}
                 </span>
-                <span class="text-xs text-slate-400">{post.readTime} min read</span>
+                <span class="text-xs text-slate-400">{post.readTime} min</span>
               </div>
 
-              <h2 class="font-heading font-bold text-xl text-brand-900 mb-3 group-hover:text-brand-700 transition-colors leading-snug">
-                <a href={`/en/blog/${post.slug}`}>{post.title}</a>
-              </h2>
+              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors leading-snug">
+                <a href={`/blog/${post.slug}`}>{post.title}</a>
+              </h3>
 
-              <p class="text-slate-500 text-sm leading-relaxed mb-5 line-clamp-3">
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
                 {post.description}
               </p>
+            </div>
 
-              <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-                <time class="text-xs text-slate-400">
-                  {new Date(post.date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
-                </time>
-                <a
-                  href={`/en/blog/${post.slug}`}
-                  class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors"
-                >
-                  Read More
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
+            <div class="pt-5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+              <time datetime={post.date}>
+                {new Date(post.date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </time>
+
+              <a
+                href={`/blog/${post.slug}`}
+                class="inline-flex items-center gap-1.5 font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors"
+              >
+                Read Article
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </div>
           </article>
         ))}
       </div>
+
+      <!-- Hub Conversion Banner -->
+      <div class="rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-brand-900 via-brand-800 to-slate-900 text-white relative overflow-hidden shadow-xl">
+        <div class="relative z-10 max-w-2xl">
+          <span class="px-3.5 py-1 bg-white/10 text-accent-300 text-xs font-bold uppercase tracking-widest rounded-full">
+            Engineering Partnership
+          </span>
+          <h2 class="font-heading text-2xl sm:text-3xl font-extrabold mt-4 mb-3 text-white">
+            Need Expert Architecture Guidance for Your ERP System?
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+            Our senior architects help you audit process bottlenecks, prepare clean data pipelines, and deploy ERPNext without unpredictable proprietary lock-in.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="/en/#kontak"
+              class="px-6 py-3.5 bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm rounded-xl shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5"
+            >
+              Schedule an Architecture Audit
+            </a>
+            <a
+              href="/en/about"
+              class="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-semibold text-sm rounded-xl transition-colors"
+            >
+              About Samkarsa
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </Layout>
