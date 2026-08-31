@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import LanguageSwitcher from '../components/LanguageSwitcher.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import { useTranslations } from '../i18n/ui';
 
 interface Props {
   title?: string;
@@ -17,7 +18,17 @@ const {
   lang = 'id',
 } = Astro.props;
 
+const t = useTranslations(lang);
 const canonical = Astro.url.href;
+
+// Language-aware routes
+const homeUrl = lang === 'en' ? '/en/' : '/';
+const servicesUrl = lang === 'en' ? '/en/#layanan' : '/#layanan';
+const whyUrl = lang === 'en' ? '/en/#kenapa' : '/#kenapa';
+const blogUrl = lang === 'en' ? '/en/blog' : '/blog';
+const aboutUrl = lang === 'en' ? '/en/about' : '/about';
+const contactUrl = lang === 'en' ? '/en/#kontak' : '/#kontak';
+const privacyUrl = lang === 'en' ? '/en/privacy-policy' : '/privacy-policy';
 ---
 
 <!DOCTYPE html>
@@ -89,7 +100,7 @@ const canonical = Astro.url.href;
         <nav class="flex items-center justify-between h-16 md:h-20">
 
           <!-- Logo -->
-          <a href="/" class="flex items-center gap-2 group">
+          <a href={homeUrl} class="flex items-center gap-2 group">
             <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-600 to-accent-500 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
               <span class="text-white font-bold text-sm font-heading">S</span>
             </div>
@@ -98,10 +109,10 @@ const canonical = Astro.url.href;
 
           <!-- Desktop Nav -->
           <ul class="hidden md:flex items-center gap-8">
-            <li><a href="/#layanan" class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">Layanan</a></li>
-            <li><a href="/#kenapa" class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">Kenapa Kami</a></li>
-            <li><a href="/blog" class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">Blog</a></li>
-            <li><a href="/about" class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">Tentang</a></li>
+            <li><a href={servicesUrl} class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">{t('nav.services')}</a></li>
+            <li><a href={whyUrl} class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">{t('nav.why')}</a></li>
+            <li><a href={blogUrl} class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">{t('nav.blog')}</a></li>
+            <li><a href={aboutUrl} class="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors font-medium">{t('nav.about')}</a></li>
           </ul>
 
           <div class="flex items-center gap-3">
@@ -109,26 +120,26 @@ const canonical = Astro.url.href;
             <LanguageSwitcher currentLang={lang} />
             <ThemeToggle />
 
-            <a href="/#kontak" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5">
-              Konsultasi
+            <a href={contactUrl} class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+              {lang === 'en' ? 'Consultation' : 'Konsultasi'}
             </a>
           </div>
 
           <!-- Mobile hamburger -->
-          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Menu">
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Menu">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
           </button>
         </nav>
       </div>
 
       <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg">
+      <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 shadow-lg">
         <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-3">
-          <a href="/#layanan" class="py-2 text-slate-700 font-medium hover:text-brand-600 transition-colors">Layanan</a>
-          <a href="/#kenapa" class="py-2 text-slate-700 font-medium hover:text-brand-600 transition-colors">Kenapa Kami</a>
-          <a href="/blog" class="py-2 text-slate-700 font-medium hover:text-brand-600 transition-colors">Blog</a>
-          <a href="/about" class="py-2 text-slate-700 font-medium hover:text-brand-600 transition-colors">Tentang</a>
-          <a href="/#kontak" class="mt-2 py-3 text-center bg-brand-600 text-white rounded-xl font-semibold text-sm">Konsultasi Gratis</a>
+          <a href={servicesUrl} class="py-2 text-slate-700 dark:text-slate-300 font-medium hover:text-brand-600 transition-colors">{t('nav.services')}</a>
+          <a href={whyUrl} class="py-2 text-slate-700 dark:text-slate-300 font-medium hover:text-brand-600 transition-colors">{t('nav.why')}</a>
+          <a href={blogUrl} class="py-2 text-slate-700 dark:text-slate-300 font-medium hover:text-brand-600 transition-colors">{t('nav.blog')}</a>
+          <a href={aboutUrl} class="py-2 text-slate-700 dark:text-slate-300 font-medium hover:text-brand-600 transition-colors">{t('nav.about')}</a>
+          <a href={contactUrl} class="mt-2 py-3 text-center bg-brand-600 text-white rounded-xl font-semibold text-sm">{t('nav.cta')}</a>
         </div>
       </div>
     </header>
@@ -151,7 +162,7 @@ const canonical = Astro.url.href;
               <span class="font-heading font-bold text-xl">Samkarsa</span>
             </div>
             <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
-              Spesialis implementasi ERPNext untuk transformasi digital bisnis Indonesia. Kami hadir untuk menyederhanakan operasional dan memperkuat pengambilan keputusan berbasis data.
+              {t('footer.desc')}
             </p>
             <div class="flex gap-3 mt-5">
               <a href="https://github.com/zetrosoft" target="_blank" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors" aria-label="GitHub">
@@ -162,29 +173,29 @@ const canonical = Astro.url.href;
 
           <!-- Links -->
           <div>
-            <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-slate-400 mb-4">Layanan</h4>
+            <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-slate-400 mb-4">{lang === 'en' ? 'Services' : 'Layanan'}</h4>
             <ul class="space-y-2.5 text-sm text-slate-400">
-              <li><a href="/#layanan" class="hover:text-white transition-colors">ERPNext Implementation</a></li>
-              <li><a href="/#layanan" class="hover:text-white transition-colors">Akuntansi & Keuangan</a></li>
-              <li><a href="/#layanan" class="hover:text-white transition-colors">HR & Payroll</a></li>
-              <li><a href="/#layanan" class="hover:text-white transition-colors">Penjualan & Pembelian</a></li>
+              <li><a href={servicesUrl} class="hover:text-white transition-colors">ERPNext Implementation</a></li>
+              <li><a href={servicesUrl} class="hover:text-white transition-colors">{lang === 'en' ? 'Accounting & Finance' : 'Akuntansi & Keuangan'}</a></li>
+              <li><a href={servicesUrl} class="hover:text-white transition-colors">HR & Payroll</a></li>
+              <li><a href={servicesUrl} class="hover:text-white transition-colors">{lang === 'en' ? 'Sales & Purchasing' : 'Penjualan & Pembelian'}</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-slate-400 mb-4">Perusahaan</h4>
+            <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-slate-400 mb-4">{lang === 'en' ? 'Company' : 'Perusahaan'}</h4>
             <ul class="space-y-2.5 text-sm text-slate-400">
-              <li><a href="/about" class="hover:text-white transition-colors">Tentang Kami</a></li>
-              <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
-              <li><a href="/#kontak" class="hover:text-white transition-colors">Kontak</a></li>
-              <li><a href={lang === 'en' ? '/en/privacy-policy' : '/privacy-policy'} class="hover:text-white transition-colors">{lang === 'en' ? 'Privacy Policy' : 'Kebijakan Privasi'}</a></li>
+              <li><a href={aboutUrl} class="hover:text-white transition-colors">{t('nav.about')}</a></li>
+              <li><a href={blogUrl} class="hover:text-white transition-colors">{t('nav.blog')}</a></li>
+              <li><a href={contactUrl} class="hover:text-white transition-colors">{t('nav.contact')}</a></li>
+              <li><a href={privacyUrl} class="hover:text-white transition-colors">{lang === 'en' ? 'Privacy Policy' : 'Kebijakan Privasi'}</a></li>
             </ul>
           </div>
         </div>
 
         <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-          <p>&copy; {new Date().getFullYear()} Samkarsa. Semua hak dilindungi.</p>
-          <p>Dibuat dengan ❤️ menggunakan <a href="https://erpnext.com" class="hover:text-white transition-colors">ERPNext</a> & <a href="https://astro.build" class="hover:text-white transition-colors">Astro</a></p>
+          <p>&copy; {new Date().getFullYear()} Samkarsa. {lang === 'en' ? 'All rights reserved.' : 'Semua hak dilindungi.'}</p>
+          <p>{lang === 'en' ? 'Built with ❤️ using' : 'Dibuat dengan ❤️ menggunakan'} <a href="https://erpnext.com" class="hover:text-white transition-colors">ERPNext</a> & <a href="https://astro.build" class="hover:text-white transition-colors">Astro</a></p>
         </div>
       </div>
     </footer>
