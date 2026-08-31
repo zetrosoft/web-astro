@@ -177,6 +177,7 @@ const canonical = Astro.url.href;
               <li><a href="/about" class="hover:text-white transition-colors">Tentang Kami</a></li>
               <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
               <li><a href="/#kontak" class="hover:text-white transition-colors">Kontak</a></li>
+              <li><a href={lang === 'en' ? '/en/privacy-policy' : '/privacy-policy'} class="hover:text-white transition-colors">{lang === 'en' ? 'Privacy Policy' : 'Kebijakan Privasi'}</a></li>
             </ul>
           </div>
         </div>
