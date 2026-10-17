@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
+import AdSenseUnit from '../../components/AdSenseUnit.astro';
+import HostingerBox from '../../components/HostingerBox.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -75,10 +77,19 @@ const recentPosts = allPosts
           </div>
         </div>
 
+        <!-- Top In-Article AdSense Unit -->
+        <AdSenseUnit className="mb-8" />
+
         <!-- Isi Artikel Utama MDX -->
         <article class="prose max-w-none prose-slate dark:prose-invert">
           <Content />
         </article>
+
+        <!-- Smart Contextual Hostinger Partner Box -->
+        <HostingerBox category={post.data.category} variant="in-article" />
+
+        <!-- Bottom In-Article AdSense Unit -->
+        <AdSenseUnit className="mt-8 mb-4" />
 
         <!-- Tags & Topic Exploration -->
         {post.data.tags && post.data.tags.length > 0 && (
@@ -233,6 +244,14 @@ const recentPosts = allPosts
             Kunjungi Samkarsa &rarr;
           </a>
         </div>
+
+        <!-- Widget Hostinger Partner Sidebar -->
+        <div class="mt-8">
+          <HostingerBox category={post.data.category} variant="sidebar" />
+        </div>
+
+        <!-- Sticky Sidebar AdSense Display Unit -->
+        <AdSenseUnit format="rectangle" minHeight="min-h-[250px]" className="mt-8" />
       </div>
 
     </aside>

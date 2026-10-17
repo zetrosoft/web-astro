@@ -54,24 +54,6 @@ const today = new Date().toLocaleDateString('id-ID', {
         } else {
           document.documentElement.classList.remove('dark');
         }
-
-        if (window.location.pathname === '/' && !sessionStorage.getItem('lang_detected')) {
-          sessionStorage.setItem('lang_detected', 'true');
-          const browserLang = navigator.language || navigator.userLanguage;
-          const isEn = browserLang.startsWith('en');
-          fetch('https://ipapi.co/json/')
-            .then(res => res.json())
-            .then(data => {
-              if (data.country_code !== 'ID') {
-                window.location.href = '/en/';
-              }
-            })
-            .catch(() => {
-              if (isEn) {
-                window.location.href = '/en/';
-              }
-            });
-        }
       })();
     </script>
 

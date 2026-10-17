@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import AdSenseUnit from '../components/AdSenseUnit.astro';
+import HostingerBox from '../components/HostingerBox.astro';
 
 // Dapatkan artikel blog dan urutkan berdasarkan tanggal rilis terbaru
 const posts = await getCollection('blog');
@@ -120,6 +122,9 @@ const featuredProjects = reposToShow.slice(0, 3);
           </article>
         ))}
       </div>
+      
+      <!-- Native In-Feed Homepage AdSense Unit -->
+      <AdSenseUnit className="my-8" />
 
       <!-- Sisa Artikel Berita Lainnya -->
       <div class="space-y-6">
@@ -211,6 +216,9 @@ const featuredProjects = reposToShow.slice(0, 3);
           </a>
         </div>
       </div>
+
+      <!-- Hostinger Partner Sidebar Widget -->
+      <HostingerBox variant="sidebar" />
 
     </div>
 
