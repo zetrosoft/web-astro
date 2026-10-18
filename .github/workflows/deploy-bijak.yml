@@ -56,19 +56,47 @@ jobs:
           timeout: 120s
           command_timeout: 30m
 
-      - name: Send Telegram Notification
+      - name: Send WhatsApp Notification via BiZETO Hub
         if: always()
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            🚀 DEPLOYMENT NOTIFICATION: BIJAK TECHNOLOGY
-            
-            Status: ${{ job.status == 'success' && '✅ SUCCESS' || '❌ FAILED' }}
-            Website: https://bijaktechnology.com
-            Container: web-bijak-techno
-            Target User: @zetro_21 (ID: 326009233)
-            Commit: ${{ github.sha }}
-            Author: ${{ github.actor }}
-            Message: ${{ github.event.head_commit.message }}
+        run: |
+          python3 -c "
+          import urllib.request, json
+
+          status = '✅ SUCCESS' if '${{ job.status }}' == 'success' else '❌ FAILED'
+          website = 'https://bijaktechnology.com'
+          commit_sha = '${{ github.sha }}'[:7]
+          author = '${{ github.actor }}'
+          msg_head = '''${{ github.event.head_commit.message }}'''.strip()
+
+          message_text = (
+              '🚀 *DEPLOYMENT NOTIFICATION: BIJAK TECHNOLOGY*\n\n'
+              f'*Status:* {status}\n'
+              f'*Website:* {website}\n'
+              f'*Container:* web-bijak-techno\n'
+              f'*Commit:* {commit_sha}\n'
+              f'*Author:* {author}\n'
+              f'*Message:* {msg_head}'
+          )
+
+          payload = json.dumps({
+              'device_jid': '6285600239869@s.whatsapp.net',
+              'to': '6281219987377@s.whatsapp.net',
+              'message': message_text
+          }).encode('utf-8')
+
+          req = urllib.request.Request(
+              'https://bizeto.samkarsa.com/api/send',
+              data=payload,
+              headers={
+                  'Authorization': 'Bearer ${{ secrets.BIZETO_WA_TOKEN }}',
+                  'Content-Type': 'application/json'
+              }
+          )
+
+          try:
+              with urllib.request.urlopen(req, timeout=15) as response:
+                  print('WhatsApp Notification Response:', response.read().decode('utf-8'))
+          except Exception as e:
+              print('Failed to send WhatsApp notification:', e)
+          "
+
