@@ -79,13 +79,16 @@ const recentPosts = allPosts
           </div>
         </div>
 
-        <!-- Top In-Article AdSense Unit -->
+        <!-- 1. AdSense Slot 1: Top In-Article Leaderboard -->
         <AdSenseUnit className="mb-8" />
 
         <!-- Isi Artikel Utama MDX -->
         <article class="prose max-w-none prose-slate dark:prose-invert">
           <Content />
         </article>
+
+        <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Fluid Unit -->
+        <AdSenseUnit format="fluid" className="my-10" />
 
         <!-- Smart Contextual Hostinger Partner Box -->
         <HostingerBox category={post.data.category} variant="in-article" />
@@ -94,11 +97,11 @@ const recentPosts = allPosts
         {(post.data.category?.toLowerCase().includes('ritel') || post.data.category?.toLowerCase().includes('sembako') || post.data.category?.toLowerCase().includes('umkm')) && (
           <KusumaMapSpotlight />
         )}
-        {(post.data.category?.toLowerCase().includes('erp') || post.data.category?.toLowerCase().includes('enterprise') || post.data.category?.toLowerCase().includes('odoo')) && (
+        {(post.data.category?.toLowerCase().includes('erp') || post.data.category?.toLowerCase().includes('enterprise') || post.data.category?.toLowerCase().includes('manufaktur') || post.data.category?.toLowerCase().includes('distribusi')) && (
           <SamkarsaIndustryRef />
         )}
 
-        <!-- Bottom In-Article AdSense Unit -->
+        <!-- 3. AdSense Slot 3: Bottom In-Article / Pre-Tags Matched Unit -->
         <AdSenseUnit className="mt-8 mb-4" />
 
         <!-- Tags & Topic Exploration -->

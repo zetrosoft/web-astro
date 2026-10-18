@@ -8,41 +8,42 @@ const { category = '', variant = 'in-article' } = Astro.props;
 
 const catLower = category.toLowerCase();
 
-let title = 'Hostinger Official Partner: VPS KVM NVMe Generasi Baru';
+let title = 'Hostinger Cloud VPS: Komputasi KVM NVMe Generasi Baru';
 let badge = 'Official Partner • Diskon Spesial';
-let description = 'Tingkatkan performa web dan server Anda dengan infrastruktur cloud NVMe berkecepatan tinggi, garansi uptime 99.9%, dan dukungan teknis 24/7.';
-let spec = 'KVM 2: 2 vCPU • 8GB RAM • 100GB NVMe • Dedicated IP';
-let ctaText = 'Klaim Diskon Hostinger Partner';
-let ctaUrl = 'https://www.hostinger.co.id/?utm_source=bijaktechnology&utm_medium=affiliate&utm_campaign=partner-vps';
+let description = 'Optimalkan kinerja aplikasi web dan server produksi Anda dengan arsitektur cloud KVM NVMe berkecepatan tinggi, jaminan ketersediaan uptime 99.9%, dan dukungan teknis 24/7.';
+let spec = 'KVM 2: 2 vCPU • 8GB RAM • 100GB NVMe • Dedicated IPv4 & IPv6';
+let ctaText = 'Klaim Penawaran Hostinger Partner';
+const referralUrl = 'https://www.hostinger.com/id?REFERRALCODE=6X5PUTERARQL';
+let ctaUrl = referralUrl;
 
 if (catLower.includes('ritel') || catLower.includes('sembako') || catLower.includes('umkm') || catLower.includes('toko') || catLower.includes('bisnis')) {
-  title = 'Hostinger Business: Website Katalog & Kasir UMKM Mandiri';
-  badge = 'Rekomendasi Ritel • Diskon Hingga 75%';
-  description = 'Ingin toko grosir, toko kelontong, atau UMKM Anda memiliki website katalog produk resmi dan server kasir mandiri seperti Toko Sembako Kusuma? Mulai sekarang dengan mudah tanpa perlu paham koding!';
-  spec = 'Gratis Domain 1 Tahun • Unlimited SSL • AI Website Builder • Email Bisnis';
-  ctaText = 'Bangun Website UMKM Mulai Rp20rb-an/bln';
-  ctaUrl = 'https://www.hostinger.co.id/web-hosting?utm_source=bijaktechnology&utm_medium=affiliate&utm_campaign=umkm-retail';
-} else if (catLower.includes('erp') || catLower.includes('odoo') || catLower.includes('manufaktur') || catLower.includes('enterprise')) {
-  title = 'Hostinger VPS KVM 4: Server Produksi ERPNext Skala Korporat';
-  badge = 'Rekomendasi Samkarsa.com • KVM 4';
-  description = 'Tinggalkan lisensi mahal Odoo! Self-hosting ERPNext skala perusahaan di Hostinger VPS KVM 4. Nikmati performa NVMe ultra-cepat, snapshot harian otomatis, dan hemat pengeluaran IT hingga 80%.';
-  spec = '4 vCPU • 16GB RAM • 200GB NVMe • Bandwidth 4TB • Full Root Access';
-  ctaText = 'Deploy ERPNext di VPS KVM 4 Sekarang';
-  ctaUrl = 'https://www.hostinger.co.id/vps-hosting?utm_source=bijaktechnology&utm_medium=affiliate&utm_campaign=samkarsa-erpnext';
+  title = 'Hostinger Business: Solusi Website Katalog & Kasir Digital Mandiri';
+  badge = 'Solusi Ritel Mandiri • Setup Terpandu';
+  description = 'Bangun profil bisnis dan katalog produk digital mandiri untuk toko grosir maupun UMKM ritel Anda. Dilengkapi AI Website Builder yang intuitif, email bisnis resmi, dan perlindungan SSL otomatis untuk memperkuat kepercayaan pelanggan.';
+  spec = 'Domain Gratis 1 Tahun • Unlimited SSL • AI Site Builder • Email Bisnis Profesional';
+  ctaText = 'Mulai Bangun Website Bisnis Ritel';
+  ctaUrl = referralUrl;
+} else if (catLower.includes('erp') || catLower.includes('enterprise') || catLower.includes('manufaktur') || catLower.includes('distribusi')) {
+  title = 'Hostinger VPS KVM 4: Server Andal untuk Implementasi ERP Enterprise';
+  badge = 'Rekomendasi Samkarsa.com • KVM 4 Enterprise';
+  description = 'Jalankan implementasi ERPNext berskala perusahaan dengan kebebasan kontrol infrastruktur penuh. Menawarkan komputasi dedicated, performa penyimpanan NVMe ultra-cepat, snapshot harian otomatis, dan kedaulatan data private cloud yang aman.';
+  spec = '4 vCPU • 16GB RAM • 200GB NVMe Storage • Bandwidth 4TB • Full Root Access';
+  ctaText = 'Konfigurasi VPS KVM 4 untuk ERP';
+  ctaUrl = referralUrl;
 } else if (catLower.includes('ai') || catLower.includes('tech') || catLower.includes('devops') || catLower.includes('docker') || catLower.includes('coolify')) {
-  title = 'Hostinger VPS KVM 2: Playground AI Agent, n8n & Coolify';
-  badge = '1-Click Docker • NVMe Turbo';
-  description = 'Deploy otomasi n8n, Coolify PaaS, FastAPI, dan PostgreSQL pgvector dalam 1 klik tanpa pusing instalasi server dari awal. Performa komputasi tangguh untuk AI developer modern.';
+  title = 'Hostinger VPS KVM 2: Platform Komputasi AI Agent & Workflow Otomasi';
+  badge = 'Siap Container Docker • Performa Cepat';
+  description = 'Deploy engine otomasi n8n, PaaS mandiri Coolify, backend FastAPI, serta database PostgreSQL pgvector dengan alur kerja modern. Infrastruktur stabil dan fleksibel untuk kebutuhan riset rekayasa perangkat lunak.';
   spec = '2 vCPU • 8GB RAM • 100GB NVMe Storage • Dedicated IPv4 & IPv6';
-  ctaText = 'Deploy Server AI di KVM 2';
-  ctaUrl = 'https://www.hostinger.co.id/vps-hosting?utm_source=bijaktechnology&utm_medium=affiliate&utm_campaign=dev-n8n-coolify';
+  ctaText = 'Deploy Server Komputasi KVM 2';
+  ctaUrl = referralUrl;
 } else if (catLower.includes('blockchain') || catLower.includes('web3') || catLower.includes('avalanche') || catLower.includes('crypto')) {
-  title = 'Hostinger Cloud VPS: Node Gateway & Indexer Avalanche L1';
-  badge = 'Web3 High-Availability • Low-Latency';
-  description = 'Jalankan backend indexer, node RPC Avalanche, dan listener webhook smart contract 24/7 tanpa khawatir downtime dengan latency server terendah di Asia Tenggara.';
-  spec = 'High-Speed NVMe Array • DDoS Protection L3/L4 • 99.9% Uptime Guarantee';
-  ctaText = 'Deploy Node Avalanche di Hostinger';
-  ctaUrl = 'https://www.hostinger.co.id/vps-hosting?utm_source=bijaktechnology&utm_medium=affiliate&utm_campaign=avalanche-web3';
+  title = 'Hostinger Cloud VPS: Node Gateway & Indexer Jaringan Blockchain';
+  badge = 'High-Availability Web3 • Latensi Rendah';
+  description = 'Mendukung operasional backend indexer, node RPC Avalanche, dan listener webhook smart contract tanpa hambatan downtime. Ditenagai proteksi DDoS tingkat lanjut dan throughput jaringan yang konsisten.';
+  spec = 'Array NVMe Cepat • Proteksi DDoS L3/L4 • Jaminan Ketersediaan 99.9%';
+  ctaText = 'Siapkan Node Web3 di Hostinger';
+  ctaUrl = referralUrl;
 }
 ---
 
@@ -70,9 +71,14 @@ if (catLower.includes('ritel') || catLower.includes('sembako') || catLower.inclu
         {description}
       </p>
 
-      <div class="p-3 rounded-xl bg-white/5 border border-white/10 mb-6 text-xs text-indigo-200 font-mono flex items-center gap-2">
-        <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-        <span>{spec}</span>
+      <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div class="text-xs text-indigo-200 font-mono flex items-center gap-2">
+          <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+          <span>{spec}</span>
+        </div>
+        <div class="text-xs font-bold text-amber-300 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/25 shrink-0">
+          Kupon Diskon: <strong class="font-mono text-amber-200 tracking-wider">6X5PUTERARQL</strong>
+        </div>
       </div>
 
       <div class="flex flex-col sm:flex-row items-center gap-4">
@@ -100,7 +106,7 @@ if (catLower.includes('ritel') || catLower.includes('sembako') || catLower.inclu
       {title}
     </h4>
     <p class="text-xs text-slate-300 leading-relaxed mb-4">
-      Gunakan kode kupon <span class="text-amber-300 font-mono font-bold">BIJAKTECH</span> untuk potongan harga ekstra.
+      Gunakan kode kupon <span class="text-amber-300 font-mono font-bold bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">6X5PUTERARQL</span> untuk potongan harga ekstra saat checkout.
     </p>
     <a
       href={ctaUrl}
