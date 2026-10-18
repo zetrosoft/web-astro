@@ -9,46 +9,57 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
 const categories = [...new Set(posts.map(post => post.data.category))];
 ---
 
-<Layout title="All Articles & Stories" description="Complete archive of Bijak Technology articles" lang="en">
+<Layout title="All Articles & Stories" description="Complete archive of Bijak Technology articles, cloud architecture research, and enterprise ERP guides" lang="en">
   <div class="space-y-8">
-    <div class="border-b border-slate-200 dark:border-slate-800 pb-6">
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">
-        Archive of Tech, ERP & Business Reports
+    <div class="border-b border-slate-300/80 dark:border-slate-800 pb-6">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-950 dark:text-white tracking-tight mb-2">
+        Archive of Tech, ERP &amp; Business Reports
       </h1>
-      <p class="text-sm text-slate-500 dark:text-slate-400">
+      <p class="text-sm text-slate-700 dark:text-slate-300 font-medium">
         In-depth engineering reviews, local retail digitalization, and cloud architecture journals.
       </p>
     </div>
 
     <!-- Category Pills -->
-    <div class="flex items-center gap-2 flex-wrap">
-      <a href="/en/blog" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-rose-600 text-white shadow-sm">
+    <div class="flex items-center gap-2 flex-wrap border-b border-slate-300/80 dark:border-slate-800 pb-6 text-xs font-semibold">
+      <span class="text-slate-700 dark:text-slate-300 mr-2 font-bold uppercase tracking-wider">Categories:</span>
+      <button 
+        class="category-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-rose-600 text-white shadow-xs transition-all cursor-pointer"
+        data-category-btn="all"
+      >
         All Categories
-      </a>
+      </button>
       {categories.map(cat => (
-        <a href={`/blog?category=${cat}`} class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-rose-500 transition-colors">
+        <button 
+          class="category-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-rose-500 hover:text-rose-600 dark:hover:text-rose-400 transition-all cursor-pointer shadow-2xs"
+          data-category-btn={cat}
+        >
           {cat}
-        </a>
+        </button>
       ))}
     </div>
 
     <!-- Article Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-grid">
       {sortedPosts.map(post => (
-        <article class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-          <div class="space-y-2.5">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-rose-600">
+        <article 
+          class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow group"
+          data-category={post.data.category}
+        >
+          <div class="space-y-3">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2 py-0.5 rounded-md inline-block">
               {post.data.category}
             </span>
-            <h2 class="font-bold text-base text-slate-900 dark:text-white leading-snug hover:text-rose-600 transition-colors">
+            <h2 class="font-bold text-base sm:text-lg text-slate-950 dark:text-white leading-snug group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
               <a href={`/en/blog/${post.id}`}>{post.data.title}</a>
             </h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed">
+            <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-3 leading-relaxed">
               {post.data.description}
             </p>
           </div>
-          <div class="text-[11px] text-slate-400 pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 font-mono">
-            {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+          <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-[11px] text-slate-600 dark:text-slate-400 font-mono font-medium">
+            <span>By: <strong class="text-slate-800 dark:text-slate-200">{post.data.author}</strong></span>
+            <span>{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
           </div>
         </article>
       ))}
@@ -58,4 +69,38 @@ const categories = [...new Set(posts.map(post => post.data.category))];
 
     <HostingerBox variant="in-article" />
   </div>
+
+  <!-- Client-side filtering script -->
+  <script>
+    function setupFilter() {
+      const buttons = document.querySelectorAll<HTMLButtonElement>('[data-category-btn]');
+      const articles = document.querySelectorAll<HTMLElement>('#posts-grid article');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const selectedCategory = button.getAttribute('data-category-btn');
+          
+          buttons.forEach(btn => {
+            btn.classList.remove('bg-rose-600', 'text-white', 'border-transparent', 'font-bold');
+            btn.classList.add('bg-white', 'dark:bg-slate-900', 'text-slate-800', 'dark:text-slate-200', 'border-slate-300/80', 'dark:border-slate-700');
+          });
+
+          button.classList.remove('bg-white', 'dark:bg-slate-900', 'text-slate-800', 'dark:text-slate-200', 'border-slate-300/80', 'dark:border-slate-700');
+          button.classList.add('bg-rose-600', 'text-white', 'border-transparent', 'font-bold');
+
+          articles.forEach(article => {
+            const articleCategory = article.getAttribute('data-category');
+            if (selectedCategory === 'all' || articleCategory === selectedCategory) {
+              article.style.display = 'flex';
+            } else {
+              article.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+
+    setupFilter();
+    document.addEventListener('astro:after-swap', setupFilter);
+  </script>
 </Layout>

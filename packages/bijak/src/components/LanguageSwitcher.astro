@@ -15,9 +15,9 @@ const targetUrl = oppositeLang === 'id' ? cleanPathname : getRelativeLocaleUrl('
 
 <a 
   href={targetUrl} 
-  class="inline-flex items-center gap-1.5 px-3 py-1 text-xs border border-neutral-900 dark:border-neutral-700 bg-transparent hover:bg-neutral-900 hover:text-white dark:hover:bg-neutral-100 dark:hover:text-black transition-colors font-serif uppercase tracking-widest"
-  title={currentLang === 'id' ? 'Change to English' : 'Ubah ke Bahasa Indonesia'}
+  class="inline-flex items-center gap-1.5 px-2.5 h-8 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-600 bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-all shadow-xs"
+  title={currentLang === 'id' ? 'Switch to English' : 'Beralih ke Bahasa Indonesia'}
 >
-  <span>🌐</span>
-  <span>{oppositeLang}</span>
+  <span class="text-xs">🌐</span>
+  <span class="font-mono uppercase">{oppositeLang}</span>
 </a>

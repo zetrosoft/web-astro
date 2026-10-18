@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import AdSenseUnit from '../../components/AdSenseUnit.astro';
+import HostingerBox from '../../components/HostingerBox.astro';
 
 const posts = await getCollection('blog');
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -9,28 +11,31 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
 const categories = [...new Set(posts.map(post => post.data.category))];
 ---
 
-<Layout title="Arsip Berita & Artikel" description="Daftar lengkap artikel, berita, dan panduan teknologi dari redaksi Bijak Technology.">
+<Layout title="Arsip Berita & Artikel" description="Daftar lengkap artikel riset, laporan arsitektur cloud, dan panduan teknologi dari redaksi Bijak Technology.">
   <div class="space-y-8">
     
     <!-- Bagian Pengantar Redaksi -->
-    <div class="text-center py-6 border-b border-neutral-300">
-      <h1 class="newspaper-title text-4xl font-extrabold uppercase tracking-tight">
-        Arsip Berita Redaksi
+    <div class="border-b border-slate-300/80 dark:border-slate-800 pb-6">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-950 dark:text-white tracking-tight mb-2">
+        Arsip Liputan &amp; Riset Teknologi
       </h1>
-      <p class="text-sm italic font-serif text-neutral-600 mt-2">
-        Kumpulan dokumentasi, artikel riset, dan liputan teknologi terlengkap
+      <p class="text-sm text-slate-700 dark:text-slate-300 font-medium">
+        Kumpulan investigasi teknis, digitalisasi UMKM ritel, arsitektur ERP enterprise, dan analisis cloud computing.
       </p>
     </div>
 
     <!-- Kategori Filter Bar -->
-    <div class="flex flex-wrap items-center justify-center gap-2 border-b border-neutral-300 pb-6 text-sm font-semibold uppercase tracking-wider">
-      <span class="text-neutral-500 mr-2">Topik Liputan:</span>
-      <a href="/blog" class="px-3 py-1 bg-neutral-900 text-white hover:bg-rose-600 transition-colors">
+    <div class="flex flex-wrap items-center gap-2 border-b border-slate-300/80 dark:border-slate-800 pb-6 text-xs font-semibold">
+      <span class="text-slate-700 dark:text-slate-300 mr-2 font-bold uppercase tracking-wider">Topik Liputan:</span>
+      <button 
+        class="category-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-rose-600 text-white shadow-xs transition-all cursor-pointer"
+        data-category-btn="all"
+      >
         Semua Kategori
-      </a>
+      </button>
       {categories.map(category => (
         <button 
-          class="px-3 py-1 bg-white border border-neutral-300 text-neutral-800 hover:bg-rose-600 hover:text-white transition-colors"
+          class="category-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-rose-500 hover:text-rose-600 dark:hover:text-rose-400 transition-all cursor-pointer shadow-2xs"
           data-category-btn={category}
         >
           {category}
@@ -39,60 +44,73 @@ const categories = [...new Set(posts.map(post => post.data.category))];
     </div>
 
     <!-- Grid List Artikel -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="posts-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-grid">
       {sortedPosts.map(post => (
         <article 
-          class="bg-white border border-neutral-300 p-6 flex flex-col justify-between hover:shadow-md transition-shadow duration-300"
+          class="bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow group"
           data-category={post.data.category}
         >
           <div class="space-y-3">
-            <span class="text-xs font-bold text-rose-600 uppercase tracking-widest block">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2 py-0.5 rounded-md inline-block">
               {post.data.category}
             </span>
-            <h2 class="newspaper-title text-xl font-bold text-neutral-900 leading-snug hover:text-rose-600 transition-colors">
+            <h2 class="text-base sm:text-lg font-bold text-slate-950 dark:text-white leading-snug group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
               <a href={`/blog/${post.id}`}>{post.data.title}</a>
             </h2>
-            <p class="text-sm text-neutral-600 line-clamp-3">
+            <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-3 leading-relaxed">
               {post.data.description}
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-neutral-100 flex justify-between items-center text-xs text-neutral-400">
-            <span class="font-serif">Oleh: {post.data.author}</span>
-            <span class="font-mono">{post.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+          <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-[11px] text-slate-600 dark:text-slate-400 font-mono font-medium">
+            <span>Oleh: <strong class="text-slate-800 dark:text-slate-200">{post.data.author}</strong></span>
+            <span>{post.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
           </div>
         </article>
       ))}
     </div>
 
+    <!-- In-Feed AdSense Banner -->
+    <AdSenseUnit className="my-10" />
+
+    <!-- Hostinger Partner Banner -->
+    <HostingerBox variant="in-article" />
+
   </div>
 
-  <!-- Client-side filtering script simple -->
+  <!-- Client-side filtering script -->
   <script>
-    const buttons = document.querySelectorAll('[data-category-btn]');
-    const articles = document.querySelectorAll('#posts-grid article');
+    function setupFilter() {
+      const buttons = document.querySelectorAll<HTMLButtonElement>('[data-category-btn]');
+      const articles = document.querySelectorAll<HTMLElement>('#posts-grid article');
 
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category-btn');
-        
-        // Update button active state styles
-        buttons.forEach(btn => {
-          btn.classList.remove('bg-neutral-900', 'text-white');
-          btn.classList.add('bg-white', 'text-neutral-800');
-        });
-        button.classList.remove('bg-white', 'text-neutral-800');
-        button.classList.add('bg-neutral-900', 'text-white');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const selectedCategory = button.getAttribute('data-category-btn');
+          
+          // Reset style semua tombol
+          buttons.forEach(btn => {
+            btn.classList.remove('bg-rose-600', 'text-white', 'border-transparent', 'font-bold');
+            btn.classList.add('bg-white', 'dark:bg-slate-900', 'text-slate-800', 'dark:text-slate-200', 'border-slate-300/80', 'dark:border-slate-700');
+          });
 
-        // Filter articles
-        articles.forEach(article => {
-          const articleCategory = article.getAttribute('data-category');
-          if (articleCategory === category) {
-            (article as HTMLElement).style.display = 'flex';
-          } else {
-            (article as HTMLElement).style.display = 'none';
-          }
+          // Tandai tombol aktif
+          button.classList.remove('bg-white', 'dark:bg-slate-900', 'text-slate-800', 'dark:text-slate-200', 'border-slate-300/80', 'dark:border-slate-700');
+          button.classList.add('bg-rose-600', 'text-white', 'border-transparent', 'font-bold');
+
+          // Filter artikel
+          articles.forEach(article => {
+            const articleCategory = article.getAttribute('data-category');
+            if (selectedCategory === 'all' || articleCategory === selectedCategory) {
+              article.style.display = 'flex';
+            } else {
+              article.style.display = 'none';
+            }
+          });
         });
       });
-    });
+    }
+
+    setupFilter();
+    document.addEventListener('astro:after-swap', setupFilter);
   </script>
 </Layout>

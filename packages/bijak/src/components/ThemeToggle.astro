@@ -1,42 +1,58 @@
 ---
-// Dark / Light Mode Switcher untuk website Bijak (klasik retro style)
+// Dark / Light Mode Switcher untuk Bijak Technology (Icon Only)
 ---
 
 <button
   id="theme-toggle"
   type="button"
-  class="inline-flex items-center gap-1.5 px-3 py-1 text-xs border border-neutral-900 dark:border-neutral-700 bg-transparent hover:bg-neutral-900 hover:text-white dark:hover:bg-neutral-100 dark:hover:text-black transition-colors font-serif uppercase tracking-widest"
-  aria-label="Toggle theme"
+  class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-slate-300 dark:border-slate-600 bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-all shadow-xs focus:outline-none focus:ring-2 focus:ring-rose-500/40"
+  aria-label="Ganti mode tema tampilan"
+  title="Ganti Mode Tampilan"
 >
-  <span id="theme-toggle-light-icon" class="hidden">☀️ SIANG</span>
-  <span id="theme-toggle-dark-icon" class="hidden">🌙 MALAM</span>
+  <!-- Ikon Matahari (Muncul saat Dark Mode untuk beralih ke Light Mode) -->
+  <svg id="theme-toggle-light-icon" class="w-4 h-4 hidden text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+  </svg>
+  <!-- Ikon Bulan (Muncul saat Light Mode untuk beralih ke Dark Mode) -->
+  <svg id="theme-toggle-dark-icon" class="w-4 h-4 hidden text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+  </svg>
 </button>
 
 <script>
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  function initThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-  function updateToggleIcons() {
-    if (document.documentElement.classList.contains('dark')) {
-      themeToggleLightIcon?.classList.remove('hidden');
-      themeToggleDarkIcon?.classList.add('hidden');
-    } else {
-      themeToggleLightIcon?.classList.add('hidden');
-      themeToggleDarkIcon?.classList.remove('hidden');
+    function updateIcons() {
+      if (document.documentElement.classList.contains('dark')) {
+        themeToggleLightIcon?.classList.remove('hidden');
+        themeToggleDarkIcon?.classList.add('hidden');
+      } else {
+        themeToggleLightIcon?.classList.add('hidden');
+        themeToggleDarkIcon?.classList.remove('hidden');
+      }
     }
+
+    updateIcons();
+
+    // Hapus event listener lama jika ada untuk mencegah double toggle
+    themeToggleBtn?.replaceWith(themeToggleBtn.cloneNode(true));
+    const newBtn = document.getElementById('theme-toggle');
+
+    newBtn?.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+      updateIcons();
+    });
   }
 
-  updateToggleIcons();
-
-  themeToggleBtn?.addEventListener('click', () => {
-    if (document.documentElement.classList.contains('dark')) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-    updateToggleIcons();
-  });
+  initThemeToggle();
+  document.addEventListener('astro:after-swap', initThemeToggle);
 </script>

@@ -40,14 +40,14 @@ const categories = [...new Set(posts.map(post => post.data.category))];
       <!-- Right 4 Columns: Sub-featured stories -->
       <div class="lg:col-span-4 space-y-4">
         {subFeaturedPosts.map(post => (
-          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-rose-400 transition-all">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-rose-600 bg-rose-50 dark:bg-rose-950/40 px-2.5 py-1 rounded-md">
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 shadow-sm hover:border-rose-400 transition-all">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2.5 py-1 rounded-md">
               {post.data.category}
             </span>
-            <h3 class="font-bold text-base text-slate-900 dark:text-white hover:text-rose-600 transition-colors mt-2 mb-1.5 leading-snug">
+            <h3 class="font-bold text-base text-slate-950 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors mt-2 mb-1.5 leading-snug">
               <a href={`/en/blog/${post.id}`}>{post.data.title}</a>
             </h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">
+            <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-2 leading-relaxed">
               {post.data.description}
             </p>
           </div>
@@ -61,28 +61,28 @@ const categories = [...new Set(posts.map(post => post.data.category))];
 
   <!-- Remaining Stories Grid -->
   <section class="space-y-6">
-    <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
-      <h3 class="text-xl font-extrabold text-slate-900 dark:text-white uppercase tracking-tight">
-        Latest In-Depth Tech & Business Reports
+    <div class="flex items-center justify-between pb-3 border-b border-slate-300/80 dark:border-slate-800">
+      <h3 class="text-xl font-extrabold text-slate-950 dark:text-white uppercase tracking-tight">
+        Latest In-Depth Tech &amp; Business Reports
       </h3>
       <a href="/blog" class="text-xs font-bold text-rose-600 hover:underline">View All Stories &rarr;</a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {remainingPosts.map(post => (
-        <article class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+        <article class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
           <div class="space-y-2.5">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-rose-600">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2 py-0.5 rounded-md">
               {post.data.category}
             </span>
-            <h4 class="font-bold text-base text-slate-900 dark:text-white leading-snug hover:text-rose-600 transition-colors">
+            <h4 class="font-bold text-base text-slate-950 dark:text-white leading-snug hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
               <a href={`/en/blog/${post.id}`}>{post.data.title}</a>
             </h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed">
+            <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-3 leading-relaxed">
               {post.data.description}
             </p>
           </div>
-          <div class="text-[11px] text-slate-400 pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 font-mono">
+          <div class="text-[11px] text-slate-600 dark:text-slate-400 pt-4 mt-4 border-t border-slate-200 dark:border-slate-800 font-mono font-medium">
             {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
           </div>
         </article>

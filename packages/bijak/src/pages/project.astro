@@ -64,50 +64,50 @@ const reposToShow = orgRepos.length > 0 ? orgRepos : fallbackRepos;
   <div class="space-y-8">
     
     <!-- Header Kolom Proyek -->
-    <div class="text-center py-6 border-b border-neutral-300">
-      <h1 class="newspaper-title text-4xl font-extrabold uppercase tracking-tight">
-        Kolom Solusi Industri
+    <div class="border-b border-slate-300/80 dark:border-slate-800 pb-6">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-950 dark:text-white tracking-tight mb-2">
+        Inovasi &amp; Portofolio Solusi Industri
       </h1>
-      <p class="text-sm italic font-serif text-neutral-600 mt-2">
-        Portofolio rekayasa perangkat lunak, sistem IoT, dan repositori open-source resmi organisasi Bijak Technology
+      <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
+        Portofolio rekayasa perangkat lunak, sistem kasir Blonjo POS, dan repositori open-source resmi Bijak Technology.
       </p>
     </div>
 
-    <!-- Peringatan API -->
+    <!-- Peringatan API jika offline -->
     {errorMsg && (
-      <div class="p-3 bg-amber-50 border border-amber-200 text-amber-800 text-xs font-mono text-center rounded">
+      <div class="p-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700 text-amber-900 dark:text-amber-200 text-xs font-mono rounded-xl">
         ⚠️ {errorMsg} (Menggunakan data arsip statis)
       </div>
     )}
 
     <!-- Bento Grid Proyek dari GitHub API -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {reposToShow.map(project => (
-        <div class="bg-white border-2 border-neutral-900 p-6 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div class="bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow group">
           <div class="space-y-4">
             <div class="flex justify-between items-start gap-4">
-              <span class="bg-rose-600 text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5">
+              <span class="bg-rose-100/80 text-rose-800 dark:bg-rose-950/40 dark:text-rose-400 border border-rose-300/60 dark:border-rose-900 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md">
                 {project.language || "Mix"}
               </span>
-              <span class="text-xs font-serif italic text-neutral-500">
-                Lisensi: {project.license ? project.license.name : "Open Source"}
+              <span class="text-xs font-mono text-slate-600 dark:text-slate-400 font-medium">
+                {project.license ? project.license.name : "Open Source"}
               </span>
             </div>
-            <h2 class="newspaper-title text-2xl font-extrabold text-neutral-900 hover:text-rose-600 transition-colors">
+            <h2 class="text-xl font-bold text-slate-950 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
               <a href={project.html_url} target="_blank" rel="noopener noreferrer">{project.name}</a>
             </h2>
-            <p class="text-sm text-neutral-700 leading-relaxed min-h-[60px]">
-              {project.description || "Tidak ada deskripsi proyek yang disediakan."}
+            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed min-h-[50px]">
+              {project.description || "Infrastruktur kode mandiri yang dikembangkan untuk otomasi sistem."}
             </p>
           </div>
 
-          <div class="mt-8 pt-4 border-t border-neutral-200 flex justify-between items-center">
-            <div class="flex gap-4 text-xs font-mono text-neutral-500">
+          <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-[11px] text-slate-600 dark:text-slate-400 font-mono font-medium">
+            <div class="flex gap-4">
               <span class="flex items-center gap-1">⭐ {project.stargazers_count}</span>
               <span class="flex items-center gap-1">🍴 {project.forks_count}</span>
             </div>
-            <a href={project.html_url} target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase text-rose-600 hover:underline">
-              Lihat Source Code &rarr;
+            <a href={project.html_url} target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase text-rose-600 dark:text-rose-400 hover:underline">
+              Source Code &rarr;
             </a>
           </div>
         </div>
@@ -115,15 +115,15 @@ const reposToShow = orgRepos.length > 0 ? orgRepos : fallbackRepos;
     </div>
 
     <!-- Banner Layanan Kolaborasi -->
-    <div class="mt-12 bg-neutral-900 text-neutral-100 p-8 border-4 border-double border-neutral-800 text-center space-y-4">
-      <h3 class="newspaper-title text-2xl font-extrabold uppercase tracking-wider text-rose-500">
+    <div class="mt-12 bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 text-white p-8 rounded-3xl border border-slate-700 shadow-xl text-center space-y-4">
+      <h3 class="text-2xl font-extrabold uppercase tracking-wider text-rose-400">
         Tertarik Mengembangkan Solusi Bersama Kami?
       </h3>
-      <p class="max-w-2xl mx-auto text-sm font-serif italic leading-relaxed text-neutral-300">
-        Dari sistem ERP custom, aplikasi seluler terintegrasi, hingga smart contract Web3 dan algoritma AI. Kami siap merekayasa teknologi yang efisien dan andal sesuai kebutuhan bisnis Anda.
+      <p class="max-w-2xl mx-auto text-sm leading-relaxed text-slate-300">
+        Dari implementasi ERPNext bareng Samkarsa, integrasi kasir UMKM retail Blonjo, hingga smart contract Avalanche dan asisten WhatsApp AI. Kami siap merekayasa teknologi yang efisien dan terukur.
       </p>
       <div class="pt-2">
-        <a href="/contact" class="inline-block bg-rose-600 text-white font-bold text-xs uppercase tracking-widest px-6 py-3 hover:bg-white hover:text-neutral-900 transition-colors">
+        <a href="/contact" class="inline-block bg-rose-600 text-white font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl hover:bg-rose-500 transition-colors shadow-md">
           Diskusikan Proyek Anda &rarr;
         </a>
       </div>

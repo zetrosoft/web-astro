@@ -60,16 +60,18 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
 
     <style is:global>
       :root {
-        --bg-warm-paper: #faf9f5;
-        --bg-warm-card: #f4f2ec;
-        --text-headline: #0f172a;
-        --text-body: #334155;
+        --bg-warm-paper: #f5f4ef;
+        --bg-warm-card: #ffffff;
+        --text-headline: #0a0f1d;
+        --text-body: #1e293b;
+        --text-muted: #475569;
       }
       html.dark {
-        --bg-warm-paper: #1e2430;
-        --bg-warm-card: #252d3b;
-        --text-headline: #f8fafc;
-        --text-body: #cbd5e1;
+        --bg-warm-paper: #1e2433;
+        --bg-warm-card: #273142;
+        --text-headline: #ffffff;
+        --text-body: #e2e8f0;
+        --text-muted: #94a3b8;
       }
       body {
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -83,37 +85,39 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
       article p {
         font-size: 1.1rem;
         line-height: 1.85;
-        color: #334155;
+        color: #1e293b;
         margin-bottom: 1.6rem;
+        font-weight: 450;
       }
       html.dark article p {
-        color: #cbd5e1;
+        color: #e2e8f0;
+        font-weight: 400;
       }
       article h2, article h3, article h4 {
         font-weight: 800;
-        color: #0f172a;
+        color: #0a0f1d;
         letter-spacing: -0.025em;
         margin-top: 2.2rem;
         margin-bottom: 1rem;
         line-height: 1.3;
       }
       html.dark article h2, html.dark article h3, html.dark article h4 {
-        color: #f8fafc;
+        color: #ffffff;
       }
       article blockquote {
         border-left: 4px solid #e11d48;
         padding-left: 1.25rem;
         margin: 2rem 0;
-        color: #475569;
-        background: #f1f5f9;
+        color: #1e293b;
+        background: #edece5;
         padding-top: 0.8rem;
         padding-bottom: 0.8rem;
         border-radius: 0 0.75rem 0.75rem 0;
         font-style: italic;
       }
       html.dark article blockquote {
-        background: #252d3b;
-        color: #94a3b8;
+        background: #273142;
+        color: #cbd5e1;
       }
       article table {
         width: 100%;
@@ -130,61 +134,67 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
         text-align: left;
         font-size: 0.875rem;
       }
+      html.dark article th {
+        background-color: #273142;
+        border-bottom: 2px solid #3a475d;
+      }
       article td {
         padding: 0.75rem 1rem;
         border-bottom: 1px solid #e2e8f0;
         font-size: 0.925rem;
+        color: #1e293b;
       }
       html.dark article td {
-        border-bottom-color: #334155;
+        border-bottom-color: #3a475d;
+        color: #e2e8f0;
       }
     </style>
   </head>
   <body class="min-h-screen flex flex-col selection:bg-rose-500 selection:text-white">
     <!-- Top Telemetry Status Bar -->
-    <div class="border-b border-slate-200/80 dark:border-slate-800 bg-slate-900 text-slate-300 py-1.5 text-[11px] px-4 font-mono tracking-wide">
+    <div class="border-b border-slate-700/60 bg-[#141b27] text-slate-300 py-1.5 text-[11px] px-4 font-mono tracking-wide">
       <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
           <span class="font-bold text-white tracking-wider">LIVE • TECH, ENTERPRISE ERP &amp; RETAIL AI JOURNAL</span>
         </div>
-        <div class="hidden md:flex items-center gap-4 text-slate-400">
-          <a href="https://samkarsa.com" target="_blank" class="hover:text-rose-400 transition-colors">Samkarsa ERPNext</a>
-          <span>•</span>
-          <a href="https://www.hostinger.co.id/vps-hosting?utm_source=bijaktechnology" target="_blank" class="hover:text-indigo-400 transition-colors">Hostinger VPS</a>
-          <span>•</span>
-          <a href="https://maps.google.com/?q=Toko+Sembako+Kusuma+Karanggeneng+Boyolali" target="_blank" class="hover:text-emerald-400 transition-colors">Toko Sembako Kusuma (Boyolali)</a>
+        <div class="hidden md:flex items-center gap-4 text-slate-300">
+          <a href="https://samkarsa.com" target="_blank" class="hover:text-rose-400 transition-colors font-medium">Samkarsa ERPNext</a>
+          <span class="text-slate-600">•</span>
+          <a href="https://www.hostinger.co.id/vps-hosting?utm_source=bijaktechnology" target="_blank" class="hover:text-indigo-400 transition-colors font-medium">Hostinger VPS</a>
+          <span class="text-slate-600">•</span>
+          <a href="https://maps.google.com/?q=Toko+Sembako+Kusuma+Karanggeneng+Boyolali" target="_blank" class="hover:text-emerald-400 transition-colors font-medium">Toko Sembako Kusuma (Boyolali)</a>
         </div>
       </div>
     </div>
 
     <!-- Header Portal Berita Modern -->
-    <header class="border-b border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-40 transition-colors">
-      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <header class="border-b border-slate-300/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md sticky top-0 z-40 transition-colors shadow-2xs">
+      <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-4">
         <!-- Brand Wordmark -->
         <div class="flex items-center gap-3">
           <a href={isEn ? "/en" : "/"} class="group flex items-baseline gap-1.5">
-            <span class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+            <span class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
               BIJAK TECHNOLOGY
             </span>
             <span class="w-2 h-2 rounded-full bg-rose-600 inline-block"></span>
           </a>
-          <span class="hidden lg:inline-block text-xs text-slate-400 dark:text-slate-500 font-medium pl-3 border-l border-slate-200 dark:border-slate-800">
+          <span class="hidden lg:inline-block text-xs text-slate-600 dark:text-slate-400 font-semibold pl-3 border-l border-slate-300 dark:border-slate-700">
             {isEn ? "Independent Tech & Business Journal" : "Jurnal Teknologi & Bisnis Independen"}
           </span>
         </div>
 
         <!-- Controls: Language & Theme -->
         <div class="flex items-center gap-3">
-          <span class="text-xs font-mono text-slate-400 hidden sm:inline-block">{today}</span>
+          <span class="text-xs font-mono text-slate-600 dark:text-slate-400 hidden sm:inline-block font-semibold">{today}</span>
           <LanguageSwitcher currentLang={lang} />
           <ThemeToggle />
         </div>
       </div>
 
       <!-- Modern Rubric Navigation -->
-      <nav class="border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/50 px-4 py-2.5 overflow-x-auto">
-        <ul class="max-w-6xl mx-auto flex items-center justify-start md:justify-center gap-1 sm:gap-2 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 whitespace-nowrap">
+      <nav class="border-t border-slate-200/80 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-900/60 px-4 py-2 overflow-x-auto">
+        <ul class="max-w-6xl mx-auto flex items-center justify-start md:justify-center gap-1 sm:gap-2 text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 whitespace-nowrap">
           <li>
             <a href={isEn ? "/en" : "/"} class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
               {isEn ? "Home" : "Beranda"}
@@ -230,24 +240,24 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
     </main>
 
     <!-- Footer Majalah Modern -->
-    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-12 mt-16 text-slate-600 dark:text-slate-400 transition-colors">
+    <footer class="border-t border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 py-12 mt-16 text-slate-700 dark:text-slate-300 transition-colors">
       <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-100 dark:border-slate-800">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-200 dark:border-slate-800">
           <!-- Col 1: Brand & Misi -->
           <div class="space-y-3">
             <div class="flex items-baseline gap-1.5">
-              <span class="text-xl font-extrabold text-slate-900 dark:text-white tracking-tight">BIJAK TECHNOLOGY</span>
+              <span class="text-xl font-extrabold text-slate-950 dark:text-white tracking-tight">BIJAK TECHNOLOGY</span>
               <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
             </div>
-            <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+            <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
               Media independen yang mengupas arsitektur sistem, kecerdasan buatan, digitalisasi UMKM ritel, dan infrastruktur cloud enterprise dengan pendekatan berbasis bukti nyata.
             </p>
           </div>
 
           <!-- Col 2: Rubrik Berita -->
           <div class="space-y-2">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Rubrik Redaksi</h4>
-            <ul class="text-xs space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Rubrik Redaksi</h4>
+            <ul class="text-xs space-y-2 font-medium">
               <li><a href="/blog?category=AI" class="hover:text-rose-600 transition-colors">Kecerdasan Buatan &amp; Cloud</a></li>
               <li><a href="/blog?category=Ritel" class="hover:text-rose-600 transition-colors">Digitalisasi Ritel &amp; Toko Sembako</a></li>
               <li><a href="/blog?category=Enterprise" class="hover:text-rose-600 transition-colors">ERPNext Enterprise vs Odoo</a></li>
@@ -257,8 +267,8 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
 
           <!-- Col 3: Ekosistem & Mitra -->
           <div class="space-y-2">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Ekosistem &amp; Mitra</h4>
-            <ul class="text-xs space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Ekosistem &amp; Mitra</h4>
+            <ul class="text-xs space-y-2 font-medium">
               <li><a href="https://samkarsa.com" target="_blank" class="hover:text-rose-600 transition-colors">Samkarsa ERPNext Implementor</a></li>
               <li><a href="https://maps.google.com/?q=Toko+Sembako+Kusuma+Karanggeneng+Boyolali" target="_blank" class="hover:text-rose-600 transition-colors">Toko Sembako Kusuma Boyolali</a></li>
               <li><a href="https://www.hostinger.co.id/vps-hosting?utm_source=bijaktechnology" target="_blank" class="hover:text-rose-600 transition-colors">Hostinger Official Partner</a></li>
@@ -268,8 +278,8 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
 
           <!-- Col 4: Informasi & Legalitas -->
           <div class="space-y-2">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Informasi &amp; Privasi</h4>
-            <ul class="text-xs space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Informasi &amp; Privasi</h4>
+            <ul class="text-xs space-y-2 font-medium">
               <li><a href="/about" class="hover:text-rose-600 transition-colors">Tentang Redaksi</a></li>
               <li><a href="/contact" class="hover:text-rose-600 transition-colors">Kirim Pesan &amp; Kerjasama</a></li>
               <li><a href="/privacy-policy" class="hover:text-rose-600 transition-colors">Kebijakan Privasi &amp; AdSense</a></li>
@@ -278,7 +288,7 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
           </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row justify-between items-center pt-6 text-[11px] text-slate-400 dark:text-slate-500 font-mono gap-3">
+        <div class="flex flex-col sm:flex-row justify-between items-center pt-6 text-[11px] text-slate-600 dark:text-slate-400 font-mono gap-3 font-medium">
           <span>&copy; {new Date().getFullYear()} Bijak Technology. Seluruh hak cipta dilindungi.</span>
           <span class="flex items-center gap-1">
             <span>Official Publisher AdSense ca-pub-7398988805905629</span>

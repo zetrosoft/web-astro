@@ -11,10 +11,15 @@ export default {
         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       colors: {
-        paper: '#FAF9F5',
-        'paper-alt': '#F3F1EC',
-        'paper-line': '#E5E2D9',
-        slate: { 850: '#252D3B', 900: '#1E2430' },
+        paper: '#F5F4EF',
+        'paper-alt': '#ECEAE3',
+        'paper-line': '#D8D5C8',
+        slate: {
+          800: '#3A475D', // Border & surface hover di dark mode
+          850: '#2F3B4F', // Elevated dark card
+          900: '#273142', // Card surface dark mode (dibuat lebih cerah, tidak pitch black)
+          950: '#1E2433', // Background dasar dark mode (lembut dan sejuk)
+        },
       },
     },
   },
