@@ -4,6 +4,9 @@ import { getCollection } from 'astro:content';
 export const GET: APIRoute = async ({ site }) => {
   const base = (site?.toString() ?? 'https://bijaktechnology.com').replace(/\/$/, '');
   const posts = await getCollection('blog');
+  const postsEn = await getCollection('blog_en');
+  const enMap = new Map(postsEn.map(p => [p.id, p]));
+  const allIds = new Set([...posts.map(p => p.id), ...postsEn.map(p => p.id)]);
 
   const pages = [
     { path: '', priority: '1.0', changefreq: 'daily' },
@@ -19,12 +22,16 @@ export const GET: APIRoute = async ({ site }) => {
   const staticUrls = pages.map((p) =>
     `  <url><loc>${base}${p.path}</loc><changefreq>${p.changefreq}</changefreq><priority>${p.priority}</priority></url>`);
 
-  const postUrls = posts
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .flatMap((p) => [
-      `  <url><loc>${base}/blog/${p.id}</loc><lastmod>${p.data.pubDate.toISOString()}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
-      `  <url><loc>${base}/en/blog/${p.id}</loc><lastmod>${p.data.pubDate.toISOString()}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`
-    ]);
+  const postUrls = Array.from(allIds)
+    .filter(id => id !== 'agentic-ai-adaptation-cheap-lightweight-efficient-systems')
+    .map(id => {
+      const p = posts.find(post => post.id === id) || enMap.get(id)!;
+      return [
+        `  <url><loc>${base}/blog/${id}</loc><lastmod>${p.data.pubDate.toISOString()}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
+        `  <url><loc>${base}/en/blog/${id}</loc><lastmod>${p.data.pubDate.toISOString()}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`
+      ];
+    })
+    .flat();
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

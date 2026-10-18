@@ -8,10 +8,21 @@ import SamkarsaIndustryRef from '../../components/SamkarsaIndustryRef.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map(post => ({
-    params: { id: post.id },
-    props: { post },
-  }));
+  const paths = [];
+  for (const post of posts) {
+    paths.push({
+      params: { id: post.id },
+      props: { post },
+    });
+    // Backward-compatibility untuk tautan lama v15
+    if (post.id === 'arsitektur-erpnext-v16-distribusi-manufaktur-vps-kvm') {
+      paths.push({
+        params: { id: 'arsitektur-erpnext-v15-distribusi-manufaktur-vps-kvm' },
+        props: { post },
+      });
+    }
+  }
+  return paths;
 }
 
 const { post } = Astro.props;
@@ -84,25 +95,25 @@ const recentPosts = allPosts
 
         <!-- Isi Artikel Utama MDX -->
         <article class="prose max-w-none prose-slate dark:prose-invert">
-          <Content />
+          <Content components={{ AdSenseUnit, KusumaMapSpotlight, SamkarsaIndustryRef, HostingerBox }} />
         </article>
 
-        <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Fluid Unit -->
-        <AdSenseUnit format="fluid" className="my-10" />
+        <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Unit -->
+        <AdSenseUnit format="auto" className="my-8" />
 
         <!-- Smart Contextual Hostinger Partner Box -->
         <HostingerBox category={post.data.category} variant="in-article" />
 
-        {/* Ekosistem Spotlight Khusus Berdasarkan Kategori */}
-        {(post.data.category?.toLowerCase().includes('ritel') || post.data.category?.toLowerCase().includes('sembako') || post.data.category?.toLowerCase().includes('umkm')) && (
+        {/* Ekosistem Spotlight Khusus Berdasarkan Kategori & Topik */}
+        {(post.data.category?.toLowerCase().includes('ritel') || post.data.category?.toLowerCase().includes('sembako') || post.data.category?.toLowerCase().includes('umkm') || post.data.tags?.some(t => ['ritel', 'sembako', 'boyolali', 'distribusi', 'kusuma'].includes(t.toLowerCase()))) && (
           <KusumaMapSpotlight />
         )}
         {(post.data.category?.toLowerCase().includes('erp') || post.data.category?.toLowerCase().includes('enterprise') || post.data.category?.toLowerCase().includes('manufaktur') || post.data.category?.toLowerCase().includes('distribusi')) && (
           <SamkarsaIndustryRef />
         )}
 
-        <!-- 3. AdSense Slot 3: Bottom In-Article / Pre-Tags Matched Unit -->
-        <AdSenseUnit className="mt-8 mb-4" />
+        <!-- 3. AdSense Slot 3: Bottom In-Article / Pre-Tags Unit -->
+        <AdSenseUnit format="auto" className="mt-8 mb-4" />
 
         <!-- Tags & Topic Exploration -->
         {post.data.tags && post.data.tags.length > 0 && (

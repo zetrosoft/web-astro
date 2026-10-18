@@ -4,7 +4,16 @@ import { getCollection } from 'astro:content';
 import AdSenseUnit from '../../components/AdSenseUnit.astro';
 import HostingerBox from '../../components/HostingerBox.astro';
 
-const posts = await getCollection('blog');
+const postsEn = await getCollection('blog_en');
+const postsId = await getCollection('blog');
+const enMap = new Map(postsEn.map(p => [p.id, p]));
+const allIds = new Set([...postsEn.map(p => p.id), ...postsId.map(p => p.id)]);
+
+const posts = Array.from(allIds)
+  .filter(id => id !== 'agentic-ai-adaptation-cheap-lightweight-efficient-systems')
+  .map(id => enMap.get(id) || postsId.find(p => p.id === id))
+  .filter(Boolean) as typeof postsEn;
+
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const headlinePost = sortedPosts[0];
 const subFeaturedPosts = sortedPosts.slice(1, 4);
@@ -65,7 +74,7 @@ const categories = [...new Set(posts.map(post => post.data.category))];
       <h3 class="text-xl font-extrabold text-slate-950 dark:text-white uppercase tracking-tight">
         Latest In-Depth Tech &amp; Business Reports
       </h3>
-      <a href="/blog" class="text-xs font-bold text-rose-600 hover:underline">View All Stories &rarr;</a>
+      <a href="/en/blog" class="text-xs font-bold text-rose-600 hover:underline">View All Stories &rarr;</a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -92,6 +101,6 @@ const categories = [...new Set(posts.map(post => post.data.category))];
 
   <!-- Bottom Hostinger Showcase -->
   <div class="mt-12">
-    <HostingerBox variant="in-article" />
+    <HostingerBox variant="in-article" lang="en" />
   </div>
 </Layout>

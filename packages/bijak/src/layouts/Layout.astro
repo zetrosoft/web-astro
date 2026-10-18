@@ -82,27 +82,96 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
         -moz-osx-font-smoothing: grayscale;
       }
       /* Clean Modern Typographic Rhythm for Articles */
+      article {
+        font-size: 1.0625rem;
+        line-height: 1.85;
+      }
       article p {
-        font-size: 1.1rem;
+        font-size: 1.0625rem;
         line-height: 1.85;
         color: #1e293b;
-        margin-bottom: 1.6rem;
-        font-weight: 450;
+        margin-top: 0;
+        margin-bottom: 1.75rem;
+        font-weight: 400;
+        letter-spacing: -0.01em;
       }
       html.dark article p {
-        color: #e2e8f0;
-        font-weight: 400;
+        color: #cbd5e1;
       }
-      article h2, article h3, article h4 {
+      /* Link Tautan Nyata (Warna Biru Bergaris Bawah) */
+      article a {
+        color: #1d4ed8 !important;
+        text-decoration: underline !important;
+        text-underline-offset: 4px !important;
+        text-decoration-thickness: 1.5px !important;
+        font-weight: 600 !important;
+        transition: color 0.15s ease, text-decoration-color 0.15s ease;
+      }
+      article a:hover {
+        color: #1e40af !important;
+        text-decoration-color: #1e40af !important;
+      }
+      html.dark article a {
+        color: #60a5fa !important;
+      }
+      html.dark article a:hover {
+        color: #93c5fd !important;
+        text-decoration-color: #93c5fd !important;
+      }
+      article h2 {
+        font-size: 1.75rem;
         font-weight: 800;
         color: #0a0f1d;
         letter-spacing: -0.025em;
-        margin-top: 2.2rem;
-        margin-bottom: 1rem;
+        margin-top: 2.75rem;
+        margin-bottom: 1.15rem;
         line-height: 1.3;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e2e8f0;
       }
-      html.dark article h2, html.dark article h3, html.dark article h4 {
+      html.dark article h2 {
         color: #ffffff;
+        border-bottom-color: #334155;
+      }
+      article h3 {
+        font-size: 1.35rem;
+        font-weight: 750;
+        color: #0a0f1d;
+        letter-spacing: -0.02em;
+        margin-top: 2.25rem;
+        margin-bottom: 0.85rem;
+        line-height: 1.35;
+      }
+      html.dark article h3 {
+        color: #ffffff;
+      }
+      /* Rapi & Jelas: List Item Unordered & Ordered */
+      article ul, article ol {
+        margin: 1.25rem 0 1.85rem 0;
+        padding-left: 1.5rem;
+      }
+      article ul {
+        list-style-type: disc;
+      }
+      article ol {
+        list-style-type: decimal;
+      }
+      article li {
+        font-size: 1.05rem;
+        line-height: 1.75;
+        margin-bottom: 0.65rem;
+        color: #334155;
+        padding-left: 0.35rem;
+      }
+      html.dark article li {
+        color: #cbd5e1;
+      }
+      article li::marker {
+        color: #2563eb;
+        font-weight: bold;
+      }
+      html.dark article li::marker {
+        color: #60a5fa;
       }
       article blockquote {
         border-left: 4px solid #e11d48;
@@ -130,19 +199,22 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
       article th {
         background-color: #0f172a;
         color: #ffffff;
-        padding: 0.75rem 1rem;
+        padding: 0.85rem 1.15rem;
         text-align: left;
         font-size: 0.875rem;
+        font-weight: 700;
+        letter-spacing: 0.025em;
       }
       html.dark article th {
         background-color: #273142;
         border-bottom: 2px solid #3a475d;
       }
       article td {
-        padding: 0.75rem 1rem;
+        padding: 0.85rem 1.15rem;
         border-bottom: 1px solid #e2e8f0;
-        font-size: 0.925rem;
+        font-size: 0.95rem;
         color: #1e293b;
+        line-height: 1.6;
       }
       html.dark article td {
         border-bottom-color: #3a475d;

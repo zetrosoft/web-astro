@@ -4,32 +4,27 @@ interface Props {
   format?: 'auto' | 'fluid' | 'rectangle';
   layoutKey?: string;
   className?: string;
-  minHeight?: string;
 }
 
 const {
   slot,
   format = 'auto',
   layoutKey,
-  className = '',
-  minHeight = 'min-h-[120px]'
+  className = ''
 } = Astro.props;
 
 const client = 'ca-pub-7398988805905629';
 ---
 
-<div class={`adsense-wrapper my-8 p-3 sm:p-4 bg-slate-50/70 dark:bg-slate-800/40 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 text-center not-prose overflow-hidden ${minHeight} flex flex-col items-center justify-center ${className}`}>
-  <div class="flex items-center justify-center gap-1.5 mb-2">
-    <span class="w-1.5 h-1.5 rounded-full bg-rose-500/70 animate-pulse"></span>
-    <span class="text-[9px] uppercase font-bold tracking-widest text-slate-400 dark:text-slate-500 font-mono">
-      Sponsored Telemetry / Google AdSense
-    </span>
+<div class={`adsense-clean-slot my-6 w-full text-center not-prose overflow-hidden flex flex-col items-center justify-center ${className}`}>
+  <div class="text-[10px] tracking-widest uppercase font-semibold text-slate-400 dark:text-slate-500 mb-1 opacity-70">
+    Iklan
   </div>
 
   {slot ? (
     <ins
       class="adsbygoogle"
-      style="display:block"
+      style="display:block; min-height: 90px;"
       data-ad-client={client}
       data-ad-slot={slot}
       data-ad-format={format}
@@ -39,14 +34,16 @@ const client = 'ca-pub-7398988805905629';
   ) : (
     <ins
       class="adsbygoogle"
-      style="display:block"
+      style="display:block; min-height: 90px;"
       data-ad-client={client}
-      data-ad-format={format}
+      data-ad-format="auto"
       data-full-width-responsive="true"
     ></ins>
   )}
 
   <script is:inline>
-    (adsbygoogle = window.adsbygoogle || []).push({});
+    try {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {}
   </script>
 </div>

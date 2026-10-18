@@ -8,7 +8,8 @@ import SamkarsaIndustryRef from '../components/SamkarsaIndustryRef.astro';
 
 // Dapatkan artikel blog dan urutkan berdasarkan tanggal rilis terbaru
 const posts = await getCollection('blog');
-const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const filteredPosts = posts.filter(post => post.id !== 'agentic-ai-adaptation-cheap-lightweight-efficient-systems');
+const sortedPosts = filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 // Ambil 1 artikel teratas sebagai Headline
 const headlinePost = sortedPosts[0];
@@ -20,7 +21,7 @@ const subFeaturedPosts = sortedPosts.slice(1, 4);
 const remainingPosts = sortedPosts.slice(4);
 
 // Kategori unik beserta jumlah artikelnya
-const categories = [...new Set(posts.map(post => post.data.category))];
+const categories = [...new Set(filteredPosts.map(post => post.data.category))];
 
 // Fetch repositori nyata dari GitHub API
 let orgRepos = [];
