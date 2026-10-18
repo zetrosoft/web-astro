@@ -1,0 +1,62 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<div class={`my-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white border border-rose-500/30 shadow-xl not-prose relative overflow-hidden ${className}`}>
+  <div class="relative z-10">
+    <!-- Header Badge -->
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-rose-500/20 text-rose-300 border border-rose-400/30">
+        <svg class="w-3.5 h-3.5 text-rose-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+        Rujukan Industri • Samkarsa ERPNext
+      </span>
+      <span class="text-xs font-mono text-slate-400">
+        Enterprise B2B Implementation Partner
+      </span>
+    </div>
+
+    <h3 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-3">
+      Samkarsa: Konsultan &amp; Implementor Resmi ERPNext Indonesia
+    </h3>
+
+    <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+      Mengapa ratusan perusahaan distribusi, farmasi, dan manufaktur beralih dari Odoo ke ERPNext? Bebas biaya lisensi per-user selamanya, kode sumber 100% terbuka, dan didukung tim ahli implementasi <strong>Samkarsa</strong> dengan jaminan go-live tepat waktu.
+    </p>
+
+    <!-- Key Metrics Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+      <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center">
+        <div class="text-2xl font-extrabold text-rose-400 font-mono">0 Rupiah</div>
+        <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-1">Biaya Lisensi Per-User</div>
+      </div>
+      <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center">
+        <div class="text-2xl font-extrabold text-emerald-400 font-mono">80%</div>
+        <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-1">Penghematan TCO 5 Tahun</div>
+      </div>
+      <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center">
+        <div class="text-2xl font-extrabold text-indigo-400 font-mono">100%</div>
+        <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-1">Kedaulatan Data Mandiri</div>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="flex flex-col sm:flex-row items-center gap-4">
+      <a
+        href="https://samkarsa.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-rose-500/25 transition-all"
+      >
+        <span>Jadwalkan Konsultasi ERPNext di Samkarsa.com</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </a>
+      <span class="text-xs text-slate-400">
+        Konsultasi Awal &amp; Analisis TCO Gratis
+      </span>
+    </div>
+  </div>
+</div>

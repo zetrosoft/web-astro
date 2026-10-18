@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import AdSenseUnit from '../components/AdSenseUnit.astro';
 import HostingerBox from '../components/HostingerBox.astro';
+import KusumaMapSpotlight from '../components/KusumaMapSpotlight.astro';
+import SamkarsaIndustryRef from '../components/SamkarsaIndustryRef.astro';
 
 // Dapatkan artikel blog dan urutkan berdasarkan tanggal rilis terbaru
 const posts = await getCollection('blog');
@@ -70,186 +72,181 @@ const fallbackRepos = [
 ];
 
 const reposToShow = orgRepos.length > 0 ? orgRepos : fallbackRepos;
-const featuredProjects = reposToShow.slice(0, 3);
 ---
 
-<Layout title="Redaksi Utama - Portal Informasi Teknologi">
-  <!-- Grid layout utama koran -->
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    
-    <!-- Bagian Utama (Kolom Kiri & Tengah) - Lebar 2 Kolom di Desktop -->
-    <div class="lg:col-span-2 space-y-8">
+<Layout title="Jurnal Teknologi, Enterprise ERP & Bisnis Ritel Independen">
+  <!-- Section 1: Hero Bento Grid (Lead Story + Sub-featured) -->
+  <section class="mb-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       
-      <!-- Headline Berita Utama -->
+      <!-- Left 8 Cols: Lead Headline Card -->
       {headlinePost && (
-        <article class="border-b border-neutral-300 pb-8">
-          <span class="inline-block bg-rose-600 text-white text-xs font-bold uppercase tracking-wider px-2 py-1 mb-3">
-            {headlinePost.data.category}
-          </span>
-          <h2 class="newspaper-title text-3xl md:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight hover:text-rose-600 transition-colors">
-            <a href={`/blog/${headlinePost.id}`}>{headlinePost.data.title}</a>
-          </h2>
-          <div class="flex items-center gap-3 text-xs font-serif text-neutral-500 my-3">
-            <span>Oleh <strong class="text-neutral-800">{headlinePost.data.author}</strong></span>
-            <span>&bull;</span>
-            <span>{headlinePost.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        <div class="lg:col-span-8 group">
+          <div class="relative overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 text-white p-8 sm:p-12 shadow-xl transition-all">
+            <div class="relative z-10 space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-rose-600 text-white shadow-sm">
+                  {headlinePost.data.category}
+                </span>
+                <span class="text-xs font-mono text-slate-400">
+                  Laporan Utama Redaksi
+                </span>
+              </div>
+
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.2] group-hover:text-rose-400 transition-colors">
+                <a href={`/blog/${headlinePost.id}`}>{headlinePost.data.title}</a>
+              </h1>
+
+              <p class="text-slate-300 text-base sm:text-lg leading-relaxed line-clamp-3">
+                {headlinePost.data.description}
+              </p>
+
+              <div class="flex items-center gap-4 text-xs font-mono text-slate-400 pt-4 border-t border-slate-800">
+                <span>Oleh <strong class="text-white">{headlinePost.data.author}</strong></span>
+                <span>•</span>
+                <span>{headlinePost.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                <span>•</span>
+                <span class="text-rose-400 font-bold">Baca Selengkapnya &rarr;</span>
+              </div>
+            </div>
           </div>
-          <p class="text-neutral-700 leading-relaxed text-base md:text-lg mb-4">
-            {headlinePost.data.description}
-          </p>
-          <a href={`/blog/${headlinePost.id}`} class="inline-flex items-center text-sm font-bold text-rose-600 hover:text-neutral-900 uppercase tracking-wider">
-            Baca Berita Selengkapnya &rarr;
-          </a>
-        </article>
+        </div>
       )}
 
-      <!-- Sub-Featured Grid (3 Artikel Pendukung) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 border-b border-neutral-300 pb-8">
-        {subFeaturedPosts.map((post) => (
-          <article class="space-y-2">
-            <span class="text-xs font-bold text-rose-600 uppercase tracking-widest block">
+      <!-- Right 4 Cols: Sub-featured Stories -->
+      <div class="lg:col-span-4 space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+            Sorotan Populer
+          </span>
+          <a href="/blog" class="text-xs font-bold text-rose-600 hover:underline">Semua &rarr;</a>
+        </div>
+
+        {subFeaturedPosts.map(post => (
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-rose-400 transition-all group">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-rose-600 bg-rose-50 dark:bg-rose-950/40 px-2.5 py-1 rounded-md">
               {post.data.category}
             </span>
-            <h3 class="newspaper-title text-xl font-bold text-neutral-900 leading-snug hover:text-rose-600 transition-colors">
+            <h3 class="font-bold text-sm sm:text-base text-slate-900 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mt-2 mb-1.5 leading-snug">
               <a href={`/blog/${post.id}`}>{post.data.title}</a>
             </h3>
-            <p class="text-xs text-neutral-600 line-clamp-3">
+            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
               {post.data.description}
             </p>
-            <div class="text-[10px] font-serif text-neutral-400">
-              {post.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Homepage Native In-Feed AdSense Banner -->
+  <AdSenseUnit className="my-10" />
+
+  <!-- Section 2: Two-Column Main Content & Editorial Sidebar -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+    
+    <!-- Left 8 Cols: Remaining Stories Grid -->
+    <div class="lg:col-span-8 space-y-8">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+        <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          Laporan Analisis &amp; Wawasan Terkini
+        </h2>
+        <span class="text-xs font-mono text-slate-400">{posts.length} Artikel Terbit</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {remainingPosts.map(post => (
+          <article class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow group">
+            <div class="space-y-3">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-rose-600 bg-rose-50 dark:bg-rose-950/40 px-2 py-0.5 rounded-md">
+                {post.data.category}
+              </span>
+              <h3 class="font-bold text-base text-slate-900 dark:text-white leading-snug group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                <a href={`/blog/${post.id}`}>{post.data.title}</a>
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed">
+                {post.data.description}
+              </p>
+            </div>
+            <div class="text-[11px] text-slate-400 pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 font-mono flex justify-between items-center">
+              <span>{post.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+              <span class="text-rose-600 font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
             </div>
           </article>
         ))}
       </div>
-      
-      <!-- Native In-Feed Homepage AdSense Unit -->
-      <AdSenseUnit className="my-8" />
 
-      <!-- Sisa Artikel Berita Lainnya -->
-      <div class="space-y-6">
-        <h3 class="newspaper-title text-2xl font-bold uppercase border-b-2 border-neutral-900 pb-2">
-          Kabar Terkini Lainnya
-        </h3>
-        <div class="divide-y divide-neutral-200">
-          {remainingPosts.map((post) => (
-            <article class="py-4 first:pt-0 flex flex-col sm:flex-row justify-between items-start gap-4">
-              <div class="space-y-1">
-                <span class="text-xs font-semibold text-neutral-500 uppercase">
-                  {post.data.category}
-                </span>
-                <h4 class="newspaper-title text-lg font-bold text-neutral-900 hover:text-rose-600 transition-colors">
-                  <a href={`/blog/${post.id}`}>{post.data.title}</a>
-                </h4>
-                <p class="text-sm text-neutral-600">
-                  {post.data.description}
-                </p>
-              </div>
-              <div class="text-xs font-serif text-neutral-400 whitespace-nowrap pt-1">
-                {post.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}
-              </div>
-            </article>
-          ))}
-        </div>
+      <!-- Ekosistem Spotlight: Toko Sembako Kusuma (Boyolali) & Samkarsa ERPNext -->
+      <div class="space-y-6 pt-4">
+        <KusumaMapSpotlight />
+        <SamkarsaIndustryRef />
       </div>
-
     </div>
 
-    <!-- Sidebar Kanan (Lebar 1 Kolom) -->
-    <div class="space-y-8 lg:border-l lg:border-neutral-300 lg:pl-8">
+    <!-- Right 4 Cols: Sticky Sidebar Hub -->
+    <aside class="lg:col-span-4 space-y-6 sticky top-24">
       
-      <!-- Box Slogan Redaksi -->
-      <div class="bg-neutral-900 text-neutral-100 p-6 border-4 border-double border-neutral-800">
-        <h4 class="newspaper-title text-xl font-bold uppercase tracking-wider mb-2 text-rose-500">
-          Visi Redaksi
+      <!-- Category Filter Pills Card -->
+      <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+        <h4 class="text-sm font-extrabold text-slate-900 dark:text-white uppercase tracking-wider mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
+          Rubrik &amp; Kategori Liputan
         </h4>
-        <p class="text-xs font-serif italic leading-relaxed text-neutral-300">
-          "Menyajikan informasi, analisis, dan solusi praktis teknologi untuk mempercepat digitalisasi ekosistem bisnis dan komunitas Indonesia secara bijak."
-        </p>
-      </div>
-
-      <!-- Widget Topik/Kategori -->
-      <div class="border border-neutral-300 p-5 bg-white">
-        <h4 class="newspaper-title text-lg font-bold uppercase border-b-2 border-neutral-900 pb-2 mb-4">
-          Kategori Liputan
-        </h4>
-        <ul class="divide-y divide-neutral-200 text-sm">
-          {categories.map((category) => {
+        <div class="flex flex-wrap gap-2">
+          {categories.map(category => {
             const count = posts.filter(post => post.data.category === category).length;
             return (
-              <li class="py-2 flex justify-between items-center">
-                <a href={`/blog?category=${category}`} class="font-semibold text-neutral-800 hover:text-rose-600 capitalize">
-                  {category}
-                </a>
-                <span class="bg-neutral-100 text-neutral-600 text-xs px-2 py-0.5 rounded-full border border-neutral-200">
-                  {count}
-                </span>
-              </li>
+              <a
+                href={`/blog?category=${category}`}
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/60 hover:bg-rose-500 hover:text-white transition-all"
+              >
+                <span>{category}</span>
+                <span class="text-[10px] opacity-70">({count})</span>
+              </a>
             );
           })}
-        </ul>
-      </div>
-
-      <!-- Widget Proyek Terbaru (Koran style mini-ads) -->
-      <div class="border-2 border-neutral-900 p-5 bg-[#faf9f5]">
-        <h4 class="newspaper-title text-lg font-bold uppercase border-b border-neutral-900 pb-2 mb-4 text-center">
-          Ikhtisar Portofolio
-        </h4>
-        <div class="space-y-4">
-          {featuredProjects.map((project) => (
-            <div class="border-b border-dashed border-neutral-300 pb-3 last:border-0 last:pb-0">
-              <span class="text-[10px] uppercase font-bold text-rose-600 tracking-wider">
-                {project.language || "Mix"}
-              </span>
-              <h5 class="font-bold text-sm text-neutral-900 hover:underline">
-                <a href={project.html_url} target="_blank" rel="noopener noreferrer">{project.name}</a>
-              </h5>
-              <p class="text-xs text-neutral-600 line-clamp-2 mt-1">
-                {project.description || "Tidak ada deskripsi proyek."}
-              </p>
-            </div>
-          ))}
-        </div>
-        <div class="mt-4 pt-3 border-t border-neutral-300 text-center">
-          <a href="/project" class="text-xs font-bold uppercase text-rose-600 hover:text-neutral-900 tracking-widest">
-            Lihat Semua Proyek &rarr;
-          </a>
         </div>
       </div>
 
       <!-- Hostinger Partner Sidebar Widget -->
       <HostingerBox variant="sidebar" />
 
-    </div>
-
+      <!-- Sticky Sidebar AdSense Unit -->
+      <AdSenseUnit format="rectangle" minHeight="min-h-[250px]" />
+    </aside>
   </div>
 
-  <!-- Section Portofolio Khusus Horizontal bawah dengan garis pembatas ganda -->
-  <section class="mt-16 pt-8 border-t-4 border-double border-neutral-900">
-    <div class="text-center mb-8">
-      <h3 class="newspaper-title text-3xl font-extrabold uppercase tracking-tight">
-        Kolom Solusi Industri
-      </h3>
-      <p class="text-sm italic font-serif text-neutral-600">
-        Inovasi perangkat lunak dan aplikasi nyata yang dikembangkan oleh tim redaksi
-      </p>
+  <!-- Section 3: Open-Source Engineering & Software Showcase -->
+  <section class="pt-8 border-t border-slate-200 dark:border-slate-800">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-8">
+      <div>
+        <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          Inovasi &amp; Portofolio Kode Terbuka
+        </h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          Aplikasi dan tools nyata yang dikembangkan oleh tim engineering Bijak Technology
+        </p>
+      </div>
+      <a href="/project" class="text-xs font-bold text-rose-600 hover:underline">
+        Lihat Seluruh Portofolio &rarr;
+      </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
       {reposToShow.slice(0, 4).map((project) => (
-        <div class="bg-white border border-neutral-300 p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
           <div class="space-y-3">
-            <span class="text-xs font-bold text-neutral-500 uppercase tracking-widest">
-              {project.language || "Mix"}
+            <span class="text-[10px] font-bold font-mono text-slate-400 uppercase tracking-widest">
+              {project.language || "TypeScript"}
             </span>
-            <h4 class="font-bold text-base text-neutral-900 leading-snug">
-              <a href={project.html_url} target="_blank" rel="noopener noreferrer" class="hover:underline">{project.name}</a>
+            <h4 class="font-bold text-base text-slate-900 dark:text-white leading-snug group-hover:text-rose-600 transition-colors">
+              <a href={project.html_url} target="_blank" rel="noopener noreferrer">{project.name}</a>
             </h4>
-            <p class="text-xs text-neutral-600 leading-relaxed line-clamp-4">
-              {project.description || "Tidak ada deskripsi proyek."}
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-3">
+              {project.description || "Infrastruktur kode mandiri."}
             </p>
           </div>
-          <div class="mt-4 pt-3 border-t border-neutral-100 flex justify-between items-center text-[10px] text-neutral-400 font-mono">
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-[11px] text-slate-400 font-mono">
             <span>⭐ {project.stargazers_count}</span>
             <span>🍴 {project.forks_count}</span>
           </div>

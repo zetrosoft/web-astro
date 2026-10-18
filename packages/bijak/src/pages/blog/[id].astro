@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 import AdSenseUnit from '../../components/AdSenseUnit.astro';
 import HostingerBox from '../../components/HostingerBox.astro';
+import KusumaMapSpotlight from '../../components/KusumaMapSpotlight.astro';
+import SamkarsaIndustryRef from '../../components/SamkarsaIndustryRef.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -87,6 +89,14 @@ const recentPosts = allPosts
 
         <!-- Smart Contextual Hostinger Partner Box -->
         <HostingerBox category={post.data.category} variant="in-article" />
+
+        {/* Ekosistem Spotlight Khusus Berdasarkan Kategori */}
+        {(post.data.category?.toLowerCase().includes('ritel') || post.data.category?.toLowerCase().includes('sembako') || post.data.category?.toLowerCase().includes('umkm')) && (
+          <KusumaMapSpotlight />
+        )}
+        {(post.data.category?.toLowerCase().includes('erp') || post.data.category?.toLowerCase().includes('enterprise') || post.data.category?.toLowerCase().includes('odoo')) && (
+          <SamkarsaIndustryRef />
+        )}
 
         <!-- Bottom In-Article AdSense Unit -->
         <AdSenseUnit className="mt-8 mb-4" />

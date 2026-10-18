@@ -8,10 +8,11 @@ interface Props {
   lang?: 'id' | 'en';
 }
 
-const { title, description = "Keep up to date with the latest in technology", lang = 'id' } = Astro.props;
+const { title, description = "Jurnal Teknologi, Enterprise ERP, AI Engineering, & Inovasi Ritel Independen", lang = 'id' } = Astro.props;
 
-// Tanggal hari ini dalam format lokal Indonesia untuk header koran
-const today = new Date().toLocaleDateString('id-ID', {
+const isEn = lang === 'en';
+
+const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
@@ -24,12 +25,12 @@ const today = new Date().toLocaleDateString('id-ID', {
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     
     <title>{title} | Bijak Technology</title>
     <meta name="description" content={description} />
-<!-- Rest of file head is preserved via targetContent -->
+    <link rel="canonical" href={`https://bijaktechnology.com${Astro.url.pathname}`} />
 
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-7398988805905629" />
@@ -39,12 +40,12 @@ const today = new Date().toLocaleDateString('id-ID', {
       crossorigin="anonymous"
     ></script>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Plus Jakarta Sans (UI) & JetBrains Mono (Code/Telemetry) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Detect Language & System Theme -->
+    <!-- Detect Theme -->
     <script is:inline>
       (function() {
         const storedTheme = localStorage.getItem('theme');
@@ -58,25 +59,29 @@ const today = new Date().toLocaleDateString('id-ID', {
     </script>
 
     <style is:global>
+      :root {
+        --bg-warm-paper: #faf9f5;
+        --bg-warm-card: #f4f2ec;
+        --text-headline: #0f172a;
+        --text-body: #334155;
+      }
+      html.dark {
+        --bg-warm-paper: #1e2430;
+        --bg-warm-card: #252d3b;
+        --text-headline: #f8fafc;
+        --text-body: #cbd5e1;
+      }
       body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        background-color: #faf9f6;
-        color: #1c1917;
-        transition: background-color 0.3s, color 0.3s;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: var(--bg-warm-paper);
+        color: var(--text-body);
+        transition: background-color 0.25s ease, color 0.25s ease;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
-      html.dark body {
-        background-color: #0f172a;
-        color: #f1f5f9;
-      }
-      .newspaper-title {
-        font-family: 'Playfair Display', serif;
-      }
-      /* Modern Typographic Line Height & Spacing for Article Content */
+      /* Clean Modern Typographic Rhythm for Articles */
       article p {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 1.1125rem;
+        font-size: 1.1rem;
         line-height: 1.85;
         color: #334155;
         margin-bottom: 1.6rem;
@@ -85,19 +90,17 @@ const today = new Date().toLocaleDateString('id-ID', {
         color: #cbd5e1;
       }
       article h2, article h3, article h4 {
-        font-family: 'Plus Jakarta Sans', sans-serif;
         font-weight: 800;
         color: #0f172a;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.025em;
         margin-top: 2.2rem;
         margin-bottom: 1rem;
+        line-height: 1.3;
       }
       html.dark article h2, html.dark article h3, html.dark article h4 {
         color: #f8fafc;
       }
       article blockquote {
-        font-family: 'Merriweather', serif;
-        font-style: italic;
         border-left: 4px solid #e11d48;
         padding-left: 1.25rem;
         margin: 2rem 0;
@@ -105,17 +108,18 @@ const today = new Date().toLocaleDateString('id-ID', {
         background: #f1f5f9;
         padding-top: 0.8rem;
         padding-bottom: 0.8rem;
-        border-radius: 0 0.5rem 0.5rem 0;
+        border-radius: 0 0.75rem 0.75rem 0;
+        font-style: italic;
       }
       html.dark article blockquote {
-        background: #1e293b;
+        background: #252d3b;
         color: #94a3b8;
       }
       article table {
         width: 100%;
         margin: 2rem 0;
         border-collapse: collapse;
-        border-radius: 0.5rem;
+        border-radius: 0.75rem;
         overflow: hidden;
         box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       }
@@ -124,62 +128,98 @@ const today = new Date().toLocaleDateString('id-ID', {
         color: #ffffff;
         padding: 0.75rem 1rem;
         text-align: left;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
       }
       article td {
         padding: 0.75rem 1rem;
         border-bottom: 1px solid #e2e8f0;
-        font-size: 0.95rem;
+        font-size: 0.925rem;
       }
       html.dark article td {
         border-bottom-color: #334155;
       }
     </style>
   </head>
-  <body class="min-h-screen flex flex-col selection:bg-rose-500 selection:text-white dark:bg-zinc-950 dark:text-zinc-150">
-    <!-- Top Bar metadata koran -->
-    <div class="border-b border-neutral-300 bg-neutral-900 text-neutral-100 py-1 text-xs px-4">
-      <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <span>EDISI EKSPEDISI DIGITAL</span>
-        <span class="font-medium">Purwakarta, Indonesia</span>
+  <body class="min-h-screen flex flex-col selection:bg-rose-500 selection:text-white">
+    <!-- Top Telemetry Status Bar -->
+    <div class="border-b border-slate-200/80 dark:border-slate-800 bg-slate-900 text-slate-300 py-1.5 text-[11px] px-4 font-mono tracking-wide">
+      <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+          <span class="font-bold text-white tracking-wider">LIVE • TECH, ENTERPRISE ERP &amp; RETAIL AI JOURNAL</span>
+        </div>
+        <div class="hidden md:flex items-center gap-4 text-slate-400">
+          <a href="https://samkarsa.com" target="_blank" class="hover:text-rose-400 transition-colors">Samkarsa ERPNext</a>
+          <span>•</span>
+          <a href="https://www.hostinger.co.id/vps-hosting?utm_source=bijaktechnology" target="_blank" class="hover:text-indigo-400 transition-colors">Hostinger VPS</a>
+          <span>•</span>
+          <a href="https://maps.google.com/?q=Toko+Sembako+Kusuma+Karanggeneng+Boyolali" target="_blank" class="hover:text-emerald-400 transition-colors">Toko Sembako Kusuma (Boyolali)</a>
+        </div>
       </div>
     </div>
 
-    <!-- Header Koran Utama -->
-    <header class="max-w-6xl mx-auto w-full px-4 pt-6 pb-2">
-      <div class="text-center py-4 border-b-2 border-neutral-900">
-        <h1 class="newspaper-title text-5xl md:text-7xl font-extrabold tracking-tight uppercase hover:text-rose-600 transition-colors">
-          <a href="/">Bijak Technology</a>
-        </h1>
-        <p class="mt-2 text-sm italic font-serif text-neutral-600">
-          "Because together, Everything is possible"
-        </p>
-      </div>
-
-      <!-- Detail Tanggal & Edisi ala Koran -->
-      <div class="flex flex-col sm:flex-row justify-between items-center py-2 text-xs border-b-4 border-double border-neutral-900 dark:border-neutral-700 font-serif text-neutral-800 dark:text-neutral-300 uppercase tracking-widest gap-2">
-        <div>Edisi Terkini</div>
-        <div class="font-bold text-sm text-rose-600">{today}</div>
+    <!-- Header Portal Berita Modern -->
+    <header class="border-b border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-40 transition-colors">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <!-- Brand Wordmark -->
         <div class="flex items-center gap-3">
+          <a href={isEn ? "/en" : "/"} class="group flex items-baseline gap-1.5">
+            <span class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+              BIJAK TECHNOLOGY
+            </span>
+            <span class="w-2 h-2 rounded-full bg-rose-600 inline-block"></span>
+          </a>
+          <span class="hidden lg:inline-block text-xs text-slate-400 dark:text-slate-500 font-medium pl-3 border-l border-slate-200 dark:border-slate-800">
+            {isEn ? "Independent Tech & Business Journal" : "Jurnal Teknologi & Bisnis Independen"}
+          </span>
+        </div>
+
+        <!-- Controls: Language & Theme -->
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono text-slate-400 hidden sm:inline-block">{today}</span>
           <LanguageSwitcher currentLang={lang} />
           <ThemeToggle />
         </div>
       </div>
 
-      <!-- Menu Navigasi Bergaya Koran -->
-      <nav class="py-3 border-b border-neutral-900 dark:border-neutral-700">
-        <ul class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm font-semibold uppercase tracking-wider text-neutral-800 dark:text-neutral-300">
-          <li><a href="/" class="hover:text-rose-600 transition-colors">Utama</a></li>
-          <li class="text-neutral-400 dark:text-neutral-600">|</li>
-          <li><a href="/blog" class="hover:text-rose-600 transition-colors">Arsip Blog</a></li>
-          <li class="text-neutral-400 dark:text-neutral-600">|</li>
-          <li><a href="/project" class="hover:text-rose-600 transition-colors">Proyek & Portofolio</a></li>
-          <li class="text-neutral-400 dark:text-neutral-600">|</li>
-          <li><a href="/about" class="hover:text-rose-600 transition-colors">Tentang Kami</a></li>
-          <li class="text-neutral-400 dark:text-neutral-600">|</li>
-          <li><a href="/zetrosoft" class="hover:text-rose-600 transition-colors">Zetrosoft</a></li>
-          <li class="text-neutral-400 dark:text-neutral-600">|</li>
-          <li><a href="/contact" class="hover:text-rose-600 transition-colors">Kontak</a></li>
+      <!-- Modern Rubric Navigation -->
+      <nav class="border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/50 px-4 py-2.5 overflow-x-auto">
+        <ul class="max-w-6xl mx-auto flex items-center justify-start md:justify-center gap-1 sm:gap-2 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 whitespace-nowrap">
+          <li>
+            <a href={isEn ? "/en" : "/"} class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              {isEn ? "Home" : "Beranda"}
+            </a>
+          </li>
+          <li>
+            <a href="/blog" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              {isEn ? "All Stories" : "Semua Berita"}
+            </a>
+          </li>
+          <li>
+            <a href="/blog?category=AI" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              AI &amp; Cloud
+            </a>
+          </li>
+          <li>
+            <a href="/blog?category=Ritel" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              {isEn ? "Retail & Small Business" : "Bisnis & UMKM"}
+            </a>
+          </li>
+          <li>
+            <a href="/blog?category=Enterprise" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              ERP Enterprise
+            </a>
+          </li>
+          <li>
+            <a href="/blog?category=Blockchain" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              Web3 &amp; Finansial
+            </a>
+          </li>
+          <li>
+            <a href="/project" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              {isEn ? "Portfolio" : "Portofolio"}
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -189,37 +229,60 @@ const today = new Date().toLocaleDateString('id-ID', {
       <slot />
     </main>
 
-    <!-- Footer Koran Klasik -->
-    <footer class="border-t-4 border-double border-neutral-900 dark:border-neutral-700 bg-[#f9f8f4] dark:bg-zinc-900 py-8 mt-12 text-neutral-800 dark:text-neutral-300 font-serif transition-colors duration-300">
+    <!-- Footer Majalah Modern -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-12 mt-16 text-slate-600 dark:text-slate-400 transition-colors">
       <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-neutral-300 dark:border-neutral-700">
-          <div>
-            <h3 class="font-bold text-lg uppercase mb-3 text-neutral-900 dark:text-neutral-100">Bijak Technology</h3>
-            <p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-              Media dan penyedia solusi teknologi digital terdepan di Indonesia. Menyajikan edukasi seputar Web3, kecerdasan buatan, pengembangan perangkat lunak, dan transformasi digital yang berdaya guna.
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-100 dark:border-slate-800">
+          <!-- Col 1: Brand & Misi -->
+          <div class="space-y-3">
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-xl font-extrabold text-slate-900 dark:text-white tracking-tight">BIJAK TECHNOLOGY</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+            </div>
+            <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Media independen yang mengupas arsitektur sistem, kecerdasan buatan, digitalisasi UMKM ritel, dan infrastruktur cloud enterprise dengan pendekatan berbasis bukti nyata.
             </p>
           </div>
-          <div>
-            <h3 class="font-bold text-lg uppercase mb-3 text-neutral-900 dark:text-neutral-100">Navigasi Redaksi</h3>
-            <ul class="text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
-              <li><a href="/blog" class="hover:underline">Daftar Semua Berita</a></li>
-              <li><a href="/project" class="hover:underline">Portofolio Kerja</a></li>
-              <li><a href="/about" class="hover:underline">Tentang Profil Kami</a></li>
-              <li><a href="/contact" class="hover:underline">Kirim Pesan Redaksi</a></li>
-              <li><a href="/privacy-policy" class="hover:underline">Kebijakan Privasi</a></li>
+
+          <!-- Col 2: Rubrik Berita -->
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Rubrik Redaksi</h4>
+            <ul class="text-xs space-y-2">
+              <li><a href="/blog?category=AI" class="hover:text-rose-600 transition-colors">Kecerdasan Buatan &amp; Cloud</a></li>
+              <li><a href="/blog?category=Ritel" class="hover:text-rose-600 transition-colors">Digitalisasi Ritel &amp; Toko Sembako</a></li>
+              <li><a href="/blog?category=Enterprise" class="hover:text-rose-600 transition-colors">ERPNext Enterprise vs Odoo</a></li>
+              <li><a href="/blog?category=Blockchain" class="hover:text-rose-600 transition-colors">Avalanche Blockchain &amp; RWA</a></li>
             </ul>
           </div>
-          <div>
-            <h3 class="font-bold text-lg uppercase mb-3 text-neutral-900 dark:text-neutral-100">Hubungi Kami</h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Mempunyai ide proyek luar biasa atau ingin berkolaborasi bersama kami?<br />
-              Kunjungi halaman <a href="/contact" class="text-rose-600 hover:underline">Kontak Kami</a> untuk informasi korespondensi.
-            </p>
+
+          <!-- Col 3: Ekosistem & Mitra -->
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Ekosistem &amp; Mitra</h4>
+            <ul class="text-xs space-y-2">
+              <li><a href="https://samkarsa.com" target="_blank" class="hover:text-rose-600 transition-colors">Samkarsa ERPNext Implementor</a></li>
+              <li><a href="https://maps.google.com/?q=Toko+Sembako+Kusuma+Karanggeneng+Boyolali" target="_blank" class="hover:text-rose-600 transition-colors">Toko Sembako Kusuma Boyolali</a></li>
+              <li><a href="https://www.hostinger.co.id/vps-hosting?utm_source=bijaktechnology" target="_blank" class="hover:text-rose-600 transition-colors">Hostinger Official Partner</a></li>
+              <li><a href="/project" class="hover:text-rose-600 transition-colors">Aplikasi Blonjo &amp; Sajen AI</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Informasi & Legalitas -->
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">Informasi &amp; Privasi</h4>
+            <ul class="text-xs space-y-2">
+              <li><a href="/about" class="hover:text-rose-600 transition-colors">Tentang Redaksi</a></li>
+              <li><a href="/contact" class="hover:text-rose-600 transition-colors">Kirim Pesan &amp; Kerjasama</a></li>
+              <li><a href="/privacy-policy" class="hover:text-rose-600 transition-colors">Kebijakan Privasi &amp; AdSense</a></li>
+              <li><a href="/sitemap.xml" target="_blank" class="hover:text-rose-600 transition-colors">Sitemap XML</a></li>
+            </ul>
           </div>
         </div>
-        <div class="flex flex-col sm:flex-row justify-between items-center pt-6 text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-widest gap-2">
+
+        <div class="flex flex-col sm:flex-row justify-between items-center pt-6 text-[11px] text-slate-400 dark:text-slate-500 font-mono gap-3">
           <span>&copy; {new Date().getFullYear()} Bijak Technology. Seluruh hak cipta dilindungi.</span>
-          <span>Desain Premium Koran Terinspirasi Daily</span>
+          <span class="flex items-center gap-1">
+            <span>Official Publisher AdSense ca-pub-7398988805905629</span>
+          </span>
         </div>
       </div>
     </footer>
