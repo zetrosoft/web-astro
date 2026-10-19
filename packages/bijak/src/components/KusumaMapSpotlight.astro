@@ -7,59 +7,116 @@ interface Props {
 const { className = '', lang = 'id' } = Astro.props;
 const isEn = lang === 'en';
 
-const mapsUrl = "https://maps.google.com/?q=Toko+Sembako+Kusuma+Jl.+Sandang+Lawe+No.22,+Dusun+1,+Karanggeneng,+Boyolali";
+const mapsUrl = "https://maps.google.com/?cid=4496468575381228578";
+const mapsDirectionUrl = "https://www.google.com/maps/dir/?api=1&destination=Toko+Kusuma+Jl.+Sandang+Lawe+No.22+Karanggeneng+Boyolali";
+const tokopediaUrl = "https://www.tokopedia.com/kusuma2-935";
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "GroceryStore",
+  "@id": "https://bijaktechnology.com/#tokokusuma",
+  "name": "Toko Sembako Kusuma",
+  "alternateName": ["Toko Kusuma", "Toko Kusuma Boyolali"],
+  "description": "Pusat grosir dan eceran sembako di Karanggeneng, Boyolali. Menyediakan beras C4, beras Rojolele, minyak goreng, gula pasir, tepung, telur, dan kebutuhan pokok dengan harga kulakan terbaik.",
+  "url": "https://bijaktechnology.com/",
+  "telephone": "+6281219987377",
+  "priceRange": "Rp",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. Sandang Lawe No.22, Dusun 1, Karanggeneng",
+    "addressLocality": "Boyolali",
+    "addressRegion": "Jawa Tengah",
+    "postalCode": "57312",
+    "addressCountry": "ID"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -7.5361,
+    "longitude": 110.5958
+  },
+  "hasMap": "https://maps.google.com/?cid=4496468575381228578",
+  "sameAs": [
+    "https://www.tokopedia.com/kusuma2-935",
+    "https://maps.app.goo.gl/bGB7vToeteyAgr7MA"
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "07:00",
+      "closes": "19:30"
+    }
+  ]
+});
 ---
 
-<div class={`my-8 p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm not-prose ${className}`}>
+<div class={`my-8 p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm not-prose ${className}`}>
   <!-- Header Bar -->
-  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3.5">
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
     <div>
-      <div class="flex items-center gap-2">
-        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-          {isEn ? 'Physical Location' : 'Lokasi Fisik'}
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold tracking-wider uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+          📍 {isEn ? 'Verified Physical Location' : 'Lokasi Fisik Terverifikasi'}
         </span>
-        <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-tight">
-          {isEn ? 'Toko Sembako Kusuma (Wholesale & Retail)' : 'Toko Sembako Kusuma (Grosir & Eceran)'}
-        </h3>
+        <span class="text-xs font-mono text-slate-400 dark:text-slate-500">Boyolali Hub</span>
       </div>
-      <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
-        Jl. Sandang Lawe No.22, Dusun 1, Karanggeneng, Kec. Boyolali, Kabupaten Boyolali, Jawa Tengah 57312
+      <h3 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white mt-1 leading-snug">
+        Toko Sembako Kusuma <span class="text-xs font-normal text-slate-500 dark:text-slate-400">(Toko Kusuma - Grosir & Eceran)</span>
+      </h3>
+      <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+        Jl. Sandang Lawe No.22, Dusun 1, Karanggeneng, Kec. Boyolali, Jawa Tengah 57312
       </p>
+      <div class="flex items-center gap-3 mt-1.5 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+        <span>⏰ 07:00 – 19:30 WIB</span>
+        <span>•</span>
+        <span>📞 Toko: <strong class="text-slate-700 dark:text-slate-300">0856-0023-9869</strong></span>
+      </div>
     </div>
 
-    <div class="flex items-center gap-2 shrink-0">
+    <!-- Action Buttons -->
+    <div class="flex items-center gap-2 flex-wrap shrink-0">
       <a
-        href={mapsUrl}
+        href={mapsDirectionUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-all"
+        class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-all hover:scale-105"
+        title="Buka petunjuk arah di Google Maps"
       >
-        <span>{isEn ? 'Open Google Maps' : 'Buka Google Maps'}</span>
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        <span>🚗 {isEn ? 'Get Directions' : 'Petunjuk Rute'}</span>
       </a>
       <a
-        href={isEn ? "https://wa.me/6281219987377?text=Hello%20Toko%20Sembako%20Kusuma,%20I%20would%20like%20to%20inquire%20about%20grocery%20wholesale%20prices" : "https://wa.me/6281219987377?text=Halo%20Toko%20Sembako%20Kusuma,%20saya%20ingin%20cek%20daftar%20harga%20sembako"}
+        href={isEn ? "https://wa.me/6281219987377?text=Hello%20Toko%20Sembako%20Kusuma,%20I%20would%20like%20to%20order%20groceries" : "https://wa.me/6281219987377?text=Halo%20Toko%20Sembako%20Kusuma,%20saya%20ingin%20pesan%20kulakan%20sembako"}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs transition-colors"
+        class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 font-bold text-xs transition-colors"
       >
-        <span>{isEn ? 'Order via WhatsApp' : 'Pesan via WhatsApp'}</span>
+        <span>💬 {isEn ? 'WhatsApp Order' : 'Pesan via WA'}</span>
+      </a>
+      <a
+        href={tokopediaUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-xs transition-colors"
+      >
+        <span>Tokopedia</span>
       </a>
     </div>
   </div>
 
-  <!-- Interactive Map Embed -->
-  <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 aspect-[16/9] sm:aspect-[21/8] max-h-64 w-full bg-slate-100 dark:bg-slate-800">
+  <!-- Interactive Map Embed (Boosts Place Prominence) -->
+  <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 aspect-[16/9] sm:aspect-[21/8] max-h-64 w-full bg-slate-100 dark:bg-slate-800 shadow-inner">
     <iframe
-      src="https://maps.google.com/maps?q=Toko+Sembako+Kusuma+Jl.+Sandang+Lawe+No.22,+Dusun+1,+Karanggeneng,+Boyolali&hl=id&z=17&output=embed"
+      src="https://maps.google.com/maps?cid=4496468575381228578&hl=id&z=17&output=embed"
       width="100%"
       height="100%"
       style="border:0;"
       allowfullscreen=""
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
-      title="Peta Lokasi Toko Sembako Kusuma Boyolali"
+      title="Peta Lokasi Resmi Toko Sembako Kusuma Karanggeneng Boyolali"
     ></iframe>
   </div>
-</div>
 
+  <!-- Schema.org JSON-LD Structured Data for LocalBusiness & AI Search -->
+  <script type="application/ld+json" set:html={schemaJson} />
+</div>

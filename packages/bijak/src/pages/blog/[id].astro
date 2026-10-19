@@ -7,6 +7,7 @@ import HostingerBox from '../../components/HostingerBox.astro';
 import KusumaMapSpotlight from '../../components/KusumaMapSpotlight.astro';
 import SamkarsaIndustryRef from '../../components/SamkarsaIndustryRef.astro';
 import SocialReadyBox from '../../components/SocialReadyBox.astro';
+import ArticleFaqSchema from '../../components/ArticleFaqSchema.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -111,7 +112,7 @@ const showSamkarsaBox = isSamkarsaTopic && (idHash % 2 === 0);
 
         <!-- Isi Artikel Utama MDX -->
         <article class="prose max-w-none prose-slate dark:prose-invert">
-          <Content components={{ AdSenseUnit: InArticleAd, KusumaMapSpotlight, SamkarsaIndustryRef, HostingerBox }} />
+          <Content components={{ AdSenseUnit: InArticleAd, KusumaMapSpotlight, SamkarsaIndustryRef, HostingerBox, ArticleFaqSchema }} />
         </article>
 
         <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Unit (In-Article Ad 6901499930) -->
