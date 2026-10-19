@@ -4,16 +4,19 @@ interface Props {
   format?: 'auto' | 'fluid' | 'rectangle';
   layoutKey?: string;
   className?: string;
+  minHeight?: string;
 }
 
 const {
-  slot,
+  slot = '6641645482',
   format = 'auto',
   layoutKey,
-  className = ''
+  className = '',
+  minHeight = '90px'
 } = Astro.props;
 
 const client = 'ca-pub-7398988805905629';
+const inlineMinHeight = minHeight.includes('min-h-[') ? minHeight.replace('min-h-[', '').replace(']', '') : minHeight;
 ---
 
 <div class={`adsense-clean-slot my-6 w-full text-center not-prose overflow-hidden flex flex-col items-center justify-center ${className}`}>
@@ -21,25 +24,15 @@ const client = 'ca-pub-7398988805905629';
     Iklan
   </div>
 
-  {slot ? (
-    <ins
-      class="adsbygoogle"
-      style="display:block; min-height: 90px;"
-      data-ad-client={client}
-      data-ad-slot={slot}
-      data-ad-format={format}
-      data-full-width-responsive="true"
-      {...(layoutKey ? { 'data-ad-layout-key': layoutKey } : {})}
-    ></ins>
-  ) : (
-    <ins
-      class="adsbygoogle"
-      style="display:block; min-height: 90px;"
-      data-ad-client={client}
-      data-ad-format="auto"
-      data-full-width-responsive="true"
-    ></ins>
-  )}
+  <ins
+    class="adsbygoogle"
+    style={`display:block; min-height: ${inlineMinHeight};`}
+    data-ad-client={client}
+    data-ad-slot={slot}
+    data-ad-format={format}
+    data-full-width-responsive="true"
+    {...(layoutKey ? { 'data-ad-layout-key': layoutKey } : {})}
+  ></ins>
 
   <script is:inline>
     try {
