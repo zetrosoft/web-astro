@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 import AdSenseUnit from '../../components/AdSenseUnit.astro';
+import InArticleAd from '../../components/InArticleAd.astro';
 import HostingerBox from '../../components/HostingerBox.astro';
 import KusumaMapSpotlight from '../../components/KusumaMapSpotlight.astro';
 import SamkarsaIndustryRef from '../../components/SamkarsaIndustryRef.astro';
@@ -110,11 +111,11 @@ const showSamkarsaBox = isSamkarsaTopic && (idHash % 2 === 0);
 
         <!-- Isi Artikel Utama MDX -->
         <article class="prose max-w-none prose-slate dark:prose-invert">
-          <Content components={{ AdSenseUnit, KusumaMapSpotlight, SamkarsaIndustryRef, HostingerBox }} />
+          <Content components={{ AdSenseUnit: InArticleAd, KusumaMapSpotlight, SamkarsaIndustryRef, HostingerBox }} />
         </article>
 
-        <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Unit -->
-        <AdSenseUnit format="auto" className="my-8" />
+        <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Unit (In-Article Ad 6901499930) -->
+        <AdSenseUnit variant="in-article" className="my-8" />
 
         <!-- Smart Contextual Hostinger Partner Box -->
         <HostingerBox category={post.data.category} variant="in-article" />

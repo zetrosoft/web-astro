@@ -2,21 +2,35 @@
 interface Props {
   slot?: string;
   format?: 'auto' | 'fluid' | 'rectangle';
+  layout?: string;
   layoutKey?: string;
   className?: string;
   minHeight?: string;
+  variant?: 'display' | 'in-article';
 }
 
 const {
-  slot = '6641645482',
-  format = 'auto',
+  slot,
+  format,
+  layout,
   layoutKey,
   className = '',
-  minHeight = '90px'
+  minHeight,
+  variant = 'display'
 } = Astro.props;
 
 const client = 'ca-pub-7398988805905629';
-const inlineMinHeight = minHeight.includes('min-h-[') ? minHeight.replace('min-h-[', '').replace(']', '') : minHeight;
+const isInArticle = variant === 'in-article' || layout === 'in-article' || format === 'fluid';
+
+// Tentukan slot & atribut default berdasarkan varian
+const finalSlot = slot || (isInArticle ? '6901499930' : '6641645482');
+const finalFormat = format || (isInArticle ? 'fluid' : 'auto');
+const finalLayout = layout || (isInArticle ? 'in-article' : undefined);
+
+const rawMinHeight = minHeight || '90px';
+const inlineMinHeight = rawMinHeight.includes('min-h-[')
+  ? rawMinHeight.replace('min-h-[', '').replace(']', '')
+  : rawMinHeight;
 ---
 
 <div class={`adsense-clean-slot my-6 w-full text-center not-prose overflow-hidden flex flex-col items-center justify-center ${className}`}>
@@ -24,15 +38,26 @@ const inlineMinHeight = minHeight.includes('min-h-[') ? minHeight.replace('min-h
     Iklan
   </div>
 
-  <ins
-    class="adsbygoogle"
-    style={`display:block; min-height: ${inlineMinHeight};`}
-    data-ad-client={client}
-    data-ad-slot={slot}
-    data-ad-format={format}
-    data-full-width-responsive="true"
-    {...(layoutKey ? { 'data-ad-layout-key': layoutKey } : {})}
-  ></ins>
+  {isInArticle ? (
+    <ins
+      class="adsbygoogle"
+      style={`display:block; text-align:center; min-height: ${inlineMinHeight};`}
+      data-ad-layout="in-article"
+      data-ad-format={finalFormat}
+      data-ad-client={client}
+      data-ad-slot={finalSlot}
+    ></ins>
+  ) : (
+    <ins
+      class="adsbygoogle"
+      style={`display:block; min-height: ${inlineMinHeight};`}
+      data-ad-client={client}
+      data-ad-slot={finalSlot}
+      data-ad-format={finalFormat}
+      data-full-width-responsive="true"
+      {...(layoutKey ? { 'data-ad-layout-key': layoutKey } : {})}
+    ></ins>
+  )}
 
   <script is:inline>
     try {

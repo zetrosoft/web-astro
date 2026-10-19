@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 import AdSenseUnit from '../../../components/AdSenseUnit.astro';
+import InArticleAd from '../../../components/InArticleAd.astro';
 import HostingerBox from '../../../components/HostingerBox.astro';
 import KusumaMapSpotlight from '../../../components/KusumaMapSpotlight.astro';
 import SamkarsaIndustryRef from '../../../components/SamkarsaIndustryRef.astro';
@@ -129,15 +130,15 @@ const showSamkarsaBox = isSamkarsaTopic && (idHash % 2 === 0);
         <!-- Article Body with localized components -->
         <article class="prose max-w-none prose-slate dark:prose-invert">
           <Content components={{
-            AdSenseUnit,
+            AdSenseUnit: InArticleAd,
             KusumaMapSpotlight: (props: any) => <KusumaMapSpotlight lang="en" {...props} />,
             SamkarsaIndustryRef: (props: any) => <SamkarsaIndustryRef lang="en" {...props} />,
             HostingerBox: (props: any) => <HostingerBox lang="en" {...props} />
           }} />
         </article>
 
-        <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Unit -->
-        <AdSenseUnit format="auto" className="my-8" />
+        <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Unit (In-Article Ad 6901499930) -->
+        <AdSenseUnit variant="in-article" className="my-8" />
 
         <!-- Smart Contextual Hostinger Partner Box (English) -->
         <HostingerBox category={post.data.category} variant="in-article" lang="en" />
