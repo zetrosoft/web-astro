@@ -8,6 +8,12 @@ const blogSchema = z.object({
   author: z.string().default('zetrosoft'),
   category: z.string().default('General'),
   tags: z.array(z.string()).default([]),
+  social: z.object({
+    twitter_thread: z.array(z.string()).optional(),
+    linkedin: z.string().optional(),
+    threads: z.string().optional(),
+    facebook: z.string().optional()
+  }).optional()
 });
 
 const blog = defineCollection({
@@ -21,4 +27,3 @@ const blog_en = defineCollection({
 });
 
 export const collections = { blog, blog_en };
-

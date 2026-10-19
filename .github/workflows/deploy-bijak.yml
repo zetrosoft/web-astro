@@ -7,6 +7,7 @@ on:
     paths:
       - 'packages/bijak/**'
       - '.github/workflows/deploy-bijak.yml'
+      - 'scripts/**'
       - 'package.json'
       - 'pnpm-lock.yaml'
   schedule:
@@ -18,6 +19,24 @@ on:
     - cron: '30 4 * * *'
     - cron: '0 12 * * *'
   workflow_dispatch:
+    inputs:
+      slot:
+        description: 'Slot Publikasi (auto, pagi, siang, malam)'
+        required: false
+        default: 'auto'
+        type: choice
+        options:
+          - auto
+          - pagi
+          - siang
+          - malam
+      force:
+        description: 'Paksa generate topik baru'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -26,11 +45,41 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Generate Scheduled Content via Gemini API
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          SLOT_ARG=""
+          if [ "${{ github.event.inputs.slot }}" != "" ] && [ "${{ github.event.inputs.slot }}" != "auto" ]; then
+            SLOT_ARG="--slot=${{ github.event.inputs.slot }}"
+          fi
+          FORCE_ARG=""
+          if [ "${{ github.event.inputs.force }}" == "true" ]; then
+            FORCE_ARG="--force"
+          fi
+          node scripts/generate-article.mjs $SLOT_ARG $FORCE_ARG
+
+      - name: Commit & Push New Generated Articles to Main
+        run: |
+          if [ -n "$(git status --porcelain packages/bijak/src/content)" ]; then
+            echo "Menemukan artikel baru, melakukan commit dan push ke main..."
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add packages/bijak/src/content/
+            git commit -m "feat(blog): automated scheduled publication [skip ci]"
+            git push origin main
+          else
+            echo "Tidak ada artikel baru atau konten sudah mutakhir."
+          fi
 
       - name: Enable Corepack & Install pnpm
         run: |
@@ -60,22 +109,24 @@ jobs:
         if: always()
         run: |
           python3 -c "
-          import urllib.request, json
+          import urllib.request, json, os
 
           status = '✅ SUCCESS' if '${{ job.status }}' == 'success' else '❌ FAILED'
           website = 'https://bijaktechnology.com'
           commit_sha = '${{ github.sha }}'[:7]
           author = '${{ github.actor }}'
           msg_head = '''${{ github.event.head_commit.message }}'''.strip()
+          event_name = '${{ github.event_name }}'
 
           message_text = (
-              '🚀 *DEPLOYMENT NOTIFICATION: BIJAK TECHNOLOGY*\n\n'
+              '🚀 *PUBLIKASI & DEPLOYMENT: BIJAK TECHNOLOGY*\n\n'
               f'*Status:* {status}\n'
+              f'*Trigger:* {event_name.upper()}\n'
               f'*Website:* {website}\n'
               f'*Container:* web-bijak-techno\n'
               f'*Commit:* {commit_sha}\n'
               f'*Author:* {author}\n'
-              f'*Message:* {msg_head}'
+              f'*Ringkasan:* {msg_head}'
           )
 
           payload = json.dumps({
@@ -99,4 +150,3 @@ jobs:
           except Exception as e:
               print('Failed to send WhatsApp notification:', e)
           "
-

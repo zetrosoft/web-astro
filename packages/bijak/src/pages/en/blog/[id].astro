@@ -5,6 +5,7 @@ import AdSenseUnit from '../../../components/AdSenseUnit.astro';
 import HostingerBox from '../../../components/HostingerBox.astro';
 import KusumaMapSpotlight from '../../../components/KusumaMapSpotlight.astro';
 import SamkarsaIndustryRef from '../../../components/SamkarsaIndustryRef.astro';
+import SocialReadyBox from '../../../components/SocialReadyBox.astro';
 
 export async function getStaticPaths() {
   const postsEn = await getCollection('blog_en');
@@ -135,6 +136,14 @@ const recentPosts = allPosts
 
         <!-- 3. AdSense Slot 3: Bottom In-Article / Pre-Tags Unit -->
         <AdSenseUnit format="auto" className="mt-8 mb-4" />
+
+        <!-- Social Share & Ready-to-Post Media Box -->
+        <SocialReadyBox 
+          title={post.data.title}
+          url={`https://bijaktechnology.com/en/blog/${post.id}`}
+          social={post.data.social}
+          lang="en"
+        />
 
         <!-- Tags -->
         {post.data.tags && post.data.tags.length > 0 && (
