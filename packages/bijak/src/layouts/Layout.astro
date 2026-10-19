@@ -256,9 +256,27 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
           </span>
         </div>
 
-        <!-- Controls: Language & Theme -->
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-mono text-slate-600 dark:text-slate-400 hidden sm:inline-block font-semibold">{today}</span>
+        <!-- Controls: Hostinger Partner Badge, Language & Theme -->
+        <div class="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+          <!-- Hostinger Official Partner Badge -->
+          <a
+            href="https://www.hostinger.com/id?REFERRALCODE=6X5PUTERARQL"
+            target="_blank"
+            rel="noopener sponsored"
+            class="group inline-flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-indigo-50 hover:bg-[#673DE6] text-[#673DE6] hover:text-white dark:bg-[#673DE6]/20 dark:text-[#c4b5fd] dark:hover:bg-[#673DE6] dark:hover:text-white border border-[#673DE6]/30 dark:border-[#673DE6]/50 shadow-2xs transition-all duration-200 hover:scale-105 cursor-pointer"
+            title="Hostinger Official Partner - Kupon Diskon: 6X5PUTERARQL"
+          >
+            <!-- Hostinger H Hexagon Mark -->
+            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.654 0L9.346 3.064v4.596l5.308-3.064V0zm0 16.34L9.346 19.404V24l5.308-3.064V16.34zM18.77 2.378l-5.308 3.064v4.596l5.308-3.064V2.378zm0 12.285l-5.308 3.064v4.596l5.308-3.064v-4.596zM5.23 6.974L0 10.038v4.596l5.23-3.064V6.974zm0 6.64L0 16.678V21.27l5.23-3.064v-4.592z"/>
+            </svg>
+            <div class="flex flex-col text-left">
+              <span class="text-[10px] font-black uppercase tracking-wider leading-none">Hostinger</span>
+              <span class="text-[8px] font-bold opacity-80 leading-tight">Official Partner</span>
+            </div>
+          </a>
+
+          <span class="text-xs font-mono text-slate-600 dark:text-slate-400 hidden xl:inline-block font-semibold">{today}</span>
           <LanguageSwitcher currentLang={lang} />
           <ThemeToggle />
         </div>

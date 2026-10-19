@@ -35,6 +35,20 @@ const recentPosts = allPosts
   .filter(p => p.id !== post.id)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 4);
+
+// Aturan Randomisasi Kotak Samkarsa & Kusuma (tidak harus muncul di setiap artikel)
+const idHash = post.id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+const isKusumaTopic = post.data.category?.toLowerCase().includes('ritel') || 
+                      post.data.category?.toLowerCase().includes('sembako') || 
+                      post.data.category?.toLowerCase().includes('umkm') || 
+                      post.data.tags?.some(t => ['ritel', 'sembako', 'boyolali', 'kusuma'].includes(t.toLowerCase()));
+const showKusumaBox = isKusumaTopic && (post.id.includes('kusuma') || idHash % 3 === 0);
+
+const isSamkarsaTopic = post.data.category?.toLowerCase().includes('erp') || 
+                        post.data.category?.toLowerCase().includes('enterprise') || 
+                        post.data.category?.toLowerCase().includes('manufaktur') || 
+                        post.data.category?.toLowerCase().includes('distribusi');
+const showSamkarsaBox = isSamkarsaTopic && (idHash % 2 === 0);
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
@@ -105,11 +119,11 @@ const recentPosts = allPosts
         <!-- Smart Contextual Hostinger Partner Box -->
         <HostingerBox category={post.data.category} variant="in-article" />
 
-        {/* Ekosistem Spotlight Khusus Berdasarkan Kategori & Topik */}
-        {(post.data.category?.toLowerCase().includes('ritel') || post.data.category?.toLowerCase().includes('sembako') || post.data.category?.toLowerCase().includes('umkm') || post.data.tags?.some(t => ['ritel', 'sembako', 'boyolali', 'distribusi', 'kusuma'].includes(t.toLowerCase()))) && (
+        {/* Ekosistem Spotlight Khusus Berdasarkan Kategori & Topik (Ditampilkan secara acak/proporsional) */}
+        {showKusumaBox && (
           <KusumaMapSpotlight />
         )}
-        {(post.data.category?.toLowerCase().includes('erp') || post.data.category?.toLowerCase().includes('enterprise') || post.data.category?.toLowerCase().includes('manufaktur') || post.data.category?.toLowerCase().includes('distribusi')) && (
+        {showSamkarsaBox && (
           <SamkarsaIndustryRef />
         )}
 

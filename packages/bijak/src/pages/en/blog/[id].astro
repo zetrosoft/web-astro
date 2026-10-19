@@ -52,6 +52,22 @@ const allPosts = Array.from(allIds)
 const recentPosts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 4);
+
+// Randomized Box Display (Samkarsa & Kusuma)
+const idHash = post.id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+const isKusumaTopic = post.data.category?.toLowerCase().includes('ritel') || 
+                      post.data.category?.toLowerCase().includes('sembako') || 
+                      post.data.category?.toLowerCase().includes('umkm') || 
+                      post.data.tags?.some(t => ['ritel', 'sembako', 'boyolali', 'distribusi', 'kusuma', 'retail', 'wholesale'].includes(t.toLowerCase()));
+const showKusumaBox = isKusumaTopic && (post.id.includes('kusuma') || idHash % 3 === 0);
+
+const isSamkarsaTopic = post.data.category?.toLowerCase().includes('erp') || 
+                        post.data.category?.toLowerCase().includes('enterprise') || 
+                        post.data.category?.toLowerCase().includes('manufaktur') || 
+                        post.data.category?.toLowerCase().includes('distribusi') ||
+                        post.data.category?.toLowerCase().includes('distribution') ||
+                        post.data.category?.toLowerCase().includes('manufacturing');
+const showSamkarsaBox = isSamkarsaTopic && (idHash % 2 === 0);
 ---
 
 <Layout title={post.data.title} description={post.data.description} lang="en">
@@ -126,11 +142,11 @@ const recentPosts = allPosts
         <!-- Smart Contextual Hostinger Partner Box (English) -->
         <HostingerBox category={post.data.category} variant="in-article" lang="en" />
 
-        {/* Ekosistem Spotlight Khusus Berdasarkan Kategori & Topik */}
-        {(post.data.category?.toLowerCase().includes('ritel') || post.data.category?.toLowerCase().includes('sembako') || post.data.category?.toLowerCase().includes('umkm') || post.data.tags?.some(t => ['ritel', 'sembako', 'boyolali', 'distribusi', 'kusuma', 'retail', 'wholesale'].includes(t.toLowerCase()))) && (
+        {/* Ekosistem Spotlight Khusus Berdasarkan Kategori & Topik (Randomized for variety) */}
+        {showKusumaBox && (
           <KusumaMapSpotlight lang="en" />
         )}
-        {(post.data.category?.toLowerCase().includes('erp') || post.data.category?.toLowerCase().includes('enterprise') || post.data.category?.toLowerCase().includes('manufaktur') || post.data.category?.toLowerCase().includes('distribusi') || post.data.category?.toLowerCase().includes('distribution') || post.data.category?.toLowerCase().includes('manufacturing')) && (
+        {showSamkarsaBox && (
           <SamkarsaIndustryRef lang="en" />
         )}
 
