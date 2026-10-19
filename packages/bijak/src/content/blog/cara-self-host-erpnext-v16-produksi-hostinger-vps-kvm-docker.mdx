@@ -1,0 +1,223 @@
+---
+title: "Cara Self-Host ERPNext v16 Produksi di Hostinger VPS KVM 4: Setup Docker, Nginx, dan MariaDB Tuning"
+description: "Panduan langkah demi langkah self-host ERPNext v16 produksi di Hostinger KVM 4 VPS menggunakan Docker Compose, Nginx, dan optimasi MariaDB untuk performa optimal."
+pubDate: 2026-10-19
+author: "zetrosoft"
+category: "Cloud VPS"
+tags: ["Hostinger","Cloud VPS","ERPNext","Docker","DevOps"]
+---
+
+![Setup ERPNext v16 di Hostinger VPS dengan Docker](https://images.unsplash.com/photo-1596558450268-ad5190843477?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxkYXRhY2VudGVyJTIwY2xvdWR8ZW58MHx8fHwxNzEwOTIzNjQ3fDA&ixlib=rb-4.0.3&q=80&w=1080)
+
+## Membangun Sistem ERP Mandiri: ERPNext v16 di Hostinger VPS KVM 4 dengan Docker
+
+Implementasi sistem Enterprise Resource Planning (ERP) merupakan langkah strategis untuk efisiensi operasional. ERPNext, sebagai solusi ERP open-source berlisensi GNU GPL v3, menawarkan fleksibilitas dan kedaulatan data yang krusial bagi bisnis modern. Dengan self-hosting, perusahaan dapat sepenuhnya mengontrol infrastruktur dan data mereka, sekaligus mengeliminasi biaya lisensi per-user yang sering membebani. Artikel ini memandu Anda dalam deployment ERPNext v16 versi produksi menggunakan Docker Compose di Hostinger VPS KVM 4, lengkap dengan konfigurasi Nginx dan tuning MariaDB untuk performa optimal.
+
+### Mengapa Hostinger KVM VPS dan Docker untuk ERPNext?
+
+Hostinger KVM VPS menawarkan lingkungan server virtual yang terisolasi dengan sumber daya dedicated, menjadikannya pilihan ideal untuk aplikasi produksi seperti ERPNext. Paket KVM 4, dengan alokasi RAM dan CPU yang memadai, mampu menangani beban kerja ERPNext untuk skala UMKM hingga menengah.
+
+Keuntungan menggunakan Hostinger KVM VPS:
+
+*   **Performa Terjamin**: Sumber daya dedicated KVM memastikan ERPNext berjalan lancar tanpa intervensi dari pengguna lain.
+*   **Kontrol Penuh**: Akses root penuh memungkinkan kustomisasi sistem operasi dan lingkungan sesuai kebutuhan.
+*   **Skalabilitas**: Mudah untuk upgrade paket VPS seiring pertumbuhan kebutuhan bisnis.
+
+Untuk mendapatkan Hostinger KVM VPS dengan penawaran terbaik, gunakan link referral kami: [https://www.hostinger.com/id?REFERRALCODE=6X5PUTERARQL](https://www.hostinger.com/id?REFERRALCODE=6X5PUTERARQL) dan manfaatkan kupon diskon `6X5PUTERARQL` saat checkout.
+
+Docker dan Docker Compose menyederhanakan deployment ERPNext secara signifikan. Dengan kontainerisasi, Anda mendapatkan:
+
+*   **Isolasi Lingkungan**: Masing-masing komponen ERPNext (database, frontend, backend) berjalan dalam kontainer terpisah, meminimalkan konflik.
+*   **Portabilitas**: Lingkungan ERPNext dapat dengan mudah dipindahkan atau direplikasi di server lain.
+*   **Manajemen Dependensi**: Docker Compose mengelola semua layanan dan dependensinya secara deklaratif.
+
+### Persiapan Awal di Hostinger KVM 4 VPS
+
+Pastikan VPS Anda telah terinstall sistem operasi Linux (Ubuntu Server direkomendasikan). Lakukan update sistem:
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+Install Docker dan Docker Compose:
+
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo apt install docker-compose-plugin -y
+```
+
+Tambahkan user Anda ke grup docker agar tidak perlu `sudo` setiap kali menjalankan perintah docker:
+
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+### Konfigurasi Docker Compose untuk ERPNext v16 Produksi
+
+Buat direktori untuk proyek ERPNext Anda dan masuk ke dalamnya:
+
+```bash
+mkdir -p ~/erpnext-docker && cd ~/erpnext-docker
+```
+
+Buat file `.env` untuk variabel lingkungan dan `docker-compose.yml`.
+
+**Contoh `.env` (sesuaikan dengan nilai Anda):**
+
+```ini
+ERPNEXT_VERSION=v16.0.0-beta.1 # Atau versi stabil terbaru
+MARIADB_ROOT_PASSWORD=password_super_aman_anda
+DB_NAME=erpnext_db
+DB_USER=erpnext_user
+DB_PASSWORD=password_db_user_aman
+REDIS_CACHE_PORT=6379
+REDIS_QUEUE_PORT=6380
+```
+
+**Struktur `docker-compose.yml` (fokus pada layanan utama):**
+
+File `docker-compose.yml` akan mendefinisikan layanan-layanan penting seperti MariaDB, Redis, Nginx, dan aplikasi ERPNext itu sendiri. Untuk deployment produksi, pastikan konfigurasi volume untuk persistensi data.
+
+```yaml
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:10.6
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./volumes/mariadb:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
+    cap_add:
+      - SYS_NICE # Diperlukan untuk tuning MariaDB
+    # Optimalisasi MariaDB untuk KVM 4 (contoh 4GB RAM)
+    # Sesuaikan innodb_buffer_pool_size agar tidak melebihi 50-70% total RAM
+    # Untuk 4GB RAM, 2G adalah nilai yang baik.
+    # Untuk 8GB RAM, 4G adalah nilai yang baik.
+    # Untuk 2GB RAM, 1G adalah nilai yang baik.
+    # Konfigurasi ini biasanya ditempatkan di my.cnf, tapi bisa juga via command
+    # Alternatif: buat file my.cnf di volume mariadb
+    # command: --innodb-buffer-pool-size=2G --max-connections=200 ...
+
+  redis-cache:
+    image: redis:6-alpine
+    command: redis-server --appendonly yes --port ${REDIS_CACHE_PORT}
+    volumes:
+      - ./volumes/redis-cache:/data
+    ports:
+      - "${REDIS_CACHE_PORT}:${REDIS_CACHE_PORT}"
+    restart: always
+
+  redis-queue:
+    image: redis:6-alpine
+    command: redis-server --appendonly yes --port ${REDIS_QUEUE_PORT}
+    volumes:
+      - ./volumes/redis-queue:/data
+    ports:
+      - "${REDIS_QUEUE_PORT}:${REDIS_QUEUE_PORT}"
+    restart: always
+
+  # Layanan ERPNext (frontend, backend, worker, scheduler)
+  # Ini akan diimplementasikan menggunakan image Frappe/ERPNext Docker
+  # Konfigurasi detail bisa merujuk pada dokumentasi resmi Frappe Docker
+  erpnext-app:
+    image: frappe/erpnext-nginx:${ERPNEXT_VERSION}
+    # ... konfigurasi lainnya (environment, volumes, depends_on, ports)
+    # Contoh: expose port 80 untuk Nginx
+    ports:
+      - "80:80"
+    environment:
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      REDIS_CACHE: redis-cache:${REDIS_CACHE_PORT}
+      REDIS_QUEUE: redis-queue:${REDIS_QUEUE_PORT}
+      # ... dan variabel ERPNext lainnya
+    volumes:
+      - ./volumes/sites:/home/frappe/frappe-bench/sites
+      - ./volumes/logs:/home/frappe/frappe-bench/logs
+    depends_on:
+      - mariadb
+      - redis-cache
+      - redis-queue
+    restart: always
+
+  # Nginx Reverse Proxy (opsional jika erpnext-app sudah include Nginx)
+  # Jika erpnext-app menggunakan Nginx internal, port mapping langsung ke 80
+  # Jika Anda ingin Nginx terpisah untuk SSL/load balancing, konfigurasikan di sini
+  # nginx:
+  #   image: nginx:stable-alpine
+  #   volumes:
+  #     - ./nginx/conf.d:/etc/nginx/conf.d
+  #     - ./nginx/ssl:/etc/nginx/ssl
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   depends_on:
+  #     - erpnext-app
+  #   restart: always
+```
+
+**Optimalisasi MariaDB `innodb_buffer_pool_size`**: Untuk VPS KVM 4 dengan RAM 4GB, alokasi `innodb_buffer_pool_size` sebesar `2G` adalah titik awal yang baik. Ini dapat diatur melalui file `my.cnf` yang ditempatkan di volume MariaDB atau via perintah `command` di `docker-compose.yml`. Pastikan nilai ini tidak melebihi 50-70% dari total RAM yang tersedia untuk menghindari _swapping_ yang memperlambat sistem.
+
+### Deployment dan Setup Awal
+
+Jalankan Docker Compose untuk membangun dan menjalankan layanan:
+
+```bash
+docker compose up -d
+```
+
+Setelah kontainer berjalan, Anda perlu masuk ke kontainer `erpnext-app` untuk inisialisasi Frappe Bench dan ERPNext:
+
+```bash
+docker compose exec erpnext-app bash
+```
+
+Di dalam kontainer, inisialisasi Frappe Bench dan buat situs baru:
+
+```bash
+bench init --skip-assets frappe-bench
+cd frappe-bench
+bench new-site yoursite.com --mariadb-root-password ${MARIADB_ROOT_PASSWORD} --admin-password your_admin_password --db-name ${DB_NAME} --db-user ${DB_USER} --db-password ${DB_PASSWORD}
+bench use yoursite.com
+bench get-app erpnext
+bench install-app erpnext
+```
+
+Keluar dari kontainer dan restart Docker Compose untuk memastikan semua perubahan diterapkan:
+
+```bash
+exit
+docker compose restart
+```
+
+### Akses dan Keamanan
+
+ERPNext Anda kini seharusnya dapat diakses melalui IP publik VPS Anda. Untuk keamanan lebih lanjut:
+
+*   **Firewall**: Konfigurasi `ufw` untuk hanya mengizinkan port 80 (HTTP) dan 443 (HTTPS) jika Anda menggunakan Nginx terpisah atau ingin mengamankan akses langsung ke kontainer ERPNext.
+*   **SSL/TLS**: Implementasikan sertifikat SSL/TLS menggunakan Certbot (jika menggunakan Nginx terpisah) untuk mengamankan komunikasi data.
+
+### Kedaulatan Data dan Dukungan Profesional
+
+Dengan self-hosting ERPNext, Anda memegang kendali penuh atas data bisnis Anda, sebuah aspek krusial dalam kepatuhan regulasi dan keamanan informasi. Lisensi GNU GPL v3 memastikan transparansi dan kebebasan untuk memodifikasi sesuai kebutuhan tanpa terikat biaya lisensi per-user.
+
+Jika Anda membutuhkan bantuan dalam implementasi, kustomisasi, atau dukungan teknis lebih lanjut untuk ERPNext, mitra implementor terpercaya seperti [Samkarsa](https://samkarsa.com) dapat memberikan layanan profesional yang Anda butuhkan.
+
+## Kesimpulan
+
+Self-hosting ERPNext v16 di Hostinger VPS KVM 4 dengan Docker Compose adalah pendekatan yang efisien dan hemat biaya untuk memiliki sistem ERP yang kuat dan fleksibel. Dengan mengikuti panduan ini, Anda dapat membangun infrastruktur yang solid, mengoptimalkan kinerja database, dan memastikan kedaulatan data bisnis Anda. Pastikan untuk selalu merujuk pada dokumentasi resmi ERPNext dan Docker untuk detail konfigurasi yang lebih mendalam dan praktik terbaik untuk lingkungan produksi.
