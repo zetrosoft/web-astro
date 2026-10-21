@@ -1,22 +1,31 @@
 ---
 interface Props {
-  questions: Array<{ q: string; a: string }>;
+  questions: Array<{ q?: string; a?: string; question?: string; answer?: string }>;
 }
 
 const { questions = [] } = Astro.props;
 
+const validQuestions = questions
+  .map(item => ({
+    question: item.q || item.question || '',
+    answer: item.a || item.answer || '',
+  }))
+  .filter(item => item.question.trim().length > 0 && item.answer.trim().length > 0);
+
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": questions.map(item => ({
+  "mainEntity": validQuestions.map(item => ({
     "@type": "Question",
-    "name": item.q,
+    "name": item.question,
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": item.a
+      "text": item.answer
     }
   }))
 };
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+{validQuestions.length > 0 && (
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+)}

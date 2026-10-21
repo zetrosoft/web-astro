@@ -7,18 +7,85 @@ interface Props {
   description?: string;
   lang?: 'id' | 'en';
   image?: string;
+  type?: 'website' | 'article';
+  articleMeta?: {
+    pubDate: Date;
+    author: string;
+    category?: string;
+    tags?: string[];
+  };
+  alternateEn?: string;
+  alternateId?: string;
 }
 
 const { 
   title, 
   description = "Jurnal Teknologi, Enterprise ERP, AI Engineering, & Inovasi Ritel Independen", 
   lang = 'id',
-  image = "/images/og-image.jpg"
+  image = "/images/og-image.jpg",
+  type = 'website',
+  articleMeta,
+  alternateEn,
+  alternateId
 } = Astro.props;
 
 const isEn = lang === 'en';
-const canonicalUrl = `https://bijaktechnology.com${Astro.url.pathname}`;
+const rawPath = Astro.url.pathname;
+const cleanPath = rawPath.endsWith('/') ? rawPath : `${rawPath}/`;
+const canonicalUrl = `https://bijaktechnology.com${cleanPath}`;
 const ogImage = image.startsWith('http') ? image : `https://bijaktechnology.com${image}`;
+
+// Hitung URL hreflang untuk keterkaitan bahasa
+let pathId = cleanPath;
+let pathEn = cleanPath;
+if (isEn) {
+  pathId = cleanPath.replace(/^\/en/, '') || '/';
+  if (!pathId.endsWith('/')) pathId += '/';
+} else {
+  pathEn = cleanPath === '/' ? '/en/' : `/en${cleanPath}`;
+}
+const hreflangId = alternateId || `https://bijaktechnology.com${pathId}`;
+const hreflangEn = alternateEn || `https://bijaktechnology.com${pathEn}`;
+
+const globalSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsMediaOrganization",
+      "@id": "https://bijaktechnology.com/#organization",
+      "name": "Bijak Technology",
+      "url": "https://bijaktechnology.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://bijaktechnology.com/#logo",
+        "url": "https://bijaktechnology.com/images/logo-bijak-horizontal.png",
+        "caption": "Bijak Technology"
+      },
+      "sameAs": [
+        "https://samkarsa.com"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://bijaktechnology.com/#website",
+      "url": "https://bijaktechnology.com/",
+      "name": "Bijak Technology",
+      "description": "Jurnal Independen Arsitektur Teknologi, ERP Enterprise, Cloud VPS, dan Inovasi Web3",
+      "publisher": {
+        "@id": "https://bijaktechnology.com/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://bijaktechnology.com/blog?category={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "inLanguage": ["id", "en"]
+    }
+  ]
+};
 
 const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
   weekday: 'long',
@@ -45,18 +112,31 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
 
     <title>{title} | Bijak Technology</title>
     <meta name="description" content={description} />
+    
+    <!-- Canonical & Multilingual Alternate Hreflang (Anti-Duplicate & Topical Silo) -->
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="id" href={hreflangId} />
+    <link rel="alternate" hreflang="en" href={hreflangEn} />
+    <link rel="alternate" hreflang="x-default" href="https://bijaktechnology.com/" />
 
     <!-- Open Graph Metadata (Facebook, WhatsApp, LinkedIn) -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={`${title} | Bijak Technology`} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Bijak Technology - Portal Informasi Digital" />
+    <meta property="og:image:alt" content={`${title} - Bijak Technology`} />
     <meta property="og:site_name" content="Bijak Technology" />
+    {type === 'article' && articleMeta && (
+      <>
+        <meta property="article:published_time" content={articleMeta.pubDate.toISOString()} />
+        <meta property="article:author" content={articleMeta.author} />
+        {articleMeta.category && <meta property="article:section" content={articleMeta.category} />}
+        {articleMeta.tags?.map((t: string) => <meta property="article:tag" content={t} />)}
+      </>
+    )}
 
     <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -64,6 +144,13 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
     <meta name="twitter:title" content={`${title} | Bijak Technology`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <!-- Search Engine Ownership Verifications (Google, Bing, Yandex) -->
+    <meta name="google-site-verification" content="google87f4e25d22553d4b.html" />
+    <meta name="msvalidate.01" content="B82512140D045AC0B0605BF1C9E9F0A5" />
+
+    <!-- Global Structured Data (Organization & WebSite) -->
+    <script type="application/ld+json" set:html={JSON.stringify(globalSchema)} />
 
     <!-- Google AdSense Account Verification -->
     <meta name="google-adsense-account" content="ca-pub-7398988805905629" />
@@ -265,6 +352,7 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
         color: #e2e8f0;
       }
     </style>
+    <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col selection:bg-rose-500 selection:text-white">
     <!-- Top Telemetry Status Bar -->

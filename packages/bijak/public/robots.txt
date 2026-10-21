@@ -1,8 +1,50 @@
+# ========================================================
+# BIJAK TECHNOLOGY ROBOTS.TXT
+# High-Authority Crawling Policy for Global Search & AI Engines
+# ========================================================
+
 User-agent: *
 Allow: /
 Disallow: /api/
 
+# Google Search, Google News & Discover
+User-agent: Googlebot
+User-agent: Googlebot-News
+User-agent: Googlebot-Image
+Allow: /
+
+# Google AdSense Engine
 User-agent: Mediapartners-Google
 Allow: /
 
+# Microsoft Bing, MSN & Windows Copilot
+User-agent: Bingbot
+User-agent: msnbot
+User-agent: BingPreview
+Allow: /
+
+# Generative Engine Optimization (GEO) & AI Answer Engines
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: Google-Extended
+User-agent: Bytespider
+User-agent: cohere-ai
+User-agent: Omgilibot
+User-agent: Diffbot
+Allow: /
+
+# International Search Engines
+User-agent: DuckDuckBot
+User-agent: YandexBot
+User-agent: Slurp
+User-agent: Baiduspider
+User-agent: Sogou
+Allow: /
+
+# Canonical Sitemap Index
 Sitemap: https://bijaktechnology.com/sitemap.xml
