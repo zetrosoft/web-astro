@@ -1,0 +1,43 @@
+---
+// packages/bijak/src/pages/go/hostinger.astro
+// Clean Redirector & Internal Click Tracker ke Hostinger Official Partner
+const targetUrl = "https://www.hostinger.com/id?REFERRALCODE=6X5PUTERARQL";
+---
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mengarahkan ke Hostinger Official Partner...</title>
+    <!-- Prevent indexing redirector URLs by Search Engines -->
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta http-equiv="refresh" content={`0; url=${targetUrl}`} />
+    <link rel="canonical" href={targetUrl} />
+    
+    <script is:inline define:vars={{ targetUrl }}>
+      // Instant Client-side Navigation
+      window.location.replace(targetUrl);
+    </script>
+  </head>
+  <body style="margin: 0; background-color: #0f172a; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+    <div style="text-align: center; padding: 2rem; max-width: 420px;">
+      <div style="width: 44px; height: 44px; border: 3px solid #6366f1; border-top-color: transparent; border-radius: 50%; margin: 0 auto 1.5rem auto; animation: spin 0.8s linear infinite;"></div>
+      <h1 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #ffffff;">Mengarahkan ke Hostinger Official Partner</h1>
+      <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; margin: 0 0 1rem 0;">
+        Menghubungkan ke penawaran resmi Hostinger Cloud VPS &amp; Hosting...
+      </p>
+      <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.25); border-radius: 12px; padding: 0.75rem 1rem; margin-bottom: 1.25rem;">
+        <span style="font-size: 0.75rem; color: #cbd5e1;">Kupon Diskon Ekstra:</span>
+        <div style="font-family: monospace; font-size: 1rem; font-weight: 700; color: #fde047; letter-spacing: 0.05em; margin-top: 0.25rem;">6X5PUTERARQL</div>
+      </div>
+      <a href={targetUrl} rel="noopener sponsored" style="font-size: 0.8rem; color: #818cf8; text-decoration: underline;">
+        Klik di sini jika peramban Anda tidak otomatis dialihkan
+      </a>
+    </div>
+    <style>
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </body>
+</html>
