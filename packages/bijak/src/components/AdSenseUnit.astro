@@ -27,13 +27,18 @@ const finalSlot = slot || (isInArticle ? '6901499930' : '6641645482');
 const finalFormat = format || (isInArticle ? 'fluid' : 'auto');
 const finalLayout = layout || (isInArticle ? 'in-article' : undefined);
 
-const rawMinHeight = minHeight || '90px';
+const isRectangle = format === 'rectangle';
+const defaultMinHeight = isRectangle ? '250px' : '90px';
+const rawMinHeight = minHeight || defaultMinHeight;
 const inlineMinHeight = rawMinHeight.includes('min-h-[')
   ? rawMinHeight.replace('min-h-[', '').replace(']', '')
   : rawMinHeight;
 ---
 
-<div class={`adsense-clean-slot my-6 w-full text-center not-prose overflow-hidden flex flex-col items-center justify-center ${className}`}>
+<div
+  class={`adsense-clean-slot my-6 w-full text-center not-prose overflow-hidden flex flex-col items-center justify-center ${className}`}
+  style={`min-height: ${inlineMinHeight}; contain: layout style;`}
+>
   <div class="text-[10px] tracking-widest uppercase font-semibold text-slate-400 dark:text-slate-500 mb-1 opacity-70">
     Iklan
   </div>

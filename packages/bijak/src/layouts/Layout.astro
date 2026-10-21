@@ -32,18 +32,29 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
     <meta name="description" content={description} />
     <link rel="canonical" href={`https://bijaktechnology.com${Astro.url.pathname}`} />
 
-    <!-- Google AdSense -->
+    <!-- Google AdSense Account Verification -->
     <meta name="google-adsense-account" content="ca-pub-7398988805905629" />
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7398988805905629"
-      crossorigin="anonymous"
-    ></script>
 
-    <!-- Google Fonts: Plus Jakarta Sans (UI) & JetBrains Mono (Code/Telemetry) -->
+    <!-- Google Fonts Preconnect & Asynchronous Non-Blocking Stylesheet -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+      />
+    </noscript>
 
     <!-- Detect Theme -->
     <script is:inline>
@@ -386,5 +397,42 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
         </div>
       </div>
     </footer>
+
+    <!-- Smart Deferred Google AdSense Loader (Eliminasi TBT Mobile & Desktop) -->
+    <script is:inline>
+      (function() {
+        var adsenseLoaded = false;
+        function loadAdSense() {
+          if (adsenseLoaded) return;
+          adsenseLoaded = true;
+          var s = document.createElement('script');
+          s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7398988805905629';
+          s.async = true;
+          s.crossOrigin = 'anonymous';
+          document.head.appendChild(s);
+        }
+
+        // Muat saat interaksi pengguna (scroll, touch, mouse, key)
+        var events = ['scroll', 'touchstart', 'mousemove', 'keydown', 'wheel'];
+        function onInteraction() {
+          loadAdSense();
+          events.forEach(function(e) {
+            window.removeEventListener(e, onInteraction, { passive: true });
+          });
+        }
+        events.forEach(function(e) {
+          window.addEventListener(e, onInteraction, { passive: true });
+        });
+
+        // Fallback muat saat browser idle (timeout 3.5 detik)
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() {
+            setTimeout(loadAdSense, 3500);
+          });
+        } else {
+          setTimeout(loadAdSense, 3500);
+        }
+      })();
+    </script>
   </body>
 </html>
