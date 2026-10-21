@@ -6,11 +6,19 @@ interface Props {
   title: string;
   description?: string;
   lang?: 'id' | 'en';
+  image?: string;
 }
 
-const { title, description = "Jurnal Teknologi, Enterprise ERP, AI Engineering, & Inovasi Ritel Independen", lang = 'id' } = Astro.props;
+const { 
+  title, 
+  description = "Jurnal Teknologi, Enterprise ERP, AI Engineering, & Inovasi Ritel Independen", 
+  lang = 'id',
+  image = "/images/og-image.jpg"
+} = Astro.props;
 
 const isEn = lang === 'en';
+const canonicalUrl = `https://bijaktechnology.com${Astro.url.pathname}`;
+const ogImage = image.startsWith('http') ? image : `https://bijaktechnology.com${image}`;
 
 const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
   weekday: 'long',
@@ -24,13 +32,38 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     
+    <!-- Multi-format Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0E2338" />
+
     <title>{title} | Bijak Technology</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={`https://bijaktechnology.com${Astro.url.pathname}`} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph Metadata (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={`${title} | Bijak Technology`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Bijak Technology - Portal Informasi Digital" />
+    <meta property="og:site_name" content="Bijak Technology" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={`${title} | Bijak Technology`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Google AdSense Account Verification -->
     <meta name="google-adsense-account" content="ca-pub-7398988805905629" />
@@ -254,13 +287,27 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
     <!-- Header Portal Berita Modern -->
     <header class="border-b border-slate-300/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md sticky top-0 z-40 transition-colors shadow-2xs">
       <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <!-- Brand Wordmark -->
+        <!-- Brand Identity: Logo & Wordmark Resmi Bijak Technology -->
         <div class="flex items-center gap-3">
-          <a href={isEn ? "/en" : "/"} class="group flex items-baseline gap-1.5">
-            <span class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
-              BIJAK TECHNOLOGY
-            </span>
-            <span class="w-2 h-2 rounded-full bg-rose-600 inline-block"></span>
+          <a href={isEn ? "/en" : "/"} class="group flex items-center gap-2.5 transition-transform hover:opacity-95 active:scale-98">
+            <!-- Icon Squircle Mark Resmi -->
+            <img 
+              src="/favicon.svg" 
+              alt="Bijak Technology" 
+              class="w-10 h-10 rounded-xl shadow-xs shrink-0 object-contain group-hover:scale-105 transition-transform duration-200"
+              width="40"
+              height="40"
+              loading="eager"
+            />
+            <!-- Typography & Tagline -->
+            <div class="flex flex-col justify-center">
+              <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-950 dark:text-white group-hover:text-[#008F85] dark:group-hover:text-[#2dd4bf] transition-colors leading-none">
+                BIJAK TECHNOLOGY
+              </span>
+              <span class="text-[9px] sm:text-[10px] font-bold tracking-widest uppercase text-[#008F85] dark:text-[#2dd4bf] pt-1 leading-none">
+                portal informasi digital
+              </span>
+            </div>
           </a>
           <span class="hidden lg:inline-block text-xs text-slate-600 dark:text-slate-400 font-semibold pl-3 border-l border-slate-300 dark:border-slate-700">
             {isEn ? "Independent Tech & Business Journal" : "Jurnal Teknologi & Bisnis Independen"}
@@ -346,9 +393,19 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-200 dark:border-slate-800">
           <!-- Col 1: Brand & Misi -->
           <div class="space-y-3">
-            <div class="flex items-baseline gap-1.5">
-              <span class="text-xl font-extrabold text-slate-950 dark:text-white tracking-tight">BIJAK TECHNOLOGY</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+            <div class="flex items-center gap-2.5">
+              <img 
+                src="/favicon.svg" 
+                alt="Bijak Technology" 
+                class="w-8 h-8 rounded-lg shrink-0 object-contain"
+                width="32"
+                height="32"
+                loading="lazy"
+              />
+              <div class="flex flex-col">
+                <span class="text-lg font-black text-slate-950 dark:text-white tracking-tight leading-none">BIJAK TECHNOLOGY</span>
+                <span class="text-[8px] font-bold tracking-widest uppercase text-[#008F85] dark:text-[#2dd4bf] pt-1 leading-none">portal informasi digital</span>
+              </div>
             </div>
             <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
               Media independen yang mengupas arsitektur sistem, kecerdasan buatan, digitalisasi UMKM ritel, dan infrastruktur cloud enterprise dengan pendekatan berbasis bukti nyata.

@@ -8,6 +8,7 @@ const blogSchema = z.object({
   author: z.string().default('zetrosoft'),
   category: z.string().default('General'),
   tags: z.array(z.string()).default([]),
+  image: z.string().optional(),
   archetype: z.enum(['storytelling', 'deep-dive', 'news-analysis']).optional(),
   social: z.object({
     twitter_thread: z.array(z.string()).optional(),

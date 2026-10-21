@@ -72,7 +72,12 @@ const isSamkarsaTopic = post.data.category?.toLowerCase().includes('erp') ||
 const showSamkarsaBox = isSamkarsaTopic && (idHash % 2 === 0);
 ---
 
-<Layout title={post.data.title} description={post.data.description} lang="en">
+<Layout 
+  title={post.data.title} 
+  description={post.data.description} 
+  lang="en"
+  image={post.data.image || '/images/og-image.jpg'}
+>
   <!-- Top Breadcrumb -->
   <nav class="flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-400 mb-6 uppercase tracking-wider">
     <a href="/en" class="hover:text-rose-600 transition-colors">Home</a>
