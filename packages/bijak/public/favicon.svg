@@ -1,35 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  <!-- Rounded Squircle Base (Deep Navy) -->
-  <rect width="128" height="128" rx="28" fill="#0E2338"/>
-  
-  <!-- Outer Brackets [ ] -->
-  <path d="M 28 38 L 20 38 L 20 90 L 28 90" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 100 38 L 108 38 L 108 90 L 100 90" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Outer Brackets [ ] in Navy / Slate -->
+  <path d="M 24 32 L 14 32 L 14 96 L 24 96" stroke="#0E2338" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 104 32 L 114 32 L 114 96 L 104 96" stroke="#0E2338" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
   
   <!-- Open Book Silhouette (Tech Teal) -->
   <!-- Left Page -->
-  <path d="M 64 36 C 52 28 36 30 32 32 L 32 82 C 38 80 52 80 64 88 Z" fill="none" stroke="#008F85" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M 64 28 C 48 18 30 20 25 23 L 25 87 C 32 84 48 84 64 94 Z" fill="none" stroke="#008F85" stroke-width="5.5" stroke-linejoin="round"/>
   <!-- Right Page -->
-  <path d="M 64 36 C 76 28 92 30 96 32 L 96 82 C 90 80 76 80 64 88 Z" fill="none" stroke="#008F85" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M 64 28 C 80 18 98 20 103 23 L 103 87 C 96 84 80 84 64 94 Z" fill="none" stroke="#008F85" stroke-width="5.5" stroke-linejoin="round"/>
   <!-- Center Book Spine -->
-  <line x1="64" y1="36" x2="64" y2="88" stroke="#008F85" stroke-width="4"/>
+  <line x1="64" y1="28" x2="64" y2="94" stroke="#008F85" stroke-width="5"/>
   
-  <!-- Digital Circuit Letter 'B' / Node -->
-  <!-- Upper Node -->
-  <circle cx="48" cy="52" r="3" fill="#008F85" stroke="#FFFFFF" stroke-width="1.5"/>
-  <path d="M 51 52 L 58 52 L 62 58" stroke="#008F85" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- Middle Node -->
-  <circle cx="44" cy="62" r="3" fill="#008F85" stroke="#FFFFFF" stroke-width="1.5"/>
-  <line x1="47" y1="62" x2="60" y2="62" stroke="#008F85" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- Lower Node -->
-  <circle cx="48" cy="72" r="3" fill="#008F85" stroke="#FFFFFF" stroke-width="1.5"/>
-  <path d="M 51 72 L 58 72 L 62 66" stroke="#008F85" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Digital Circuit Nodes on Left -->
+  <circle cx="44" cy="46" r="3.5" fill="#008F85"/>
+  <path d="M 47.5 46 L 56 46 L 60 54" stroke="#008F85" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="39" cy="59" r="3.5" fill="#008F85"/>
+  <line x1="42.5" y1="59" x2="58" y2="59" stroke="#008F85" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="44" cy="72" r="3.5" fill="#008F85"/>
+  <path d="M 47.5 72 L 56 72 L 60 64" stroke="#008F85" stroke-width="3" stroke-linecap="round"/>
   
   <!-- Circuit Exit Node on Right -->
-  <line x1="78" y1="64" x2="84" y2="64" stroke="#008F85" stroke-width="2.5" stroke-linecap="round"/>
-  <circle cx="86" cy="64" r="3" fill="#008F85" stroke="#FFFFFF" stroke-width="1.5"/>
+  <line x1="77" y1="61" x2="85" y2="61" stroke="#008F85" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="88.5" cy="61" r="3.5" fill="#008F85"/>
 
-  <!-- Bold 'B' Tech Symbol in center -->
-  <path d="M 60 50 L 71 50 C 75 50 78 53 78 57 C 78 61 75 63 71 63 L 60 63 Z" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round"/>
-  <path d="M 60 63 L 73 63 C 77.5 63 80.5 66 80.5 70.5 C 80.5 75 77 78 72 78 L 60 78 Z" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round"/>
+  <!-- Bold 'B' Tech Mark in center (Navy) -->
+  <path d="M 58 45 L 72 45 C 77 45 81 48.5 81 53 C 81 57.5 77 61 72 61 L 58 61 Z" fill="none" stroke="#0E2338" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M 58 61 L 74 61 C 79 61 83 65 83 70 C 83 75 79 79 73 79 L 58 79 Z" fill="none" stroke="#0E2338" stroke-width="5" stroke-linejoin="round"/>
 </svg>

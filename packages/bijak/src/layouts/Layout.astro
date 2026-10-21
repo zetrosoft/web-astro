@@ -287,27 +287,27 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
     <!-- Header Portal Berita Modern -->
     <header class="border-b border-slate-300/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md sticky top-0 z-40 transition-colors shadow-2xs">
       <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <!-- Brand Identity: Logo & Wordmark Resmi Bijak Technology -->
+        <!-- Brand Identity: Logo Brand Resmi Bijak Technology -->
         <div class="flex items-center gap-3">
-          <a href={isEn ? "/en" : "/"} class="group flex items-center gap-2.5 transition-transform hover:opacity-95 active:scale-98">
-            <!-- Icon Squircle Mark Resmi -->
+          <a href={isEn ? "/en" : "/"} class="group flex items-center py-0.5 transition-transform hover:opacity-90 active:scale-98" aria-label="Bijak Technology">
+            <!-- Logo Horizontal Resmi untuk Mode Terang -->
             <img 
-              src="/favicon.svg" 
-              alt="Bijak Technology" 
-              class="w-10 h-10 rounded-xl shadow-xs shrink-0 object-contain group-hover:scale-105 transition-transform duration-200"
-              width="40"
-              height="40"
+              src="/images/logo-bijak-horizontal.webp" 
+              alt="Bijak Technology - Portal Informasi Digital" 
+              class="h-9 sm:h-10 md:h-11 w-auto object-contain dark:hidden transition-all"
+              width="765"
+              height="255"
               loading="eager"
             />
-            <!-- Typography & Tagline -->
-            <div class="flex flex-col justify-center">
-              <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-950 dark:text-white group-hover:text-[#008F85] dark:group-hover:text-[#2dd4bf] transition-colors leading-none">
-                BIJAK TECHNOLOGY
-              </span>
-              <span class="text-[9px] sm:text-[10px] font-bold tracking-widest uppercase text-[#008F85] dark:text-[#2dd4bf] pt-1 leading-none">
-                portal informasi digital
-              </span>
-            </div>
+            <!-- Logo Horizontal Resmi untuk Mode Gelap -->
+            <img 
+              src="/images/logo-bijak-horizontal.webp" 
+              alt="Bijak Technology - Portal Informasi Digital" 
+              class="h-9 sm:h-10 md:h-11 w-auto object-contain hidden dark:block dark:brightness-0 dark:invert transition-all"
+              width="765"
+              height="255"
+              loading="eager"
+            />
           </a>
           <span class="hidden lg:inline-block text-xs text-slate-600 dark:text-slate-400 font-semibold pl-3 border-l border-slate-300 dark:border-slate-700">
             {isEn ? "Independent Tech & Business Journal" : "Jurnal Teknologi & Bisnis Independen"}
@@ -393,20 +393,24 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-200 dark:border-slate-800">
           <!-- Col 1: Brand & Misi -->
           <div class="space-y-3">
-            <div class="flex items-center gap-2.5">
+            <a href="/" class="inline-block" aria-label="Bijak Technology">
               <img 
-                src="/favicon.svg" 
+                src="/images/logo-bijak-horizontal.webp" 
                 alt="Bijak Technology" 
-                class="w-8 h-8 rounded-lg shrink-0 object-contain"
-                width="32"
-                height="32"
+                class="h-8 w-auto object-contain dark:hidden"
+                width="765"
+                height="255"
                 loading="lazy"
               />
-              <div class="flex flex-col">
-                <span class="text-lg font-black text-slate-950 dark:text-white tracking-tight leading-none">BIJAK TECHNOLOGY</span>
-                <span class="text-[8px] font-bold tracking-widest uppercase text-[#008F85] dark:text-[#2dd4bf] pt-1 leading-none">portal informasi digital</span>
-              </div>
-            </div>
+              <img 
+                src="/images/logo-bijak-horizontal.webp" 
+                alt="Bijak Technology" 
+                class="h-8 w-auto object-contain hidden dark:block dark:brightness-0 dark:invert"
+                width="765"
+                height="255"
+                loading="lazy"
+              />
+            </a>
             <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
               Media independen yang mengupas arsitektur sistem, kecerdasan buatan, digitalisasi UMKM ritel, dan infrastruktur cloud enterprise dengan pendekatan berbasis bukti nyata.
             </p>
