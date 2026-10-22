@@ -112,9 +112,12 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
 
     <title>{title} | Bijak Technology</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     
-    <!-- Canonical & Multilingual Alternate Hreflang (Anti-Duplicate & Topical Silo) -->
+    <!-- Canonical, RSS Feed, AEO/LLMs Discovery & Multilingual Alternate Hreflang -->
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="application/rss+xml" title="Bijak Technology RSS Feed" href="https://bijaktechnology.com/rss.xml" />
+    <link rel="help" type="text/plain" title="LLMs Knowledge Index" href="https://bijaktechnology.com/llms.txt" />
     <link rel="alternate" hreflang="id" href={hreflangId} />
     <link rel="alternate" hreflang="en" href={hreflangEn} />
     <link rel="alternate" hreflang="x-default" href="https://bijaktechnology.com/" />
@@ -469,6 +472,11 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
               {isEn ? "Portfolio" : "Portofolio"}
             </a>
           </li>
+          <li>
+            <a href="/tools/" class="px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-600 hover:text-white transition-colors flex items-center gap-1">
+              <span>⚡ {isEn ? "Free Calculators" : "Kalkulator Bisnis"}</span>
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -536,7 +544,8 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
               <li><a href="/about" class="hover:text-rose-600 transition-colors">Tentang Redaksi</a></li>
               <li><a href="/contact" class="hover:text-rose-600 transition-colors">Kirim Pesan &amp; Kerjasama</a></li>
               <li><a href="/privacy-policy" class="hover:text-rose-600 transition-colors">Kebijakan Privasi &amp; AdSense</a></li>
-              <li><a href="/sitemap.xml" target="_blank" class="hover:text-rose-600 transition-colors">Sitemap XML</a></li>
+              <li><a href="/tools/" class="hover:text-rose-600 transition-colors">Kalkulator TCO ERP &amp; Margin UMKM</a></li>
+              <li><a href="/sitemap.xml" target="_blank" class="hover:text-rose-600 transition-colors">Sitemap XML</a> · <a href="/rss.xml" target="_blank" class="hover:text-rose-600 transition-colors">RSS</a> · <a href="/llms.txt" target="_blank" class="hover:text-rose-600 transition-colors">LLMs.txt</a></li>
             </ul>
           </div>
         </div>

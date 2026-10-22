@@ -51,9 +51,24 @@ const allPosts = Array.from(allIds)
   .map(id => enMap.get(id) || postsId.find(p => p.id === id))
   .filter(Boolean) as typeof postsEn;
 
+const currentTags = new Set((post.data.tags || []).map((t: string) => t.toLowerCase()));
 const recentPosts = allPosts
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 4);
+  .map(p => {
+    let relevance = 0;
+    if (p.data.category === post.data.category) relevance += 10;
+    for (const t of (p.data.tags || [])) {
+      if (currentTags.has(t.toLowerCase())) relevance += 3;
+    }
+    return { post: p, relevance };
+  })
+  .sort((a, b) => {
+    if (b.relevance !== a.relevance) return b.relevance - a.relevance;
+    return b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf();
+  })
+  .slice(0, 4)
+  .map(item => item.post);
+
+const nextReadPost = recentPosts[0];
 
 // Randomized Box Display (Samkarsa & Kusuma)
 const idHash = post.id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
@@ -238,6 +253,38 @@ const breadcrumbJsonLd = {
 
         <!-- 3. AdSense Slot 3: Bottom In-Article / Pre-Tags Unit -->
         <AdSenseUnit format="auto" className="mt-8 mb-4" />
+
+        <!-- Growth Hacker Viral Loop: Next Recommended Read & Free Interactive Calculator CTA -->
+        <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
+          {nextReadPost && (
+            <a href={`/en/blog/${nextReadPost.id}/`} class="group p-5 rounded-2xl bg-slate-100/90 dark:bg-slate-800/70 border border-slate-300/80 dark:border-slate-700 hover:border-rose-500 transition-all flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+                  📖 Recommended Next Read ({nextReadPost.data.category})
+                </span>
+                <h4 class="font-bold text-sm sm:text-base text-slate-950 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mt-1.5 leading-snug">
+                  {nextReadPost.data.title}
+                </h4>
+              </div>
+              <span class="text-xs font-bold text-rose-600 dark:text-rose-400 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                Read Next Article &rarr;
+              </span>
+            </a>
+          )}
+          <a href="/tools/" class="group p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white border border-slate-700 hover:border-amber-400/60 transition-all flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400">
+                ⚡ Free Interactive Business Tools
+              </span>
+              <h4 class="font-bold text-sm sm:text-base text-white group-hover:text-amber-300 transition-colors mt-1.5 leading-snug">
+                5-Year Enterprise ERP TCO Audit &amp; Wholesale Margin Calculator
+              </h4>
+            </div>
+            <span class="text-xs font-bold text-amber-300 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Open Interactive Calculators &rarr;
+            </span>
+          </a>
+        </div>
 
         <!-- Social Share & Ready-to-Post Media Box -->
         <SocialReadyBox 

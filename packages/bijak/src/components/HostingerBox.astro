@@ -83,7 +83,7 @@ if (catLower.includes('ritel') || catLower.includes('sembako') || catLower.inclu
           {badge}
         </span>
         <span class="text-xs font-mono text-indigo-300/80">
-          {isEn ? 'Coupon:' : 'Kupon:'} <strong class="text-amber-300 font-bold tracking-wider">BIJAKTECH</strong>
+          {isEn ? 'Coupon:' : 'Kupon:'} <a href={ctaUrl} target="_blank" rel="noopener sponsored" class="text-amber-300 hover:text-amber-200 font-bold tracking-wider underline">6X5PUTERARQL</a>
         </span>
       </div>
 
@@ -101,7 +101,7 @@ if (catLower.includes('ritel') || catLower.includes('sembako') || catLower.inclu
           <span>{spec}</span>
         </div>
         <div class="text-xs font-bold text-amber-300 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/25 shrink-0">
-          {isEn ? 'Discount Code:' : 'Kupon Diskon:'} <strong class="font-mono text-amber-200 tracking-wider">6X5PUTERARQL</strong>
+          {isEn ? 'Discount Code:' : 'Kupon Diskon:'} <a href={ctaUrl} target="_blank" rel="noopener sponsored" class="font-mono text-amber-200 hover:text-white tracking-wider underline">6X5PUTERARQL</a>
         </div>
       </div>
 
@@ -110,6 +110,9 @@ if (catLower.includes('ritel') || catLower.includes('sembako') || catLower.inclu
           href={ctaUrl}
           target="_blank"
           rel="noopener sponsored"
+          data-mcp-action="claim_hostinger_kvm_partner_discount"
+          data-mcp-description={title}
+          data-mcp-params="coupon=6X5PUTERARQL"
           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-indigo-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
         >
           <span>{ctaText}</span>
@@ -131,14 +134,17 @@ if (catLower.includes('ritel') || catLower.includes('sembako') || catLower.inclu
     </h4>
     <p class="text-xs text-slate-300 leading-relaxed mb-4">
       {isEn 
-        ? <>Apply discount code <span class="text-amber-300 font-mono font-bold bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">6X5PUTERARQL</span> at checkout for exclusive savings.</>
-        : <>Gunakan kode kupon <span class="text-amber-300 font-mono font-bold bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">6X5PUTERARQL</span> untuk potongan harga ekstra saat checkout.</>
+        ? <>Apply discount code <a href={ctaUrl} target="_blank" rel="noopener sponsored" class="text-amber-300 font-mono font-bold bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20 underline">6X5PUTERARQL</a> at checkout for exclusive savings.</>
+        : <>Gunakan kode kupon <a href={ctaUrl} target="_blank" rel="noopener sponsored" class="text-amber-300 font-mono font-bold bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20 underline">6X5PUTERARQL</a> untuk potongan harga ekstra saat checkout.</>
       }
     </p>
     <a
       href={ctaUrl}
       target="_blank"
       rel="noopener sponsored"
+      data-mcp-action="claim_hostinger_kvm_partner_discount"
+      data-mcp-description={title}
+      data-mcp-params="coupon=6X5PUTERARQL"
       class="block w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs tracking-wide transition-all shadow-md"
     >
       {ctaText}

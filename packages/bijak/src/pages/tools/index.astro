@@ -1,0 +1,301 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AdSenseUnit from '../../components/AdSenseUnit.astro';
+import HostingerBox from '../../components/HostingerBox.astro';
+import SamkarsaIndustryRef from '../../components/SamkarsaIndustryRef.astro';
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Kalkulator Audit TCO ERP Enterprise 5 Tahun & Kalkulator Margin Grosir UMKM",
+  "url": "https://bijaktechnology.com/tools/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "IDR"
+  },
+  "description": "Alat hitung interaktif gratis untuk simulasi penghematan Total Cost of Ownership (TCO) ERPNext v16 vs ERP SaaS per-user selama 5 tahun, serta kalkulator margin harga grosir vs eceran toko sembako UMKM."
+};
+---
+
+<Layout 
+  title="Kalkulator TCO ERP 5 Tahun & Margin Grosir UMKM Gratis" 
+  description="Hitung estimasi penghematan lisensi ERPNext v16 Private Cloud selama 5 tahun untuk korporasi, serta simulasi margin kulakan grosir vs eceran toko sembako secara instan."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} slot="head" />
+
+  <div class="space-y-12">
+    <!-- Hero Header -->
+    <div class="bg-slate-900 text-white rounded-3xl p-8 sm:p-10 border border-slate-800 shadow-xl">
+      <div class="max-w-3xl space-y-4">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-600 text-white">
+          ⚡ Interactive Business &amp; IT Calculators
+        </span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+          Kalkulator Audit Efisiensi Bisnis &amp; Infrastruktur IT
+        </h1>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Alat bantu hitung instan tanpa registrasi untuk Direktur Operasional, CFO, Manajer IT, dan Pemilik Bisnis Ritel. Simulasikan penghematan biaya lisensi ERP selama 5 tahun atau hitung margin kulakan grosir dengan presisi.
+        </p>
+      </div>
+    </div>
+
+    <!-- Top AdSense Display Unit -->
+    <AdSenseUnit className="my-6" />
+
+    <!-- Calculator 1: 5-Year Enterprise ERP TCO Calculator -->
+    <section id="erp-tco-calculator" class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-300/80 dark:border-slate-800 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-slate-200 dark:border-slate-800">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+            B2B Enterprise Tool • Samkarsa Benchmark
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 dark:text-white mt-1">
+            1. Kalkulator Audit TCO ERP 5 Tahun (SaaS Per-User vs ERPNext v16)
+          </h2>
+        </div>
+        <a href="https://samkarsa.com" target="_blank" data-mcp-action="consult_samkarsa_erpnext" class="text-xs font-bold px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white transition-all">
+          Konsultasi Arsitektur ERP &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Input Controls -->
+        <div class="lg:col-span-6 space-y-6 bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/70">
+          <div>
+            <label for="erpUsers" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              Jumlah Pengguna Aktif (Users / Karyawan): <span id="erpUsersVal" class="text-rose-600 dark:text-rose-400 font-mono text-sm">50 User</span>
+            </label>
+            <input id="erpUsers" type="range" min="10" max="500" step="5" value="50" class="w-full accent-rose-600 cursor-pointer" />
+            <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1">
+              <span>10 User</span>
+              <span>100 User</span>
+              <span>250 User</span>
+              <span>500 User</span>
+            </div>
+          </div>
+
+          <div>
+            <label for="saasFee" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              Biaya Lisensi ERP SaaS Kompetitor / User / Bulan (Rp):
+            </label>
+            <input id="saasFee" type="number" value="450000" step="50000" min="100000" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-sm font-bold" />
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+              *Rata-rata ERP SaaS komersial memungut Rp 350.000 – Rp 850.000 per user/bulan.
+            </p>
+          </div>
+
+          <div>
+            <label for="erpBranches" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              Jumlah Cabang / Gudang / Pabrik:
+            </label>
+            <select id="erpBranches" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-semibold text-sm">
+              <option value="1">1 Lokasi (Kantor Pusat + Gudang Utama)</option>
+              <option value="3" selected>2 - 4 Cabang / Pabrik Regional</option>
+              <option value="6">5 - 10 Cabang / Distribusi Nasional</option>
+              <option value="12">&gt; 10 Cabang (Korporasi Multi-Entitas)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Output Scorecard -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-6 rounded-2xl bg-slate-900 text-white border border-slate-800 space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-rose-950/40 border border-rose-500/30">
+                <div class="text-[11px] font-mono uppercase text-rose-300">TCO 5 Tahun ERP Lisensi Per-User</div>
+                <div id="outSaas5Yr" class="text-xl sm:text-2xl font-extrabold text-rose-400 font-mono mt-1">Rp 1.485.000.000</div>
+                <div class="text-[11px] text-slate-400 mt-1">Termasuk eskalasi tahunan &amp; biaya per kursi</div>
+              </div>
+              <div class="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30">
+                <div class="text-[11px] font-mono uppercase text-emerald-300">TCO 5 Tahun ERPNext v16 Private Cloud</div>
+                <div id="outErpnext5Yr" class="text-xl sm:text-2xl font-extrabold text-emerald-400 font-mono mt-1">Rp 195.000.000</div>
+                <div class="text-[11px] text-slate-400 mt-1">Rp 0 Lisensi User + VPS KVM 4 + Implementasi</div>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-xl bg-gradient-to-r from-emerald-600/20 to-teal-600/20 border border-emerald-400/40">
+              <div class="text-xs font-bold uppercase tracking-wider text-emerald-300">Estimasi Penghematan Kas Korporasi (5 Tahun):</div>
+              <div id="outSavings" class="text-2xl sm:text-3xl font-black text-white font-mono mt-1">Rp 1.290.000.000 (Hemat 86%)</div>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                Dengan <strong>ERPNext v16 Open-Source (GNU GPL v3)</strong> di atas <a href="/go/hostinger/" target="_blank" class="text-amber-300 underline font-bold">Hostinger KVM 4 NVMe VPS</a>, penambahan 100 karyawan baru tidak menambah biaya lisensi bulanan sepeser pun.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a href="https://samkarsa.com" target="_blank" data-mcp-action="consult_samkarsa_erpnext" class="flex-1 text-center py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md">
+                Jadwalkan Audit Implementasi di Samkarsa.com
+              </a>
+              <a href="/go/hostinger/" target="_blank" rel="noopener sponsored" data-mcp-action="claim_hostinger_kvm_partner_discount" class="flex-1 text-center py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md">
+                Cek Server VPS KVM 4 (Kupon: 6X5PUTERARQL)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mid-Page AdSense In-Article Unit -->
+    <AdSenseUnit variant="in-article" className="my-8" />
+
+    <!-- Calculator 2: Retail & Wholesale Margin Calculator -->
+    <section id="retail-margin-calculator" class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-300/80 dark:border-slate-800 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-slate-200 dark:border-slate-800">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+            UMKM &amp; Toko Sembako Tool • Perputaran Stok Cepat
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 dark:text-white mt-1">
+            2. Kalkulator Harga Grosir vs Eceran &amp; Perputaran Modal Sembako
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-6 space-y-5 bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/70">
+          <div>
+            <label for="costPrice" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              Harga Modal Kulakan per Unit / Karton / Karung (Rp):
+            </label>
+            <input id="costPrice" type="number" value="345000" step="5000" min="1000" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-sm font-bold" />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="wholesaleMargin" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+                Target Margin Grosir (%):
+              </label>
+              <input id="wholesaleMargin" type="number" value="4.5" step="0.5" min="1" max="50" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-sm font-bold" />
+            </div>
+            <div>
+              <label for="retailMargin" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+                Target Margin Eceran (%):
+              </label>
+              <input id="retailMargin" type="number" value="11" step="0.5" min="2" max="100" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-sm font-bold" />
+            </div>
+          </div>
+
+          <div>
+            <label for="dailyQty" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              Target Volume Terjual per Hari (Unit/Karung):
+            </label>
+            <input id="dailyQty" type="number" value="25" step="1" min="1" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-sm font-bold" />
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-6 rounded-2xl bg-slate-900 text-white border border-slate-800 space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+                <div class="text-[11px] font-mono uppercase text-emerald-400">Harga Jual Grosir Ideal</div>
+                <div id="outWholesalePrice" class="text-xl font-extrabold text-white font-mono mt-1">Rp 360.525</div>
+                <div id="outWholesaleProfit" class="text-xs text-emerald-300 mt-1">Laba/unit: Rp 15.525</div>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+                <div class="text-[11px] font-mono uppercase text-amber-400">Harga Jual Eceran Ideal</div>
+                <div id="outRetailPrice" class="text-xl font-extrabold text-white font-mono mt-1">Rp 382.950</div>
+                <div id="outRetailProfit" class="text-xs text-amber-300 mt-1">Laba/unit: Rp 37.950</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-emerald-950/50 border border-emerald-500/30">
+              <div class="text-xs font-bold uppercase tracking-wider text-emerald-300">Potensi Laba Kotor Bulanan (30 Hari Operasional):</div>
+              <div id="outMonthlyGross" class="text-2xl font-black text-white font-mono mt-1">Rp 11.643.750 / bulan</div>
+              <p class="text-[11px] text-slate-300 mt-1">
+                *Asumsi bauran penjualan 70% volume grosir bakul &amp; 30% volume eceran warga.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <SamkarsaIndustryRef />
+    <HostingerBox category="ERPNext" variant="in-article" />
+    <AdSenseUnit format="auto" className="my-8" />
+  </div>
+
+  <script is:inline>
+    (function() {
+      const fmtIDR = (n) => 'Rp ' + Math.round(n).toLocaleString('id-ID');
+
+      // 1. ERP TCO Calculator Logic
+      const erpUsers = document.getElementById('erpUsers');
+      const erpUsersVal = document.getElementById('erpUsersVal');
+      const saasFee = document.getElementById('saasFee');
+      const erpBranches = document.getElementById('erpBranches');
+      const outSaas5Yr = document.getElementById('outSaas5Yr');
+      const outErpnext5Yr = document.getElementById('outErpnext5Yr');
+      const outSavings = document.getElementById('outSavings');
+
+      function calcErp() {
+        if (!erpUsers || !saasFee || !erpBranches) return;
+        const users = Number(erpUsers.value) || 50;
+        const monthlyPerUser = Number(saasFee.value) || 450000;
+        const branchFactor = Number(erpBranches.value) || 3;
+
+        erpUsersVal.textContent = users + ' User';
+
+        // 5-year SaaS cost (60 months + 10% implementation/addon overhead)
+        const saas5Yr = (users * monthlyPerUser * 60) * 1.1;
+
+        // 5-year ERPNext v16 Private Cloud (VPS KVM 4 + One-time implementation + annual maintenance)
+        const vps5Yr = 350000 * 60; // ~Rp 21 juta for 5 years KVM VPS + backup
+        const implBase = 65000000 + (branchFactor * 18000000) + (users * 350000);
+        const erpnext5Yr = vps5Yr + implBase;
+
+        const savings = Math.max(0, saas5Yr - erpnext5Yr);
+        const pct = saas5Yr > 0 ? Math.round((savings / saas5Yr) * 100) : 0;
+
+        outSaas5Yr.textContent = fmtIDR(saas5Yr);
+        outErpnext5Yr.textContent = fmtIDR(erpnext5Yr);
+        outSavings.textContent = fmtIDR(savings) + ' (Hemat ' + pct + '%)';
+      }
+
+      [erpUsers, saasFee, erpBranches].forEach(el => {
+        if (el) el.addEventListener('input', calcErp);
+      });
+      calcErp();
+
+      // 2. Retail Margin Calculator Logic
+      const costPrice = document.getElementById('costPrice');
+      const wholesaleMargin = document.getElementById('wholesaleMargin');
+      const retailMargin = document.getElementById('retailMargin');
+      const dailyQty = document.getElementById('dailyQty');
+      const outWholesalePrice = document.getElementById('outWholesalePrice');
+      const outWholesaleProfit = document.getElementById('outWholesaleProfit');
+      const outRetailPrice = document.getElementById('outRetailPrice');
+      const outRetailProfit = document.getElementById('outRetailProfit');
+      const outMonthlyGross = document.getElementById('outMonthlyGross');
+
+      function calcRetail() {
+        if (!costPrice || !wholesaleMargin || !retailMargin || !dailyQty) return;
+        const cost = Number(costPrice.value) || 0;
+        const wMargin = Number(wholesaleMargin.value) || 0;
+        const rMargin = Number(retailMargin.value) || 0;
+        const qty = Number(dailyQty.value) || 0;
+
+        const wProfit = cost * (wMargin / 100);
+        const rProfit = cost * (rMargin / 100);
+        const wPrice = cost + wProfit;
+        const rPrice = cost + rProfit;
+
+        const blendedDailyProfit = (qty * 0.7 * wProfit) + (qty * 0.3 * rProfit);
+        const monthlyGross = blendedDailyProfit * 30;
+
+        outWholesalePrice.textContent = fmtIDR(wPrice);
+        outWholesaleProfit.textContent = 'Laba/unit: ' + fmtIDR(wProfit);
+        outRetailPrice.textContent = fmtIDR(rPrice);
+        outRetailProfit.textContent = 'Laba/unit: ' + fmtIDR(rProfit);
+        outMonthlyGross.textContent = fmtIDR(monthlyGross) + ' / bulan';
+      }
+
+      [costPrice, wholesaleMargin, retailMargin, dailyQty].forEach(el => {
+        if (el) el.addEventListener('input', calcRetail);
+      });
+      calcRetail();
+    })();
+  </script>
+</Layout>

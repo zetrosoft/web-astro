@@ -46,5 +46,8 @@ User-agent: Baiduspider
 User-agent: Sogou
 Allow: /
 
-# Canonical Sitemap Index
+# Canonical Sitemap Index & AI Discovery Endpoints (AEO / GEO / WebMCP)
 Sitemap: https://bijaktechnology.com/sitemap.xml
+# LLMs.txt Discovery: https://bijaktechnology.com/llms.txt
+# Full AI Corpus: https://bijaktechnology.com/llms-full.txt
+# WebMCP Actions: https://bijaktechnology.com/mcp-actions.json
