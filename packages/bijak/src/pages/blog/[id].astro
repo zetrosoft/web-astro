@@ -8,6 +8,7 @@ import KusumaMapSpotlight from '../../components/KusumaMapSpotlight.astro';
 import SamkarsaIndustryRef from '../../components/SamkarsaIndustryRef.astro';
 import SocialReadyBox from '../../components/SocialReadyBox.astro';
 import ArticleFaqSchema from '../../components/ArticleFaqSchema.astro';
+import MediumCompatibleTable from '../../components/MediumCompatibleTable.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -208,7 +209,7 @@ const breadcrumbJsonLd = {
 
         <!-- Isi Artikel Utama MDX -->
         <article class="prose max-w-none prose-slate dark:prose-invert">
-          <Content components={{ AdSenseUnit: InArticleAd, KusumaMapSpotlight, SamkarsaIndustryRef, HostingerBox, ArticleFaqSchema }} />
+          <Content components={{ AdSenseUnit: InArticleAd, KusumaMapSpotlight, SamkarsaIndustryRef, HostingerBox, ArticleFaqSchema, table: MediumCompatibleTable }} />
         </article>
 
         <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Unit (In-Article Ad 6901499930) -->

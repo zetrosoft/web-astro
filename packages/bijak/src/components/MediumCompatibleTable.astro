@@ -1,0 +1,61 @@
+---
+const attrs = Astro.props;
+const rawHtml = await Astro.slots.render('default');
+
+// Ekstrak isi <th> dan <td> dari HTML tabel untuk menghasilkan daftar poin kompatibel Medium.com
+function stripTags(html: string): string {
+  return html
+    .replace(/<[^>]+>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+const trMatches = [...rawHtml.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
+const headers: string[] = [];
+const digestRows: Array<{ title: string; details: string[] }> = [];
+
+if (trMatches.length > 0) {
+  const firstRowHtml = trMatches[0][1];
+  const thMatches = [...firstRowHtml.matchAll(/<th[^>]*>([\s\S]*?)<\/th>/gi)];
+  for (const th of thMatches) {
+    headers.push(stripTags(th[1]));
+  }
+
+  for (let i = 1; i < trMatches.length; i++) {
+    const rowHtml = trMatches[i][1];
+    const tdMatches = [...rowHtml.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)];
+    if (tdMatches.length === 0) continue;
+
+    const cells = tdMatches.map(td => stripTags(td[1]));
+    const firstCol = cells[0] || '';
+    const details: string[] = [];
+
+    for (let j = 1; j < cells.length; j++) {
+      const colName = headers[j] || `Col ${j + 1}`;
+      if (cells[j]) {
+        details.push(`${colName}: ${cells[j]}`);
+      }
+    }
+
+    if (firstCol) {
+      digestRows.push({ title: firstCol, details });
+    }
+  }
+}
+---
+
+<table {...attrs} set:html={rawHtml} />
+{digestRows.length > 0 && (
+  <ul class="medium-table-digest sr-only">
+    {digestRows.map(row => (
+      <li>
+        <strong>{row.title}</strong> — {row.details.join(' | ')}
+      </li>
+    ))}
+  </ul>
+)}

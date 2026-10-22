@@ -84,6 +84,17 @@ const facebookText = social?.facebook || `${title}\n\nSimak selengkapnya di: ${u
         FB
       </button>
 
+      <!-- Button Medium -> Buka Modal Post Medium -->
+      <button
+        type="button"
+        class="open-social-modal-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold shadow-sm transition-all hover:-translate-y-0.5 cursor-pointer"
+        data-platform="medium"
+        aria-label="Format post Medium"
+      >
+        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        Medium
+      </button>
+
       <!-- Share WhatsApp Langsung -->
       <a
         target="_blank"
@@ -148,6 +159,9 @@ const facebookText = social?.facebook || `${title}\n\nSimak selengkapnya di: ${u
         </button>
         <button type="button" class="tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer" data-target="tab-facebook">
           Facebook
+        </button>
+        <button type="button" class="tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer" data-target="tab-medium">
+          Medium.com (Full Article + Tables)
         </button>
       </div>
 
@@ -243,6 +257,43 @@ const facebookText = social?.facebook || `${title}\n\nSimak selengkapnya di: ${u
           </div>
         </div>
 
+        <!-- Panel 5: Medium.com Full Rich-Text / Import Ready -->
+        <div id="tab-medium" class="platform-panel hidden space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-xs font-semibold text-slate-500">
+              {isEn ? 'Medium-optimized format (Tables auto-converted to structured lists):' : 'Format khusus Medium.com (Tabel otomatis dikonversi menjadi daftar poin rapi):'}
+            </span>
+            <div class="flex items-center gap-2">
+              <button
+                id="copy-medium-rich-btn"
+                type="button"
+                data-canonical-url={url}
+                data-article-title={title}
+                class="px-3.5 py-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition-all cursor-pointer shadow-sm"
+              >
+                {isEn ? '📋 Copy Rich Article & Open Medium' : '📋 Salin Artikel Penuh & Buka Medium'}
+              </button>
+            </div>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200/70 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300 space-y-2">
+            <p class="font-semibold text-emerald-700 dark:text-emerald-400">
+              💡 {isEn ? 'How to publish cleanly on Medium.com:' : 'Cara tayang rapi di Medium.com:'}
+            </p>
+            <ol class="list-decimal pl-5 space-y-1">
+              <li>
+                {isEn
+                  ? 'Option A (URL Import): Use https://medium.com/p/import — our page now includes automatic Medium-compatible structured lists for every table and zero header logo pollution!'
+                  : 'Opsi A (Import URL): Gunakan https://medium.com/p/import — halaman ini sudah dilengkapi daftar poin otomatis pengganti tabel & bebas gambar logo header!'}
+              </li>
+              <li>
+                {isEn
+                  ? 'Option B (1-Click Rich Copy): Click the green button above, then press Cmd+V / Ctrl+V directly inside the Medium editor (https://medium.com/new-story).'
+                  : 'Opsi B (1-Klik Copy Paste): Klik tombol hijau di atas, lalu tekan Cmd+V / Ctrl+V langsung di halaman editor Medium (https://medium.com/new-story).'}
+              </li>
+            </ol>
+          </div>
+        </div>
+
       </div>
 
       <!-- Modal Footer -->
@@ -312,6 +363,7 @@ const facebookText = social?.facebook || `${title}\n\nSimak selengkapnya di: ${u
         if (platform === 'linkedin') targetId = 'tab-linkedin';
         else if (platform === 'threads') targetId = 'tab-threads';
         else if (platform === 'facebook') targetId = 'tab-facebook';
+        else if (platform === 'medium') targetId = 'tab-medium';
 
         switchTab(targetId);
         if (modal) {
@@ -374,5 +426,48 @@ const facebookText = social?.facebook || `${title}\n\nSimak selengkapnya di: ${u
         }
       });
     });
+
+    // Tombol Copy Rich HTML untuk Medium.com
+    const copyMediumBtn = document.getElementById('copy-medium-rich-btn');
+    if (copyMediumBtn) {
+      copyMediumBtn.addEventListener('click', async function() {
+        const articleEl = document.querySelector('main article');
+        const canonicalUrl = copyMediumBtn.getAttribute('data-canonical-url') || window.location.href;
+        const articleTitle = copyMediumBtn.getAttribute('data-article-title') || document.title;
+        if (!articleEl) return;
+
+        const clone = articleEl.cloneNode(true);
+        // Hapus slot iklan & elemen non-artikel
+        clone.querySelectorAll('.adsbygoogle, ins, script, style, .not-prose').forEach(el => el.remove());
+        // Tampilkan ul.medium-table-digest dan hapus table HTML agar di Medium rapi sebagai bullet points
+        clone.querySelectorAll('ul.medium-table-digest').forEach(ul => {
+          ul.removeAttribute('style');
+        });
+        clone.querySelectorAll('table').forEach(tbl => tbl.remove());
+
+        const htmlContent = `<h1>${articleTitle}</h1>` + clone.innerHTML + `<hr><p><em>Originally published at <a href="${canonicalUrl}">${canonicalUrl}</a></em></p>`;
+        const plainContent = `${articleTitle}\n\n` + clone.innerText + `\n\nOriginally published at ${canonicalUrl}`;
+
+        try {
+          if (window.ClipboardItem) {
+            const blobHtml = new Blob([htmlContent], { type: 'text/html' });
+            const blobText = new Blob([plainContent], { type: 'text/plain' });
+            await navigator.clipboard.write([new ClipboardItem({ 'text/html': blobHtml, 'text/plain': blobText })]);
+          } else {
+            await navigator.clipboard.writeText(plainContent);
+          }
+          const orig = copyMediumBtn.innerText;
+          copyMediumBtn.innerText = '✅ Copied Rich Format! Opening Medium...';
+          setTimeout(() => {
+            window.open('https://medium.com/new-story', '_blank', 'noopener,noreferrer');
+          }, 300);
+          setTimeout(() => {
+            copyMediumBtn.innerText = orig;
+          }, 2500);
+        } catch (e) {
+          window.open('https://medium.com/p/import', '_blank', 'noopener,noreferrer');
+        }
+      });
+    }
   })();
 </script>
