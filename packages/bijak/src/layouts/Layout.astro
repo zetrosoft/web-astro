@@ -155,8 +155,13 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
     <!-- Global Structured Data (Organization & WebSite) -->
     <script type="application/ld+json" set:html={JSON.stringify(globalSchema)} />
 
-    <!-- Google AdSense Account Verification -->
+    <!-- Google AdSense Official Script & Account Verification (Direct Head for Instant Approval) -->
     <meta name="google-adsense-account" content="ca-pub-7398988805905629" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7398988805905629"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Google Fonts Preconnect & Asynchronous Non-Blocking Stylesheet -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -542,42 +547,5 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
         </div>
       </div>
     </footer>
-
-    <!-- Smart Deferred Google AdSense Loader (Eliminasi TBT Mobile & Desktop) -->
-    <script is:inline>
-      (function() {
-        var adsenseLoaded = false;
-        function loadAdSense() {
-          if (adsenseLoaded) return;
-          adsenseLoaded = true;
-          var s = document.createElement('script');
-          s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7398988805905629';
-          s.async = true;
-          s.crossOrigin = 'anonymous';
-          document.head.appendChild(s);
-        }
-
-        // Muat saat interaksi pengguna (scroll, touch, mouse, key)
-        var events = ['scroll', 'touchstart', 'mousemove', 'keydown', 'wheel'];
-        function onInteraction() {
-          loadAdSense();
-          events.forEach(function(e) {
-            window.removeEventListener(e, onInteraction, { passive: true });
-          });
-        }
-        events.forEach(function(e) {
-          window.addEventListener(e, onInteraction, { passive: true });
-        });
-
-        // Fallback muat saat browser idle (timeout 3.5 detik)
-        if ('requestIdleCallback' in window) {
-          requestIdleCallback(function() {
-            setTimeout(loadAdSense, 3500);
-          });
-        } else {
-          setTimeout(loadAdSense, 3500);
-        }
-      })();
-    </script>
   </body>
 </html>
