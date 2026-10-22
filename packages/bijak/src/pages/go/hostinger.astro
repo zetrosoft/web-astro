@@ -15,6 +15,17 @@ const targetUrl = "https://www.hostinger.com/id?REFERRALCODE=6X5PUTERARQL";
     <link rel="canonical" href={targetUrl} />
     
     <script is:inline define:vars={{ targetUrl }}>
+      try {
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon('/api/track', JSON.stringify({
+            type: 'conversion',
+            event_type: 'affiliate_hostinger',
+            source_path: document.referrer || '/go/hostinger/',
+            target_url: targetUrl,
+            meta_info: 'direct_redirect_page'
+          }));
+        }
+      } catch (e) {}
       // Instant Client-side Navigation
       window.location.replace(targetUrl);
     </script>
