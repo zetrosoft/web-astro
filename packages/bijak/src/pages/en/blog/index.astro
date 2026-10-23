@@ -60,7 +60,7 @@ const categories = [...new Set(posts.map(post => post.data.category))];
               {post.data.category}
             </span>
             <h2 class="font-bold text-base sm:text-lg text-slate-950 dark:text-white leading-snug group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
-              <a href={`/en/blog/${post.id}`}>{post.data.title}</a>
+              <a href={`/en/blog/${post.id}/`}>{post.data.title}</a>
             </h2>
             <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-3 leading-relaxed">
               {post.data.description}
@@ -107,6 +107,21 @@ const categories = [...new Set(posts.map(post => post.data.category))];
           });
         });
       });
+
+      // Detect URL query param ?category=... on page load
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryCat = urlParams.get('category');
+      if (queryCat) {
+        const matchedBtn = Array.from(buttons).find(btn => {
+          const btnCat = btn.getAttribute('data-category-btn') || '';
+          return btnCat.toLowerCase() === queryCat.toLowerCase() || 
+                 btnCat.toLowerCase().includes(queryCat.toLowerCase()) ||
+                 queryCat.toLowerCase().includes(btnCat.toLowerCase());
+        });
+        if (matchedBtn) {
+          matchedBtn.click();
+        }
+      }
     }
 
     setupFilter();

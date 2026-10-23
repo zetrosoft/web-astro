@@ -434,43 +434,48 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
       <nav class="border-t border-slate-200/80 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-900/60 px-4 py-2 overflow-x-auto">
         <ul class="max-w-6xl mx-auto flex items-center justify-start md:justify-center gap-1 sm:gap-2 text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 whitespace-nowrap">
           <li>
-            <a href={isEn ? "/en" : "/"} class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+            <a href={isEn ? "/en/" : "/"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
               {isEn ? "Home" : "Beranda"}
             </a>
           </li>
           <li>
-            <a href="/blog" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
-              {isEn ? "All Stories" : "Semua Berita"}
+            <a href={isEn ? "/en/blog/" : "/blog/"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              {isEn ? "All" : "Semua"}
             </a>
           </li>
           <li>
-            <a href="/blog?category=AI" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+            <a href={isEn ? "/en/blog/?category=Cloud+VPS" : "/blog/?category=Cloud+VPS"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
               AI &amp; Cloud
             </a>
           </li>
           <li>
-            <a href="/blog?category=Ritel" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
-              {isEn ? "Retail & Small Business" : "Bisnis & UMKM"}
+            <a href={isEn ? "/en/blog/?category=Local+SEO" : "/blog/?category=Local+SEO"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              {isEn ? "Business & Retail" : "Bisnis & Ritel"}
             </a>
           </li>
           <li>
-            <a href="/blog?category=Enterprise" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+            <a href={isEn ? "/en/blog/?category=ERPNext" : "/blog/?category=ERPNext"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
               ERP Enterprise
             </a>
           </li>
           <li>
-            <a href="/blog?category=Blockchain" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
-              Web3 &amp; Finansial
+            <a href={isEn ? "/en/blog/?category=Blockchain" : "/blog/?category=Blockchain"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              {isEn ? "Web3 & Security" : "Web3 & Keamanan"}
             </a>
           </li>
           <li>
-            <a href="/project" class="px-3 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
-              {isEn ? "Portfolio" : "Portofolio"}
+            <a href={isEn ? "/en/blog/?category=Smart+Living" : "/blog/?category=Smart+Living"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              Smart Living &amp; DIY
             </a>
           </li>
           <li>
-            <a href="/tools/" class="px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-600 hover:text-white transition-colors flex items-center gap-1">
-              <span>⚡ {isEn ? "Free Calculators" : "Kalkulator Bisnis"}</span>
+            <a href={isEn ? "/en/blog/?category=Sains" : "/blog/?category=Sains"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              {isEn ? "Stories & Science" : "Kisah & Sains"}
+            </a>
+          </li>
+          <li>
+            <a href={isEn ? "/en/tools/" : "/tools/"} class="px-2.5 py-1.5 rounded-lg bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-600 hover:text-white transition-colors flex items-center gap-1">
+              <span>⚡ {isEn ? "Calculators" : "Kalkulator Bisnis"}</span>
             </a>
           </li>
         </ul>
@@ -508,10 +513,12 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
           <div class="space-y-2">
             <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Rubrik Redaksi</h4>
             <ul class="text-xs space-y-2 font-medium">
-              <li><a href="/blog?category=AI" class="hover:text-rose-600 transition-colors">Kecerdasan Buatan &amp; Cloud</a></li>
-              <li><a href="/blog?category=Ritel" class="hover:text-rose-600 transition-colors">Digitalisasi Ritel &amp; Toko Sembako</a></li>
-              <li><a href="/blog?category=Enterprise" class="hover:text-rose-600 transition-colors">Arsitektur ERPNext Enterprise</a></li>
-              <li><a href="/blog?category=Blockchain" class="hover:text-rose-600 transition-colors">Avalanche Blockchain &amp; RWA</a></li>
+              <li><a href="/blog/?category=Cloud+VPS" class="hover:text-rose-600 transition-colors">AI &amp; Cloud Architecture</a></li>
+              <li><a href="/blog/?category=Local+SEO" class="hover:text-rose-600 transition-colors">Bisnis &amp; Ritel Sembako</a></li>
+              <li><a href="/blog/?category=ERPNext" class="hover:text-rose-600 transition-colors">ERPNext Enterprise</a></li>
+              <li><a href="/blog/?category=Blockchain" class="hover:text-rose-600 transition-colors">Web3 &amp; Keamanan Digital</a></li>
+              <li><a href="/blog/?category=Smart+Living" class="hover:text-rose-600 transition-colors">Smart Living &amp; DIY</a></li>
+              <li><a href="/blog/?category=Sains" class="hover:text-rose-600 transition-colors">Kisah &amp; Sains Nusantara</a></li>
             </ul>
           </div>
 
@@ -522,7 +529,7 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
               <li><a href="https://samkarsa.com" target="_blank" class="hover:text-rose-600 transition-colors">Samkarsa ERPNext Implementor</a></li>
               <li><a href="https://maps.google.com/?q=Toko+Sembako+Kusuma+Karanggeneng+Boyolali" target="_blank" class="hover:text-rose-600 transition-colors">Toko Sembako Kusuma Boyolali</a></li>
               <li><a href="/go/hostinger/" target="_blank" rel="noopener sponsored" class="hover:text-rose-600 transition-colors">Hostinger Official Partner</a></li>
-              <li><a href="/project" class="hover:text-rose-600 transition-colors">Aplikasi Blonjo &amp; Sajen AI</a></li>
+              <li><a href="/project/" class="hover:text-rose-600 transition-colors">Aplikasi Blonjo &amp; Sajen AI</a></li>
             </ul>
           </div>
 
@@ -530,9 +537,9 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
           <div class="space-y-2">
             <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Informasi &amp; Privasi</h4>
             <ul class="text-xs space-y-2 font-medium">
-              <li><a href="/about" class="hover:text-rose-600 transition-colors">Tentang Redaksi</a></li>
-              <li><a href="/contact" class="hover:text-rose-600 transition-colors">Kirim Pesan &amp; Kerjasama</a></li>
-              <li><a href="/privacy-policy" class="hover:text-rose-600 transition-colors">Kebijakan Privasi &amp; AdSense</a></li>
+              <li><a href="/about/" class="hover:text-rose-600 transition-colors">Tentang Redaksi</a></li>
+              <li><a href="/contact/" class="hover:text-rose-600 transition-colors">Kirim Pesan &amp; Kerjasama</a></li>
+              <li><a href="/privacy-policy/" class="hover:text-rose-600 transition-colors">Kebijakan Privasi &amp; AdSense</a></li>
               <li><a href="/tools/" class="hover:text-rose-600 transition-colors">Kalkulator TCO ERP &amp; Margin UMKM</a></li>
               <li><a href="/sitemap.xml" target="_blank" class="hover:text-rose-600 transition-colors">Sitemap XML</a> · <a href="/rss.xml" target="_blank" class="hover:text-rose-600 transition-colors">RSS</a> · <a href="/llms.txt" target="_blank" class="hover:text-rose-600 transition-colors">LLMs.txt</a></li>
             </ul>
