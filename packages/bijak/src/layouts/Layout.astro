@@ -16,6 +16,7 @@ interface Props {
   };
   alternateEn?: string;
   alternateId?: string;
+  noindex?: boolean;
 }
 
 const { 
@@ -26,7 +27,8 @@ const {
   type = 'website',
   articleMeta,
   alternateEn,
-  alternateId
+  alternateId,
+  noindex = false
 } = Astro.props;
 
 const isEn = lang === 'en';
@@ -112,7 +114,11 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
 
     <title>{title} | Bijak Technology</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    {noindex ? (
+      <meta name="robots" content="noindex, nofollow, noarchive" />
+    ) : (
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    )}
     
     <!-- Canonical, RSS Feed, AEO/LLMs Discovery & Multilingual Alternate Hreflang -->
     <link rel="canonical" href={canonicalUrl} />

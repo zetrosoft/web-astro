@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="404 - Halaman Tidak Ditemukan" 
+  description="Halaman yang Anda cari tidak ditemukan atau telah dihapus secara permanen dari server Bijak Technology."
+  noindex={true}
+>
+  <div class="max-w-3xl mx-auto py-16 px-4 text-center space-y-8">
+    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-rose-100 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 font-mono text-3xl font-extrabold shadow-inner">
+      404
+    </div>
+
+    <div class="space-y-3">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-950 dark:text-white tracking-tight">
+        Halaman Tidak Ditemukan
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+        Tautan yang Anda tuju sudah tidak tersedia, telah dipindahkan, atau dihapus secara permanen.
+      </p>
+    </div>
+
+    <div class="p-6 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800 text-left space-y-4 max-w-lg mx-auto text-sm text-slate-700 dark:text-slate-300">
+      <p class="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+        <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Pemberitahuan Sistem &amp; Keamanan:
+      </p>
+      <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+        Bijak Technology beroperasi di atas arsitektur statis modern berkeamanan tinggi. Seluruh URL lama atau tautan yang tidak sah telah dinonaktifkan secara permanen (HTTP 410 / 404).
+      </p>
+    </div>
+
+    <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+      <a 
+        href="/" 
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:hover:bg-slate-100 dark:text-slate-900 font-semibold text-sm transition-all shadow-sm"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        Kembali ke Beranda
+      </a>
+      <a 
+        href="/blog/" 
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-200 font-semibold text-sm transition-all border border-slate-300/80 dark:border-slate-700"
+      >
+        Jelajahi Artikel
+      </a>
+    </div>
+  </div>
+</Layout>
