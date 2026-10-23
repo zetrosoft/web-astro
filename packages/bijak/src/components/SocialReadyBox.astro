@@ -445,7 +445,7 @@ const facebookText = social?.facebook || `${title}\n\nSimak selengkapnya di: ${u
         });
         clone.querySelectorAll('table').forEach(tbl => tbl.remove());
 
-        const htmlContent = `<h1>${articleTitle}</h1>` + clone.innerHTML + `<hr><p><em>Originally published at <a href="${canonicalUrl}">${canonicalUrl}</a></em></p>`;
+        const htmlContent = `\x3Ch1\x3E${articleTitle}\x3C/h1\x3E` + clone.innerHTML + `\x3Chr\x3E\x3Cp\x3E\x3Cem\x3EOriginally published at \x3Ca href="${canonicalUrl}"\x3E${canonicalUrl}\x3C/a\x3E\x3C/em\x3E\x3C/p\x3E`;
         const plainContent = `${articleTitle}\n\n` + clone.innerText + `\n\nOriginally published at ${canonicalUrl}`;
 
         try {

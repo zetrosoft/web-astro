@@ -49,6 +49,29 @@ if (isEn) {
 const hreflangId = alternateId || `https://bijaktechnology.com${pathId}`;
 const hreflangEn = alternateEn || `https://bijaktechnology.com${pathEn}`;
 
+// 1. Optimasi Panjang Title Tag (Target Bing & Google: 50 - 65 karakter, membasmi 'Title too long')
+const rawTitle = title.trim();
+let pageTitle = rawTitle;
+if (!rawTitle.toLowerCase().includes('bijak technology')) {
+  if (rawTitle.length <= 45) {
+    pageTitle = `${rawTitle} | Bijak Technology`;
+  } else if (rawTitle.length > 65) {
+    const truncated = rawTitle.slice(0, 62);
+    const lastSpace = truncated.lastIndexOf(' ');
+    pageTitle = (lastSpace > 45 ? truncated.slice(0, lastSpace) : truncated) + '...';
+  } else {
+    pageTitle = rawTitle;
+  }
+}
+
+// 2. Optimasi Panjang Meta Description (Target Bing & Google: 120 - 158 karakter, membasmi 'Meta Description too long')
+let metaDesc = description.trim().replace(/\s+/g, ' ');
+if (metaDesc.length > 158) {
+  const truncated = metaDesc.slice(0, 155);
+  const lastSpace = truncated.lastIndexOf(' ');
+  metaDesc = (lastSpace > 120 ? truncated.slice(0, lastSpace) : truncated) + '...';
+}
+
 const globalSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -112,13 +135,22 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#0E2338" />
 
-    <title>{title} | Bijak Technology</title>
-    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={metaDesc} />
     {noindex ? (
       <meta name="robots" content="noindex, nofollow, noarchive" />
     ) : (
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     )}
+    
+    <!-- Google Analytics 4 (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ8DB4KZFS"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SZ8DB4KZFS');
+    </script>
     
     <!-- Canonical, RSS Feed, AEO/LLMs Discovery & Multilingual Alternate Hreflang -->
     <link rel="canonical" href={canonicalUrl} />
