@@ -1,143 +1,503 @@
 ---
 // packages/bijak/src/components/VisualInfographic.astro
-// Komponen Infografis Visual Universal untuk mempercantik halaman dan mempermudah pemahaman pembaca
-export interface CardItem {
+// Visual Infographic Engine: Mengadopsi Pola Technical Explainer Matrix & Pipeline Architecture
+// Terinspirasi dari standar editorial visual kelas dunia (visual step-by-step arrows, status chips, numbered cards, & dashed takeaway)
+
+export interface StepFlow {
+  step: string;
+  icon?: string;
+  isThreat?: boolean;
+}
+
+export interface MatrixRow {
+  badge: string;
+  threatTitle: string;
+  threatType: 'danger' | 'warning' | 'info';
+  flow: StepFlow[];
+  mitigation: string;
+  mitigationTool: string;
+  statusBadge: string;
+  statusVariant: 'success' | 'indigo' | 'emerald';
+}
+
+export interface NumberedStep {
+  number: number;
   title: string;
-  badge?: string;
-  variant?: 'danger' | 'warning' | 'success' | 'info' | 'primary';
-  points: string[];
-  metric?: string;
-  metricLabel?: string;
+  description: string;
+  tag: string;
 }
 
 export interface Props {
-  type?: 'comparison' | 'steps' | 'metrics';
+  lang?: 'id' | 'en';
   badge?: string;
   title?: string;
   subtitle?: string;
-  cards?: CardItem[];
-  category?: string;
+  chips?: string[];
+  matrixRows?: MatrixRow[];
+  numberedSteps?: NumberedStep[];
+  takeawayTitle?: string;
+  takeawayText?: string;
+  takeawayRule?: string;
 }
 
 const {
-  type = 'comparison',
-  badge = 'INFOGRAFIS EKSKLUSIF REDAKSI',
-  title = 'Visualisasi Strategis & Arsitektur Solusi',
-  subtitle = 'Panduan visual terstruktur untuk memudahkan pemahaman komparasi data, mitigasi risiko, dan eksekusi taktis.',
-  cards = [],
-  category = ''
+  lang,
+  badge,
+  title,
+  subtitle,
+  chips,
+  matrixRows,
+  numberedSteps,
+  takeawayTitle,
+  takeawayText,
+  takeawayRule
 } = Astro.props;
 
-// Default fallback cards jika tidak disuplai props eksplisit, berbasis kategori
-const defaultCards: CardItem[] = cards.length > 0 ? cards : [
-  {
-    title: 'Pendekatan Konvensional / Risiko Tinggi',
-    badge: '⚠️ METODE RENTAN',
-    variant: 'danger',
-    metric: '90%',
-    metricLabel: 'Tingkat Ketergantungan Eksternal',
-    points: [
-      'Menyimpan data sensitif pada cloud publik gratisan tanpa enkripsi end-to-end.',
-      'Bergantung pada autentikasi SMS OTP yang rawan penyadapan SIM Swap.',
-      'Biaya lisensi berulang terus membengkak seiring bertambahnya pengguna.'
-    ]
-  },
-  {
-    title: 'Arsitektur Mandiri & Kedaulatan Penuh',
-    badge: '🛡️ STANDAR TERVERIFIKASI',
-    variant: 'success',
-    metric: '99.4%',
-    metricLabel: 'Efisiensi Proteksi & Kontrol Aset',
-    points: [
-      'Penyimpanan terisolasi di private server mandiri (self-hosted vault).',
-      'Proteksi berlapis berbasis Hardware Key / Cold Storage terenkripsi.',
-      'Eliminasi biaya pihak ketiga dengan penghematan kas jangka panjang.'
-    ]
-  }
-];
+// Auto-detect language jika tidak ditentukan
+const isEn = lang === 'en' || Astro.url.pathname.startsWith('/en/');
+
+// Default Data Bahasa Indonesia
+const idDefault = {
+  badge: badge || 'INFOGRAFIS ARSITEKTUR KEAMANAN 2026',
+  title: title || 'Anatomi Serangan APK & Kerangka Perisai Digital Keluarga',
+  subtitle: subtitle || 'Visualisasi alur infiltrasi malware perbankan vs benteng pertahanan bertingkat (Air-gapped & Private Vault) dalam memproteksi aset rumah tangga.',
+  chips: chips || [
+    '🛑 78% Vektor Serangan: Pesan APK WhatsApp',
+    '🔒 99.4% Proteksi: Hardware Cold Storage',
+    '🛡️ Zero-Leak: Private Cloud Vault Mandiri',
+    '👨‍👩‍👧 Proteksi Lintas Usia (12–90 Tahun)'
+  ],
+  pipelineStages: [
+    { num: '01', title: 'Vektor Masuk', desc: 'Undangan APK / Link Phishing DApp', icon: '⚠️', color: 'rose' },
+    { num: '02', title: 'Filter Endpoint', desc: 'Sideloading OFF + Izin Terkunci', icon: '🛑', color: 'amber' },
+    { num: '03', title: 'Brankas Dingin', desc: 'Air-Gapped Cold Wallet & Private VPS', icon: '🔒', color: 'indigo' },
+    { num: '04', title: 'Aset Berdaulat', desc: 'Tabungan & Kunci Privat Terisolasi', icon: '🛡️', color: 'emerald' }
+  ],
+  matrixRows: matrixRows || [
+    {
+      badge: 'MALWARE REKENING BANK',
+      threatTitle: 'Serangan Sideloading APK WhatsApp',
+      threatType: 'danger',
+      flow: [
+        { step: 'Unduhan File APK Palsu', isThreat: true },
+        { step: 'Izin Accessibility Service', isThreat: true },
+        { step: 'Keylogger Sadap SMS OTP', isThreat: true },
+        { step: 'Rekening Dibobol', isThreat: true }
+      ],
+      mitigation: 'Kunci Sideloading (Matikan Install Unknown Apps) & aktifkan App Pinning pada ponsel keluarga.',
+      mitigationTool: 'OS Gatekeeper + Passkey',
+      statusBadge: '🛑 78% Risiko Dicegah di Gerbang OS',
+      statusVariant: 'success'
+    },
+    {
+      badge: 'DRAINER WEB3 & KRIPTO',
+      threatTitle: 'Eksploitasi Smart Contract Phishing',
+      threatType: 'warning',
+      flow: [
+        { step: 'Tautan DApp Palsu', isThreat: true },
+        { step: 'Approval Token Ilegal', isThreat: true },
+        { step: 'Hot Wallet Browser Bocor', isThreat: true },
+        { step: 'Kripto Terkuras', isThreat: true }
+      ],
+      mitigation: 'Isolasi tabungan utama ke Hardware Cold Storage (Air-Gapped Secure Element) tanpa koneksi internet.',
+      mitigationTool: 'Offline Hardware Wallet',
+      statusBadge: '🔒 99.4% Proteksi Kunci Privat',
+      statusVariant: 'emerald'
+    },
+    {
+      badge: 'KEBOCORAN PRIVASI DOKUMEN',
+      threatTitle: 'Pelanggaran Data Cloud Publik Gratisan',
+      threatType: 'info',
+      flow: [
+        { step: 'Unggah KTP/KK ke Cloud Publik', isThreat: true },
+        { step: 'Server Vendor Bocor', isThreat: true },
+        { step: 'Data Dijual di Forum Gelap', isThreat: true },
+        { step: 'Pinjol & Rekayasa Sosial', isThreat: true }
+      ],
+      mitigation: 'Pindahkan brankas berkas ke Self-Hosted Private Cloud di VPS KVM mandiri dengan enkripsi disk penuh.',
+      mitigationTool: 'Nextcloud + KVM VPS',
+      statusBadge: '🛡️ 100% Kedaulatan Data Mandiri',
+      statusVariant: 'indigo'
+    }
+  ],
+  numberedSteps: numberedSteps || [
+    {
+      number: 1,
+      title: 'Kunci Fitur Sideloading APK',
+      description: 'Matikan izin instalasi aplikasi luar toko resmi di semua ponsel anggota keluarga (terutama anak & lansia).',
+      tag: 'Endpoint Gate'
+    },
+    {
+      number: 2,
+      title: 'Tinggalkan Otentikasi SMS OTP',
+      description: 'Beralih ke aplikasi Authenticator atau Passkey FIDO2 untuk menggagalkan modus penyadapan SIM Swap.',
+      tag: 'Auth Layer'
+    },
+    {
+      number: 3,
+      title: 'Pisahkan Aset Panas vs Dingin',
+      description: 'Gunakan dompet HP hanya untuk uang saku harian; simpan tabungan Web3 di Hardware Cold Storage offline.',
+      tag: 'Air-Gapped Vault'
+    },
+    {
+      number: 4,
+      title: 'Miliki Private Cloud Sendiri',
+      description: 'Stop simpan KTP di cloud gratisan; kelola brankas data keluarga di server VPS KVM terenkripsi.',
+      tag: 'Data Sovereignty'
+    },
+    {
+      number: 5,
+      title: 'Protokol Darurat & Panic Button',
+      description: 'Sepakati saluran komunikasi darurat keluarga untuk freeze rekening seketika bila terjadi insiden siber.',
+      tag: 'Incident Protocol'
+    }
+  ],
+  takeawayTitle: takeawayTitle || 'PRINSIP EMAS ARSITEKTUR KEAMANAN DIGITAL 2026',
+  takeawayRule: takeawayRule || 'Keamanan ruang digital bukan soal kata sandi rumit, melainkan ketahanan arsitektur isolasi:',
+  takeawayText: takeawayText || 'Pisahkan perangkat operasional harian dari brankas aset utama. Kunci akses luar di tingkat sistem operasi, lindungi tabungan Web3 dengan perangkat dingin (air-gapped), dan kembalikan kedaulatan data sensitif keluarga ke server pribadi mandiri.'
+};
+
+// Default Data Bahasa Inggris
+const enDefault = {
+  badge: badge || '2026 CYBER DEFENSE ARCHITECTURE INFOGRAPHIC',
+  title: title || 'Anatomy of APK Exploits & The Family Digital Shield Matrix',
+  subtitle: subtitle || 'Visualizing banking malware propagation paths versus multi-tier defense barriers (Air-gapped Cold Storage & Self-Hosted Vaults) protecting household wealth.',
+  chips: chips || [
+    '🛑 78% Attack Vector: WhatsApp APK Sideloading',
+    '🔒 99.4% Defense: Air-Gapped Cold Storage',
+    '🛡️ Zero-Leak: Sovereign Private Cloud Vault',
+    '👨‍👩‍👧 Cross-Generational Protection (Ages 12–90)'
+  ],
+  pipelineStages: [
+    { num: '01', title: 'Inbound Vector', desc: 'Malicious APK / Phishing DApp URL', icon: '⚠️', color: 'rose' },
+    { num: '02', title: 'Endpoint Barrier', desc: 'Sideloading OFF + Locked Permissions', icon: '🛑', color: 'amber' },
+    { num: '03', title: 'Cold Vault', desc: 'Air-Gapped Hardware Key & Private VPS', icon: '🔒', color: 'indigo' },
+    { num: '04', title: 'Sovereign Assets', desc: 'Isolated Savings & Untouchable Keys', icon: '🛡️', color: 'emerald' }
+  ],
+  matrixRows: matrixRows || [
+    {
+      badge: 'BANKING MALWARE VECTOR',
+      threatTitle: 'WhatsApp APK Sideloading Exploits',
+      threatType: 'danger',
+      flow: [
+        { step: 'Malicious APK Downloaded', isThreat: true },
+        { step: 'Accessibility Service Granted', isThreat: true },
+        { step: 'Keylogger Intercepts SMS OTP', isThreat: true },
+        { step: 'Bank Account Drained', isThreat: true }
+      ],
+      mitigation: 'Disable Install Unknown Apps system-wide & enforce App Pinning across all family mobile devices.',
+      mitigationTool: 'OS Gatekeeper + Passkey',
+      statusBadge: '🛑 78% Threat Neutralized at OS Level',
+      statusVariant: 'success'
+    },
+    {
+      badge: 'WEB3 SMART CONTRACT DRAINER',
+      threatTitle: 'Malicious Permit Phishing Signature',
+      threatType: 'warning',
+      flow: [
+        { step: 'Deceptive Web3 Portal', isThreat: true },
+        { step: 'Unlimited Token Approval', isThreat: true },
+        { step: 'Browser Hot Wallet Leaked', isThreat: true },
+        { step: 'Crypto Vault Emptied', isThreat: true }
+      ],
+      mitigation: 'Segregate core wealth into Air-Gapped Hardware Cold Storage with isolated offline EAL6+ chips.',
+      mitigationTool: 'Offline Hardware Wallet',
+      statusBadge: '🔒 99.4% Key Isolation Guarantee',
+      statusVariant: 'emerald'
+    },
+    {
+      badge: 'PUBLIC CLOUD DATA BREACH',
+      threatTitle: 'Third-Party Identity Leakage',
+      threatType: 'info',
+      flow: [
+        { step: 'Family IDs Uploaded to Public Cloud', isThreat: true },
+        { step: 'Vendor Database Compromised', isThreat: true },
+        { step: 'Credentials Sold on Dark Web', isThreat: true },
+        { step: 'Social Engineering & Fraud', isThreat: true }
+      ],
+      mitigation: 'Migrate sensitive personal documents to a Self-Hosted Nextcloud vault on dedicated KVM VPS infrastructure.',
+      mitigationTool: 'Nextcloud + KVM VPS',
+      statusBadge: '🛡️ 100% Sovereign Data Ownership',
+      statusVariant: 'indigo'
+    }
+  ],
+  numberedSteps: numberedSteps || [
+    {
+      number: 1,
+      title: 'Enforce Sideloading Lockdowns',
+      description: 'Block untrusted app installations permanently on family devices to stop background malicious payloads.',
+      tag: 'Endpoint Gate'
+    },
+    {
+      number: 2,
+      title: 'Eliminate SMS OTP Dependencies',
+      description: 'Transition all critical accounts to Authenticator apps or hardware FIDO2 Passkeys to stop SIM swaps.',
+      tag: 'Auth Layer'
+    },
+    {
+      number: 3,
+      title: 'Isolate Hot vs Cold Reserves',
+      description: 'Keep only petty pocket cash on mobile apps; secure multi-year digital wealth inside air-gapped hardware.',
+      tag: 'Air-Gapped Vault'
+    },
+    {
+      number: 4,
+      title: 'Deploy a Sovereign Family Cloud',
+      description: 'Stop storing identity cards on free cloud drives; operate a private encrypted Nextcloud instance on VPS.',
+      tag: 'Data Sovereignty'
+    },
+    {
+      number: 5,
+      title: 'Establish Emergency Protocols',
+      description: 'Agree on a rapid response workflow: instant card freeze and smart contract revocation upon breach notice.',
+      tag: 'Incident Protocol'
+    }
+  ],
+  takeawayTitle: takeawayTitle || 'THE GOLDEN RULE OF 2026 DIGITAL DEFENSE',
+  takeawayRule: takeawayRule || 'Cyber resilience is not defined by complex passwords, but by strict architectural isolation:',
+  takeawayText: takeawayText || 'Segregate daily operational devices from primary family vaults. Block untrusted ingress at the OS gate, lock long-term crypto assets in air-gapped hardware, and reclaim complete sovereign ownership over sensitive records on dedicated infrastructure.'
+};
+
+const d = isEn ? enDefault : idDefault;
 ---
 
-<div class="my-10 not-prose rounded-3xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl overflow-hidden transition-all">
-  <!-- Top Header Badge -->
-  <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white px-6 py-4 flex flex-wrap justify-between items-center gap-3 border-b border-slate-700/60">
+<div class="my-10 not-prose rounded-3xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl overflow-hidden transition-all">
+  
+  <!-- 1. Top Infographic Header Bar -->
+  <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white px-6 py-4 flex flex-wrap justify-between items-center gap-3 border-b border-indigo-900/50">
     <div class="flex items-center gap-2.5">
-      <span class="w-3 h-3 rounded-full bg-rose-500 animate-pulse shadow-sm"></span>
-      <span class="text-xs font-mono font-bold uppercase tracking-widest text-rose-300">
-        {badge}
+      <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse shadow-sm shadow-emerald-500/50"></span>
+      <span class="text-xs font-mono font-bold uppercase tracking-widest text-emerald-300">
+        {d.badge}
       </span>
     </div>
-    <span class="text-[11px] font-mono px-3 py-1 rounded-full bg-slate-700/60 text-slate-200 border border-slate-600/50 font-semibold">
-      📊 VISUAL INSIGHT FRAMEWORK
-    </span>
-  </div>
-
-  <div class="p-6 sm:p-8">
-    <h3 class="text-xl sm:text-2xl font-extrabold text-slate-950 dark:text-white tracking-tight mb-2 text-center">
-      {title}
-    </h3>
-    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mb-8 leading-relaxed">
-      {subtitle}
-    </p>
-
-    <!-- Cards Grid Comparison -->
-    <div class={`grid grid-cols-1 ${defaultCards.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-6 items-stretch`}>
-      {defaultCards.map((card) => {
-        const isDanger = card.variant === 'danger';
-        const isSuccess = card.variant === 'success';
-        const isWarning = card.variant === 'warning';
-
-        const bgGradient = isDanger 
-          ? 'from-rose-50/70 via-amber-50/30 to-white dark:from-rose-950/20 dark:via-slate-900 dark:to-slate-900 border-rose-200/80 dark:border-rose-900/40'
-          : isSuccess
-          ? 'from-emerald-50/70 via-teal-50/30 to-white dark:from-emerald-950/20 dark:via-slate-900 dark:to-slate-900 border-emerald-200/80 dark:border-emerald-900/40'
-          : 'from-slate-50 via-indigo-50/30 to-white dark:from-indigo-950/20 dark:via-slate-900 dark:to-slate-900 border-indigo-200/80 dark:border-indigo-900/40';
-
-        const badgeColor = isDanger
-          ? 'bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300 border-rose-300 dark:border-rose-800'
-          : isSuccess
-          ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800'
-          : 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950/60 dark:text-indigo-300 border-indigo-300 dark:border-indigo-800';
-
-        return (
-          <div class={`rounded-2xl p-6 bg-gradient-to-br ${bgGradient} border flex flex-col justify-between relative overflow-hidden shadow-sm`}>
-            <div>
-              {card.badge && (
-                <div class="mb-4">
-                  <span class={`px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider border ${badgeColor}`}>
-                    {card.badge}
-                  </span>
-                </div>
-              )}
-
-              <h4 class="text-base sm:text-lg font-bold text-slate-950 dark:text-white mb-4 leading-snug">
-                {card.title}
-              </h4>
-
-              <ul class="space-y-3 text-xs text-slate-700 dark:text-slate-300 font-medium">
-                {card.points.map((pt) => (
-                  <li class="flex items-start gap-2.5">
-                    <span class={isDanger ? 'text-rose-500 font-bold shrink-0 mt-0.5' : 'text-emerald-500 font-bold shrink-0 mt-0.5'}>
-                      {isDanger ? '✕' : '✓'}
-                    </span>
-                    <span>{pt}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {card.metric && (
-              <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex items-baseline justify-between">
-                <span class="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-                  {card.metricLabel || 'Metrik Efektivitas'}
-                </span>
-                <span class={`text-lg font-extrabold font-mono ${isDanger ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'}`}>
-                  {card.metric}
-                </span>
-              </div>
-            )}
-          </div>
-        );
-      })}
+    <div class="flex items-center gap-2">
+      <span class="text-[11px] font-mono px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-200 border border-indigo-400/30 font-semibold tracking-wide">
+        ⚡ {isEn ? 'PROTOCOL MAP & FLOW MATRIX' : 'PETA PROTOKOL & MATRIKS ALUR'}
+      </span>
     </div>
   </div>
+
+  <div class="p-6 sm:p-8 lg:p-10">
+    
+    <!-- Title & Subtitle -->
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <h3 class="text-2xl sm:text-3xl font-black text-slate-950 dark:text-white tracking-tight leading-snug mb-3">
+        {d.title}
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        {d.subtitle}
+      </p>
+    </div>
+
+    <!-- Metric Status Chips Row -->
+    <div class="flex flex-wrap items-center justify-center gap-2.5 mb-10">
+      {d.chips.map((chip: string) => (
+        <span class="text-[11px] font-semibold px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700/80 shadow-sm flex items-center gap-1.5">
+          {chip}
+        </span>
+      ))}
+    </div>
+
+    <!-- 2. Visual Architecture Pipeline Stages (Mengadopsi Pola 1792740031877.jpeg) -->
+    <div class="mb-12">
+      <div class="flex items-center justify-between mb-4 px-1">
+        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400 flex items-center gap-2">
+          <span>01</span>
+          <span>// {isEn ? 'MULTI-STAGE RESILIENCE PIPELINE' : 'PIPELINE PERTAHANAN MULTI-TAHAP'}</span>
+        </h4>
+        <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
+          {isEn ? 'ZERO-TRUST ARCHITECTURE' : 'ARSITEKTUR ZERO-TRUST'}
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+        {d.pipelineStages.map((stage: any, idx: number) => {
+          const isRose = stage.color === 'rose';
+          const isAmber = stage.color === 'amber';
+          const isIndigo = stage.color === 'indigo';
+          const isEmerald = stage.color === 'emerald';
+
+          const cardBorder = isRose ? 'border-rose-300 dark:border-rose-900/60 bg-gradient-to-b from-rose-50/60 to-white dark:from-rose-950/30 dark:to-slate-900' :
+                             isAmber ? 'border-amber-300 dark:border-amber-900/60 bg-gradient-to-b from-amber-50/60 to-white dark:from-amber-950/30 dark:to-slate-900' :
+                             isIndigo ? 'border-indigo-300 dark:border-indigo-900/60 bg-gradient-to-b from-indigo-50/60 to-white dark:from-indigo-950/30 dark:to-slate-900' :
+                             'border-emerald-300 dark:border-emerald-900/60 bg-gradient-to-b from-emerald-50/60 to-white dark:from-emerald-950/30 dark:to-slate-900';
+
+          const badgeColor = isRose ? 'text-rose-700 dark:text-rose-300 bg-rose-100 dark:bg-rose-950 border-rose-200 dark:border-rose-800' :
+                             isAmber ? 'text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-950 border-amber-200 dark:border-amber-800' :
+                             isIndigo ? 'text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-950 border-indigo-200 dark:border-indigo-800' :
+                             'text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 border-emerald-200 dark:border-emerald-800';
+
+          return (
+            <div class={`rounded-2xl p-5 border shadow-sm relative flex flex-col justify-between ${cardBorder}`}>
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class={`text-[10px] font-mono font-extrabold px-2 py-0.5 rounded border uppercase tracking-wider ${badgeColor}`}>
+                    STAGE {stage.num}
+                  </span>
+                  <span class="text-xl">{stage.icon}</span>
+                </div>
+                <h5 class="text-sm font-bold text-slate-950 dark:text-white mb-1.5 leading-snug">
+                  {stage.title}
+                </h5>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                  {stage.desc}
+                </p>
+              </div>
+
+              {idx < d.pipelineStages.length - 1 && (
+                <div class="hidden lg:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-6 h-6 rounded-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 items-center justify-center text-slate-500 dark:text-slate-400 text-xs shadow-sm font-bold">
+                  ➔
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- 3. Visual Explainer Matrix with Step Flow Pills (Mengadopsi Pola 1792529488765.jpeg) -->
+    <div class="mb-12">
+      <div class="flex items-center justify-between mb-4 px-1">
+        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400 flex items-center gap-2">
+          <span>02</span>
+          <span>// {isEn ? 'ATTACK VECTOR VS DEFENSE FLOW MATRIX' : 'MATRIKS VEKTOR SERANGAN VS ALUR PERTAHANAN'}</span>
+        </h4>
+        <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400">
+          {isEn ? '3 CRITICAL PROTOCOLS' : '3 PROTOKOL KRUSIAL'}
+        </span>
+      </div>
+
+      <div class="space-y-4">
+        {d.matrixRows.map((row: any) => {
+          const isDanger = row.threatType === 'danger';
+          const isWarning = row.threatType === 'warning';
+
+          const badgeBg = isDanger ? 'bg-rose-100 text-rose-800 dark:bg-rose-950/80 dark:text-rose-300 border-rose-300 dark:border-rose-800' :
+                          isWarning ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300 border-amber-300 dark:border-amber-800' :
+                          'bg-indigo-100 text-indigo-800 dark:bg-indigo-950/80 dark:text-indigo-300 border-indigo-300 dark:border-indigo-800';
+
+          return (
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 p-5 lg:p-6 shadow-sm hover:shadow-md transition-shadow">
+              
+              <!-- Top Row: Badge & Threat Title -->
+              <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-2.5">
+                  <span class={`text-[10px] font-mono font-black uppercase px-2.5 py-1 rounded-md border tracking-wider ${badgeBg}`}>
+                    {row.badge}
+                  </span>
+                  <h5 class="text-sm sm:text-base font-extrabold text-slate-950 dark:text-white">
+                    {row.threatTitle}
+                  </h5>
+                </div>
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800">
+                  {row.statusBadge}
+                </span>
+              </div>
+
+              <!-- Center Flow Pills with Arrows (Pola Step 1 -> Step 2 -> Step 3) -->
+              <div class="mb-5 bg-white dark:bg-slate-950 rounded-xl p-4 border border-slate-200 dark:border-slate-800/80">
+                <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5 flex items-center gap-1.5">
+                  <span>⚡</span>
+                  <span>{isEn ? 'INFILTRATION / ESCALATION SEQUENCE:' : 'SEKUENS INFILTRASI & ESKALASI:'}</span>
+                </div>
+                
+                <div class="flex flex-wrap items-center gap-2">
+                  {row.flow.map((st: any, sIdx: number) => (
+                    <div class="flex items-center gap-2">
+                      <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-900/60 text-xs font-semibold shadow-xs">
+                        <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                        <span>{st.step}</span>
+                      </div>
+                      {sIdx < row.flow.length - 1 && (
+                        <span class="text-slate-400 dark:text-slate-600 font-bold text-xs select-none">➔</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Bottom Row: Mitigation & Solution Mechanism -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
+                <div class="flex items-start sm:items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
+                  <span class="text-emerald-500 font-bold text-sm shrink-0">🛡️</span>
+                  <div>
+                    <strong class="text-slate-950 dark:text-white">{isEn ? 'Mitigation Barrier:' : 'Solusi Mitigasi:'}</strong> {row.mitigation}
+                  </div>
+                </div>
+                <div class="shrink-0">
+                  <span class="text-[11px] font-mono font-bold px-2.5 py-1 rounded bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                    🛠️ {row.mitigationTool}
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- 4. Five Tactical Security Pillars (Mengadopsi Pola 1792740031877.jpeg & 1791872051381.jpeg) -->
+    <div class="mb-10">
+      <div class="flex items-center justify-between mb-4 px-1">
+        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400 flex items-center gap-2">
+          <span>03</span>
+          <span>// {isEn ? 'FIVE TACTICAL IMPLEMENTATION PILLARS' : 'LIMA PILAR IMPLEMENTASI TAKTIS'}</span>
+        </h4>
+        <span class="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-bold">
+          {isEn ? 'ACTIONABLE CHECKLIST' : 'PANDUAN EKSEKUTIF'}
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {d.numberedSteps.map((item: any) => (
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900 shadow-sm flex flex-col justify-between hover:border-indigo-300 dark:hover:border-indigo-700 transition-colors">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-600 to-indigo-800 text-white font-mono font-extrabold flex items-center justify-center text-sm shadow-sm">
+                  {item.number}
+                </div>
+                <span class="text-[10px] font-mono uppercase font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">
+                  {item.tag}
+                </span>
+              </div>
+              <h5 class="text-sm font-bold text-slate-950 dark:text-white mb-2 leading-snug">
+                {item.title}
+              </h5>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- 5. Dashed Bottom Takeaway Banner (Mengadopsi Pola 1792529488765.jpeg Takeaway Box) -->
+    <div class="rounded-2xl border-2 border-dashed border-indigo-400 dark:border-indigo-600 bg-gradient-to-br from-indigo-50/70 via-white to-slate-50 dark:from-indigo-950/40 dark:via-slate-900 dark:to-slate-900 p-6 sm:p-7 shadow-md">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-base sm:text-lg">💡</span>
+        <span class="text-[11px] font-mono font-extrabold uppercase tracking-widest text-indigo-700 dark:text-indigo-400">
+          {d.takeawayTitle}
+        </span>
+      </div>
+      
+      <p class="text-sm sm:text-base font-bold text-slate-950 dark:text-white mb-2 leading-snug">
+        "{d.takeawayRule}"
+      </p>
+
+      <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+        {d.takeawayText}
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Bottom Brand Signature -->
+  <div class="bg-slate-100 dark:bg-slate-950 px-6 py-3 border-t border-slate-200 dark:border-slate-800/80 flex flex-wrap items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 font-mono">
+    <span>BIJAK TECHNOLOGY RESEARCH & EDITORIAL</span>
+    <span>AUTONOMOUS INFRASTRUCTURE SERIES</span>
+  </div>
+
 </div>
