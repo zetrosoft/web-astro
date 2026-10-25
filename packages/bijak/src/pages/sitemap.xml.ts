@@ -12,7 +12,6 @@ export const GET: APIRoute = async ({ site }) => {
   const staticPages = [
     { path: '/', priority: '1.0', changefreq: 'daily', enPath: '/en/' },
     { path: '/blog/', priority: '0.9', changefreq: 'daily', enPath: '/en/blog/' },
-    { path: '/tools/', priority: '0.9', changefreq: 'weekly', enPath: '/tools/' },
     { path: '/en/', priority: '0.9', changefreq: 'daily', idPath: '/' },
     { path: '/en/blog/', priority: '0.8', changefreq: 'daily', idPath: '/blog/' },
     { path: '/project/', priority: '0.7', changefreq: 'weekly', enPath: '/project/' },

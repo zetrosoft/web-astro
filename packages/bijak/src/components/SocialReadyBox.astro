@@ -14,8 +14,8 @@ interface Props {
 const { title, url, social, lang = 'id' } = Astro.props;
 
 const isEn = lang === 'en';
-const shareLabel = isEn ? 'Share & Promote' : 'Bagikan & Promosikan';
-const shareDesc = isEn ? 'Click any platform to view ready-to-post drafts' : 'Klik platform di bawah untuk melihat materi posting siap tayang';
+const shareLabel = isEn ? 'Share' : 'Bagikan';
+const shareDesc = isEn ? 'Share this article or copy drafts for your social media' : 'Bagikan artikel ini atau salin draf siap posting ke media sosial';
 const copyLinkText = isEn ? 'Copy Link' : 'Salin Tautan';
 
 // Draf Twitter Thread
@@ -133,10 +133,10 @@ const facebookText = social?.facebook || `${title}\n\nSimak selengkapnya di: ${u
           </div>
           <div>
             <h3 class="text-sm font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
-              {isEn ? 'Ready-to-Post Social Copy' : 'Format Siap Posting Media Sosial'}
+              {isEn ? 'Social Media Share' : 'Bagikan ke Media Sosial'}
             </h3>
             <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-              {isEn ? 'Copy text and open platform composer in 1 click' : 'Salin draf dan buka aplikasi sosmed dalam 1 klik'}
+              {isEn ? 'Copy text or open your social media directly' : 'Salin draf atau langsung buka platform pilihan Anda'}
             </p>
           </div>
         </div>
