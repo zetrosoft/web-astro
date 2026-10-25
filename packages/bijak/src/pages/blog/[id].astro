@@ -9,6 +9,7 @@ import SamkarsaIndustryRef from '../../components/SamkarsaIndustryRef.astro';
 import SocialReadyBox from '../../components/SocialReadyBox.astro';
 import ArticleFaqSchema from '../../components/ArticleFaqSchema.astro';
 import MediumCompatibleTable from '../../components/MediumCompatibleTable.astro';
+import VisualTcoInfographic from '../../components/VisualTcoInfographic.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -204,12 +205,27 @@ const breadcrumbJsonLd = {
           </div>
         </div>
 
+        <!-- Hero Image (Free-to-Use with Relevance & High-Res) -->
+        {post.data.image && (
+          <figure class="mb-8 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm not-prose bg-slate-100 dark:bg-slate-800">
+            <img 
+              src={post.data.image} 
+              alt={post.data.title}
+              class="w-full h-auto aspect-video object-cover transition-transform duration-500 hover:scale-[1.01]"
+              loading="eager"
+              decoding="async"
+              width="1200"
+              height="675"
+            />
+          </figure>
+        )}
+
         <!-- 1. AdSense Slot 1: Top In-Article Leaderboard -->
         <AdSenseUnit className="mb-8" />
 
         <!-- Isi Artikel Utama MDX -->
         <article class="prose max-w-none prose-slate dark:prose-invert">
-          <Content components={{ AdSenseUnit: InArticleAd, KusumaMapSpotlight, SamkarsaIndustryRef, HostingerBox, ArticleFaqSchema, table: MediumCompatibleTable }} />
+          <Content components={{ AdSenseUnit: InArticleAd, KusumaMapSpotlight, SamkarsaIndustryRef, HostingerBox, ArticleFaqSchema, table: MediumCompatibleTable, VisualTcoInfographic }} />
         </article>
 
         <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Unit (In-Article Ad 6901499930) -->

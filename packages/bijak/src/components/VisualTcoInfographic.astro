@@ -1,0 +1,186 @@
+---
+// packages/bijak/src/components/VisualTcoInfographic.astro
+// Infografis Visual Interaktif: Komparasi TCO 5 Tahun (Traditional Commercial vs Modern Open-Source & KVM VPS)
+export interface Props {
+  lang?: 'id' | 'en';
+  title?: string;
+  traditionalCost?: string;
+  modernCost?: string;
+  savingsPercent?: string;
+}
+
+const {
+  lang = 'id',
+  title,
+  traditionalCost = 'Rp 350.000.000+',
+  modernCost = 'Rp 115.000.000',
+  savingsPercent = '65%'
+} = Astro.props;
+
+const isId = lang === 'id';
+---
+
+<div class="my-10 not-prose rounded-3xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl overflow-hidden transition-all">
+  <!-- Top Infographic Header Badge -->
+  <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white px-6 py-4 flex flex-wrap justify-between items-center gap-3 border-b border-indigo-900/40">
+    <div class="flex items-center gap-2.5">
+      <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse shadow-sm"></span>
+      <span class="text-xs font-mono font-bold uppercase tracking-widest text-indigo-300">
+        {isId ? 'INFOGRAFIS ARSITEKTUR BIAYA' : 'COST ARCHITECTURE INFOGRAPHIC'}
+      </span>
+    </div>
+    <span class="text-[11px] font-mono px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-200 border border-indigo-400/30 font-semibold">
+      {isId ? 'SIMULASI KUMULATIF 5 TAHUN' : '5-YEAR CUMULATIVE SIMULATION'}
+    </span>
+  </div>
+
+  <div class="p-6 sm:p-8">
+    <h3 class="text-xl sm:text-2xl font-extrabold text-slate-950 dark:text-white tracking-tight mb-2 text-center">
+      {title || (isId 
+        ? 'Perbandingan Total Cost of Ownership (TCO): Vendor Proprietary vs KVM Cloud Mandiri' 
+        : 'Total Cost of Ownership (TCO) Breakdown: Proprietary vs KVM Private Cloud')}
+    </h3>
+    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mb-8 leading-relaxed">
+      {isId
+        ? 'Visualisasi realitas finansial pengambil keputusan: membedah jebakan lisensi berbasis pengguna versus efisiensi infrastruktur mandiri berbasis open-source.'
+        : 'Decision-maker financial reality check: analyzing per-user license lock-in traps versus modern open-source private cloud infrastructure.'}
+    </p>
+
+    <!-- Dual Pillar Comparison Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+      
+      <!-- Sisi Kiri: Traditional Commercial Software (Jebakan Lisensi & Biaya Naik) -->
+      <div class="rounded-2xl p-6 bg-gradient-to-br from-rose-50/70 via-amber-50/40 to-white dark:from-rose-950/20 dark:via-slate-900 dark:to-slate-900 border border-rose-200/80 dark:border-rose-900/40 flex flex-col justify-between relative overflow-hidden shadow-sm">
+        <div class="absolute top-0 right-0 w-28 h-28 bg-rose-500/5 rounded-full blur-2xl pointer-events-none"></div>
+        
+        <div>
+          <!-- Header Card Kiri -->
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-300 dark:border-rose-800">
+              {isId ? 'MODEL PROPRIETARY / SAAS' : 'PROPRIETARY / SAAS MODEL'}
+            </span>
+            <span class="text-rose-600 dark:text-rose-400 text-xs font-bold font-mono">
+              ⚠️ {isId ? 'RISIKO BIAYA TINGGI' : 'HIGH EXPENSE RISK'}
+            </span>
+          </div>
+
+          <h4 class="text-base sm:text-lg font-bold text-slate-950 dark:text-white mb-4 leading-snug">
+            {isId ? 'Vendor Komersial Tertutup (Lisensi Berulang)' : 'Closed Commercial Software (Recurring Licenses)'}
+          </h4>
+
+          <!-- Breakdown Poin Masalah -->
+          <ul class="space-y-3 text-xs text-slate-700 dark:text-slate-300 font-medium">
+            <li class="flex items-start gap-2.5">
+              <span class="text-rose-500 font-bold shrink-0 mt-0.5">✕</span>
+              <span><strong>{isId ? 'Lisensi Per Kepala:' : 'Per-User Licensing:'}</strong> {isId ? 'Biaya terus membengkak setiap kali tim operasional atau cabang bertambah.' : 'Software costs surge exponentially as operational headcount expands.'}</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-rose-500 font-bold shrink-0 mt-0.5">✕</span>
+              <span><strong>{isId ? 'Ketergantungan Eksternal:' : 'Vendor Lock-in:'}</strong> {isId ? 'Data tersandera di cloud proprietary, risiko kenaikan harga lisensi sepihak.' : 'Corporate data trapped in third-party clouds with unilateral pricing risk.'}</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-rose-500 font-bold shrink-0 mt-0.5">✕</span>
+              <span><strong>{isId ? 'Biaya Pemeliharaan Wajib:' : 'Compulsory Maintenance:'}</strong> {isId ? 'Annual support fee tahunan 18–22% walau tidak ada fitur baru yang terpakai.' : 'Annual 18–22% maintenance fee mandatory even for unused features.'}</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Biaya Status Bawah -->
+        <div class="mt-6 pt-4 border-t border-rose-200 dark:border-rose-900/50 flex justify-between items-end">
+          <div>
+            <div class="text-[10px] uppercase font-mono tracking-wider text-slate-500 dark:text-slate-400">
+              {isId ? 'Estimasi Kas Keluar 5 Thn' : 'Est. 5-Year Cash Drain'}
+            </div>
+            <div class="text-xl sm:text-2xl font-black text-rose-600 dark:text-rose-400 font-mono tracking-tight">
+              {traditionalCost}
+            </div>
+          </div>
+          <span class="text-[10px] font-bold px-2 py-1 rounded bg-rose-100 text-rose-800 dark:bg-rose-900/50 dark:text-rose-200">
+            {isId ? 'Fluktuatif & Naik' : 'Escalating'}
+          </span>
+        </div>
+      </div>
+
+      <!-- Sisi Kanan: Open-Source & Private Cloud (Terprediksi & Hemat 65%) -->
+      <div class="rounded-2xl p-6 bg-gradient-to-br from-emerald-50/70 via-indigo-50/40 to-white dark:from-emerald-950/20 dark:via-slate-900 dark:to-slate-900 border-2 border-emerald-500/60 dark:border-emerald-500/40 flex flex-col justify-between relative overflow-hidden shadow-md">
+        <div class="absolute top-0 right-0 w-28 h-28 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        
+        <div>
+          <!-- Header Card Kanan -->
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider bg-emerald-500 text-white shadow-sm">
+              {isId ? 'SOLUSI TEROPTIMASI (KEDISIPLINAN KAS)' : 'OPTIMIZED APPROACH (CASH DISCIPLINE)'}
+            </span>
+            <span class="text-emerald-600 dark:text-emerald-400 text-xs font-bold font-mono">
+              ★ {isId ? 'PENGHEMATAN' : 'SAVINGS'} {savingsPercent}
+            </span>
+          </div>
+
+          <h4 class="text-base sm:text-lg font-bold text-slate-950 dark:text-white mb-4 leading-snug">
+            {isId ? 'KVM Private Cloud & ERPNext v16' : 'KVM Private Cloud & Frappe ERPNext'}
+          </h4>
+
+          <!-- Breakdown Poin Solusi -->
+          <ul class="space-y-3 text-xs text-slate-700 dark:text-slate-300 font-medium">
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-600 dark:text-emerald-400 font-bold shrink-0 mt-0.5">✓</span>
+              <span><strong>{isId ? '0 Biaya Lisensi Per-User:' : 'Zero Per-User Licensing:'}</strong> {isId ? 'Lisensi 100% open-source (GPL v3); bebas tambah pengguna tanpa bayar royalti.' : '100% open-source core; scale from 10 to 1,000 users at zero licensing fee.'}</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-600 dark:text-emerald-400 font-bold shrink-0 mt-0.5">✓</span>
+              <span><strong>{isId ? 'Kedaulatan Data Penuh:' : 'Data Sovereignty:'}</strong> {isId ? 'Database berada di private cloud/on-premise mandiri dengan akses root penuh.' : 'Full root-level control on self-hosted KVM VPS; zero external lock-in.'}</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-600 dark:text-emerald-400 font-bold shrink-0 mt-0.5">✓</span>
+              <span><strong>{isId ? 'Biaya Server Linier & Flat:' : 'Linear & Flat Hardware Cost:'}</strong> {isId ? 'Infrastruktur KVM NVMe stabil, anggaran IT terprediksi tanpa kejutan tagihan.' : 'Predictable NVMe KVM server billings with zero surprise recurring fees.'}</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Biaya Status Bawah -->
+        <div class="mt-6 pt-4 border-t border-emerald-200 dark:border-emerald-900/50 flex justify-between items-end">
+          <div>
+            <div class="text-[10px] uppercase font-mono tracking-wider text-slate-500 dark:text-slate-400">
+              {isId ? 'Estimasi Kas Keluar 5 Thn' : 'Est. 5-Year Cash Drain'}
+            </div>
+            <div class="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 font-mono tracking-tight">
+              {modernCost}
+            </div>
+          </div>
+          <span class="text-[10px] font-bold px-2 py-1 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-200">
+            {isId ? 'Hemat s/d ' : 'Saves '}{savingsPercent}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Progress Comparison Bar -->
+    <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800">
+      <div class="flex justify-between items-center text-xs font-mono font-bold text-slate-700 dark:text-slate-300 mb-2">
+        <span>{isId ? 'Alokasi Efisiensi Anggaran Kas 5 Tahun:' : '5-Year Cash Allocation Efficiency:'}</span>
+        <span class="text-emerald-600 dark:text-emerald-400">{isId ? '65% Anggaran Dialihkan ke Pertumbuhan Bisnis' : '65% Capital Diverted to Growth'}</span>
+      </div>
+      <div class="w-full h-4 bg-rose-200 dark:bg-rose-950/60 rounded-full overflow-hidden flex shadow-inner">
+        <div class="h-full bg-emerald-500 transition-all duration-1000 ease-out" style="width: 35%;"></div>
+        <div class="h-full bg-gradient-to-r from-emerald-400 to-indigo-500 transition-all duration-1000 ease-out" style="width: 65%;"></div>
+      </div>
+      <div class="flex justify-between text-[10px] font-mono text-slate-600 dark:text-slate-400 mt-1.5">
+        <span>{isId ? 'Infrastruktur KVM & Implementasi (35%)' : 'KVM & Implementation (35%)'}</span>
+        <span class="font-bold text-emerald-600 dark:text-emerald-400">{isId ? 'Dana Dihemat / Dialihkan (65%)' : 'Saved Capital Retained (65%)'}</span>
+      </div>
+    </div>
+
+    <!-- Architect's Field Note Callout -->
+    <div class="mt-6 p-4 rounded-xl bg-slate-100 dark:bg-slate-800/80 border-l-4 border-indigo-600 text-xs leading-relaxed text-slate-700 dark:text-slate-300 flex items-start gap-3">
+      <span class="text-base shrink-0">💡</span>
+      <div>
+        <strong class="text-slate-900 dark:text-white uppercase tracking-wider font-mono text-[11px] block mb-0.5">
+          {isId ? "Architect's Field Note (Catatan Kebijakan Kas):" : "Architect's Field Note (Capital Allocation):"}
+        </strong>
+        {isId
+          ? 'Memilih model open-source private cloud bukan semata memangkas tagihan software, melainkan mengamankan kendali penuh (sovereignty) atas aset data perusahaan tanpa risiko tersandera pihak ketiga saat bisnis berekspansi.'
+          : 'Choosing an open-source private cloud model is not merely about trimming software bills; it permanently secures enterprise data sovereignty without vendor hostage risks as your business scales.'}
+      </div>
+    </div>
+  </div>
+</div>
