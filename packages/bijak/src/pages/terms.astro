@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Ketentuan Layanan (Terms of Service)" description="Syarat dan ketentuan layanan, hak cipta editorial, dan batasan tanggung jawab disclaimer teknologi di Bijak Technology.">
+  <article class="max-w-4xl mx-auto py-8 font-serif">
+    <!-- Header Klasik Koran -->
+    <header class="border-b-2 border-neutral-900 dark:border-neutral-700 pb-6 mb-8 text-center">
+      <span class="text-xs uppercase tracking-widest font-sans font-bold text-rose-600 dark:text-rose-400">Hukum, Privasi & Kepatuhan</span>
+      <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-2 mb-3 text-neutral-900 dark:text-neutral-100">Ketentuan Layanan</h1>
+      <p class="text-xs uppercase tracking-wider font-sans text-neutral-500">
+        Pembaruan Terakhir: {new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })} · Redaksi Bijak Technology
+      </p>
+    </header>
+
+    <!-- Konten Editorial -->
+    <div class="prose prose-neutral dark:prose-invert max-w-none space-y-6 text-neutral-800 dark:text-neutral-200 leading-relaxed">
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">1. Penerimaan Ketentuan</h2>
+        <p>
+          Selamat datang di <strong>Bijak Technology</strong> (bijaktechnology.com). Dengan mengakses, membaca, atau menggunakan seluruh layanan, konten artikel, data riset, dan alat interaktif pada situs ini, Anda menyatakan telah membaca, memahami, dan menyetujui untuk terikat oleh Ketentuan Layanan ini. Jika Anda tidak menyetujui salah satu bagian dari ketentuan ini, Anda disarankan untuk tidak melanjutkan penjelajahan di portal ini.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">2. Hak Kekayaan Intelektual & Lisensi Konten</h2>
+        <p>
+          Seluruh naskah editorial, analisis arsitektur teknis, infografis, tabel simulasi, dan tata letak desain di situs ini dilindungi oleh Undang-Undang Hak Cipta Republik Indonesia serta konvensi hak cipta internasional.
+        </p>
+        <ul class="list-disc pl-6 space-y-1 font-sans text-sm">
+          <li><strong>Penggunaan Pribadi & Edukasi:</strong> Anda diizinkan membaca, menyimpan salinan digital untuk kepentingan pribadi, dan membagikan artikel melalui tautan resmi media sosial.</li>
+          <li><strong>Kutipan & Sitasi Ilmiah:</strong> Pengutipan sebagian isi naskah diperbolehkan (fair use) maksimal 2–3 paragraf dengan syarat <strong>wajib menyertakan atribusi sumber nama media (Bijak Technology) serta tautan balik aktif (dofollow)</strong> ke artikel rujukan.</li>
+          <li><strong>Larangan Scraping Tanpa Izin:</strong> Dilarang keras menggandakan, mendistribusikan ulang seluruh isi artikel secara massal (bulk mirror), atau mengotomasi ekstraksi data untuk portal komersial pihak ketiga tanpa persetujuan tertulis redaksi.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">3. Disclaimer Analisis Teknologi & Rekayasa Sistem</h2>
+        <p>
+          Publikasi mengenai arsitektur sistem, komputasi cloud, benchmarking database, konfigurasi server Linux, serta sistem ERPNext disajikan murni untuk tujuan edukasi teknik dan pertimbangan arsitektural:
+        </p>
+        <div class="p-4 bg-neutral-100 dark:bg-neutral-800 border-l-4 border-rose-600 rounded-r my-4 font-sans text-sm space-y-2">
+          <p>
+            Setiap implementasi pada infrastruktur produksi Anda sendiri harus melalui tahap pengujian independen di lingkungan staging. Bijak Technology tidak bertanggung jawab atas kerugian operasional, galat deployment, downtime server, atau inkonsistensi data yang terjadi pada sistem internal pembaca.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">4. Disclaimer Khusus Web3, Blockchain & Keuangan</h2>
+        <p>
+          Ulasan mengenai ekosistem Web3, konsensus terdistribusi Avalanche, L1 Subnets, Teleporter ICM, tokenisasi Real World Assets (RWA), maupun edukasi keamanan finansial keluarga:
+        </p>
+        <ul class="list-disc pl-6 space-y-1 font-sans text-sm">
+          <li><strong>Bukan Nasihat Finansial:</strong> Seluruh isi pembahasan disajikan murni untuk kajian teknologi desentralisasi dan likuiditas protokol, serta <strong>bukan merupakan nasihat keuangan, anjuran investasi, ajakan spekulatif, atau rekomendasi perdagangan aset kripto apapun</strong>.</li>
+          <li><strong>Risiko Mandiri:</strong> Pengelolaan aset digital, kunci privat, dan interaksi kontrak pintar sepenuhnya merupakan tanggung jawab pengguna secara mandiri (*Do Your Own Research*).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">5. Keterbukaan Tautan Pihak Ketiga & Afiliasi Resmi</h2>
+        <p>
+          Demi transparansi editorial kepada pembaca:
+        </p>
+        <ul class="list-disc pl-6 space-y-1 font-sans text-sm">
+          <li><strong>Mitra Resmi:</strong> Bijak Technology bekerja sama secara independen dengan mitra teknologi terpilih seperti <strong>Hostinger Official Partner</strong> dan <strong>Samkarsa ERPNext Implementor</strong>.</li>
+          <li><strong>Tautan Afiliasi:</strong> Beberapa artikel memuat tautan rujukan pelacak internal (misal: <code>/go/hostinger/</code>). Jika Anda melakukan pembelian layanan melalui tautan tersebut, kami dapat menerima komisi rujukan tanpa biaya tambahan apapun bagi Anda. Rekomendasi didasarkan pada evaluasi teknis objektif.</li>
+          <li><strong>Unit Iklan Google AdSense:</strong> Iklan berlabel "Iklan" yang ditayangkan pada halaman disajikan oleh Google AdSense berdasarkan lelang otomatis dan cookie pihak ketiga sebagaimana dijelaskan pada <a href="/privacy-policy/" class="text-rose-600 dark:text-rose-400 underline font-semibold">Kebijakan Privasi</a> kami.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">6. Penggunaan Kalkulator Interaktif Bisnis (/tools/)</h2>
+        <p>
+          Alat simulasi interaktif seperti Kalkulator TCO ERP 5 Tahun dan Kalkulator Margin Grosir UMKM disediakan secara cuma-cuma sebagai alat bantu estimasi cepat. Angka hasil kalkulasi bersifat simulatif dan dapat bervariasi bergantung pada skala riil, fluktuasi nilai tukar, dan spesifikasi vendor.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">7. Batasan Tanggung Jawab & Hukum yang Berlaku</h2>
+        <p>
+          Layanan dan materi di situs ini disediakan dengan asas "sebagaimana adanya" (*as-is*). Ketentuan Layanan ini diatur dan ditafsirkan sesuai dengan hukum Negara Kesatuan Republik Indonesia, termasuk kepatuhan terhadap Undang-Undang Informasi dan Transaksi Elektronik (UU ITE) serta Undang-Undang Perlindungan Data Pribadi (UU PDP).
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">8. Kontak & Meja Redaksi</h2>
+        <p>
+          Jika Anda memiliki pertanyaan, klarifikasi hak cipta, atau koreksi faktual terkait isi Ketentuan Layanan ini, silakan hubungi kami melalui formulir resmi di halaman <a href="/contact/" class="text-rose-600 dark:text-rose-400 underline font-semibold">Kirim Pesan & Kerjasama</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>

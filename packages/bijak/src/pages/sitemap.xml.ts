@@ -19,6 +19,7 @@ export const GET: APIRoute = async ({ site }) => {
     { path: '/about/', priority: '0.6', changefreq: 'monthly', enPath: '/about/' },
     { path: '/contact/', priority: '0.6', changefreq: 'monthly', enPath: '/contact/' },
     { path: '/privacy-policy/', priority: '0.4', changefreq: 'yearly', enPath: '/privacy-policy/' },
+    { path: '/terms/', priority: '0.4', changefreq: 'yearly', enPath: '/terms/' },
   ];
 
   const staticUrls = staticPages.map((p) => {
