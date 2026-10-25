@@ -10,6 +10,7 @@ import SocialReadyBox from '../../../components/SocialReadyBox.astro';
 import ArticleFaqSchema from '../../../components/ArticleFaqSchema.astro';
 import MediumCompatibleTable from '../../../components/MediumCompatibleTable.astro';
 import VisualTcoInfographic from '../../../components/VisualTcoInfographic.astro';
+import VisualInfographic from '../../../components/VisualInfographic.astro';
 
 export async function getStaticPaths() {
   const postsEn = await getCollection('blog_en');
@@ -247,12 +248,13 @@ const breadcrumbJsonLd = {
         <article class="prose max-w-none prose-slate dark:prose-invert">
           <Content components={{
             AdSenseUnit: InArticleAd,
-            KusumaMapSpotlight: (props: any) => <KusumaMapSpotlight lang="en" {...props} />,
-            SamkarsaIndustryRef: (props: any) => <SamkarsaIndustryRef lang="en" {...props} />,
-            HostingerBox: (props: any) => <HostingerBox lang="en" {...props} />,
+            KusumaMapSpotlight,
+            SamkarsaIndustryRef,
+            HostingerBox,
             ArticleFaqSchema,
             table: MediumCompatibleTable,
-            VisualTcoInfographic: (props: any) => <VisualTcoInfographic lang="en" {...props} />
+            VisualTcoInfographic,
+            VisualInfographic
           }} />
         </article>
 
