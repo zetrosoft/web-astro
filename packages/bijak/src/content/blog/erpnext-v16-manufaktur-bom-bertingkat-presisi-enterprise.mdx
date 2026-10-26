@@ -31,9 +31,23 @@ Kegagalan mengurai hierarki ini (*BOM Explosion*) secara dinamis menyebabkan tim
 
 ERPNext v16 menjawab tantangan ini melalui modul manufaktur berbasis **Frappe Framework v16**. Sistem ini memungkinkan pembuatan struktur BOM multi-level dengan kedalaman tanpa batas. Setiap sub-rakitan dapat diatur sebagai item yang diproduksi secara internal (*Manufacture Sub-Assembly*) atau dibeli langsung dari pihak ketiga (*Subcontracting / Purchase*), memberikan fleksibilitas penuh bagi manajer perencanaan produksi (*PPIC*).
 
+<div class="my-8 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl not-prose bg-slate-900">
+  <img 
+    src="/images/blog/erpnext-v16-manufaktur-bom-bertingkat-presisi-enterprise-scenario.webp" 
+    alt="Komik Editorial: 4 Titik Kekacauan Lantai Pabrik Tanpa BOM Bertingkat Terintegrasi" 
+    class="w-full h-auto object-contain mx-auto"
+    loading="lazy"
+  />
+  <div class="p-5 text-sm text-slate-300 border-t border-slate-800 bg-slate-950/80">
+    <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-800/80">
+      <span class="font-bold text-emerald-400 text-xs tracking-wider uppercase">Catatan Skenario Lapangan</span>
+      <span class="text-[11px] text-slate-400">Bijak Technology Scenario</span>
+    </div>
+    <p class="leading-relaxed text-xs text-slate-300">Empat titik kebocoran efisiensi di lantai pabrik saat struktur BOM bertingkat tidak terintegrasi secara otomatis: <strong>(1) Planner</strong> berspekulasi manual dengan spreadsheet terpisah, <strong>(2) Purchasing</strong> panik melakukan pembelian darurat dengan komponen salah, <strong>(3) Tim perakitan</strong> berdebat atas tumpukan scrap rework yang menumpuk akibat salah sub-rakitan, dan <strong>(4) Akuntan biaya</strong> terjebak deviasi HPP (red-ink) akibat cost rollup yang meleset. ERPNext v16 mengurai seluruh rantai ini menjadi Work Order dan Job Card tersinkronisasi.</p>
+  </div>
+</div>
+
 <AdSenseUnit />
-
-
 
 Kelebihan utama modul BOM pada ERPNext v16 meliputi pengelolaan:
 1. **Rasio Penyusutan (Scrap Factor)**: Menghitung persentase residu material yang terbuang selama proses pengerjaan (misalnya sisa pemotongan plat baja atau bubut) sehingga kalkulasi kebutuhan bahan baku tetap akurat.
