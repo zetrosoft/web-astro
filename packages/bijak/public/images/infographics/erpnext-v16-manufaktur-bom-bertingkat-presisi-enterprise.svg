@@ -1,210 +1,272 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="1050" viewBox="0 0 800 1050" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="1080" viewBox="0 0 800 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg_grad" x1="0" y1="0" x2="800" y2="1050" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#090d16" />
+    <linearGradient id="bg_grad" x1="0" y1="0" x2="800" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#080d1a" />
       <stop offset="50%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#080d1a" />
     </linearGradient>
-    <radialGradient id="glow_top" cx="400" cy="50" r="350" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.15" />
-      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    <radialGradient id="glow_top" cx="400" cy="60" r="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#f43f5e" stop-opacity="0" />
     </radialGradient>
-    <radialGradient id="glow_bottom" cx="400" cy="950" r="300" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#34d399" stop-opacity="0.1" />
-      <stop offset="100%" stop-color="#34d399" stop-opacity="0" />
+    <radialGradient id="glow_bottom" cx="400" cy="980" r="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
     </radialGradient>
+    <filter id="card_shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
   </defs>
 
   <!-- Background Base -->
-  <rect width="800" height="1050" rx="28" fill="url(#bg_grad)" />
-  <rect width="800" height="1050" rx="28" fill="url(#glow_top)" />
-  <rect width="800" height="1050" rx="28" fill="url(#glow_bottom)" />
-  <rect width="800" height="1050" rx="28" stroke="#334155" stroke-width="1.5" />
+  <rect width="800" height="1080" rx="28" fill="url(#bg_grad)" />
+  <rect width="800" height="1080" rx="28" fill="url(#glow_top)" />
+  <rect width="800" height="1080" rx="28" fill="url(#glow_bottom)" />
+  <rect width="800" height="1080" rx="28" stroke="#334155" stroke-width="1.5" />
 
-  <!-- Header Section -->
-  <g transform="translate(40, 45)">
+  <!-- HEADER SECTION -->
+  <g transform="translate(40, 36)">
     <!-- Category Pill Badge -->
-    <rect x="0" y="0" width="320" height="28" rx="14" fill="rgba(56, 189, 248, 0.12)" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1" />
-    <circle cx="14" cy="14" r="4" fill="#38bdf8" />
-    <text x="26" y="18.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8" letter-spacing="1.5">MANUFACTURING ARCHITECTURE • ERPNEXT V16</text>
+    <rect x="0" y="0" width="340" height="26" rx="13" fill="rgba(244, 63, 94, 0.15)" stroke="rgba(244, 63, 94, 0.35)" stroke-width="1" />
+    <circle cx="14" cy="13" r="4" fill="#f43f5e" />
+    <text x="26" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="800" fill="#fb7185" letter-spacing="1.5">MANUFACTURING REALITY CHECK • COMIC EDITORIAL</text>
 
     <!-- Main Title -->
-    <text x="0" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="800" fill="#f8fafc" letter-spacing="-0.5">Anatomi Multi-Level BOM &amp; Alur Eksekusi Lantai Pabrik</text>
+    <text x="0" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" fill="#f8fafc" letter-spacing="-0.5">4 Karakter Kekacauan di Lantai Pabrik</text>
 
     <!-- Subtitle -->
-    <text x="0" y="95" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="400" fill="#94a3b8">Dari dekomposisi sub-assembly bertingkat hingga real-time Job Card di stasiun kerja.</text>
+    <text x="0" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="400" fill="#94a3b8">Ketika lini perakitan berjalan tanpa Bill of Materials (BOM) bertingkat yang presisi.</text>
 
-    <!-- Decorative Top Divider -->
-    <line x1="0" y1="125" x2="720" y2="125" stroke="#334155" stroke-width="1" stroke-dasharray="4 4" />
+    <!-- Top Divider -->
+    <line x1="0" y1="112" x2="720" y2="112" stroke="#334155" stroke-width="1" stroke-dasharray="4 4" />
   </g>
 
-  <!-- Step Cards -->
-  
-    <!-- Step Card 1 -->
-    <g transform="translate(40, 210)">
-      <!-- Background Card -->
-      <rect x="0" y="0" width="720" height="165" rx="16" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.4" stroke-width="1.5" />
-      <rect x="0" y="0" width="720" height="165" rx="16" fill="rgba(56, 189, 248, 0.05)" />
-      
-      <!-- Icon Container -->
-      <rect x="24" y="24" width="52" height="52" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1" />
-      <g transform="translate(38, 38) scale(1)">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </g>
+  <!-- 4 KARAKTER GRID (2 x 2 CARDS) -->
 
-      <!-- Badge Step -->
-      <rect x="96" y="24" width="85" height="24" rx="6" fill="rgba(56, 189, 248, 0.15)" />
-      <text x="138" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle" letter-spacing="1">STEP 01</text>
-
-      <!-- Step Highlight Tag -->
-      
-      <rect x="190" y="24" width="260" height="24" rx="6" fill="#334155" />
-      <text x="200" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Finished Goods &amp; Sub-Assemblies</text>
-      
-
-      <!-- Title -->
-      <text x="96" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#f8fafc">1. Multi-Level BOM Explosion</text>
-
-      <!-- Description Line 1 & 2 -->
-      <text x="96" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="400" fill="#94a3b8">Mengurai produk jadi ke sub-rakitan dan bahan mentah hingga level tak terbatas.</text>
-      
-      <text x="96" y="126" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#64748b">Perhitungan otomatis rasio scrap material dan substitusi komponen darurat.</text>
-      
-
-      <!-- Step Connection Arrow (for steps 1-3) -->
-      
-      <g transform="translate(360, 168)">
-        <circle cx="0" cy="8" r="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
-        <path d="M-3 6 L0 10 L3 6" stroke="#38bdf8" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-      </g>
-      
-    </g>
+  <!-- CARD 1: THE GUESSING PLANNER (Kiri Atas) -->
+  <g transform="translate(40, 165)" filter="url(#card_shadow)">
+    <rect width="348" height="275" rx="18" fill="#1e293b" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1.5" />
+    <rect width="348" height="275" rx="18" fill="rgba(245, 158, 11, 0.04)" />
     
-
-    <!-- Step Card 2 -->
-    <g transform="translate(40, 395)">
-      <!-- Background Card -->
-      <rect x="0" y="0" width="720" height="165" rx="16" fill="#1e293b" stroke="#34d399" stroke-opacity="0.4" stroke-width="1.5" />
-      <rect x="0" y="0" width="720" height="165" rx="16" fill="rgba(52, 211, 153, 0.05)" />
-      
-      <!-- Icon Container -->
-      <rect x="24" y="24" width="52" height="52" rx="12" fill="#0f172a" stroke="#34d399" stroke-opacity="0.5" stroke-width="1" />
-      <g transform="translate(38, 38) scale(1)">
-        <circle cx="12" cy="12" r="3" stroke="#34d399" stroke-width="2" fill="none"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="#34d399" stroke-width="2" fill="none"/>
-      </g>
-
-      <!-- Badge Step -->
-      <rect x="96" y="24" width="85" height="24" rx="6" fill="rgba(52, 211, 153, 0.15)" />
-      <text x="138" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#34d399" text-anchor="middle" letter-spacing="1">STEP 02</text>
-
-      <!-- Step Highlight Tag -->
-      
-      <rect x="190" y="24" width="196" height="24" rx="6" fill="#334155" />
-      <text x="200" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">OEE &amp; Cycle Time Mesin</text>
-      
-
-      <!-- Title -->
-      <text x="96" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#f8fafc">2. Workstation Routing &amp; Capacity</text>
-
-      <!-- Description Line 1 & 2 -->
-      <text x="96" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="400" fill="#94a3b8">Pemetaan jalur pengerjaan dan alokasi mesin di tiap pusat kerja (Work Center).</text>
-      
-      <text x="96" y="126" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#64748b">Pencegahan bottleneck lini produksi dengan simulasi beban kerja real-time.</text>
-      
-
-      <!-- Step Connection Arrow (for steps 1-3) -->
-      
-      <g transform="translate(360, 168)">
-        <circle cx="0" cy="8" r="10" fill="#0f172a" stroke="#34d399" stroke-width="1.5" />
-        <path d="M-3 6 L0 10 L3 6" stroke="#34d399" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-      </g>
-      
+    <!-- Character Avatar / Doodle 1 -->
+    <g transform="translate(20, 20)">
+      <circle cx="32" cy="32" r="30" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5" />
+      <!-- Head & Confused Eyes -->
+      <circle cx="32" cy="30" r="18" fill="#fde68a" />
+      <circle cx="26" cy="28" r="2.5" fill="#1e293b" />
+      <circle cx="38" cy="28" r="2.5" fill="#1e293b" />
+      <!-- Wavy confused mouth -->
+      <path d="M26 38 Q32 34 38 38" stroke="#1e293b" stroke-width="2" fill="none" stroke-linecap="round" />
+      <!-- Scratching Hand -->
+      <path d="M46 18 Q40 12 36 15" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" fill="none" />
+      <!-- Question mark sweat drops -->
+      <text x="48" y="16" font-size="14" font-weight="800" fill="#f59e0b">?</text>
     </g>
-    
 
-    <!-- Step Card 3 -->
-    <g transform="translate(40, 580)">
-      <!-- Background Card -->
-      <rect x="0" y="0" width="720" height="165" rx="16" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.4" stroke-width="1.5" />
-      <rect x="0" y="0" width="720" height="165" rx="16" fill="rgba(251, 191, 36, 0.05)" />
-      
-      <!-- Icon Container -->
-      <rect x="24" y="24" width="52" height="52" rx="12" fill="#0f172a" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1" />
-      <g transform="translate(38, 38) scale(1)">
-        <path d="M18 20V10M12 20V4M6 20v-6" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </g>
+    <!-- Character Name & Badge -->
+    <rect x="92" y="20" width="155" height="22" rx="6" fill="rgba(245, 158, 11, 0.15)" />
+    <text x="98" y="35" font-family="-apple-system, sans-serif" font-size="10" font-weight="800" fill="#fbbf24" letter-spacing="0.8">01 • THE GUESSING PLANNER</text>
+    <text x="92" y="60" font-family="-apple-system, sans-serif" font-size="14.5" font-weight="700" fill="#f8fafc">Si Perencana Kira-Kira</text>
 
-      <!-- Badge Step -->
-      <rect x="96" y="24" width="85" height="24" rx="6" fill="rgba(251, 191, 36, 0.15)" />
-      <text x="138" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24" text-anchor="middle" letter-spacing="1">STEP 03</text>
-
-      <!-- Step Highlight Tag -->
-      
-      <rect x="190" y="24" width="244" height="24" rx="6" fill="#334155" />
-      <text x="200" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Demand Signal &amp; Safety Stock</text>
-      
-
-      <!-- Title -->
-      <text x="96" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#f8fafc">3. Synchronized Auto-MRP</text>
-
-      <!-- Description Line 1 & 2 -->
-      <text x="96" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="400" fill="#94a3b8">Siklus kalkulasi kebutuhan bersih material berbasis Sales Order dan Work Order.</text>
-      
-      <text x="96" y="126" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#64748b">Penerbitan otomatis Material Request pengadaan bahan baku ke vendor tepat waktu.</text>
-      
-
-      <!-- Step Connection Arrow (for steps 1-3) -->
-      
-      <g transform="translate(360, 168)">
-        <circle cx="0" cy="8" r="10" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5" />
-        <path d="M-3 6 L0 10 L3 6" stroke="#fbbf24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-      </g>
-      
+    <!-- Comic Speech Bubble -->
+    <g transform="translate(20, 92)">
+      <rect width="308" height="52" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="1.2" />
+      <!-- Bubble Pointer -->
+      <polygon points="26,-8 34,0 18,0" fill="#0f172a" />
+      <text x="14" y="22" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#fef08a">“Kayaknya stok baut &amp; sub-rakitan</text>
+      <text x="14" y="40" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#fef08a">motor masih cukup di gudang deh...”</text>
     </g>
+
+    <!-- Reality Check Description -->
+    <text x="20" y="172" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#f87171">REALITAS LAPANGAN:</text>
+    <text x="20" y="194" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">Membuat jadwal produksi hanya modal Excel.</text>
+    <text x="20" y="214" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">Tanpa dekomposisi hierarki BOM, lini perakitan</text>
+    <text x="20" y="234" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">akhir macet total saat sub-assembly level 3 kosong.</text>
+    <text x="20" y="258" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#94a3b8">Dampak: Bottleneck &amp; Lead Time Meleset 14 Hari</text>
+  </g>
+
+  <!-- CARD 2: THE PANIC PROCUREMENT (Kanan Atas) -->
+  <g transform="translate(412, 165)" filter="url(#card_shadow)">
+    <rect width="348" height="275" rx="18" fill="#1e293b" stroke="#ef4444" stroke-opacity="0.4" stroke-width="1.5" />
+    <rect width="348" height="275" rx="18" fill="rgba(239, 68, 68, 0.04)" />
     
-
-    <!-- Step Card 4 -->
-    <g transform="translate(40, 765)">
-      <!-- Background Card -->
-      <rect x="0" y="0" width="720" height="165" rx="16" fill="#1e293b" stroke="#a78bfa" stroke-opacity="0.4" stroke-width="1.5" />
-      <rect x="0" y="0" width="720" height="165" rx="16" fill="rgba(167, 139, 250, 0.05)" />
-      
-      <!-- Icon Container -->
-      <rect x="24" y="24" width="52" height="52" rx="12" fill="#0f172a" stroke="#a78bfa" stroke-opacity="0.5" stroke-width="1" />
-      <g transform="translate(38, 38) scale(1)">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polyline points="22 4 12 14.01 9 11.01" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </g>
-
-      <!-- Badge Step -->
-      <rect x="96" y="24" width="85" height="24" rx="6" fill="rgba(167, 139, 250, 0.15)" />
-      <text x="138" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#a78bfa" text-anchor="middle" letter-spacing="1">STEP 04</text>
-
-      <!-- Step Highlight Tag -->
-      
-      <rect x="190" y="24" width="236" height="24" rx="6" fill="#334155" />
-      <text x="200" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Real-Time COGS &amp; HPP Aktual</text>
-      
-
-      <!-- Title -->
-      <text x="96" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#f8fafc">4. Job Card &amp; Actual Cost Rollup</text>
-
-      <!-- Description Line 1 & 2 -->
-      <text x="96" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="400" fill="#94a3b8">Pencatatan konsumsi bahan baku dan waktu operasi presisi via terminal lantai pabrik.</text>
-      
-      <text x="96" y="126" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#64748b">Kalkulasi HPP akurat: akumulasi biaya material riil + tarif upah tenaga kerja + depresiasi.</text>
-      
-
-      <!-- Step Connection Arrow (for steps 1-3) -->
-      
+    <!-- Character Avatar / Doodle 2 -->
+    <g transform="translate(20, 20)">
+      <circle cx="32" cy="32" r="30" fill="#0f172a" stroke="#ef4444" stroke-width="1.5" />
+      <!-- Head & Panicked Face -->
+      <circle cx="32" cy="30" r="18" fill="#fed7aa" />
+      <circle cx="26" cy="27" r="3.5" fill="#1e293b" />
+      <circle cx="38" cy="27" r="3.5" fill="#1e293b" />
+      <!-- Wide open screaming mouth -->
+      <ellipse cx="32" cy="37" rx="5" ry="6" fill="#991b1b" />
+      <!-- Speed lines & sweat drops -->
+      <path d="M48 24 L56 22 M49 32 L58 32 M48 40 L55 42" stroke="#ef4444" stroke-width="2" stroke-linecap="round" />
     </g>
-    
 
-  <!-- Footer Section -->
-  <g transform="translate(40, 985)">
+    <!-- Character Name & Badge -->
+    <rect x="92" y="20" width="155" height="22" rx="6" fill="rgba(239, 68, 68, 0.15)" />
+    <text x="98" y="35" font-family="-apple-system, sans-serif" font-size="10" font-weight="800" fill="#f87171" letter-spacing="0.8">02 • THE PANIC BUYER</text>
+    <text x="92" y="60" font-family="-apple-system, sans-serif" font-size="14.5" font-weight="700" fill="#f8fafc">Si Pemburu Baut Darurat</text>
+
+    <!-- Comic Speech Bubble -->
+    <g transform="translate(20, 92)">
+      <rect width="308" height="52" rx="10" fill="#0f172a" stroke="#f87171" stroke-width="1.2" />
+      <!-- Bubble Pointer -->
+      <polygon points="26,-8 34,0 18,0" fill="#0f172a" />
+      <text x="14" y="22" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#fca5a5">“Vendor minta waktu 2 minggu,</text>
+      <text x="14" y="40" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#fca5a5">tapi pesanan harus dikirim besok?!”</text>
+    </g>
+
+    <!-- Reality Check Description -->
+    <text x="20" y="172" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#f87171">REALITAS LAPANGAN:</text>
+    <text x="20" y="194" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">Tidak ada sinyal Auto-MRP yang otomatis.</text>
+    <text x="20" y="214" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">Baru panik kulakan komponen saat mesin berhenti,</text>
+    <text x="20" y="234" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">terpaksa bayar ongkos kurir kilat super mahal.</text>
+    <text x="20" y="258" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#94a3b8">Dampak: Emergency Purchase Premium (+35% Kas)</text>
+  </g>
+
+  <!-- CARD 3: THE SCRAP BLAME-SHIFTER (Kiri Bawah) -->
+  <g transform="translate(40, 460)" filter="url(#card_shadow)">
+    <rect width="348" height="275" rx="18" fill="#1e293b" stroke="#8b5cf6" stroke-opacity="0.4" stroke-width="1.5" />
+    <rect width="348" height="275" rx="18" fill="rgba(139, 92, 246, 0.04)" />
+    
+    <!-- Character Avatar / Doodle 3 -->
+    <g transform="translate(20, 20)">
+      <circle cx="32" cy="32" r="30" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5" />
+      <!-- Head & Blaming Gesture -->
+      <circle cx="32" cy="30" r="18" fill="#ddd6fe" />
+      <!-- Angled angry eyebrows -->
+      <path d="M24 24 L29 27 M40 24 L35 27" stroke="#4c1d95" stroke-width="2" stroke-linecap="round" />
+      <circle cx="27" cy="29" r="2" fill="#1e293b" />
+      <circle cx="37" cy="29" r="2" fill="#1e293b" />
+      <!-- Pointing Finger Icon -->
+      <path d="M46 36 L56 32 M56 32 L52 30" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round" fill="none" />
+      <!-- Smug frowning mouth -->
+      <path d="M28 38 Q32 35 36 37" stroke="#4c1d95" stroke-width="2" fill="none" />
+    </g>
+
+    <!-- Character Name & Badge -->
+    <rect x="92" y="20" width="155" height="22" rx="6" fill="rgba(139, 92, 246, 0.15)" />
+    <text x="98" y="35" font-family="-apple-system, sans-serif" font-size="10" font-weight="800" fill="#c4b5fd" letter-spacing="0.8">03 • THE BLAME-SHIFTER</text>
+    <text x="92" y="60" font-family="-apple-system, sans-serif" font-size="14.5" font-weight="700" fill="#f8fafc">Si Kambing Hitam Scrap</text>
+
+    <!-- Comic Speech Bubble -->
+    <g transform="translate(20, 92)">
+      <rect width="308" height="52" rx="10" fill="#0f172a" stroke="#c4b5fd" stroke-width="1.2" />
+      <!-- Bubble Pointer -->
+      <polygon points="26,-8 34,0 18,0" fill="#0f172a" />
+      <text x="14" y="22" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#ddd6fe">“Bukan mesinnya yang aus,</text>
+      <text x="14" y="40" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#ddd6fe">operatornya yang potongnya miring!”</text>
+    </g>
+
+    <!-- Reality Check Description -->
+    <text x="20" y="172" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#f87171">REALITAS LAPANGAN:</text>
+    <text x="20" y="194" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">Pabrik tidak menetapkan master Scrap Factor.</text>
+    <text x="20" y="214" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">Residu material terbuang dianggap kesalahan teknisi,</text>
+    <text x="20" y="234" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">padahal stasiun kerja butuh kalibrasi toleransi.</text>
+    <text x="20" y="258" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#94a3b8">Dampak: Kebocoran Bahan Baku Tak Tercatat 8-12%</text>
+  </g>
+
+  <!-- CARD 4: THE STRESSED ACCOUNTANT (Kanan Bawah) -->
+  <g transform="translate(412, 460)" filter="url(#card_shadow)">
+    <rect width="348" height="275" rx="18" fill="#1e293b" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1.5" />
+    <rect width="348" height="275" rx="18" fill="rgba(6, 182, 212, 0.04)" />
+    
+    <!-- Character Avatar / Doodle 4 -->
+    <g transform="translate(20, 20)">
+      <circle cx="32" cy="32" r="30" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5" />
+      <!-- Head & Smokin Head -->
+      <circle cx="32" cy="30" r="18" fill="#cffafe" />
+      <!-- Spiral dizzy eyes -->
+      <circle cx="26" cy="28" r="3" stroke="#0e7490" stroke-width="1.5" fill="none" />
+      <circle cx="38" cy="28" r="3" stroke="#0e7490" stroke-width="1.5" fill="none" />
+      <!-- Smoke clouds above head -->
+      <path d="M26 12 Q24 8 28 6 Q32 8 36 6 Q40 8 38 12" stroke="#67e8f9" stroke-width="2" fill="none" />
+      <!-- Wavy grimace mouth -->
+      <path d="M26 38 L30 36 L34 38 L38 36" stroke="#0e7490" stroke-width="2" fill="none" stroke-linecap="round" />
+    </g>
+
+    <!-- Character Name & Badge -->
+    <rect x="92" y="20" width="155" height="22" rx="6" fill="rgba(6, 182, 212, 0.15)" />
+    <text x="98" y="35" font-family="-apple-system, sans-serif" font-size="10" font-weight="800" fill="#22d3ee" letter-spacing="0.8">04 • STRESSED ACCOUNTANT</text>
+    <text x="92" y="60" font-family="-apple-system, sans-serif" font-size="14.5" font-weight="700" fill="#f8fafc">Si Akuntan Frustrasi</text>
+
+    <!-- Comic Speech Bubble -->
+    <g transform="translate(20, 92)">
+      <rect width="308" height="52" rx="10" fill="#0f172a" stroke="#22d3ee" stroke-width="1.2" />
+      <!-- Bubble Pointer -->
+      <polygon points="26,-8 34,0 18,0" fill="#0f172a" />
+      <text x="14" y="22" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#a5f3fc">“HPP di atas kertas Rp50 ribu,</text>
+      <text x="14" y="40" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#a5f3fc">kenapa aktualnya bengkak Rp92 ribu?!”</text>
+    </g>
+
+    <!-- Reality Check Description -->
+    <text x="20" y="172" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#f87171">REALITAS LAPANGAN:</text>
+    <text x="20" y="194" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">Biaya tenaga kerja lembur &amp; depresiasi mesin</text>
+    <text x="20" y="214" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">tidak pernah dicatat via Job Card stasiun kerja.</text>
+    <text x="20" y="234" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="400" fill="#cbd5e1">Margin laba di laporan bulanan langsung hangus.</text>
+    <text x="20" y="258" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#94a3b8">Dampak: Deviasi Biaya Pokok Produksi (HPP) Parah</text>
+  </g>
+
+  <!-- BAGIAN BAWAH: 3 LEVEL KEMATANGAN PRODUKSI PABRIK (PROGRESSION LADDER) -->
+  <g transform="translate(40, 755)">
+    <!-- Header Level Box -->
+    <rect width="720" height="34" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="16" y="22" font-family="-apple-system, sans-serif" font-size="12.5" font-weight="800" fill="#f8fafc" letter-spacing="0.5">TANGGA TRANSFORMASI: 3 LEVEL KEMATANGAN MANAJEMEN PABRIK</text>
+    <text x="640" y="22" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#10b981">BENCHMARK 2026</text>
+
+    <!-- Kolom Level 1: Reaktif (Merah) -->
+    <g transform="translate(0, 46)">
+      <rect width="230" height="175" rx="14" fill="#1e293b" stroke="#f43f5e" stroke-opacity="0.4" stroke-width="1.2" />
+      <rect x="14" y="14" width="75" height="20" rx="5" fill="rgba(244, 63, 94, 0.2)" />
+      <text x="51" y="28" font-family="-apple-system, sans-serif" font-size="10" font-weight="800" fill="#fb7185" text-anchor="middle">LEVEL 1</text>
+      
+      <text x="14" y="54" font-family="-apple-system, sans-serif" font-size="13.5" font-weight="700" fill="#f8fafc">Pabrik Reaktif</text>
+      <text x="14" y="72" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#f43f5e">Excel &amp; Catatan Lepas</text>
+
+      <text x="14" y="98" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#cbd5e1">“Barang macet, baru ribut.”</text>
+      <text x="14" y="120" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="400" fill="#94a3b8">Bahan habis di tengah jalan,</text>
+      <text x="14" y="136" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="400" fill="#94a3b8">jadwal perakitan tabrakan,</text>
+      <text x="14" y="152" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="400" fill="#94a3b8">dan HPP ditebak di akhir bulan.</text>
+    </g>
+
+    <!-- Kolom Level 2: Silo (Kuning) -->
+    <g transform="translate(245, 46)">
+      <rect width="230" height="175" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1.2" />
+      <rect x="14" y="14" width="75" height="20" rx="5" fill="rgba(245, 158, 11, 0.2)" />
+      <text x="51" y="28" font-family="-apple-system, sans-serif" font-size="10" font-weight="800" fill="#fbbf24" text-anchor="middle">LEVEL 2</text>
+      
+      <text x="14" y="54" font-family="-apple-system, sans-serif" font-size="13.5" font-weight="700" fill="#f8fafc">Sistem Terpisah</text>
+      <text x="14" y="72" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#f59e0b">Software Silo Gudang vs PPIC</text>
+
+      <text x="14" y="98" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#cbd5e1">“Stok ada, tapi mesin mogok.”</text>
+      <text x="14" y="120" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="400" fill="#94a3b8">Data stok tercatat di gudang,</text>
+      <text x="14" y="136" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="400" fill="#94a3b8">tapi routing kapasitas mesin</text>
+      <text x="14" y="152" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="400" fill="#94a3b8">dan scrap tidak sinkron.</text>
+    </g>
+
+    <!-- Kolom Level 3: Precision ERPNext v16 (Hijau) -->
+    <g transform="translate(490, 46)">
+      <rect width="230" height="175" rx="14" fill="#0f291e" stroke="#10b981" stroke-opacity="0.7" stroke-width="1.8" />
+      <rect x="14" y="14" width="85" height="20" rx="5" fill="rgba(16, 185, 129, 0.25)" />
+      <text x="56" y="28" font-family="-apple-system, sans-serif" font-size="10" font-weight="800" fill="#34d399" text-anchor="middle">LEVEL 3 ★</text>
+      
+      <text x="14" y="54" font-family="-apple-system, sans-serif" font-size="13.5" font-weight="700" fill="#f8fafc">ERPNext v16 MRP</text>
+      <text x="14" y="72" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#34d399">BOM Bertingkat &amp; Job Card</text>
+
+      <text x="14" y="98" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#a7f3d0">“Presisi, Terurai, Terkendali.”</text>
+      <text x="14" y="120" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="500" fill="#cbd5e1">BOM Explosion otomatis,</text>
+      <text x="14" y="136" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="500" fill="#cbd5e1">beban kerja mesin terpetakan,</text>
+      <text x="14" y="152" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="500" fill="#cbd5e1">dan kalkulasi HPP aktual presisi.</text>
+    </g>
+  </g>
+
+  <!-- FOOTER SECTION -->
+  <g transform="translate(40, 1025)">
     <line x1="0" y1="0" x2="720" y2="0" stroke="#334155" stroke-width="1" />
-    <text x="0" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#64748b" letter-spacing="0.5">Bijak Technology • Samkarsa ERPNext v16 Implementation Architecture</text>
-    <rect x="635" y="14" width="85" height="20" rx="4" fill="rgba(52, 211, 153, 0.1)" />
-    <text x="677" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">OFFICIAL BLUEPRINT</text>
+    <text x="0" y="24" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="600" fill="#64748b">Bijak Technology Editorial Cartoon • Strategic Manufacturing Series</text>
+    <rect x="610" y="10" width="110" height="20" rx="4" fill="rgba(16, 185, 129, 0.15)" />
+    <text x="665" y="24" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">SAMKARSA.COM</text>
   </g>
 </svg>
