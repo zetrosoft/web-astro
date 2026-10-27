@@ -40,7 +40,7 @@ ERPNext v16 menerapkan pendekatan *Single Source of Truth*. Melalui fitur **Land
 
 ### Mengamankan Margin dengan Fondasi Arsitektur BOM Bertingkat
 
-Prediksi biaya yang akurat tidak dapat berdiri sendiri tanpa struktur rekayasa produk yang solid. Dalam lini perakitan yang kompleks, satu produk akhir tersusun dari puluhan sub-assembly dengan ratusan komponen. Fondasi teknis ini bertumpu langsung pada penerapan [arsitektur BOM bertingkat](/blog/erpnext-v16-manufaktur-bom-bertingkat-presisi-enterprise/), di mana setiap tingkatan Bill of Materials memiliki struktur biaya komponen mandiri.
+Prediksi biaya yang akurat tidak dapat berdiri sendiri tanpa struktur rekayasa produk yang solid. Dalam lini perakitan yang kompleks, satu produk akhir tersusun dari puluhan sub-assembly dengan ratusan komponen. Fondasi teknis ini bertumpu langsung pada [penerapan arsitektur BOM bertingkat](/blog/erpnext-v16-manufaktur-bom-bertingkat-presisi-enterprise/), di mana setiap tingkatan Bill of Materials memiliki struktur biaya komponen mandiri.
 
 Ketika terjadi lonjakan harga bahan baku sebesar 15% pada komponen tier terbawah, algoritma ERPNext v16 secara otomatis menggulung (*cost roll-up*) dampak kenaikan tersebut ke level assembly di atasnya hingga ke produk akhir. Manajer pabrik dapat segera mengetahui bahwa kenaikan 15% pada satu jenis baut khusus atau pigmen warna berdampak pada kenaikan HPP produk akhir sebesar 1,8%, sehingga penyesuaian harga dapat dilakukan secara presisi tanpa spekulasi.
 
@@ -52,7 +52,7 @@ Selain fluktuasi bahan mentah, pengeluaran jasa pengerjaan pihak ketiga sering k
 
 Di sinilah sinergi dengan [manajemen efisiensi subkontrak manufaktur](/blog/erpnext-v16-subkontrak-manufaktur-efisiensi-private-cloud/) menjadi krusial. Melalui integrasi Purchase Order Subkontrak dan Subcontracting Receipt di ERPNext v16, pergerakan bahan mentah yang dikirim ke vendor tercatat sebagai *stock at supplier*. Ketika barang setengah jadi kembali ke pabrik, biaya jasa vendor otomatis dikapitalisasi ke dalam HPP barang tersebut secara transparan, menutup celah tagihan siluman di akhir periode.
 
-Untuk mendukung kalkulasi intensif yang memproses ribuan pergerakan material dan mutasi gudang secara bersamaan, infrastruktur komputasi mandiri sangat disarankan. Pemanfaatan server cloud berkinerja tinggi seperti [paket Hostinger KVM VPS](/go/hostinger/) memberikan kestabilan database MariaDB dan performa Redis cache yang dibutuhkan ERPNext v16 enterprise dengan efisiensi biaya infrastruktur yang terukur.
+Untuk mendukung kalkulasi intensif yang memproses ribuan pergerakan material dan mutasi gudang secara bersamaan, infrastruktur komputasi mandiri sangat disarankan. Pemanfaatan server cloud berkinerja tinggi seperti [paket Hostinger KVM VPS dengan diskon tambahan dan masukkan kode promo 6X5PUTERARQL](/go/hostinger/) memberikan kestabilan database MariaDB dan performa Redis cache yang dibutuhkan ERPNext v16 enterprise dengan efisiensi biaya infrastruktur yang terukur.
 
 ### Langkah Taktis Mitigasi Fluktuasi Harga
 
