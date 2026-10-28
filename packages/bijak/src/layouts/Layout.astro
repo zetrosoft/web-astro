@@ -526,7 +526,7 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-200 dark:border-slate-800">
           <!-- Col 1: Brand & Misi -->
           <div class="space-y-3">
-            <a href="/" class="inline-block" aria-label="Bijak Technology" data-nosnippet>
+            <a href={isEn ? "/en/" : "/"} class="inline-block" aria-label="Bijak Technology" data-nosnippet>
               <img 
                 src="/images/logo-bijak-horizontal.webp" 
                 alt="" 
@@ -538,49 +538,58 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
               />
             </a>
             <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
-              Media independen yang mengupas arsitektur sistem, kecerdasan buatan, digitalisasi UMKM ritel, dan infrastruktur cloud enterprise dengan pendekatan berbasis bukti nyata.
+              {isEn 
+                ? "An independent journal examining systems architecture, artificial intelligence, retail digitisation, and enterprise cloud infrastructure with evidence-based rigor."
+                : "Media independen yang mengupas arsitektur sistem, kecerdasan buatan, digitalisasi UMKM ritel, dan infrastruktur cloud enterprise dengan pendekatan berbasis bukti nyata."
+              }
             </p>
           </div>
 
           <!-- Col 2: Rubrik Berita -->
           <div class="space-y-2">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Rubrik Redaksi</h4>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+              {isEn ? "Editorial Sections" : "Rubrik Redaksi"}
+            </h4>
             <ul class="text-xs space-y-2 font-medium">
-              <li><a href="/blog/?category=Cloud+VPS" class="hover:text-rose-600 transition-colors">AI &amp; Cloud Architecture</a></li>
-              <li><a href="/blog/?category=Local+SEO" class="hover:text-rose-600 transition-colors">Bisnis &amp; Ritel Sembako</a></li>
-              <li><a href="/blog/?category=ERPNext" class="hover:text-rose-600 transition-colors">ERPNext Enterprise</a></li>
-              <li><a href="/blog/?category=Blockchain" class="hover:text-rose-600 transition-colors">Web3 &amp; Keamanan Digital</a></li>
-              <li><a href="/blog/?category=Smart+Living" class="hover:text-rose-600 transition-colors">Smart Living &amp; DIY</a></li>
-              <li><a href="/blog/?category=Sains" class="hover:text-rose-600 transition-colors">Kisah &amp; Sains Nusantara</a></li>
+              <li><a href={isEn ? "/en/blog/?category=Cloud+VPS" : "/blog/?category=Cloud+VPS"} class="hover:text-rose-600 transition-colors">{isEn ? "AI & Cloud Architecture" : "AI & Cloud Architecture"}</a></li>
+              <li><a href={isEn ? "/en/blog/?category=Local+SEO" : "/blog/?category=Local+SEO"} class="hover:text-rose-600 transition-colors">{isEn ? "Business & Retail Logistics" : "Bisnis & Ritel Sembako"}</a></li>
+              <li><a href={isEn ? "/en/blog/?category=ERPNext" : "/blog/?category=ERPNext"} class="hover:text-rose-600 transition-colors">{isEn ? "Enterprise ERP & Frappe" : "ERPNext Enterprise"}</a></li>
+              <li><a href={isEn ? "/en/blog/?category=Blockchain" : "/blog/?category=Blockchain"} class="hover:text-rose-600 transition-colors">{isEn ? "Web3 & Digital Security" : "Web3 & Keamanan Digital"}</a></li>
+              <li><a href={isEn ? "/en/blog/?category=Smart+Living" : "/blog/?category=Smart+Living"} class="hover:text-rose-600 transition-colors">{isEn ? "Smart Living & Practical Tech" : "Smart Living & DIY"}</a></li>
+              <li><a href={isEn ? "/en/blog/?category=Sains" : "/blog/?category=Sains"} class="hover:text-rose-600 transition-colors">{isEn ? "Stories & Applied Science" : "Kisah & Sains Nusantara"}</a></li>
             </ul>
           </div>
 
           <!-- Col 3: Ekosistem & Mitra -->
           <div class="space-y-2">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Ekosistem &amp; Mitra</h4>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+              {isEn ? "Ecosystem & Partners" : "Ekosistem & Mitra"}
+            </h4>
             <ul class="text-xs space-y-2 font-medium">
               <li><a href="https://samkarsa.com" target="_blank" class="hover:text-rose-600 transition-colors">Samkarsa ERPNext Implementor</a></li>
-              <li><a href="https://maps.google.com/?q=Toko+Sembako+Kusuma+Karanggeneng+Boyolali" target="_blank" class="hover:text-rose-600 transition-colors">Toko Sembako Kusuma Boyolali</a></li>
+              <li><a href="https://maps.google.com/?q=Toko+Sembako+Kusuma+Karanggeneng+Boyolali" target="_blank" class="hover:text-rose-600 transition-colors">{isEn ? "Kusuma Retail Network" : "Toko Sembako Kusuma Boyolali"}</a></li>
               <li><a href="/go/hostinger/" target="_blank" rel="noopener sponsored" class="hover:text-rose-600 transition-colors">Hostinger Official Partner</a></li>
-              <li><a href="/project/" class="hover:text-rose-600 transition-colors">Aplikasi Blonjo &amp; Sajen AI</a></li>
+              <li><a href={isEn ? "/en/project/" : "/project/"} class="hover:text-rose-600 transition-colors">{isEn ? "Blonjo POS & Open Source" : "Aplikasi Blonjo & Sajen AI"}</a></li>
             </ul>
           </div>
 
           <!-- Col 4: Informasi & Legalitas -->
           <div class="space-y-2">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">Informasi &amp; Privasi</h4>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+              {isEn ? "Information & Legal" : "Informasi & Privasi"}
+            </h4>
             <ul class="text-xs space-y-2 font-medium">
-              <li><a href="/about/" class="hover:text-rose-600 transition-colors">Tentang Redaksi</a></li>
-              <li><a href="/contact/" class="hover:text-rose-600 transition-colors">Kirim Pesan &amp; Kerjasama</a></li>
-              <li><a href="/privacy-policy/" class="hover:text-rose-600 transition-colors">Kebijakan Privasi &amp; AdSense</a></li>
-              <li><a href="/terms/" class="hover:text-rose-600 transition-colors">Ketentuan Layanan &amp; Disclaimer</a></li>
+              <li><a href={isEn ? "/en/about/" : "/about/"} class="hover:text-rose-600 transition-colors">{isEn ? "About the Editorial Desk" : "Tentang Redaksi"}</a></li>
+              <li><a href={isEn ? "/en/contact/" : "/contact/"} class="hover:text-rose-600 transition-colors">{isEn ? "Contact & Inquiries" : "Kirim Pesan & Kerjasama"}</a></li>
+              <li><a href={isEn ? "/en/privacy-policy/" : "/privacy-policy/"} class="hover:text-rose-600 transition-colors">{isEn ? "Privacy Policy & AdSense" : "Kebijakan Privasi & AdSense"}</a></li>
+              <li><a href={isEn ? "/en/terms/" : "/terms/"} class="hover:text-rose-600 transition-colors">{isEn ? "Terms of Service & Disclaimer" : "Ketentuan Layanan & Disclaimer"}</a></li>
               <li><a href="/sitemap.xml" target="_blank" class="hover:text-rose-600 transition-colors">Sitemap XML</a> · <a href="/rss.xml" target="_blank" class="hover:text-rose-600 transition-colors">RSS</a> · <a href="/llms.txt" target="_blank" class="hover:text-rose-600 transition-colors">LLMs.txt</a></li>
             </ul>
           </div>
         </div>
 
         <div class="flex flex-col sm:flex-row justify-between items-center pt-6 text-[11px] text-slate-600 dark:text-slate-400 font-mono gap-3 font-medium">
-          <span>&copy; {new Date().getFullYear()} Bijak Technology. Seluruh hak cipta dilindungi.</span>
+          <span>&copy; {new Date().getFullYear()} Bijak Technology. {isEn ? "All rights reserved." : "Seluruh hak cipta dilindungi."}</span>
           <span class="flex items-center gap-1">
             <span>Official Publisher AdSense ca-pub-7398988805905629</span>
           </span>
