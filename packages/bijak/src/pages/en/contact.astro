@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Contact Us - Editorial Desk" 
+  description="Reach the editorial board of Bijak Technology for technical inquiries, editorial feedback, or partnership opportunities."
+  lang="en"
+  alternateId="/contact/"
+  alternateEn="/en/contact/"
+>
+  <div class="max-w-4xl mx-auto space-y-8">
+    
+    <!-- Contact Header -->
+    <div class="text-center py-6 border-b border-neutral-300 dark:border-neutral-700">
+      <h1 class="newspaper-title text-4xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-neutral-100">
+        Contact the Editorial Desk
+      </h1>
+      <p class="text-sm italic font-serif text-neutral-600 dark:text-neutral-400 mt-2">
+        Direct your technical questions, editorial feedback, or professional collaboration inquiries below.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Desk Information -->
+      <div class="space-y-6">
+        <div class="border-2 border-neutral-900 dark:border-neutral-700 p-5 bg-[#faf9f5] dark:bg-neutral-800">
+          <h2 class="newspaper-title text-lg font-bold uppercase border-b border-neutral-900 dark:border-neutral-700 pb-2 mb-4 text-center text-neutral-900 dark:text-neutral-100">
+            Correspondence
+          </h2>
+          <div class="space-y-4 text-sm">
+            <div>
+              <h3 class="font-bold text-neutral-800 dark:text-neutral-200 uppercase text-xs">Editorial Office</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 mt-0.5">Purwakarta Regency, West Java, Indonesia</p>
+            </div>
+            <div>
+              <h3 class="font-bold text-neutral-800 dark:text-neutral-200 uppercase text-xs">Source Repositories</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 mt-0.5">
+                <a href="https://github.com/bijaktechnology" target="_blank" class="text-rose-600 hover:underline">
+                  github.com/bijaktechnology
+                </a>
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-neutral-800 dark:text-neutral-200 uppercase text-xs">Direct Inquiries</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 mt-0.5 font-mono text-xs">
+                editorial@bijaktechnology.com
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-neutral-800 dark:text-neutral-200 uppercase text-xs">Operating Hours</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 mt-0.5">
+                Monday – Friday: 08:30 – 17:30 WIB (UTC+7)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 border border-dashed border-neutral-400 dark:border-neutral-600 text-xs text-neutral-600 dark:text-neutral-400 space-y-2">
+          <p class="font-bold uppercase tracking-wider text-neutral-800 dark:text-neutral-200">Editorial Integrity</p>
+          <p>
+            We adhere to strict technical verification standards. If you discover a factual or architectural discrepancy in any published guide, our engineering editors prioritize prompt remediation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Contact Submission Form -->
+      <div class="md:col-span-2 border-2 border-neutral-900 dark:border-neutral-700 p-6 bg-white dark:bg-neutral-900">
+        <h2 class="newspaper-title text-xl font-bold uppercase border-b border-neutral-900 dark:border-neutral-700 pb-2 mb-6 text-neutral-900 dark:text-neutral-100">
+          Submit an Editorial Dispatch
+        </h2>
+
+        <form class="space-y-4 font-sans text-sm" method="POST" action="/api/contact">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label for="name" class="font-bold text-neutral-700 dark:text-neutral-300 uppercase text-xs">Full Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                placeholder="e.g. Alex Graham"
+                class="w-full border border-neutral-300 dark:border-neutral-700 px-3 py-2 focus:outline-none focus:border-rose-600 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
+              />
+            </div>
+            <div class="space-y-1.5">
+              <label for="email" class="font-bold text-neutral-700 dark:text-neutral-300 uppercase text-xs">Email Address</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                placeholder="e.g. alex@domain.com"
+                class="w-full border border-neutral-300 dark:border-neutral-700 px-3 py-2 focus:outline-none focus:border-rose-600 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="subject" class="font-bold text-neutral-700 dark:text-neutral-300 uppercase text-xs">Subject / Purpose</label>
+            <input 
+              type="text" 
+              id="subject" 
+              name="subject" 
+              required 
+              placeholder="e.g. ERPNext Implementation Inquiry"
+              class="w-full border border-neutral-300 dark:border-neutral-700 px-3 py-2 focus:outline-none focus:border-rose-600 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
+            />
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="message" class="font-bold text-neutral-700 dark:text-neutral-300 uppercase text-xs">Your Message</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="6" 
+              required 
+              placeholder="Detail your question or collaboration scope clearly..."
+              class="w-full border border-neutral-300 dark:border-neutral-700 px-3 py-2 focus:outline-none focus:border-rose-600 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 resize-none"
+            ></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button 
+              type="submit" 
+              class="w-full bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-bold uppercase tracking-wider py-3 hover:bg-rose-600 dark:hover:bg-rose-600 dark:hover:text-white transition-colors"
+            >
+              Send Editorial Message
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</Layout>

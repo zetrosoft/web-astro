@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Terms of Service" 
+  description="Terms of service, editorial intellectual property, and engineering disclaimers at Bijak Technology."
+  lang="en"
+  alternateId="/terms/"
+  alternateEn="/en/terms/"
+>
+  <article class="max-w-4xl mx-auto py-8 font-serif">
+    <!-- Newspaper Style Header -->
+    <header class="border-b-2 border-neutral-900 dark:border-neutral-700 pb-6 mb-8 text-center">
+      <span class="text-xs uppercase tracking-widest font-sans font-bold text-rose-600 dark:text-rose-400">Legal, Privacy & Compliance</span>
+      <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-2 mb-3 text-neutral-900 dark:text-neutral-100">Terms of Service</h1>
+      <p class="text-xs uppercase tracking-wider font-sans text-neutral-500">
+        Last Updated: {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })} · Editorial Board of Bijak Technology
+      </p>
+    </header>
+
+    <!-- Editorial Content -->
+    <div class="prose prose-neutral dark:prose-invert max-w-none space-y-6 text-neutral-800 dark:text-neutral-200 leading-relaxed">
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">1. Acceptance of Terms</h2>
+        <p>
+          Welcome to <strong>Bijak Technology</strong> (bijaktechnology.com). By accessing, browsing, or utilizing the articles, technical benchmarks, and interactive tools published on this portal, you acknowledge having read, understood, and agreed to be governed by these Terms of Service. If you disagree with any portion of these provisions, you should discontinue use immediately.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">2. Intellectual Property & Citation Standards</h2>
+        <p>
+          All published essays, architectural schematics, data comparisons, and editorial analyses are protected under applicable intellectual property laws and international copyright treaties.
+        </p>
+        <ul class="list-disc pl-6 space-y-1 font-sans text-sm">
+          <li><strong>Personal & Educational Reading:</strong> You are granted a revocable license to read, reference, and share publications via direct links.</li>
+          <li><strong>Fair Use & Attribution:</strong> Brief quotations (up to 2-3 paragraphs) are permissible provided you include <strong>conspicuous brand attribution (Bijak Technology) alongside an active, dofollow hyperlink</strong> to the source page.</li>
+          <li><strong>Automated Scraping Prohibition:</strong> Bulk mirroring, commercial reproduction, or unauthorized aggregation of our corpus without explicit prior consent is strictly prohibited.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">3. Systems Engineering & Architecture Disclaimer</h2>
+        <p>
+          Articles detailing Linux server hardening, cloud containerization, database clustering, and ERPNext deployment are provided for educational and architectural evaluation:
+        </p>
+        <div class="p-4 bg-neutral-100 dark:bg-neutral-800 border-l-4 border-rose-600 rounded-r my-4 font-sans text-sm space-y-2">
+          <p>
+            Any deployment on your internal production infrastructure should undergo independent validation within a dedicated staging sandbox. Bijak Technology assumes no liability for downtime, configuration conflicts, or operational disruptions arising from technical execution.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">4. Commercial Disclosures & Affiliate Transparency</h2>
+        <p>
+          To maintain transparency with our global readership:
+        </p>
+        <ul class="list-disc pl-6 space-y-1 font-sans text-sm">
+          <li><strong>Official Technology Partner:</strong> Bijak Technology collaborates with select infrastructure providers, including <strong>Hostinger Official Partner</strong> for cloud VPS evaluations.</li>
+          <li><strong>Affiliate Links:</strong> Certain technical guides contain internal routing links (such as <code>/go/hostinger/</code>). Should you procure services via these links, our publication may receive a referral commission at zero additional expense to you.</li>
+          <li><strong>Google AdSense Advertising:</strong> Sponsored units designated as advertisements are dynamically served by Google AdSense via auction bidding as detailed in our <a href="/en/privacy-policy/" class="text-rose-600 dark:text-rose-400 underline font-semibold">Privacy Policy</a>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">5. Governing Law & Editorial Inquiries</h2>
+        <p>
+          These Terms of Service are interpreted in conformity with standard legal doctrines and electronic information frameworks. For questions, licensing inquiries, or editorial clarifications, please submit your message through our <a href="/en/contact/" class="text-rose-600 dark:text-rose-400 underline font-semibold">Editorial Contact Desk</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>

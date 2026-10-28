@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Privacy Policy" 
+  description="Privacy Policy, data transparency, and Google AdSense cookie usage disclosure at Bijak Technology."
+  lang="en"
+  alternateId="/privacy-policy/"
+  alternateEn="/en/privacy-policy/"
+>
+  <article class="max-w-4xl mx-auto py-8 font-serif">
+    <!-- Newspaper Style Header -->
+    <header class="border-b-2 border-neutral-900 dark:border-neutral-700 pb-6 mb-8 text-center">
+      <span class="text-xs uppercase tracking-widest font-sans font-bold text-rose-600 dark:text-rose-400">Legal, Privacy & Compliance</span>
+      <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-2 mb-3 text-neutral-900 dark:text-neutral-100">Privacy Policy</h1>
+      <p class="text-xs uppercase tracking-wider font-sans text-neutral-500">
+        Last Updated: {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })} · Editorial Board of Bijak Technology
+      </p>
+    </header>
+
+    <!-- Editorial Content -->
+    <div class="prose prose-neutral dark:prose-invert max-w-none space-y-6 text-neutral-800 dark:text-neutral-200 leading-relaxed">
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">1. Our Privacy Commitment</h2>
+        <p>
+          Welcome to <strong>Bijak Technology</strong> (bijaktechnology.com). We respect the privacy rights of every reader and are dedicated to managing your information responsibly, transparently, and in strict adherence to global privacy frameworks and regional data protection regulations.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">2. Information We Collect</h2>
+        <p>
+          We collect minimal information when you browse or interact with our publication:
+        </p>
+        <ul class="list-disc pl-6 space-y-1 font-sans text-sm">
+          <li><strong>Direct Inquiries:</strong> Name, email address, and correspondence content when you submit an inquiry through our contact desk.</li>
+          <li><strong>Technical Telemetry & Log Files:</strong> IP addresses, browser specifications, screen resolutions, referrers, request timestamps, and pages viewed for infrastructure maintenance and aggregated readership analysis.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">3. Cookies & Google AdSense Advertising Disclosure</h2>
+        <p>
+          This website employs cookies and related tracking mechanisms to elevate user navigation, analyze organic traffic patterns, and deliver contextual advertisements:
+        </p>
+        <div class="p-4 bg-neutral-100 dark:bg-neutral-800 border-l-4 border-rose-600 rounded-r my-4 font-sans text-sm space-y-2">
+          <p>
+            <strong>Third-Party Vendor Notice (Google AdSense):</strong> Third-party vendors, including Google, utilize cookies to serve advertisements based on a user's prior visits to this website or other internet destinations.
+          </p>
+          <p>
+            Google's usage of advertising cookies allows it and its partner network to serve targeted ads to our readers based on visits across the broader web.
+          </p>
+          <p>
+            Users maintain full discretion to opt out of personalized advertising by visiting the official <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" class="text-rose-600 dark:text-rose-400 underline font-semibold">Google Ads Settings</a> or through the <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" class="text-rose-600 dark:text-rose-400 underline font-semibold">aboutads.info</a> consumer choice portal.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">4. Data Safeguards & Third-Party Protection</h2>
+        <p>
+          We do not sell, rent, trade, or transfer personal identifiable information to outside parties. Data is solely utilized for editorial delivery, server performance tuning, and compliance with statutory law enforcement mandates.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold uppercase tracking-wide border-b border-neutral-300 dark:border-neutral-700 pb-2 mb-3">5. Contact the Editorial Desk</h2>
+        <p>
+          For questions, privacy inquiries, or data compliance requests, please reach out to our editorial desk via our official <a href="/en/contact/" class="text-rose-600 hover:underline">Contact Page</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>
