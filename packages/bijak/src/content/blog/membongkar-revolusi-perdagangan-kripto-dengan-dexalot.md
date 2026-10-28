@@ -1,4 +1,5 @@
 ---
+noindex: true
 title: "Membongkar Revolusi Perdagangan Kripto dengan Dexalot"
 description: "Bagaimana Dexalot menghadirkan pengalaman trading Central Limit Order Book (CLOB) langsung di atas subnet Avalanche."
 pubDate: 2026-04-15
@@ -22,3 +23,9 @@ Untuk menjalankan sistem order book dengan ribuan pencocokan pesanan per detik s
 - **Biaya Gas Sangat Rendah:** Transaksi pencatatan order tidak lagi membebani dompet pengguna dengan biaya tinggi.
 - **Finalitas Instan:** Transaksi selesai dalam kurang dari 2 detik, menyamai performa sistem keuangan tradisional.
 - **Kedaulatan Subnet:** Validator khusus memastikan eksekusi transaksi yang adil dan tahan sensor.
+
+---
+
+> [!NOTE]
+> **Klausul Disclaimer Kepatuhan Keuangan & Teknologi:**  
+> *Ulasan ini disajikan murni untuk tujuan edukasi arsitektur teknologi desentralisasi dan bukan merupakan nasihat finansial, rekomendasi investasi, ajakan trading, atau anjuran spekulatif terhadap aset kripto apapun.*

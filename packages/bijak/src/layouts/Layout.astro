@@ -1,6 +1,7 @@
 ---
 import LanguageSwitcher from '../components/LanguageSwitcher.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   title: string;
@@ -86,7 +87,11 @@ const globalSchema = {
         "url": "https://bijaktechnology.com/images/logo-bijak-horizontal.png",
         "caption": "Bijak Technology"
       },
+      "email": "redaksi@bijaktechnology.com",
+      "publishingPrinciples": "https://bijaktechnology.com/terms/",
+      "correctionsPolicy": "https://bijaktechnology.com/terms/",
       "sameAs": [
+        "https://github.com/bijaktechnology",
         "https://samkarsa.com"
       ]
     },
@@ -596,5 +601,6 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
         </div>
       </div>
     </footer>
+    <CookieConsent lang={lang} />
   </body>
 </html>

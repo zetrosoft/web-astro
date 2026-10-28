@@ -1,4 +1,5 @@
 ---
+noindex: true
 title: "Apa itu UTXO? Konsep Dasar Transaksi Blockchain"
 description: "Panduan memahami model Unspent Transaction Output (UTXO) yang digunakan oleh Bitcoin dan Avalanche, serta perbandingannya dengan model Akun."
 pubDate: 2026-04-18
@@ -33,3 +34,9 @@ Dalam database blockchain, tidak ada tabel kolom "Saldo Akun" yang menyatakan ba
 Ketika Anda mengirim kripto:
 1. Dompet Anda memilih beberapa UTXO yang jumlahnya cukup untuk transaksi tersebut (**Inputs**).
 2. Transaksi tersebut menghancurkan UTXO input tersebut dan menciptakan UTXO baru (**Outputs**): satu untuk penerima, dan satu lagi kembali ke alamat Anda sebagai uang kembalian (*change*).
+
+---
+
+> [!NOTE]
+> **Klausul Disclaimer Kepatuhan Keuangan & Teknologi:**  
+> *Ulasan ini disajikan murni untuk tujuan edukasi arsitektur teknologi desentralisasi dan bukan merupakan nasihat finansial, rekomendasi investasi, ajakan trading, atau anjuran spekulatif terhadap aset kripto apapun.*
