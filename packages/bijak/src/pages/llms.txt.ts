@@ -21,8 +21,6 @@ export const GET: APIRoute = async ({ site }) => {
     '- **Web3 & Avalanche Blockchain**: Enterprise L1 Subnets, Avalanche9000/Etna Upgrade (ACP-77, ACP-103), Teleporter ICM, and Real World Asset (RWA) tokenization.',
     '- **Local Retail & Wholesale Supply Chain**: Empirical UMKM grocery management and verified regional hub **Toko Sembako Kusuma** (Jl. Sandang Lawe No.22, Dusun 1, Karanggeneng, Boyolali, Central Java 57312 — [Google Maps CID 4496468575381228578](https://maps.google.com/?cid=4496468575381228578), WhatsApp: `+6281219987377`).',
     '',
-    '## Interactive Business & IT Calculators (Free Tools)',
-    `- [Kalkulator Audit TCO ERP 5 Tahun & Kalkulator Margin Grosir UMKM](${base}/tools/): Free interactive web calculators for CFOs, IT Directors, and retail store owners.`,
     `- [Machine-Readable WebMCP Actions](${base}/mcp-actions.json): Declarative action endpoints for AI browsing agents.`,
     `- [Full AI Knowledge Corpus](${base}/llms-full.txt): Comprehensive index with executive summaries and bilingual links.`,
     `- [RSS 2.0 Syndication Feed](${base}/rss.xml): Real-time article feed.`,

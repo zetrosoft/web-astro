@@ -1,0 +1,304 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import AdSenseUnit from '../../../components/AdSenseUnit.astro';
+import HostingerBox from '../../../components/HostingerBox.astro';
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "5-Year Enterprise ERP TCO Audit Calculator & Retail Margin Simulator",
+  "url": "https://bijaktechnology.com/en/tools/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "IDR"
+  },
+  "description": "Free interactive calculator simulating 5-year Total Cost of Ownership (TCO) savings for ERPNext v16 vs proprietary SaaS per-user ERPs, alongside retail and wholesale gross margin projections."
+};
+---
+
+<Layout 
+  noindex={true}
+  title="Free 5-Year ERP TCO Calculator & Retail Margin Simulator" 
+  description="Calculate 5-year Total Cost of Ownership (TCO) savings for ERPNext v16 Private Cloud deployments and simulate wholesale vs retail profit margins instantly."
+  lang="en"
+  alternateId="/tools/"
+  alternateEn="/en/tools/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} slot="head" />
+
+  <div class="space-y-12">
+    <!-- Hero Header -->
+    <div class="bg-slate-900 text-white rounded-3xl p-8 sm:p-10 border border-slate-800 shadow-xl">
+      <div class="max-w-3xl space-y-4">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-600 text-white">
+          ⚡ Interactive Business &amp; IT Calculators
+        </span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+          Business Efficiency &amp; IT Infrastructure Calculators
+        </h1>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Instant simulation tools with zero registration for COOs, CFOs, IT Directors, and Retail Merchants. Evaluate 5-year ERP license savings or project wholesale margins with quantitative precision.
+        </p>
+      </div>
+    </div>
+
+    <!-- Top AdSense Display Unit -->
+    <AdSenseUnit className="my-6" />
+
+    <!-- Calculator 1: 5-Year Enterprise ERP TCO Calculator -->
+    <section id="erp-tco-calculator" class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-300/80 dark:border-slate-800 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-slate-200 dark:border-slate-800">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+            B2B Enterprise Audit Tool
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 dark:text-white mt-1">
+            1. 5-Year ERP TCO Audit Calculator (Per-User SaaS vs ERPNext v16)
+          </h2>
+        </div>
+        <a href="/go/hostinger/" target="_blank" rel="noopener sponsored" class="text-xs font-bold px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white transition-all">
+          Explore KVM Cloud Architecture &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Input Controls -->
+        <div class="lg:col-span-6 space-y-6 bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/70">
+          <div>
+            <label for="erpUsers" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              Active Users / Employees: <span id="erpUsersVal" class="text-rose-600 dark:text-rose-400 font-mono text-sm">50 Users</span>
+            </label>
+            <input id="erpUsers" type="range" min="10" max="500" step="5" value="50" class="w-full accent-rose-600 cursor-pointer" />
+            <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1">
+              <span>10 Users</span>
+              <span>100 Users</span>
+              <span>250 Users</span>
+              <span>500 Users</span>
+            </div>
+          </div>
+
+          <div>
+            <label for="saasFee" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              Competitor SaaS License Fee / User / Month (IDR):
+            </label>
+            <input id="saasFee" type="number" value="450000" step="50000" min="100000" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-sm font-bold" />
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+              *Average commercial ERP SaaS charges IDR 350,000 – IDR 850,000 ($25–$55) per seat/month.
+            </p>
+          </div>
+
+          <div>
+            <label for="erpBranches" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              Branch Plants / Warehouses / Multi-Entity Facilities:
+            </label>
+            <select id="erpBranches" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-semibold text-sm">
+              <option value="1">1 Facility (Headquarters + Central Warehouse)</option>
+              <option value="3" selected>2 - 4 Regional Plants / Warehouses</option>
+              <option value="6">5 - 10 Distributed Logistics Hubs</option>
+              <option value="12">&gt; 10 Facilities (Enterprise Conglomerate)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Output Scorecard -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-6 rounded-2xl bg-slate-900 text-white border border-slate-800 space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-rose-950/40 border border-rose-500/30">
+                <div class="text-[11px] font-mono uppercase text-rose-300">5-Yr Per-Seat SaaS TCO</div>
+                <div id="outSaas5Yr" class="text-xl sm:text-2xl font-extrabold text-rose-400 font-mono mt-1">Rp 1.485.000.000</div>
+                <div class="text-[11px] text-slate-400 mt-1">Includes annual escalation &amp; seat licenses</div>
+              </div>
+              <div class="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30">
+                <div class="text-[11px] font-mono uppercase text-emerald-300">5-Yr ERPNext v16 Private Cloud TCO</div>
+                <div id="outErpnext5Yr" class="text-xl sm:text-2xl font-extrabold text-emerald-400 font-mono mt-1">Rp 195.000.000</div>
+                <div class="text-[11px] text-slate-400 mt-1">Zero user license + KVM 4 VPS + Implementation</div>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-xl bg-gradient-to-r from-emerald-600/20 to-teal-600/20 border border-emerald-400/40">
+              <div class="text-xs font-bold uppercase tracking-wider text-emerald-300">Estimated Corporate Cash Savings (5 Years):</div>
+              <div id="outSavings" class="text-2xl sm:text-3xl font-black text-white font-mono mt-1">Rp 1.290.000.000 (Save 86%)</div>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                With <strong>Open-Source ERPNext v16</strong> hosted on a <a href="/go/hostinger/" target="_blank" rel="noopener sponsored" class="text-amber-300 underline font-bold">Hostinger KVM 4 NVMe VPS</a>, onboarding 100 additional employees adds zero recurring license fees.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a href="/go/hostinger/" target="_blank" rel="noopener sponsored" class="flex-1 text-center py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md">
+                Deploy KVM 4 VPS (Promo Code: 6X5PUTERARQL)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mid-Page AdSense In-Article Unit -->
+    <AdSenseUnit variant="in-article" className="my-8" />
+
+    <!-- Calculator 2: Retail & Wholesale Margin Calculator -->
+    <section id="retail-margin-calculator" class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-300/80 dark:border-slate-800 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-slate-200 dark:border-slate-800">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+            Retail &amp; SME Logistics Tool
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 dark:text-white mt-1">
+            2. Wholesale vs Retail Pricing &amp; Inventory Margin Calculator
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-6 space-y-5 bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/70">
+          <div>
+            <label for="costPrice" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              Procurement / Cost Price per Unit (IDR):
+            </label>
+            <input id="costPrice" type="number" value="345000" step="5000" min="1000" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-sm font-bold" />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="wholesaleMargin" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+                Wholesale Margin Target (%):
+              </label>
+              <input id="wholesaleMargin" type="number" value="4.5" step="0.5" min="1" max="50" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-sm font-bold" />
+            </div>
+            <div>
+              <label for="retailMargin" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+                Retail Margin Target (%):
+              </label>
+              <input id="retailMargin" type="number" value="11" step="0.5" min="2" max="100" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-sm font-bold" />
+            </div>
+          </div>
+
+          <div>
+            <label for="dailyQty" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              Target Daily Sales Volume (Units):
+            </label>
+            <input id="dailyQty" type="number" value="25" step="1" min="1" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-sm font-bold" />
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-6 rounded-2xl bg-slate-900 text-white border border-slate-800 space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+                <div class="text-[11px] font-mono uppercase text-emerald-400">Target Wholesale Price</div>
+                <div id="outWholesalePrice" class="text-xl font-extrabold text-white font-mono mt-1">Rp 360.525</div>
+                <div id="outWholesaleProfit" class="text-xs text-emerald-300 mt-1">Profit/unit: Rp 15.525</div>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+                <div class="text-[11px] font-mono uppercase text-amber-400">Target Retail Price</div>
+                <div id="outRetailPrice" class="text-xl font-extrabold text-white font-mono mt-1">Rp 382.950</div>
+                <div id="outRetailProfit" class="text-xs text-amber-300 mt-1">Profit/unit: Rp 37.950</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-emerald-950/50 border border-emerald-500/30">
+              <div class="text-xs font-bold uppercase tracking-wider text-emerald-300">Projected Monthly Gross Profit (30 Days):</div>
+              <div id="outMonthlyGross" class="text-2xl font-black text-white font-mono mt-1">Rp 11.643.750 / month</div>
+              <p class="text-[11px] text-slate-300 mt-1">
+                *Model assumes 70% wholesale volume &amp; 30% retail sales mix.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <HostingerBox category="ERPNext" variant="in-article" />
+    <AdSenseUnit format="auto" className="my-8" />
+  </div>
+
+  <script is:inline>
+    (function() {
+      const fmtIDR = (n) => 'Rp ' + Math.round(n).toLocaleString('id-ID');
+
+      // 1. ERP TCO Calculator Logic
+      const erpUsers = document.getElementById('erpUsers');
+      const erpUsersVal = document.getElementById('erpUsersVal');
+      const saasFee = document.getElementById('saasFee');
+      const erpBranches = document.getElementById('erpBranches');
+      const outSaas5Yr = document.getElementById('outSaas5Yr');
+      const outErpnext5Yr = document.getElementById('outErpnext5Yr');
+      const outSavings = document.getElementById('outSavings');
+
+      function calcErp() {
+        if (!erpUsers || !saasFee || !erpBranches) return;
+        const users = Number(erpUsers.value) || 50;
+        const monthlyPerUser = Number(saasFee.value) || 450000;
+        const branchFactor = Number(erpBranches.value) || 3;
+
+        erpUsersVal.textContent = users + ' Users';
+
+        // 5-year SaaS cost (60 months + 10% implementation/addon overhead)
+        const saas5Yr = (users * monthlyPerUser * 60) * 1.1;
+
+        // 5-year ERPNext v16 Private Cloud (VPS KVM 4 + One-time implementation + annual maintenance)
+        const vps5Yr = 350000 * 60; // ~Rp 21M for 5 years KVM VPS + backup
+        const implBase = 65000000 + (branchFactor * 18000000) + (users * 350000);
+        const erpnext5Yr = vps5Yr + implBase;
+
+        const savings = Math.max(0, saas5Yr - erpnext5Yr);
+        const pct = saas5Yr > 0 ? Math.round((savings / saas5Yr) * 100) : 0;
+
+        outSaas5Yr.textContent = fmtIDR(saas5Yr);
+        outErpnext5Yr.textContent = fmtIDR(erpnext5Yr);
+        outSavings.textContent = fmtIDR(savings) + ' (Save ' + pct + '%)';
+      }
+
+      [erpUsers, saasFee, erpBranches].forEach(el => {
+        if (el) el.addEventListener('input', calcErp);
+      });
+      calcErp();
+
+      // 2. Retail Margin Calculator Logic
+      const costPrice = document.getElementById('costPrice');
+      const wholesaleMargin = document.getElementById('wholesaleMargin');
+      const retailMargin = document.getElementById('retailMargin');
+      const dailyQty = document.getElementById('dailyQty');
+      const outWholesalePrice = document.getElementById('outWholesalePrice');
+      const outWholesaleProfit = document.getElementById('outWholesaleProfit');
+      const outRetailPrice = document.getElementById('outRetailPrice');
+      const outRetailProfit = document.getElementById('outRetailProfit');
+      const outMonthlyGross = document.getElementById('outMonthlyGross');
+
+      function calcMargin() {
+        if (!costPrice || !wholesaleMargin || !retailMargin || !dailyQty) return;
+        const cost = Number(costPrice.value) || 345000;
+        const wsPct = (Number(wholesaleMargin.value) || 4.5) / 100;
+        const retPct = (Number(retailMargin.value) || 11) / 100;
+        const qty = Number(dailyQty.value) || 25;
+
+        const wsPrice = cost / (1 - wsPct);
+        const wsProfit = wsPrice - cost;
+
+        const retPrice = cost / (1 - retPct);
+        const retProfit = retPrice - cost;
+
+        // 70% wholesale volume, 30% retail volume
+        const dailyWsVol = qty * 0.7;
+        const dailyRetVol = qty * 0.3;
+        const dailyProfit = (dailyWsVol * wsProfit) + (dailyRetVol * retProfit);
+        const monthlyProfit = dailyProfit * 30;
+
+        outWholesalePrice.textContent = fmtIDR(wsPrice);
+        outWholesaleProfit.textContent = 'Profit/unit: ' + fmtIDR(wsProfit);
+        outRetailPrice.textContent = fmtIDR(retPrice);
+        outRetailProfit.textContent = 'Profit/unit: ' + fmtIDR(retProfit);
+        outMonthlyGross.textContent = fmtIDR(monthlyProfit) + ' / month';
+      }
+
+      [costPrice, wholesaleMargin, retailMargin, dailyQty].forEach(el => {
+        if (el) el.addEventListener('input', calcMargin);
+      });
+      calcMargin();
+    })();
+  </script>
+</Layout>

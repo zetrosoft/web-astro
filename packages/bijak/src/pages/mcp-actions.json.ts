@@ -21,7 +21,6 @@ export const GET: APIRoute = async ({ site }) => {
         name: 'Calculate 5-Year Enterprise ERP TCO (ERPNext v16 vs Per-User SaaS)',
         description: 'Interactive calculator to estimate 5-year Total Cost of Ownership savings when migrating from per-user licensed ERP to open-source ERPNext v16 on private cloud.',
         method: 'GET',
-        endpoint: `${base}/tools/#erp-tco-calculator`,
         parameters: ['users', 'saas_monthly_fee', 'branches'],
       },
       {
@@ -29,7 +28,6 @@ export const GET: APIRoute = async ({ site }) => {
         name: 'Calculate Grocery & Retail Wholesale vs Retail Margin',
         description: 'Interactive calculator for UMKM retail and grocery store owners to compute gross margin, break-even turnover, and wholesale pricing tiers.',
         method: 'GET',
-        endpoint: `${base}/tools/#retail-margin-calculator`,
         parameters: ['cost_price', 'target_margin_pct', 'daily_volume'],
       },
       {

@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="404 - Page Not Found" 
+  description="The requested page could not be found on Bijak Technology."
+  lang="en"
+  alternateId="/"
+  alternateEn="/en/"
+  noindex={true}
+>
+  <div class="max-w-2xl mx-auto py-16 text-center space-y-6">
+    <div class="text-7xl font-extrabold text-rose-600 font-mono">404</div>
+    <h1 class="text-3xl font-extrabold text-neutral-900 dark:text-neutral-100 uppercase tracking-tight">
+      Page Not Found
+    </h1>
+    <p class="text-neutral-600 dark:text-neutral-400 font-serif">
+      The editorial dispatch or resource you are looking for has been moved, archived, or does not exist.
+    </p>
+    <div class="pt-4">
+      <a href="/en/" class="inline-block px-6 py-3 bg-neutral-900 dark:bg-rose-600 text-white font-bold uppercase tracking-wider text-xs rounded-xl hover:bg-rose-600 dark:hover:bg-rose-700 transition-colors">
+        Return to Home &rarr;
+      </a>
+    </div>
+  </div>
+</Layout>

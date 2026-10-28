@@ -9,7 +9,13 @@ interface Props {
 const { currentLang } = Astro.props;
 const oppositeLang = currentLang === 'id' ? 'en' : 'id';
 const pathname = Astro.url.pathname;
-const cleanPathname = pathname.replace(/^\/en/, '') || '/';
+let cleanPathname = pathname.replace(/^\/en/, '') || '/';
+
+// Jika dari 404, arahkan ke homepage bahasa tujuan untuk mencegah broken link
+if (cleanPathname.startsWith('/404')) {
+  cleanPathname = '/';
+}
+
 const targetUrl = oppositeLang === 'id' ? cleanPathname : getRelativeLocaleUrl('en', cleanPathname);
 ---
 
