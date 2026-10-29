@@ -87,13 +87,24 @@ const globalSchema = {
         "url": "https://bijaktechnology.com/images/logo-bijak-horizontal.png",
         "caption": "Bijak Technology"
       },
-      "email": "redaksi@bijaktechnology.com",
+      "email": "iswanputera@gmail.com",
       "publishingPrinciples": "https://bijaktechnology.com/terms/",
       "correctionsPolicy": "https://bijaktechnology.com/terms/",
       "sameAs": [
-        "https://github.com/bijaktechnology",
-        "https://samkarsa.com"
-      ]
+        "https://www.linkedin.com/in/iswanputera/",
+        "https://samkarsa.com",
+        "https://github.com/bijaktechnology"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Iswan Putera",
+        "jobTitle": "Principal Software Architect",
+        "url": "https://www.linkedin.com/in/iswanputera/",
+        "sameAs": [
+          "https://www.linkedin.com/in/iswanputera/",
+          "https://samkarsa.com"
+        ]
+      }
     },
     {
       "@type": "WebSite",
@@ -516,6 +527,11 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
               {isEn ? "Stories & Science" : "Kisah & Sains"}
             </a>
           </li>
+          <li>
+            <a href={isEn ? "/en/tools/" : "/tools/"} class="px-2.5 py-1.5 rounded-lg text-rose-600 dark:text-rose-400 bg-rose-50/80 dark:bg-rose-950/40 hover:bg-rose-100 hover:text-rose-700 transition-colors flex items-center gap-1 font-bold">
+              <span>⚡</span> {isEn ? "Calculators & Tools" : "Kalkulator & Tools"}
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -565,16 +581,17 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
             </ul>
           </div>
 
-          <!-- Col 3: Ekosistem & Mitra -->
+          <!-- Col 3: Ekosistem, Portofolio & Kontak -->
           <div class="space-y-2">
             <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
-              {isEn ? "Ecosystem & Partners" : "Ekosistem & Mitra"}
+              {isEn ? "Portfolio & Engineering" : "Portofolio & Rekayasa"}
             </h4>
             <ul class="text-xs space-y-2 font-medium">
-              <li><a href="https://samkarsa.com" target="_blank" class="hover:text-rose-600 transition-colors">Samkarsa ERPNext Implementor</a></li>
-              <li><a href="https://maps.google.com/?q=Toko+Sembako+Kusuma+Karanggeneng+Boyolali" target="_blank" class="hover:text-rose-600 transition-colors">{isEn ? "Kusuma Retail Network" : "Toko Sembako Kusuma Boyolali"}</a></li>
-              <li><a href="/go/hostinger/" target="_blank" rel="noopener sponsored" class="hover:text-rose-600 transition-colors">Hostinger Official Partner</a></li>
-              <li><a href={isEn ? "/en/project/" : "/project/"} class="hover:text-rose-600 transition-colors">{isEn ? "Blonjo POS & Open Source" : "Aplikasi Blonjo & Sajen AI"}</a></li>
+              <li><a href="https://samkarsa.com" target="_blank" class="hover:text-rose-600 transition-colors font-semibold">{isEn ? "Samkarsa Enterprise Portfolio" : "Samkarsa Enterprise Portfolio"}</a></li>
+              <li><a href="https://www.linkedin.com/in/iswanputera/" target="_blank" rel="noopener noreferrer" class="hover:text-rose-600 transition-colors">LinkedIn: Iswan Putera</a></li>
+              <li><a href="mailto:iswanputera@gmail.com" class="hover:text-rose-600 transition-colors">Email: iswanputera@gmail.com</a></li>
+              <li><a href={isEn ? "/en/tools/" : "/tools/"} class="hover:text-rose-600 transition-colors">{isEn ? "Interactive Calculators" : "Kalkulator TCO & Bisnis"}</a></li>
+              <li><a href="https://github.com/bijaktechnology" target="_blank" rel="noopener noreferrer" class="hover:text-rose-600 transition-colors">GitHub: bijaktechnology</a></li>
             </ul>
           </div>
 
@@ -586,7 +603,7 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
             <ul class="text-xs space-y-2 font-medium">
               <li><a href={isEn ? "/en/about/" : "/about/"} class="hover:text-rose-600 transition-colors">{isEn ? "About the Editorial Desk" : "Tentang Redaksi"}</a></li>
               <li><a href={isEn ? "/en/contact/" : "/contact/"} class="hover:text-rose-600 transition-colors">{isEn ? "Contact & Inquiries" : "Kirim Pesan & Kerjasama"}</a></li>
-              <li><a href={isEn ? "/en/privacy-policy/" : "/privacy-policy/"} class="hover:text-rose-600 transition-colors">{isEn ? "Privacy Policy & AdSense" : "Kebijakan Privasi & AdSense"}</a></li>
+              <li><a href={isEn ? "/en/privacy-policy/" : "/privacy-policy/"} class="hover:text-rose-600 transition-colors">{isEn ? "Privacy Policy" : "Kebijakan Privasi"}</a></li>
               <li><a href={isEn ? "/en/terms/" : "/terms/"} class="hover:text-rose-600 transition-colors">{isEn ? "Terms of Service & Disclaimer" : "Ketentuan Layanan & Disclaimer"}</a></li>
               <li><a href="/sitemap.xml" target="_blank" class="hover:text-rose-600 transition-colors">Sitemap XML</a> · <a href="/rss.xml" target="_blank" class="hover:text-rose-600 transition-colors">RSS</a> · <a href="/llms.txt" target="_blank" class="hover:text-rose-600 transition-colors">LLMs.txt</a></li>
             </ul>
@@ -595,8 +612,8 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
 
         <div class="flex flex-col sm:flex-row justify-between items-center pt-6 text-[11px] text-slate-600 dark:text-slate-400 font-mono gap-3 font-medium">
           <span>&copy; {new Date().getFullYear()} Bijak Technology. {isEn ? "All rights reserved." : "Seluruh hak cipta dilindungi."}</span>
-          <span class="flex items-center gap-1">
-            <span>Official Publisher AdSense ca-pub-7398988805905629</span>
+          <span class="flex items-center gap-1 text-slate-500">
+            <span>Jurnal Riset Independen Arsitektur Sistem &amp; Cloud Enterprise</span>
           </span>
         </div>
       </div>

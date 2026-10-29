@@ -214,16 +214,16 @@ const breadcrumbJsonLd = {
         <!-- Author & Date Metadata -->
         <div class="flex items-center gap-4 py-4 mb-8 border-y border-slate-200 dark:border-slate-800">
           <a href="/zetrosoft/" class="w-11 h-11 rounded-full bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white font-bold text-sm shadow-md hover:scale-105 transition-transform" title="Author Profile & Editorial Desk">
-            {post.data.author.charAt(0).toUpperCase()}
+            IP
           </a>
           <div>
             <div class="text-sm font-bold text-slate-950 dark:text-white uppercase tracking-wide">
               <a href="/zetrosoft/" class="hover:text-rose-600 transition-colors">
-                {post.data.author}
+                Iswan Putera
               </a>
             </div>
             <div class="text-xs text-slate-600 dark:text-slate-400 font-medium">
-              By <a href="/zetrosoft/" class="font-semibold text-rose-600 dark:text-rose-400 hover:underline">{post.data.author}</a> • {post.data.pubDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' })} {post.data.pubDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' })} WIB
+              By <a href="/zetrosoft/" class="font-semibold text-rose-600 dark:text-rose-400 hover:underline">Iswan Putera</a> • {post.data.pubDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' })} {post.data.pubDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' })} WIB
             </div>
           </div>
         </div>
@@ -297,6 +297,39 @@ const breadcrumbJsonLd = {
         </div>
 
         <!-- Social Share & Ready-to-Post Media Box -->
+        <!-- Author Profile Card (E-E-A-T Authority) -->
+        <div class="my-8 p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 not-prose flex flex-col sm:flex-row items-center sm:items-start gap-5 shadow-sm">
+          <a href="/zetrosoft/" class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-600 to-amber-600 flex items-center justify-center text-white font-extrabold text-2xl shadow-md shrink-0">
+            IP
+          </a>
+          <div class="space-y-2 text-center sm:text-left">
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+              <h3 class="font-extrabold text-lg text-slate-950 dark:text-white">
+                <a href="/zetrosoft/" class="hover:text-rose-600 transition-colors">Iswan Putera</a>
+              </h3>
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-400 px-2 py-0.5 rounded">
+                Principal Software Architect
+              </span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-sans">
+              Software Architect &amp; Senior Systems Engineer with over a decade of hands-on expertise in distributed architectures, Linux private cloud deployments, and enterprise ERP implementations. Serves as Lead Technology Writer at Bijak Technology.
+            </p>
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-1 text-xs font-semibold">
+              <a href="https://www.linkedin.com/in/iswanputera/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 hover:underline">
+                LinkedIn Profile &rarr;
+              </a>
+              <span class="text-slate-300 dark:text-slate-700">•</span>
+              <a href="https://samkarsa.com" target="_blank" rel="noopener noreferrer" class="text-rose-600 dark:text-rose-400 hover:underline">
+                Enterprise Portfolio (samkarsa.com) &rarr;
+              </a>
+              <span class="text-slate-300 dark:text-slate-700">•</span>
+              <a href="mailto:iswanputera@gmail.com" class="text-slate-600 dark:text-slate-400 hover:text-rose-600">
+                iswanputera@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+
         <SocialReadyBox 
           title={post.data.title}
           url={`https://bijaktechnology.com/en/blog/${post.id}`}

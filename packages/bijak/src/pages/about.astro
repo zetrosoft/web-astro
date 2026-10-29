@@ -2,8 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Tentang Kami - Profil Redaksi" description="Mengenal Bijak Technology, portal publikasi riset teknologi, integrasi ERP enterprise, dan digitalisasi ritel lokal.">
-  <div class="max-w-4xl mx-auto space-y-10 py-4">
+<Layout title="Tentang Kami - Dewan Redaksi & Rekayasa" description="Mengenal Bijak Technology, media riset independen arsitektur cloud, sistem ERP enterprise, dan implementasi teknologi nyata.">
+  <div class="max-w-4xl mx-auto space-y-12 py-4">
     
     <!-- Header Tentang Kami -->
     <div class="text-center py-6 border-b border-slate-300/80 dark:border-slate-800">
@@ -11,61 +11,107 @@ import Layout from '../layouts/Layout.astro';
         Profil Bijak Technology
       </h1>
       <p class="text-sm font-medium text-slate-600 dark:text-slate-400 mt-2 font-mono">
-        "Because together, Everything is possible"
+        Jurnal Riset Independen Arsitektur Sistem, Cloud VPS, &amp; Rekayasa Enterprise
       </p>
     </div>
 
     <!-- Artikel Editorial Utama -->
     <div class="space-y-6 text-slate-800 dark:text-slate-200 leading-relaxed text-base sm:text-lg">
       <p class="first-letter:text-5xl first-letter:font-extrabold first-letter:float-left first-letter:mr-3 first-letter:text-rose-600 font-medium">
-        Bijak Technology didirikan dengan komitmen untuk mengeksplorasi, menyajikan, dan mengembangkan potensi teknologi digital termutakhir di Indonesia. Kami memandang teknologi bukan sekadar jargon, melainkan instrumen nyata untuk memecahkan persoalan bisnis dan operasional masyarakat.
+        Bijak Technology didirikan sebagai media publikasi rekayasa perangkat lunak dan riset arsitektur sistem independen di Indonesia. Kami memandang teknologi bukan sekadar wacana teoritis atau jargon industri, melainkan instrumen terukur untuk memecahkan persoalan komputasi, keandalan server, dan efisiensi operasional bisnis nyata.
       </p>
       
       <p class="text-slate-700 dark:text-slate-300">
-        Melalui platform publikasi independen ini, kami mengulas riset arsitektur cloud, komparasi sistem ERP skala korporasi seperti ERPNext, otomasi AI Agent, tokenisasi Real World Asset (RWA) pada ekosistem Avalanche Blockchain, hingga digitalisasi toko fisik di tingkat akar rumput.
+        Seluruh ulasan, komparasi parameter teknis, dan blueprint yang kami rilis disarikan dari pengalaman implementasi langsung di lingkungan produksi—mulai dari perancangan arsitektur private cloud KVM, orkestrasi kontainer Docker dan Coolify, implementasi ERPNext v16 berbasis Frappe Framework, hingga penjaminan kedaulatan data tingkat korporasi.
       </p>
 
       <p class="text-slate-700 dark:text-slate-300">
-        Kami tidak hanya menulis; tim rekayasa kami aktif mengimplementasikan kode nyata—mulai dari sistem kasir Blonjo POS terintegrasi QRIS, layanan pemesanan via WhatsApp, hingga deployment arsitektur VPS mandiri berkemampuan tinggi.
+        Kami percaya pada transparansi pengetahuan (*evidence-based writing*): setiap tolok ukur latensi, efisiensi memori, dan arsitektur database selalu diuji berdasarkan parameter terukur untuk memberikan nilai guna nyata bagi para Chief Technology Officer, Software Architect, DevOps Engineer, dan praktisi IT profesional.
       </p>
     </div>
 
-    <!-- Bidang Keahlian Redaksi -->
+    <!-- Profil Penanggung Jawab Redaksi (E-E-A-T Authority) -->
+    <div class="bg-slate-100/90 dark:bg-slate-800/60 border border-slate-300/80 dark:border-slate-700 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-tr from-rose-600 to-amber-600 flex items-center justify-center text-white font-extrabold text-3xl shadow-lg shrink-0">
+          IP
+        </div>
+        <div class="space-y-3 text-center sm:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-400">
+            Penanggung Jawab Redaksi &amp; Principal Architect
+          </div>
+          <h2 class="text-2xl font-black text-slate-950 dark:text-white">
+            Iswan Putera
+          </h2>
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
+            Software Architect &amp; Senior Systems Engineer dengan pengalaman lebih dari satu dekade dalam perancangan arsitektur sistem terdistribusi, infrastruktur cloud Linux, dan implementasi ERP skala manufaktur/distribusi. Bertindak sebagai Lead Technology Writer dan kurator utama seluruh standar arsitektur di Bijak Technology.
+          </p>
+
+          <!-- Tautan Kredensial & Portofolio Resmi -->
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-2 text-xs font-bold">
+            <a 
+              href="https://www.linkedin.com/in/iswanputera/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-600 text-white hover:bg-sky-700 transition-colors shadow-sm"
+            >
+              <span>LinkedIn Profil</span> &rarr;
+            </a>
+            <a 
+              href="https://samkarsa.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-700 text-white hover:bg-rose-600 transition-colors shadow-sm"
+            >
+              <span>Portofolio &amp; Solusi Enterprise (Samkarsa)</span> &rarr;
+            </a>
+            <a 
+              href="mailto:iswanputera@gmail.com" 
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:text-rose-600 transition-colors shadow-sm"
+            >
+              <span>Email: iswanputera@gmail.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Pilar Riset & Kompetensi Teknis -->
     <div class="border-t border-slate-300/80 dark:border-slate-800 pt-8 space-y-6">
       <h2 class="text-2xl font-extrabold text-slate-950 dark:text-white uppercase tracking-tight text-center">
-        4 Pilar Ekosistem &amp; Kompetensi
+        4 Pilar Riset &amp; Fokus Kompetensi
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="border border-slate-300/80 dark:border-slate-800 p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm space-y-2">
           <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2.5 py-1 rounded-md inline-block">Pilar 1</span>
-          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Cloud Infrastructure &amp; AdSense Media</h3>
+          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Cloud Infrastructure &amp; High-Throughput Servers</h3>
           <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-            Infrastruktur cloud VPS berkinerja tinggi bersama Hostinger Official Partner dan portal wawasan teknologi terkurasi yang didukung jaringan Google AdSense resmi.
+            Perancangan server VPS KVM, optimasi reverse proxy Nginx/Traefik v3, tuning kernel Linux, benchmark database in-memory (Valkey vs Redis), dan arsitektur micro-service hemat biaya.
           </p>
         </div>
 
         <div class="border border-slate-300/80 dark:border-slate-800 p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm space-y-2">
           <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2.5 py-1 rounded-md inline-block">Pilar 2</span>
-          <h3 class="font-bold text-lg text-slate-950 dark:text-white">ERP Enterprise &amp; Samkarsa Implementor</h3>
+          <h3 class="font-bold text-lg text-slate-950 dark:text-white">ERP Enterprise &amp; Frappe Framework</h3>
           <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-            Perancangan arsitektur ERPNext berbasis Frappe Framework untuk manufaktur, distribusi, dan korporat dengan kedaulatan data penuh tanpa batasan kursi lisensi.
+            Implementasi modular ERPNext v16 untuk manufaktur bertingkat, kepatuhan PSAK akuntansi, modul HRIS/PPh 21 TER, dan kedaulatan data on-premise/private cloud.
           </p>
         </div>
 
         <div class="border border-slate-300/80 dark:border-slate-800 p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm space-y-2">
           <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2.5 py-1 rounded-md inline-block">Pilar 3</span>
-          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Digitalisasi Ritel Lokal (Toko Kusuma Boyolali)</h3>
+          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Logistik Ritel &amp; Perputaran Modal Usaha</h3>
           <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-            Penerapan nyata aplikasi kasir Blonjo POS dan asisten pemesanan WhatsApp AI pada Toko Sembako Kusuma Karanggeneng untuk melayani pelanggan dalam radius 20 KM.
+            Penerapan sistem inventaris FIFO, audit margin grosir vs eceran, strategi kulakan komoditas pangan, dan digitalisasi titik penjualan (Point of Sale).
           </p>
         </div>
 
         <div class="border border-slate-300/80 dark:border-slate-800 p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm space-y-2">
           <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2.5 py-1 rounded-md inline-block">Pilar 4</span>
-          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Avalanche Blockchain &amp; Web3 RWA</h3>
+          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Web3 Infrastructure &amp; Keamanan Data</h3>
           <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-            Eksplorasi tokenisasi aset fisik (Real World Asset), Avalanche Subnet/L1, dan kepatuhan regulasi institusional untuk transaksi keuangan masa depan.
+            Eksplorasi Avalanche L1/Subnets, integrasi tokenisasi Real World Asset (RWA) institusional, manajemen kunci cold storage, dan proteksi dari ancaman siber digital.
           </p>
         </div>
       </div>

@@ -2,16 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 
 // Metadata untuk SEO dan Konten
-const title = "Profil Zetrosoft & Bijak Technology";
-const description = "Informasi lengkap mengenai zetrosoft (Github Profile) dan hubungannya dengan organisasi Bijak Technology.";
+const title = "Profil Iswan Putera (zetrosoft) - Software Architect";
+const description = "Informasi profil profesional Iswan Putera (zetrosoft), Principal Software Architect dan kurator teknis Bijak Technology.";
 
 // Data Statis Profil Github & Organisasi
 const githubProfile = {
   username: "zetrosoft",
-  name: "Zetrosoft",
-  bio: "Pragmatic Software Architect & Multi-stack Developer. Specialized in building highly scalable, secure, and modern web application ecosystems.",
-  avatarUrl: "https://avatars.githubusercontent.com/u/15000000?v=4", // fallback or default placeholder
+  name: "Iswan Putera",
+  bio: "Principal Software Architect & Lead Technology Writer. Berpengalaman dalam rekayasa sistem terdistribusi, kedaulatan data private cloud, dan implementasi ERPNext enterprise.",
+  avatarUrl: "https://github.com/zetrosoft.png",
   githubUrl: "https://github.com/zetrosoft",
+  linkedinUrl: "https://www.linkedin.com/in/iswanputera/",
+  portfolioUrl: "https://samkarsa.com",
+  email: "iswanputera@gmail.com",
   location: "Purwakarta, Indonesia",
   followers: "120+",
   following: "45+",
@@ -103,14 +106,36 @@ const orgProfile = {
           </div>
         </div>
 
-        <div class="pt-6">
+        <div class="pt-6 space-y-2">
+          <a 
+            href={githubProfile.linkedinUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-full text-center block bg-sky-600 hover:bg-sky-700 text-white font-bold py-2.5 px-4 text-xs uppercase tracking-wider transition-colors duration-300 rounded-lg shadow-sm"
+          >
+            LinkedIn Profile &rarr;
+          </a>
+          <a 
+            href={githubProfile.portfolioUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-full text-center block bg-rose-600 hover:bg-rose-700 text-white font-bold py-2.5 px-4 text-xs uppercase tracking-wider transition-colors duration-300 rounded-lg shadow-sm"
+          >
+            Enterprise Portfolio (samkarsa.com) &rarr;
+          </a>
+          <a 
+            href={`mailto:${githubProfile.email}`} 
+            class="w-full text-center block bg-slate-900 hover:bg-slate-800 text-white dark:bg-slate-800 dark:hover:bg-slate-700 font-bold py-2 px-4 text-xs tracking-wider transition-colors duration-300 rounded-lg"
+          >
+            {githubProfile.email}
+          </a>
           <a 
             href={githubProfile.githubUrl} 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="w-full text-center block bg-neutral-900 hover:bg-rose-600 text-white dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-rose-600 dark:hover:text-white font-bold py-2.5 px-4 text-xs uppercase tracking-wider transition-colors duration-300 border border-neutral-900 dark:border-neutral-100"
+            class="w-full text-center block bg-neutral-100 hover:bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 font-bold py-2 px-4 text-xs tracking-wider transition-colors duration-300 rounded-lg border border-neutral-300 dark:border-neutral-700"
           >
-            Kunjungi GitHub Profile &rarr;
+            GitHub (@zetrosoft)
           </a>
         </div>
       </div>

@@ -26,27 +26,16 @@ const isInArticle = variant === 'in-article' || layout === 'in-article' || forma
 const finalSlot = slot || (isInArticle ? '6901499930' : '6641645482');
 const finalFormat = format || (isInArticle ? 'fluid' : 'auto');
 const finalLayout = layout || (isInArticle ? 'in-article' : undefined);
-
-const isRectangle = format === 'rectangle';
-const defaultMinHeight = isRectangle ? '250px' : '90px';
-const rawMinHeight = minHeight || defaultMinHeight;
-const inlineMinHeight = rawMinHeight.includes('min-h-[')
-  ? rawMinHeight.replace('min-h-[', '').replace(']', '')
-  : rawMinHeight;
 ---
 
 <div
-  class={`adsense-clean-slot my-6 w-full text-center not-prose overflow-hidden flex flex-col items-center justify-center ${className}`}
-  style={`min-height: ${inlineMinHeight}; contain: layout style;`}
+  class={`adsense-clean-slot my-4 w-full text-center not-prose overflow-hidden flex flex-col items-center justify-center ${className}`}
+  style="contain: layout style;"
 >
-  <div class="text-[10px] tracking-widest uppercase font-semibold text-slate-400 dark:text-slate-500 mb-1 opacity-70">
-    Iklan
-  </div>
-
   {isInArticle ? (
     <ins
       class="adsbygoogle"
-      style={`display:block; text-align:center; min-height: ${inlineMinHeight};`}
+      style="display:block; text-align:center;"
       data-ad-layout="in-article"
       data-ad-format={finalFormat}
       data-ad-client={client}
@@ -55,7 +44,7 @@ const inlineMinHeight = rawMinHeight.includes('min-h-[')
   ) : (
     <ins
       class="adsbygoogle"
-      style={`display:block; min-height: ${inlineMinHeight};`}
+      style="display:block;"
       data-ad-client={client}
       data-ad-slot={finalSlot}
       data-ad-format={finalFormat}

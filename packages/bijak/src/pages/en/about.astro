@@ -3,13 +3,13 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout 
-  title="About Us - Editorial Profile" 
-  description="Learn about Bijak Technology, an independent technology journal covering cloud infrastructure, enterprise ERP, and digital innovation."
+  title="About Us - Editorial Board & Systems Engineering" 
+  description="Learn about Bijak Technology, an independent engineering publication covering cloud infrastructure, enterprise ERP, and real-world system architecture."
   lang="en"
   alternateId="/about/"
   alternateEn="/en/about/"
 >
-  <div class="max-w-4xl mx-auto space-y-10 py-4">
+  <div class="max-w-4xl mx-auto space-y-12 py-4">
     
     <!-- Header -->
     <div class="text-center py-6 border-b border-slate-300/80 dark:border-slate-800">
@@ -17,61 +17,107 @@ import Layout from '../../layouts/Layout.astro';
         About Bijak Technology
       </h1>
       <p class="text-sm font-medium text-slate-600 dark:text-slate-400 mt-2 font-mono">
-        "Because together, Everything is possible"
+        Independent Research Journal on Systems Architecture, Cloud VPS, &amp; Enterprise Engineering
       </p>
     </div>
 
     <!-- Editorial Overview -->
     <div class="space-y-6 text-slate-800 dark:text-slate-200 leading-relaxed text-base sm:text-lg">
       <p class="first-letter:text-5xl first-letter:font-extrabold first-letter:float-left first-letter:mr-3 first-letter:text-rose-600 font-medium">
-        Bijak Technology was founded with a steadfast commitment to explore, evaluate, and implement cutting-edge digital technologies. We view software engineering and cloud infrastructure not as abstract jargon, but as concrete levers for solving operational, financial, and logistical bottlenecks.
+        Bijak Technology was founded with a steadfast commitment to explore, evaluate, and implement cutting-edge software engineering paradigms. We view systems architecture not as abstract theory or corporate buzzwords, but as empirical instruments for solving operational scalability, infrastructure resilience, and cost efficiency.
       </p>
       
       <p class="text-slate-700 dark:text-slate-300">
-        Through this independent publication platform, our editorial desk analyzes enterprise system architectures, open-source Frappe & ERPNext v16 implementations, containerized AI workflows, high-performance cloud VPS benchmarks, and grassroots retail logistics.
+        Through this independent publication platform, our editorial desk analyzes distributed system architectures, open-source Frappe &amp; ERPNext v16 implementations, containerized AI workflows, high-performance cloud VPS benchmarks, and data sovereignty frameworks.
       </p>
 
       <p class="text-slate-700 dark:text-slate-300">
-        Our engineering contributors operate with a hands-on ethos—validating technical hypotheses directly in production code, telemetry collectors, and automated deployment pipelines.
+        Our engineering contributors operate with a hands-on ethos—validating technical hypotheses directly in production code, telemetry collectors, and automated deployment pipelines to deliver genuine, actionable value to CTOs, Lead Architects, and DevOps engineers.
       </p>
+    </div>
+
+    <!-- Editorial Leadership Profile (E-E-A-T) -->
+    <div class="bg-slate-100/90 dark:bg-slate-800/60 border border-slate-300/80 dark:border-slate-700 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-tr from-rose-600 to-amber-600 flex items-center justify-center text-white font-extrabold text-3xl shadow-lg shrink-0">
+          IP
+        </div>
+        <div class="space-y-3 text-center sm:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-400">
+            Lead Editor &amp; Principal Software Architect
+          </div>
+          <h2 class="text-2xl font-black text-slate-950 dark:text-white">
+            Iswan Putera
+          </h2>
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
+            Software Architect &amp; Senior Systems Engineer with over a decade of real-world experience in architecting distributed systems, Linux cloud infrastructure, and enterprise ERP solutions. Serves as Lead Technology Writer and primary architecture curator across Bijak Technology publications.
+          </p>
+
+          <!-- Credential & Portfolio Links -->
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-2 text-xs font-bold">
+            <a 
+              href="https://www.linkedin.com/in/iswanputera/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-600 text-white hover:bg-sky-700 transition-colors shadow-sm"
+            >
+              <span>LinkedIn Profile</span> &rarr;
+            </a>
+            <a 
+              href="https://samkarsa.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-700 text-white hover:bg-rose-600 transition-colors shadow-sm"
+            >
+              <span>Enterprise Portfolio &amp; Solutions (Samkarsa)</span> &rarr;
+            </a>
+            <a 
+              href="mailto:iswanputera@gmail.com" 
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:text-rose-600 transition-colors shadow-sm"
+            >
+              <span>Email: iswanputera@gmail.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Pillars of Competency -->
     <div class="border-t border-slate-300/80 dark:border-slate-800 pt-8 space-y-6">
       <h2 class="text-2xl font-extrabold text-slate-950 dark:text-white uppercase tracking-tight text-center">
-        Core Editorial Pillars
+        Core Research Pillars
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="border border-slate-300/80 dark:border-slate-800 p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm space-y-2">
           <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2.5 py-1 rounded-md inline-block">Pillar 1</span>
-          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Cloud Infrastructure & High-Performance VPS</h3>
+          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Cloud Infrastructure &amp; High-Throughput Servers</h3>
           <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-            Practical blueprints for deploying containerized services, reverse proxies, and database clusters on self-managed KVM virtual private servers with uncompromising IOPS and uptime.
+            Practical blueprints for deploying containerized services, Traefik/Nginx reverse proxies, Linux kernel tuning, in-memory databases (Valkey vs Redis), and cost-efficient micro-architectures.
           </p>
         </div>
 
         <div class="border border-slate-300/80 dark:border-slate-800 p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm space-y-2">
           <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2.5 py-1 rounded-md inline-block">Pillar 2</span>
-          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Enterprise ERP & Data Sovereignty</h3>
+          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Enterprise ERP &amp; Data Sovereignty</h3>
           <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-            In-depth guides on ERPNext v16, Frappe Framework, manufacturing scheduling, inventory control, and enterprise compliance on private cloud environments.
+            In-depth guides on ERPNext v16, Frappe Framework, multi-level manufacturing BOM, local tax/compliance automation, and private cloud data sovereignty.
           </p>
         </div>
 
         <div class="border border-slate-300/80 dark:border-slate-800 p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm space-y-2">
           <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2.5 py-1 rounded-md inline-block">Pillar 3</span>
-          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Software Architecture & System Resilience</h3>
+          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Retail Logistics &amp; Working Capital Efficiency</h3>
           <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-            Authoritative discussions comparing distributed event architectures, caching hierarchies, and database scaling methodologies for modern web applications.
+            FIFO inventory methods, wholesale vs retail margin audits, FMCG commodity procurement tactics, and modern Point of Sale (POS) engineering.
           </p>
         </div>
 
         <div class="border border-slate-300/80 dark:border-slate-800 p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm space-y-2">
           <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2.5 py-1 rounded-md inline-block">Pillar 4</span>
-          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Smart Living & Practical Science</h3>
+          <h3 class="font-bold text-lg text-slate-950 dark:text-white">Web3 Infrastructure &amp; Security Engineering</h3>
           <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-            Data-backed explorations into energy auditing, household resource budgeting, and foundational science translated into tangible lifestyle efficiency.
+            Institutional Real World Asset (RWA) tokenization, Avalanche L1 subnets, cryptographic key cold storage protocols, and cyber resilience against social engineering.
           </p>
         </div>
       </div>
