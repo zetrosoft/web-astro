@@ -5,6 +5,7 @@ import AdSenseUnit from '../components/AdSenseUnit.astro';
 import HostingerBox from '../components/HostingerBox.astro';
 import KusumaMapSpotlight from '../components/KusumaMapSpotlight.astro';
 import SamkarsaIndustryRef from '../components/SamkarsaIndustryRef.astro';
+import { getPostImage } from '../utils/heroImage';
 
 // Dapatkan artikel blog dan urutkan berdasarkan tanggal rilis terbaru
 const posts = await getCollection('blog');
@@ -87,8 +88,20 @@ const reposToShow = orgRepos.length > 0 ? orgRepos : fallbackRepos;
       <!-- Left 8 Cols: Lead Headline Card -->
       {headlinePost && (
         <div class="lg:col-span-8 group">
-          <div class="relative overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 text-white p-8 sm:p-12 shadow-xl transition-all">
-            <div class="relative z-10 space-y-4">
+          <div class="relative overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 text-white shadow-xl transition-all">
+            <a href={`/blog/${headlinePost.id}/`} class="relative block aspect-video max-h-[380px] w-full overflow-hidden bg-slate-800 border-b border-slate-800">
+              <img
+                src={getPostImage(headlinePost)}
+                alt={headlinePost.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="eager"
+                decoding="async"
+                width="1200"
+                height="675"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/10 to-transparent pointer-events-none"></div>
+            </a>
+            <div class="relative z-10 p-6 sm:p-10 space-y-4">
               <div class="flex items-center gap-3">
                 <span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-rose-600 text-white shadow-sm">
                   {headlinePost.data.category}
@@ -98,11 +111,11 @@ const reposToShow = orgRepos.length > 0 ? orgRepos : fallbackRepos;
                 </span>
               </div>
 
-              <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.2] group-hover:text-rose-400 transition-colors">
-                <a href={`/blog/${headlinePost.id}`}>{headlinePost.data.title}</a>
+              <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.2] group-hover:text-rose-400 transition-colors">
+                <a href={`/blog/${headlinePost.id}/`}>{headlinePost.data.title}</a>
               </h1>
 
-              <p class="text-slate-300 text-base sm:text-lg leading-relaxed line-clamp-3">
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed line-clamp-3">
                 {headlinePost.data.description}
               </p>
 
@@ -113,7 +126,7 @@ const reposToShow = orgRepos.length > 0 ? orgRepos : fallbackRepos;
                   <span>{headlinePost.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Jakarta' })} {headlinePost.data.pubDate.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' })} WIB</span>
                 </div>
                 <a
-                  href={`/blog/${headlinePost.id}`}
+                  href={`/blog/${headlinePost.id}/`}
                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all hover:scale-105 cursor-pointer"
                   aria-label={`Baca selengkapnya artikel ${headlinePost.data.title}`}
                 >
@@ -132,20 +145,33 @@ const reposToShow = orgRepos.length > 0 ? orgRepos : fallbackRepos;
             <span class="w-2 h-2 rounded-full bg-rose-500"></span>
             Sorotan Populer
           </span>
-          <a href="/blog" class="text-xs font-bold text-rose-600 hover:underline">Semua &rarr;</a>
+          <a href="/blog/" class="text-xs font-bold text-rose-600 hover:underline">Semua &rarr;</a>
         </div>
 
         {subFeaturedPosts.map(post => (
-          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 shadow-sm hover:border-rose-400 transition-all group">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2.5 py-1 rounded-md">
-              {post.data.category}
-            </span>
-            <h3 class="font-bold text-sm sm:text-base text-slate-950 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mt-2 mb-1.5 leading-snug">
-              <a href={`/blog/${post.id}`}>{post.data.title}</a>
-            </h3>
-            <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-2 leading-relaxed">
-              {post.data.description}
-            </p>
+          <div class="overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 shadow-sm hover:border-rose-400 transition-all group">
+            <a href={`/blog/${post.id}/`} class="block aspect-video h-32 w-full overflow-hidden bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-800">
+              <img
+                src={getPostImage(post)}
+                alt={post.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="338"
+              />
+            </a>
+            <div class="p-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2.5 py-1 rounded-md inline-block">
+                {post.data.category}
+              </span>
+              <h3 class="font-bold text-sm sm:text-base text-slate-950 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mt-2 mb-1.5 leading-snug">
+                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+              </h3>
+              <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-2 leading-relaxed">
+                {post.data.description}
+              </p>
+            </div>
           </div>
         ))}
       </div>
@@ -169,21 +195,36 @@ const reposToShow = orgRepos.length > 0 ? orgRepos : fallbackRepos;
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {remainingPosts.map(post => (
-          <article class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow group">
-            <div class="space-y-3">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2 py-0.5 rounded-md">
-                {post.data.category}
-              </span>
-              <h3 class="font-bold text-base text-slate-950 dark:text-white leading-snug group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
-                <a href={`/blog/${post.id}`}>{post.data.title}</a>
-              </h3>
-              <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-3 leading-relaxed">
-                {post.data.description}
-              </p>
+          <article class="overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:shadow-md hover:border-rose-400/60 transition-all group">
+            <div>
+              <a href={`/blog/${post.id}/`} class="block aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-800">
+                <img
+                  src={getPostImage(post)}
+                  alt={post.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="338"
+                />
+              </a>
+              <div class="p-6 pb-0 space-y-3">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2 py-0.5 rounded-md inline-block">
+                  {post.data.category}
+                </span>
+                <h3 class="font-bold text-base text-slate-950 dark:text-white leading-snug group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                  <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                </h3>
+                <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-3 leading-relaxed">
+                  {post.data.description}
+                </p>
+              </div>
             </div>
-            <div class="text-[11px] text-slate-600 dark:text-slate-400 pt-4 mt-4 border-t border-slate-200 dark:border-slate-800 font-mono flex justify-between items-center font-medium">
-              <span>{post.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'Asia/Jakarta' })} {post.data.pubDate.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' })} WIB</span>
-              <span class="text-rose-600 font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+            <div class="px-6 pb-6">
+              <div class="text-[11px] text-slate-600 dark:text-slate-400 pt-4 mt-4 border-t border-slate-200 dark:border-slate-800 font-mono flex justify-between items-center font-medium">
+                <span>{post.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'Asia/Jakarta' })} {post.data.pubDate.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' })} WIB</span>
+                <span class="text-rose-600 font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </div>
             </div>
           </article>
         ))}

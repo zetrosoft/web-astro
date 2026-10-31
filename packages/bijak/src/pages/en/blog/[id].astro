@@ -11,6 +11,7 @@ import ArticleFaqSchema from '../../../components/ArticleFaqSchema.astro';
 import MediumCompatibleTable from '../../../components/MediumCompatibleTable.astro';
 import VisualTcoInfographic from '../../../components/VisualTcoInfographic.astro';
 import VisualInfographic from '../../../components/VisualInfographic.astro';
+import { getPostImage } from '../../../utils/heroImage';
 
 export async function getStaticPaths() {
   const postsEn = await getCollection('blog_en');
@@ -229,19 +230,17 @@ const breadcrumbJsonLd = {
         </div>
 
         <!-- Hero Image (Free-to-Use with Relevance & High-Res) -->
-        {post.data.image && (
-          <figure class="mb-8 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm not-prose bg-slate-100 dark:bg-slate-800">
-            <img 
-              src={post.data.image} 
-              alt={post.data.title}
-              class="w-full h-auto aspect-video object-cover transition-transform duration-500 hover:scale-[1.01]"
-              loading="eager"
-              decoding="async"
-              width="1200"
-              height="675"
-            />
-          </figure>
-        )}
+        <figure class="mb-8 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm not-prose bg-slate-100 dark:bg-slate-800">
+          <img 
+            src={getPostImage(post)} 
+            alt={post.data.title}
+            class="w-full h-auto aspect-video object-cover transition-transform duration-500 hover:scale-[1.01]"
+            loading="eager"
+            decoding="async"
+            width="1200"
+            height="675"
+          />
+        </figure>
 
         <!-- 1. AdSense Slot 1: Top In-Article Leaderboard -->
         <AdSenseUnit className="mb-8" />
@@ -280,18 +279,33 @@ const breadcrumbJsonLd = {
         <!-- Growth Hacker Viral Loop: Next Recommended Read & Free Interactive Calculator CTA -->
         <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
           {nextReadPost && (
-            <a href={`/en/blog/${nextReadPost.id}/`} class="group p-5 rounded-2xl bg-slate-100/90 dark:bg-slate-800/70 border border-slate-300/80 dark:border-slate-700 hover:border-rose-500 transition-all flex flex-col justify-between">
+            <a href={`/en/blog/${nextReadPost.id}/`} class="group overflow-hidden rounded-2xl bg-slate-100/90 dark:bg-slate-800/70 border border-slate-300/80 dark:border-slate-700 hover:border-rose-500 transition-all flex flex-col justify-between">
               <div>
-                <span class="text-[10px] font-extrabold uppercase tracking-wider text-rose-600 dark:text-rose-400">
-                  📖 Recommended Next Read ({nextReadPost.data.category})
-                </span>
-                <h4 class="font-bold text-sm sm:text-base text-slate-950 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mt-1.5 leading-snug">
-                  {nextReadPost.data.title}
-                </h4>
+                <div class="aspect-video h-32 w-full overflow-hidden bg-slate-200 dark:bg-slate-800 border-b border-slate-300/60 dark:border-slate-700">
+                  <img
+                    src={getPostImage(nextReadPost)}
+                    alt={nextReadPost.data.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="338"
+                  />
+                </div>
+                <div class="p-5 pb-0">
+                  <span class="text-[10px] font-extrabold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+                    📖 Recommended Next Read ({nextReadPost.data.category})
+                  </span>
+                  <h4 class="font-bold text-sm sm:text-base text-slate-950 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mt-1.5 leading-snug">
+                    {nextReadPost.data.title}
+                  </h4>
+                </div>
               </div>
-              <span class="text-xs font-bold text-rose-600 dark:text-rose-400 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                Read Next Article &rarr;
-              </span>
+              <div class="px-5 pb-5">
+                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  Read Next Article &rarr;
+                </span>
+              </div>
             </a>
           )}
         </div>
@@ -374,15 +388,28 @@ const breadcrumbJsonLd = {
         
         <div class="space-y-6">
           {recentPosts.map((p) => (
-            <div class="group border-b border-slate-200 dark:border-slate-800/60 pb-5 last:border-0 last:pb-0">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2 py-0.5 rounded-md">
-                {p.data.category}
-              </span>
-              <h4 class="font-bold text-sm text-slate-900 dark:text-slate-200 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors leading-snug mt-2">
-                <a href={`/en/blog/${p.id}`}>{p.data.title}</a>
-              </h4>
-              <div class="text-xs text-slate-600 dark:text-slate-400 font-medium mt-1">
-                {p.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+            <div class="group border-b border-slate-200 dark:border-slate-800/60 pb-5 last:border-0 last:pb-0 flex gap-3.5 items-start">
+              <a href={`/en/blog/${p.id}/`} class="w-20 h-16 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shrink-0 block mt-0.5">
+                <img
+                  src={getPostImage(p)}
+                  alt={p.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="160"
+                  height="128"
+                />
+              </a>
+              <div class="flex-1 min-w-0">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2 py-0.5 rounded-md inline-block">
+                  {p.data.category}
+                </span>
+                <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-200 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors leading-snug mt-1.5 line-clamp-2">
+                  <a href={`/en/blog/${p.id}/`}>{p.data.title}</a>
+                </h4>
+                <div class="text-[11px] text-slate-600 dark:text-slate-400 font-medium mt-1">
+                  {p.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                </div>
               </div>
             </div>
           ))}

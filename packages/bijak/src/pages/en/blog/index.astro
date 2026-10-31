@@ -3,6 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import AdSenseUnit from '../../../components/AdSenseUnit.astro';
 import HostingerBox from '../../../components/HostingerBox.astro';
+import { getPostImage } from '../../../utils/heroImage';
 
 const postsEn = await getCollection('blog_en');
 const postsId = await getCollection('blog');
@@ -52,23 +53,38 @@ const categories = [...new Set(posts.map(post => post.data.category))];
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-grid">
       {sortedPosts.map(post => (
         <article 
-          class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow group"
+          class="overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:shadow-md hover:border-rose-400/60 transition-all group"
           data-category={post.data.category}
         >
-          <div class="space-y-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2 py-0.5 rounded-md inline-block">
-              {post.data.category}
-            </span>
-            <h2 class="font-bold text-base sm:text-lg text-slate-950 dark:text-white leading-snug group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
-              <a href={`/en/blog/${post.id}/`}>{post.data.title}</a>
-            </h2>
-            <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-3 leading-relaxed">
-              {post.data.description}
-            </p>
+          <div>
+            <a href={`/en/blog/${post.id}/`} class="block aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-800">
+              <img
+                src={getPostImage(post)}
+                alt={post.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="338"
+              />
+            </a>
+            <div class="p-6 pb-0 space-y-3">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2 py-0.5 rounded-md inline-block">
+                {post.data.category}
+              </span>
+              <h2 class="font-bold text-base sm:text-lg text-slate-950 dark:text-white leading-snug group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                <a href={`/en/blog/${post.id}/`}>{post.data.title}</a>
+              </h2>
+              <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-3 leading-relaxed">
+                {post.data.description}
+              </p>
+            </div>
           </div>
-          <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-[11px] text-slate-600 dark:text-slate-400 font-mono font-medium">
-            <span>By: <strong class="text-slate-800 dark:text-slate-200">{post.data.author}</strong></span>
-            <span>{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'Asia/Jakarta' })} {post.data.pubDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' })} WIB</span>
+          <div class="px-6 pb-6">
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-[11px] text-slate-600 dark:text-slate-400 font-mono font-medium">
+              <span>By: <strong class="text-slate-800 dark:text-slate-200">{post.data.author}</strong></span>
+              <span>{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'Asia/Jakarta' })} {post.data.pubDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' })} WIB</span>
+            </div>
           </div>
         </article>
       ))}
