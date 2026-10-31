@@ -1,4 +1,5 @@
 ---
+image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1200&h=675&q=80"
 title: "Teleporter dalam Ekosistem Avalanche: Membuka Gerbang Menuju Multiverse Blockchain"
 description: "Eksplorasi mendalam tentang protokol Teleporter di ekosistem Avalanche, solusi komunikasi cross-chain revolusioner yang aman dan cepat."
 pubDate: 2026-04-19

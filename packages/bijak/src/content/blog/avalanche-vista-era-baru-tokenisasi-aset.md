@@ -1,4 +1,5 @@
 ---
+image: "https://images.unsplash.com/photo-1618044733300-9472054094ee?auto=format&fit=crop&w=1200&h=675&q=80"
 title: "Avalanche Vista: Era Baru Tokenisasi Aset"
 description: "Mengenal inisiatif Avalanche Vista senilai $50 juta untuk mendorong digitalisasi aset dunia nyata (Real World Assets / RWA) ke jaringan blockchain."
 pubDate: 2026-03-23

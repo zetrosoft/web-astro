@@ -1,4 +1,5 @@
 ---
+image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&h=675&q=80"
 title: "12 Hal Salah Pengertian Tentang Kecerdasan Buatan (Artificial Intelligence)"
 description: "Meluruskan beberapa mitos dan kesalahpahaman umum masyarakat non-teknis tentang cara kerja dan batasan teknologi Kecerdasan Buatan."
 pubDate: 2026-03-04

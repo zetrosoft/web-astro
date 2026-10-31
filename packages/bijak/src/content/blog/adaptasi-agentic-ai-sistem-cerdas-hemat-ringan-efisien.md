@@ -1,4 +1,5 @@
 ---
+image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&h=675&q=80"
 title: "Adaptasi Agentic AI: Merancang Sistem Otonom yang Efisien, Ringan, dan Hemat Biaya"
 description: "Panduan arsitektur software praktis untuk membangun sistem Agentic AI tingkat produksi tanpa boros komputasi dan membengkakkan biaya token API."
 pubDate: 2026-08-31

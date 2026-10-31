@@ -1,4 +1,5 @@
 ---
+image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1200&h=675&q=80"
 title: "Cara Kenya dan Avalanche Mengunci 15 Juta Ijazah di Blockchain"
 description: "Bagaimana Kenya memindahkan 15 juta rekam akademis ke Avalanche C-Chain untuk memutus rantai birokrasi, menghentikan ijazah palsu, dan memberikan kebenaran data publik."
 pubDate: 2026-08-21

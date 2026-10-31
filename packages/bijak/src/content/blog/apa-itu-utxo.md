@@ -1,4 +1,5 @@
 ---
+image: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=1200&h=675&q=80"
 noindex: true
 title: "Apa itu UTXO? Konsep Dasar Transaksi Blockchain"
 description: "Panduan memahami model Unspent Transaction Output (UTXO) yang digunakan oleh Bitcoin dan Avalanche, serta perbandingannya dengan model Akun."

@@ -1,4 +1,5 @@
 ---
+image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&h=675&q=80"
 title: "Perbedaan antara Database Tradisional dan Blockchain"
 description: "Analisis komparatif lengkap mengenai kapan sebuah sistem membutuhkan database relasional biasa dan kapan harus menggunakan teknologi blockchain."
 pubDate: 2026-03-01

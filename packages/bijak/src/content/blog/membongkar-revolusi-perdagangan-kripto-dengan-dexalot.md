@@ -1,4 +1,5 @@
 ---
+image: "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?auto=format&fit=crop&w=1200&h=675&q=80"
 noindex: true
 title: "Membongkar Revolusi Perdagangan Kripto dengan Dexalot"
 description: "Bagaimana Dexalot menghadirkan pengalaman trading Central Limit Order Book (CLOB) langsung di atas subnet Avalanche."

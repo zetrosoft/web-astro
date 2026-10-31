@@ -1,4 +1,5 @@
 ---
+image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&h=675&q=80"
 title: "Agentic AI Adaptation: Building Intelligent Systems that are Cheap, Lightweight, and Efficient"
 description: "A practical software architecture guide to building production-grade autonomous agentic AI systems without exorbitant token costs and latency bottlenecks."
 pubDate: 2026-08-31
