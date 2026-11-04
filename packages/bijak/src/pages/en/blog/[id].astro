@@ -11,6 +11,8 @@ import ArticleFaqSchema from '../../../components/ArticleFaqSchema.astro';
 import MediumCompatibleTable from '../../../components/MediumCompatibleTable.astro';
 import VisualTcoInfographic from '../../../components/VisualTcoInfographic.astro';
 import VisualInfographic from '../../../components/VisualInfographic.astro';
+import TableOfContents from '../../../components/TableOfContents.astro';
+import RelatedSiloPosts from '../../../components/RelatedSiloPosts.astro';
 import { getPostImage } from '../../../utils/heroImage';
 
 export async function getStaticPaths() {
@@ -43,7 +45,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 
 // Ambil artikel lain untuk rekomendasi di sidebar dalam mode EN
 const postsEn = await getCollection('blog_en');
@@ -69,9 +71,9 @@ const recentPosts = allPosts
     if (b.relevance !== a.relevance) return b.relevance - a.relevance;
     return b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf();
   })
-  .slice(0, 4)
   .map(item => item.post);
 
+const relatedSiloPosts = recentPosts.slice(0, 3);
 const nextReadPost = recentPosts[0];
 
 // Randomized Box Display (Samkarsa & Kusuma)
@@ -245,6 +247,9 @@ const breadcrumbJsonLd = {
         <!-- 1. AdSense Slot 1: Top In-Article Leaderboard -->
         <AdSenseUnit className="mb-8" />
 
+        <!-- Interactive Table of Contents (TOC) -->
+        <TableOfContents headings={headings} lang="en" />
+
         <!-- Article Body with localized components -->
         <article class="prose max-w-none prose-slate dark:prose-invert">
           <Content components={{
@@ -276,39 +281,8 @@ const breadcrumbJsonLd = {
         <!-- 3. AdSense Slot 3: Bottom In-Article / Pre-Tags Unit -->
         <AdSenseUnit format="auto" className="mt-8 mb-4" />
 
-        <!-- Growth Hacker Viral Loop: Next Recommended Read & Free Interactive Calculator CTA -->
-        <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
-          {nextReadPost && (
-            <a href={`/en/blog/${nextReadPost.id}/`} class="group overflow-hidden rounded-2xl bg-slate-100/90 dark:bg-slate-800/70 border border-slate-300/80 dark:border-slate-700 hover:border-rose-500 transition-all flex flex-col justify-between">
-              <div>
-                <div class="aspect-video h-32 w-full overflow-hidden bg-slate-200 dark:bg-slate-800 border-b border-slate-300/60 dark:border-slate-700">
-                  <img
-                    src={getPostImage(nextReadPost)}
-                    alt={nextReadPost.data.title}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    decoding="async"
-                    width="600"
-                    height="338"
-                  />
-                </div>
-                <div class="p-5 pb-0">
-                  <span class="text-[10px] font-extrabold uppercase tracking-wider text-rose-600 dark:text-rose-400">
-                    📖 Recommended Next Read ({nextReadPost.data.category})
-                  </span>
-                  <h4 class="font-bold text-sm sm:text-base text-slate-950 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mt-1.5 leading-snug">
-                    {nextReadPost.data.title}
-                  </h4>
-                </div>
-              </div>
-              <div class="px-5 pb-5">
-                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                  Read Next Article &rarr;
-                </span>
-              </div>
-            </a>
-          )}
-        </div>
+        <!-- 3-Card Related Silo Hub (Next Architecture & Business Pathways) -->
+        <RelatedSiloPosts posts={relatedSiloPosts} currentCategory={post.data.category} lang="en" />
 
         <!-- Social Share & Ready-to-Post Media Box -->
         <!-- Author Profile Card (E-E-A-T Authority) -->

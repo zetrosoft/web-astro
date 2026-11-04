@@ -1,0 +1,70 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+  lang?: 'id' | 'en';
+}
+
+const { headings = [], lang = 'id' } = Astro.props;
+
+// Filter hanya H2 dan H3
+const tocItems = headings.filter(h => h.depth === 2 || h.depth === 3);
+
+const titleText = lang === 'en' ? 'Table of Contents' : 'Daftar Isi Artikel';
+const subtitleText = lang === 'en' 
+  ? `(${tocItems.length} Key Sections)` 
+  : `(${tocItems.length} Bahasan Utama)`;
+const collapseAria = lang === 'en' ? 'Toggle table of contents' : 'Buka tutup daftar isi';
+---
+
+{tocItems.length >= 2 && (
+  <nav aria-label={titleText} class="my-8 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 p-5 not-prose shadow-sm transition-all">
+    <details open class="group">
+      <summary 
+        class="flex items-center justify-between cursor-pointer list-none font-extrabold text-sm text-slate-950 dark:text-white select-none focus:outline-none"
+        aria-label={collapseAria}
+      >
+        <span class="flex items-center gap-2.5">
+          <span class="w-2.5 h-5 bg-rose-600 rounded-full inline-block"></span>
+          <span class="tracking-tight">{titleText}</span>
+          <span class="text-xs font-semibold text-slate-700 dark:text-slate-300">
+            {subtitleText}
+          </span>
+        </span>
+        <svg 
+          class="w-5 h-5 text-slate-600 dark:text-slate-400 transition-transform duration-300 group-open:rotate-180" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+
+      <div class="mt-4 pt-4 border-t border-slate-200/90 dark:border-slate-700/60">
+        <ol class="space-y-2 text-xs sm:text-sm font-medium">
+          {tocItems.map((item, idx) => (
+            <li class={`${item.depth === 3 ? 'ml-5 list-[circle] text-slate-600 dark:text-slate-400' : 'list-none'}`}>
+              <a 
+                href={`#${item.slug}`}
+                class="inline-flex items-baseline gap-2 text-slate-700 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors leading-relaxed"
+              >
+                {item.depth === 2 && (
+                  <span class="font-bold text-rose-700 dark:text-rose-400 text-xs shrink-0 select-none">
+                    {idx + 1}.
+                  </span>
+                )}
+                <span>{item.text}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </details>
+  </nav>
+)}

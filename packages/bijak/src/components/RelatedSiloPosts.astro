@@ -1,0 +1,86 @@
+---
+import { getPostImage } from '../utils/heroImage';
+
+interface Props {
+  posts: any[];
+  currentCategory?: string;
+  lang?: 'id' | 'en';
+}
+
+const { posts = [], currentCategory = 'Teknologi', lang = 'id' } = Astro.props;
+
+if (!posts || posts.length === 0) {
+  return;
+}
+
+const headingTitle = lang === 'en' 
+  ? `Explore More: ${currentCategory}` 
+  : `Eksplorasi Silo Lanjutan: ${currentCategory}`;
+
+const viewAllText = lang === 'en'
+  ? 'View All in Topic →'
+  : 'Lihat Semua di Rubrik Ini →';
+
+const readMoreText = lang === 'en'
+  ? 'Read Article →'
+  : 'Baca Selengkapnya →';
+
+const categoryUrl = lang === 'en'
+  ? `/en/blog?category=${encodeURIComponent(currentCategory)}`
+  : `/blog?category=${encodeURIComponent(currentCategory)}`;
+
+const baseBlogUrl = lang === 'en' ? '/en/blog/' : '/blog/';
+---
+
+<div class="my-10 not-prose">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-3 border-b border-slate-200 dark:border-slate-800">
+    <div class="flex items-center gap-2.5">
+      <div class="w-2.5 h-6 bg-rose-600 rounded-full"></div>
+      <h3 class="font-extrabold text-base sm:text-lg text-slate-950 dark:text-white tracking-tight">
+        {headingTitle}
+      </h3>
+    </div>
+    <a 
+      href={categoryUrl} 
+      class="text-xs font-bold text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 transition-colors"
+    >
+      {viewAllText}
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    {posts.slice(0, 3).map((item) => (
+      <a 
+        href={`${baseBlogUrl}${item.id}/`} 
+        class="group flex flex-col justify-between overflow-hidden rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/90 dark:border-slate-800 hover:border-rose-500 hover:shadow-md transition-all duration-300"
+      >
+        <div>
+          <div class="aspect-video w-full overflow-hidden bg-slate-200 dark:bg-slate-800 border-b border-slate-200/90 dark:border-slate-700/60">
+            <img
+              src={getPostImage(item)}
+              alt={item.data.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="225"
+            />
+          </div>
+          <div class="p-4">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-100/70 dark:bg-rose-950/40 px-2 py-0.5 rounded-md inline-block">
+              {item.data.category}
+            </span>
+            <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mt-2 leading-snug line-clamp-2">
+              {item.data.title}
+            </h4>
+          </div>
+        </div>
+        <div class="p-4 pt-0">
+          <span class="text-xs font-bold text-rose-600 dark:text-rose-400 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+            {readMoreText}
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</div>
