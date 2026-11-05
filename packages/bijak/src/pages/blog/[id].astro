@@ -5,6 +5,7 @@ import AdSenseUnit from '../../components/AdSenseUnit.astro';
 import InArticleAd from '../../components/InArticleAd.astro';
 import HostingerBox from '../../components/HostingerBox.astro';
 import InArticleAiAdvisor from '../../components/InArticleAiAdvisor.astro';
+import FrappeCloudBox from '../../components/FrappeCloudBox.astro';
 import SocialReadyBox from '../../components/SocialReadyBox.astro';
 import ArticleFaqSchema from '../../components/ArticleFaqSchema.astro';
 import MediumCompatibleTable from '../../components/MediumCompatibleTable.astro';
@@ -57,6 +58,20 @@ const relatedPosts = allPosts
 
 const relatedSiloPosts = relatedPosts.slice(0, 3);
 const recentPosts = relatedPosts.slice(0, 4);
+
+// Deteksi Topik ERP / Frappe / Software Architecture untuk Penawaran Managed Cloud
+const isErpOrSaTopic = 
+  post.data.category?.toLowerCase().includes('erp') ||
+  post.data.category?.toLowerCase().includes('frappe') ||
+  post.data.category?.toLowerCase().includes('arsitektur') ||
+  post.data.category?.toLowerCase().includes('architecture') ||
+  post.id.includes('erpnext') ||
+  post.id.includes('frappe') ||
+  post.id.includes('modular-monolith') ||
+  post.id.includes('arsitektur') ||
+  post.data.tags?.some((t: string) => 
+    ['erp', 'erpnext', 'frappe', 'software architecture', 'arsitektur', 'enterprise'].includes(t.toLowerCase())
+  );
 
 const canonicalUrl = `https://bijaktechnology.com/blog/${post.id}/`;
 const imageUrl = post.data.image?.startsWith('http') 
@@ -217,7 +232,7 @@ const breadcrumbJsonLd = {
 
         <!-- Isi Artikel Utama MDX -->
         <article class="prose max-w-none prose-slate dark:prose-invert">
-          <Content components={{ AdSenseUnit: InArticleAd, InArticleAiAdvisor, HostingerBox, ArticleFaqSchema, table: MediumCompatibleTable, VisualTcoInfographic, VisualInfographic }} />
+          <Content components={{ AdSenseUnit: InArticleAd, InArticleAiAdvisor, HostingerBox, FrappeCloudBox, ArticleFaqSchema, table: MediumCompatibleTable, VisualTcoInfographic, VisualInfographic }} />
         </article>
 
         <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Unit (In-Article Ad 6901499930) -->
@@ -228,6 +243,11 @@ const breadcrumbJsonLd = {
 
         <!-- Smart Contextual Hostinger Partner Box -->
         <HostingerBox category={post.data.category} variant="in-article" />
+
+        <!-- Official Frappe Cloud Partner Card (Khusus Topik ERP & Software Architecture) -->
+        {isErpOrSaTopic && (
+          <FrappeCloudBox lang="id" />
+        )}
 
         <!-- 3. AdSense Slot 3: Bottom In-Article / Pre-Tags Unit -->
         <AdSenseUnit format="auto" className="mt-8 mb-4" />

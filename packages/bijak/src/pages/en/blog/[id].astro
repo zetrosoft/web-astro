@@ -5,6 +5,7 @@ import AdSenseUnit from '../../../components/AdSenseUnit.astro';
 import InArticleAd from '../../../components/InArticleAd.astro';
 import HostingerBox from '../../../components/HostingerBox.astro';
 import InArticleAiAdvisor from '../../../components/InArticleAiAdvisor.astro';
+import FrappeCloudBox from '../../../components/FrappeCloudBox.astro';
 import SocialReadyBox from '../../../components/SocialReadyBox.astro';
 import ArticleFaqSchema from '../../../components/ArticleFaqSchema.astro';
 import MediumCompatibleTable from '../../../components/MediumCompatibleTable.astro';
@@ -73,6 +74,20 @@ const recentPosts = allPosts
   .map(item => item.post);
 
 const relatedSiloPosts = recentPosts.slice(0, 3);
+
+// Detection for ERP / Frappe / Software Architecture Topics
+const isErpOrSaTopic = 
+  post.data.category?.toLowerCase().includes('erp') ||
+  post.data.category?.toLowerCase().includes('frappe') ||
+  post.data.category?.toLowerCase().includes('arsitektur') ||
+  post.data.category?.toLowerCase().includes('architecture') ||
+  post.id.includes('erpnext') ||
+  post.id.includes('frappe') ||
+  post.id.includes('modular-monolith') ||
+  post.id.includes('arsitektur') ||
+  post.data.tags?.some((t: string) => 
+    ['erp', 'erpnext', 'frappe', 'software architecture', 'arsitektur', 'enterprise'].includes(t.toLowerCase())
+  );
 const nextReadPost = recentPosts[0];
 
 const canonicalUrl = `https://bijaktechnology.com/en/blog/${post.id}/`;
@@ -239,6 +254,7 @@ const breadcrumbJsonLd = {
             AdSenseUnit: InArticleAd,
             InArticleAiAdvisor,
             HostingerBox,
+            FrappeCloudBox,
             ArticleFaqSchema,
             table: MediumCompatibleTable,
             VisualTcoInfographic,
@@ -254,6 +270,11 @@ const breadcrumbJsonLd = {
 
         <!-- Smart Contextual Hostinger Partner Box (English) -->
         <HostingerBox category={post.data.category} variant="in-article" lang="en" />
+
+        <!-- Official Frappe Cloud Partner Card (ERP & Software Architecture Topics) -->
+        {isErpOrSaTopic && (
+          <FrappeCloudBox lang="en" />
+        )}
 
         <!-- 3. AdSense Slot 3: Bottom In-Article / Pre-Tags Unit -->
         <AdSenseUnit format="auto" className="mt-8 mb-4" />
