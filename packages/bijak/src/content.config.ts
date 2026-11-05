@@ -10,6 +10,15 @@ const blogSchema = z.object({
   tags: z.array(z.string()).default([]),
   image: z.string().optional(),
   archetype: z.enum(['storytelling', 'deep-dive', 'news-analysis']).optional(),
+  copilot_config: z.object({
+    persona: z.string().optional(),
+    title: z.string(),
+    subtitle: z.string().optional(),
+    action_chips: z.array(z.object({
+      label: z.string(),
+      prompt: z.string()
+    })).optional()
+  }).optional(),
   social: z.object({
     twitter_thread: z.array(z.string()).optional(),
     linkedin: z.string().optional(),

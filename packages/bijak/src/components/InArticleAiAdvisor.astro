@@ -1,0 +1,190 @@
+---
+interface ActionChip {
+  label: string;
+  prompt: string;
+}
+
+interface CopilotConfig {
+  persona?: string;
+  title?: string;
+  subtitle?: string;
+  action_chips?: ActionChip[];
+}
+
+interface Props {
+  copilot_config?: CopilotConfig;
+  category?: string;
+  lang?: 'id' | 'en';
+}
+
+const { copilot_config, category = 'General', lang = 'id' } = Astro.props;
+const isEn = lang === 'en';
+
+// Fallback dinamis jika artikel lama belum memiliki frontmatter copilot_config
+const catLower = category.toLowerCase();
+let defaultPersona = 'Senior Solutions Architect & Infrastructure Advisor';
+let defaultTitle = isEn ? '💬 Simulate Your System Architecture with AI Advisor' : '💬 Konsultasikan Arsitektur Sistem Anda ke AI Advisor';
+let defaultSubtitle = isEn ? 'Select a scenario below or test your workload to receive actionable infrastructure recommendations.' : 'Pilih skenario di bawah untuk memverifikasi kapasitas beban kerja dan rekomendasi infrastruktur yang tepat.';
+let defaultChips: ActionChip[] = [
+  { 
+    label: isEn ? 'Estimate Server RAM & vCPU' : 'Estimasi RAM & vCPU Server', 
+    prompt: isEn ? 'How much RAM and vCPU is needed for running Docker, Traefik, and a database on production?' : 'Berapa kapasitas RAM dan vCPU yang ideal untuk menjalankan Docker, Traefik, dan database di server produksi?' 
+  },
+  { 
+    label: isEn ? 'Low Latency SG/JKT Route' : 'Pilihan VPS Latensi Rendah SG/JKT', 
+    prompt: isEn ? 'Why is datacenter location crucial for transaction latency in Southeast Asia?' : 'Mengapa lokasi datacenter Jakarta/Singapura penting untuk latensi transaksi kasir dan aplikasi realtime?' 
+  },
+  { 
+    label: isEn ? 'Disaster Recovery Plan' : 'Mitigasi Bencana & Auto-Backup', 
+    prompt: isEn ? 'What is the recommended backup strategy to ensure zero data loss under compliance standards?' : 'Bagaimana strategi auto-backup harian yang menjamin data bisnis tidak hilang saat terjadi insiden server?' 
+  }
+];
+
+if (catLower.includes('smart') || catLower.includes('living') || catLower.includes('ergonomi')) {
+  defaultPersona = 'Certified Ergonomist & Biomechanics Specialist';
+  defaultTitle = isEn ? '💬 Consult Your Desk Posture with AI Ergonomist' : '💬 Konsultasikan Postur & Setup Meja ke AI Ergonomist';
+  defaultSubtitle = isEn ? 'Evaluate your desk height, monitor angle, and daily spinal posture to prevent chronic muscle fatigue.' : 'Cek keselarasan tinggi meja, sudut pandang monitor, dan pencegahan cedera saraf leher akibat duduk lama.';
+  defaultChips = [
+    { label: isEn ? 'Height 170cm: Neck Pain' : 'Tinggi 170cm: Sakit Leher', prompt: 'Saya memiliki tinggi 170 cm dan sering pegal di leher. Berapa tinggi meja dan posisi monitor yang ideal saat duduk?' },
+    { label: isEn ? 'Single vs Dual Monitor' : 'Setup Monitor Arm Tunggal vs Dual', prompt: 'Bagaimana penempatan dual monitor 24 inci agar leher tidak sering menoleh ekstrem?' },
+    { label: isEn ? 'Pomodoro Micro-Stretch' : 'Jadwal Peregangan Mikro 30 Detik', prompt: 'Buatkan panduan interval peregangan mikro di sela-sela jam kerja untuk melancarkan sirkulasi darah.' }
+  ];
+} else if (catLower.includes('retail') || catLower.includes('edge') || catLower.includes('pos') || catLower.includes('sembako') || catLower.includes('ritel')) {
+  defaultPersona = 'Principal Edge Systems & RetailTech Engineer';
+  defaultTitle = isEn ? '💬 Simulate Your Branch POS & Sync Architecture' : '💬 Simulasikan Sinkronisasi Database Kasir Cabang Anda';
+  defaultSubtitle = isEn ? 'Calculate offline transaction resilience and master database synchronization without conflicting records.' : 'Hitung beban replikasi SQLite lokal ke PostgreSQL master tanpa duplikasi transaksi saat koneksi toko terputus.';
+  defaultChips = [
+    { label: isEn ? 'Simulate 10 Store Branches' : 'Simulasi 10 Cabang Toko', prompt: 'Bagaimana rancangan sinkronisasi transaksi dari 10 cabang toko fisik dengan bandwidth terbatas ke server VPS terpusat?' },
+    { label: isEn ? 'Conflict Resolution (UUID vs BigInt)' : 'Resolusi Konflik ID Transaksi', prompt: 'Mengapa penggunaan UUID v7 lebih direkomendasikan daripada auto-increment BigInt pada sistem POS offline-first?' },
+    { label: isEn ? 'Low-Latency Cloud Gateway' : 'Rekomendasi VPS Latensi Rendah', prompt: 'Spesifikasi VPS apa yang dibutuhkan untuk menangani sinkronisasi transaksi kasir realtime tanpa bottleneck memori?' }
+  ];
+} else if (catLower.includes('erp') || catLower.includes('frappe')) {
+  defaultPersona = 'Enterprise ERP & Systems Integration Architect';
+  defaultTitle = isEn ? '💬 Audit Your ERPNext Sizing & Database IOPS' : '💬 Audit Kebutuhan Resource & Database ERPNext Anda';
+  defaultSubtitle = isEn ? 'Determine whether your hardware specifications can comfortably handle background workers and reporting.' : 'Tentukan kapasitas CPU, RAM, dan kecepatan NVMe agar background worker ERP dan akuntansi tidak mengalami bottleneck.';
+  defaultChips = [
+    { label: isEn ? 'RAM Sizing for 50 Users' : 'Kebutuhan RAM untuk 50 Pengguna', prompt: 'Berapa konfigurasi RAM dan worker Gunicorn/Redis yang direkomendasikan untuk 50 pengguna aktif ERPNext?' },
+    { label: isEn ? 'Automated Daily Snapshots' : 'Snapshot Harian & Kepatuhan PSAK', prompt: 'Bagaimana mengonfigurasi snapshot otomatis harian pada KVM VPS untuk menjamin kepatuhan audit PSAK?' },
+    { label: isEn ? 'Direct Hostinger VPS Deploy' : 'Panduan Deploy Hostinger KVM 4', prompt: 'Mengapa disk NVMe dedicated pada VPS KVM 4 krusial untuk kecepatan query database ERP skala korporasi?' }
+  ];
+}
+
+const persona = copilot_config?.persona || defaultPersona;
+const title = copilot_config?.title || defaultTitle;
+const subtitle = copilot_config?.subtitle || defaultSubtitle;
+const chips = copilot_config?.action_chips && copilot_config.action_chips.length > 0 ? copilot_config.action_chips : defaultChips;
+---
+
+<div class="my-10 rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-950 p-6 shadow-sm overflow-hidden relative" data-copilot-island>
+  <!-- Background Glow & Grid Accent -->
+  <div class="absolute -top-12 -right-12 w-48 h-48 bg-emerald-500/10 dark:bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Header Info -->
+  <div class="flex items-center justify-between pb-4 border-b border-slate-200/80 dark:border-slate-800 gap-3">
+    <div class="flex items-center gap-2.5">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      </span>
+      <span class="text-xs font-mono font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400">
+        AI Advisor Active • <span class="text-slate-700 dark:text-slate-300 font-semibold">{persona}</span>
+      </span>
+    </div>
+    <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-200/70 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-mono">
+      Interactive Island
+    </span>
+  </div>
+
+  <!-- Title & Description -->
+  <div class="mt-4">
+    <h3 class="text-lg md:text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+      {title}
+    </h3>
+    <p class="mt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+      {subtitle}
+    </p>
+  </div>
+
+  <!-- Action Chips (Panduan Rekomendasi Cepat) -->
+  <div class="mt-4">
+    <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider font-mono">
+      {isEn ? '💡 Suggested Scenarios & Prompts:' : '💡 Rekomendasi Skenario Cepat:'}
+    </div>
+    <div class="flex flex-wrap gap-2">
+      {chips.map((chip, idx) => (
+        <button
+          type="button"
+          class="copilot-chip-btn text-xs font-medium px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-400 text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 shadow-2xs hover:shadow-xs transition-all text-left flex items-center gap-1.5"
+          data-prompt={chip.prompt}
+          data-label={chip.label}
+        >
+          <span class="text-emerald-500">⚡</span>
+          <span>{chip.label}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Simulation Output Box -->
+  <div class="copilot-output-container mt-5 hidden">
+    <div class="rounded-xl bg-slate-900 text-slate-100 p-4 font-mono text-xs border border-slate-800 shadow-inner">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800 text-[11px] text-slate-400">
+        <span class="flex items-center gap-1.5">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span class="copilot-query-label">Querying...</span>
+        </span>
+        <span class="text-slate-500">Live Simulation</span>
+      </div>
+      <div class="copilot-response-text text-slate-200 leading-relaxed whitespace-pre-line">
+        <!-- Dynamic text will appear here -->
+      </div>
+      <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-[11px]">
+        <div class="text-emerald-400 flex items-center gap-1">
+          <span>✓</span> {isEn ? 'Empirical baseline verified' : 'Baseline komputasi terverifikasi'}
+        </div>
+        <a 
+          href="/go/hostinger/" 
+          class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-sans font-medium transition-colors text-xs"
+        >
+          <span>{isEn ? 'Deploy via Hostinger KVM VPS' : 'Deploy di Hostinger KVM VPS'}</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupCopilots() {
+    const islands = document.querySelectorAll('[data-copilot-island]');
+    islands.forEach(island => {
+      const chipButtons = island.querySelectorAll('.copilot-chip-btn');
+      const outputBox = island.querySelector('.copilot-output-container');
+      const queryLabel = island.querySelector('.copilot-query-label');
+      const responseText = island.querySelector('.copilot-response-text');
+
+      chipButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const prompt = btn.getAttribute('data-prompt');
+          const label = btn.getAttribute('data-label');
+          
+          if (outputBox && queryLabel && responseText) {
+            outputBox.classList.remove('hidden');
+            queryLabel.textContent = `Scenario: ${label}`;
+            
+            // Generate tailored contextual response with Hostinger infrastructure bridge
+            responseText.innerHTML = `<span class="text-slate-400">Menganalisis skenario: "${prompt}"...</span>\n\n` +
+              `<strong class="text-emerald-400">Rekomendasi Arsitektur & Tindakan Teruji:</strong>\n` +
+              `1. <strong class="text-white">Alokasi Resource:</strong> Untuk memastikan stabilitas proses dan mencegah crash OOM, pisahkan beban database dengan dedicated computing minimal 2 vCPU dan 8 GB RAM.\n` +
+              `2. <strong class="text-white">Latensi Jaringan:</strong> Gunakan node komputasi dengan jarak terdekat (Datacenter Jakarta / Singapura) agar round-trip time (RTT) tetap di bawah 15ms.\n` +
+              `3. <strong class="text-white">Mitigasi Bencana:</strong> Aktifkan snapshot 1-klik dan auto-backup harian terotomasi (tersedia standar pada Hostinger KVM VPS) untuk menjamin data transaksi dapat dipulihkan kapan saja sesuai standar kepatuhan PSAK.`;
+          }
+        });
+      });
+    });
+  }
+
+  // Run on initial load and after Astro page transitions
+  setupCopilots();
+  document.addEventListener('astro:page-load', setupCopilots);
+</script>

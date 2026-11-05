@@ -4,8 +4,7 @@ import { getCollection, render } from 'astro:content';
 import AdSenseUnit from '../../../components/AdSenseUnit.astro';
 import InArticleAd from '../../../components/InArticleAd.astro';
 import HostingerBox from '../../../components/HostingerBox.astro';
-import KusumaMapSpotlight from '../../../components/KusumaMapSpotlight.astro';
-import SamkarsaIndustryRef from '../../../components/SamkarsaIndustryRef.astro';
+import InArticleAiAdvisor from '../../../components/InArticleAiAdvisor.astro';
 import SocialReadyBox from '../../../components/SocialReadyBox.astro';
 import ArticleFaqSchema from '../../../components/ArticleFaqSchema.astro';
 import MediumCompatibleTable from '../../../components/MediumCompatibleTable.astro';
@@ -75,22 +74,6 @@ const recentPosts = allPosts
 
 const relatedSiloPosts = recentPosts.slice(0, 3);
 const nextReadPost = recentPosts[0];
-
-// Randomized Box Display (Samkarsa & Kusuma)
-const idHash = post.id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-const isKusumaTopic = post.data.category?.toLowerCase().includes('ritel') || 
-                      post.data.category?.toLowerCase().includes('sembako') || 
-                      post.data.category?.toLowerCase().includes('umkm') || 
-                      post.data.tags?.some(t => ['ritel', 'sembako', 'boyolali', 'distribusi', 'kusuma', 'retail', 'wholesale'].includes(t.toLowerCase()));
-const showKusumaBox = isKusumaTopic && (post.id.includes('kusuma') || idHash % 3 === 0);
-
-const isSamkarsaTopic = post.data.category?.toLowerCase().includes('erp') || 
-                        post.data.category?.toLowerCase().includes('enterprise') || 
-                        post.data.category?.toLowerCase().includes('manufaktur') || 
-                        post.data.category?.toLowerCase().includes('distribusi') ||
-                        post.data.category?.toLowerCase().includes('distribution') ||
-                        post.data.category?.toLowerCase().includes('manufacturing');
-const showSamkarsaBox = isSamkarsaTopic && (idHash % 2 === 0);
 
 const canonicalUrl = `https://bijaktechnology.com/en/blog/${post.id}/`;
 const imageUrl = post.data.image?.startsWith('http') 
@@ -254,8 +237,7 @@ const breadcrumbJsonLd = {
         <article class="prose max-w-none prose-slate dark:prose-invert">
           <Content components={{
             AdSenseUnit: InArticleAd,
-            KusumaMapSpotlight,
-            SamkarsaIndustryRef,
+            InArticleAiAdvisor,
             HostingerBox,
             ArticleFaqSchema,
             table: MediumCompatibleTable,
@@ -267,16 +249,11 @@ const breadcrumbJsonLd = {
         <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Unit (In-Article Ad 6901499930) -->
         <AdSenseUnit variant="in-article" className="my-8" />
 
+        <!-- Dynamic Contextual In-Article AI Advisor (English) -->
+        <InArticleAiAdvisor copilot_config={post.data.copilot_config} category={post.data.category} lang="en" />
+
         <!-- Smart Contextual Hostinger Partner Box (English) -->
         <HostingerBox category={post.data.category} variant="in-article" lang="en" />
-
-        {/* Ekosistem Spotlight Khusus Berdasarkan Kategori & Topik (Randomized for variety) */}
-        {showKusumaBox && (
-          <KusumaMapSpotlight lang="en" />
-        )}
-        {showSamkarsaBox && (
-          <SamkarsaIndustryRef lang="en" />
-        )}
 
         <!-- 3. AdSense Slot 3: Bottom In-Article / Pre-Tags Unit -->
         <AdSenseUnit format="auto" className="mt-8 mb-4" />
