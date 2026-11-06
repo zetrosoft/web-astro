@@ -93,10 +93,23 @@ services:
           memory: 6500M
 ```
 
- evaluate performa latensi menggunakan utilitas benchmarking terminal:
+Untuk menguji latensi inferensi secara objektif di terminal, jalankan tolok ukur performa menggunakan `hyperfine`:
 
 ```bash
-hyperfine --warmup 2 'curl -s -X POST http://localhost:11434/api/generate -d "&#123;"model":"phi3","prompt":"Jelaskan prinsip Bernoulli secara ringkas\
+hyperfine --warmup 2 'curl -s -X POST http://localhost:11434/api/generate -d "{\"model\":\"phi3\",\"prompt\":\"Jelaskan prinsip Bernoulli secara ringkas\"}"'
+```
+
+## Personalisasi Pembelajaran & Evaluasi Adaptif Gen Z
+
+Keunggulan utama AI Tutor mandiri terletak pada kemampuannya menyusun kurikulum modular dinamis. Melalui pipeline RAG, setiap siswa mendapatkan respons yang dikalibrasi berdasarkan tingkat pemahaman:
+
+1. **Diagnosis Konsep Bertingkat**: Jika siswa kesulitan memahami rumus fisika atau sintaks coding, sistem secara otomatis menurunkan tingkat abstraksi analogi tanpa mengubah esensi materi.
+2. **Kuis Formatif Real-Time**: AI menghasilkan variasi soal latihan adaptif dari modul internal, lengkap dengan umpan balik langkah demi langkah (*step-by-step reasoning*).
+3. **Observabilitas Sistem & Pemeliharaan**: Untuk menjaga ketersediaan layanan 24/7 di VPS mandiri, integrasikan pemantauan uptime dan latensi API menggunakan [pemantauan server VPS mandiri](/blog/uptime-kuma-monitoring-server-hostinger-telegram/) agar notifikasi instan terkirim saat beban memori mendekati ambang batas.
+
+## Kesimpulan: Kedaulatan Edukasi Tanpa Biaya Berulang
+
+Membangun AI Tutor adaptif di atas Hostinger KVM VPS membuktikan bahwa digitalisasi pendidikan berkualitas tinggi tidak harus bergantung pada langganan SaaS korporat yang mahal. Dengan memanfaatkan kombinasi model *open-source* berbobot ringan, database vektor efisien, serta isolasi server privat, pengembang dan pendidik memiliki kontrol penuh atas kurikulum, privasi data siswa, dan stabilitas biaya operasional jangka panjang.
 
 > *Transparansi: Beberapa tautan di artikel ini adalah tautan afiliasi yang dapat memberikan komisi bagi kami tanpa biaya tambahan bagi Anda.*
 
