@@ -13,7 +13,7 @@ const allIds = new Set([...postsEn.map(p => p.id), ...postsId.map(p => p.id)]);
 const posts = Array.from(allIds)
   .filter(id => id !== 'agentic-ai-adaptation-cheap-lightweight-efficient-systems')
   .map(id => enMap.get(id) || postsId.find(p => p.id === id))
-  .filter(Boolean) as typeof postsEn;
+  .filter(p => p && p.data.category !== 'Local SEO') as typeof postsEn;
 
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const categories = [...new Set(posts.map(post => post.data.category))];

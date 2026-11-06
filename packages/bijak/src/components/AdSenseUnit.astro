@@ -26,36 +26,42 @@ const isInArticle = variant === 'in-article' || layout === 'in-article' || forma
 const finalSlot = slot || (isInArticle ? '6901499930' : '6641645482');
 const finalFormat = format || (isInArticle ? 'fluid' : 'auto');
 const finalLayout = layout || (isInArticle ? 'in-article' : undefined);
+
+// Sembunyikan kontainer iklan kosong selama menunggu approval resmi Google AdSense
+// Ini mencegah penalti 'Valuable inventory: Under construction' / Made-For-AdSense (MFA)
+const isAdSenseApproved = false;
 ---
 
-<div
-  class={`adsense-clean-slot my-4 w-full text-center not-prose overflow-hidden flex flex-col items-center justify-center ${className}`}
-  style="contain: layout style;"
->
-  {isInArticle ? (
-    <ins
-      class="adsbygoogle"
-      style="display:block; text-align:center;"
-      data-ad-layout="in-article"
-      data-ad-format={finalFormat}
-      data-ad-client={client}
-      data-ad-slot={finalSlot}
-    ></ins>
-  ) : (
-    <ins
-      class="adsbygoogle"
-      style="display:block;"
-      data-ad-client={client}
-      data-ad-slot={finalSlot}
-      data-ad-format={finalFormat}
-      data-full-width-responsive="true"
-      {...(layoutKey ? { 'data-ad-layout-key': layoutKey } : {})}
-    ></ins>
-  )}
+{isAdSenseApproved && (
+  <div
+    class={`adsense-clean-slot my-4 w-full text-center not-prose overflow-hidden flex flex-col items-center justify-center ${className}`}
+    style="contain: layout style;"
+  >
+    {isInArticle ? (
+      <ins
+        class="adsbygoogle"
+        style="display:block; text-align:center;"
+        data-ad-layout="in-article"
+        data-ad-format={finalFormat}
+        data-ad-client={client}
+        data-ad-slot={finalSlot}
+      ></ins>
+    ) : (
+      <ins
+        class="adsbygoogle"
+        style="display:block;"
+        data-ad-client={client}
+        data-ad-slot={finalSlot}
+        data-ad-format={finalFormat}
+        data-full-width-responsive="true"
+        {...(layoutKey ? { 'data-ad-layout-key': layoutKey } : {})}
+      ></ins>
+    )}
 
-  <script is:inline>
-    try {
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {}
-  </script>
-</div>
+    <script is:inline>
+      try {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {}
+    </script>
+  </div>
+)}

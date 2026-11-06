@@ -6,7 +6,10 @@ import HostingerBox from '../../components/HostingerBox.astro';
 import { getPostImage } from '../../utils/heroImage';
 
 const posts = await getCollection('blog');
-const filteredPosts = posts.filter(post => post.id !== 'agentic-ai-adaptation-cheap-lightweight-efficient-systems');
+const filteredPosts = posts.filter(post => 
+  post.id !== 'agentic-ai-adaptation-cheap-lightweight-efficient-systems' &&
+  post.data.category !== 'Local SEO'
+);
 const sortedPosts = filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 // Dapatkan kategori unik untuk penyaringan

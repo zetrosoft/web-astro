@@ -9,7 +9,10 @@ import { getPostImage } from '../utils/heroImage';
 
 // Dapatkan artikel blog dan urutkan berdasarkan tanggal rilis terbaru
 const posts = await getCollection('blog');
-const filteredPosts = posts.filter(post => post.id !== 'agentic-ai-adaptation-cheap-lightweight-efficient-systems');
+const filteredPosts = posts.filter(post => 
+  post.id !== 'agentic-ai-adaptation-cheap-lightweight-efficient-systems' &&
+  post.data.category !== 'Local SEO'
+);
 const sortedPosts = filteredPosts.sort((a, b) => {
   const diff = b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
   if (diff !== 0) return diff;
@@ -230,9 +233,9 @@ const reposToShow = orgRepos.length > 0 ? orgRepos : fallbackRepos;
         ))}
       </div>
 
-      <!-- Ekosistem Spotlight: Toko Sembako Kusuma (Boyolali) & Samkarsa ERPNext -->
+      <!-- Ekosistem Spotlight: Samkarsa ERPNext Enterprise -->
       <div class="space-y-6 pt-4">
-        <KusumaMapSpotlight />
+        {/* <KusumaMapSpotlight /> */}
         <SamkarsaIndustryRef />
       </div>
     </div>
