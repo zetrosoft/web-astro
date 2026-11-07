@@ -2,20 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 
 // Metadata untuk SEO dan Konten
-const title = "Profil Iswan Putera (zetrosoft) - Software Architect";
-const description = "Informasi profil profesional Iswan Putera (zetrosoft), Principal Software Architect dan kurator teknis Bijak Technology.";
+const title = "Profil zetrosoft - Systems Architect & Open-Source Contributor";
+const description = "Informasi profil profesional zetrosoft, Systems Architect dan kontributor rekayasa sistem di Bijak Technology.";
 
 // Data Statis Profil Github & Organisasi
 const githubProfile = {
   username: "zetrosoft",
-  name: "Iswan Putera",
-  bio: "Principal Software Architect & Lead Technology Writer. Berpengalaman dalam rekayasa sistem terdistribusi, kedaulatan data private cloud, dan implementasi ERPNext enterprise.",
+  name: "zetrosoft",
+  bio: "Systems Architect & Engineering Contributor. Berfokus pada rekayasa sistem terdistribusi, kedaulatan data private cloud, dan implementasi ERPNext enterprise.",
   avatarUrl: "https://github.com/zetrosoft.png",
   githubUrl: "https://github.com/zetrosoft",
-  linkedinUrl: "https://www.linkedin.com/in/iswanputera/",
   portfolioUrl: "https://samkarsa.com",
-  email: "iswanputera@gmail.com",
-  location: "Purwakarta, Indonesia",
+  email: "redaksi@bijaktechnology.com",
+  location: "Indonesia",
   followers: "120+",
   following: "45+",
   repositories: [
@@ -108,12 +107,12 @@ const orgProfile = {
 
         <div class="pt-6 space-y-2">
           <a 
-            href={githubProfile.linkedinUrl} 
+            href={githubProfile.githubUrl} 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="w-full text-center block bg-sky-600 hover:bg-sky-700 text-white font-bold py-2.5 px-4 text-xs uppercase tracking-wider transition-colors duration-300 rounded-lg shadow-sm"
+            class="w-full text-center block bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-4 text-xs uppercase tracking-wider transition-colors duration-300 rounded-lg shadow-sm"
           >
-            LinkedIn Profile &rarr;
+            GitHub Profile &rarr;
           </a>
           <a 
             href={githubProfile.portfolioUrl} 

@@ -31,25 +31,16 @@ import Layout from '../../layouts/Layout.astro';
           </h2>
           
           <div>
-            <h3 class="font-bold text-slate-900 dark:text-slate-100 uppercase text-xs">Editorial Lead</h3>
-            <p class="text-slate-700 dark:text-slate-300 mt-0.5 font-semibold">Iswan Putera</p>
-            <p class="text-xs text-slate-500">Principal Software Architect</p>
+            <h3 class="font-bold text-slate-900 dark:text-slate-100 uppercase text-xs">Editorial Board</h3>
+            <p class="text-slate-700 dark:text-slate-300 mt-0.5 font-semibold">Bijak Technology Editorial Desk</p>
+            <p class="text-xs text-slate-500">Systems Architecture &amp; Engineering Curators</p>
           </div>
 
           <div>
-            <h3 class="font-bold text-slate-900 dark:text-slate-100 uppercase text-xs">Direct Email</h3>
+            <h3 class="font-bold text-slate-900 dark:text-slate-100 uppercase text-xs">Official Email</h3>
             <p class="text-slate-700 dark:text-slate-300 mt-0.5 font-mono text-xs">
-              <a href="mailto:iswanputera@gmail.com" class="text-rose-600 dark:text-rose-400 font-bold hover:underline">
-                iswanputera@gmail.com
-              </a>
-            </p>
-          </div>
-
-          <div>
-            <h3 class="font-bold text-slate-900 dark:text-slate-100 uppercase text-xs">Professional Profile</h3>
-            <p class="text-slate-700 dark:text-slate-300 mt-0.5">
-              <a href="https://www.linkedin.com/in/iswanputera/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 font-bold hover:underline flex items-center gap-1">
-                linkedin.com/in/iswanputera/
+              <a href="mailto:redaksi@bijaktechnology.com" class="text-rose-600 dark:text-rose-400 font-bold hover:underline">
+                redaksi@bijaktechnology.com
               </a>
             </p>
           </div>
@@ -58,7 +49,7 @@ import Layout from '../../layouts/Layout.astro';
             <h3 class="font-bold text-slate-900 dark:text-slate-100 uppercase text-xs">Enterprise Portfolio</h3>
             <p class="text-slate-700 dark:text-slate-300 mt-0.5">
               <a href="https://samkarsa.com" target="_blank" rel="noopener noreferrer" class="text-rose-600 dark:text-rose-400 font-bold hover:underline flex items-center gap-1">
-                samkarsa.com
+                samkarsa.com &rarr;
               </a>
             </p>
           </div>
@@ -67,14 +58,14 @@ import Layout from '../../layouts/Layout.astro';
             <h3 class="font-bold text-slate-900 dark:text-slate-100 uppercase text-xs">Source Repositories</h3>
             <p class="text-slate-700 dark:text-slate-300 mt-0.5">
               <a href="https://github.com/bijaktechnology" target="_blank" rel="noopener noreferrer" class="text-slate-800 dark:text-slate-200 hover:text-rose-600 hover:underline">
-                github.com/bijaktechnology
+                github.com/bijaktechnology &rarr;
               </a>
             </p>
           </div>
 
           <div>
-            <h3 class="font-bold text-slate-900 dark:text-slate-100 uppercase text-xs">Operating Headquarters</h3>
-            <p class="text-slate-600 dark:text-slate-400 mt-0.5 text-xs">Purwakarta, West Java, Indonesia</p>
+            <h3 class="font-bold text-slate-900 dark:text-slate-100 uppercase text-xs">Operational Region</h3>
+            <p class="text-slate-600 dark:text-slate-400 mt-0.5 text-xs">Indonesia (Hybrid Cloud &amp; Distributed Engineering)</p>
           </div>
         </div>
 
@@ -94,7 +85,7 @@ import Layout from '../../layouts/Layout.astro';
 
         <form 
           class="space-y-4 text-sm" 
-          action="mailto:iswanputera@gmail.com" 
+          action="mailto:redaksi@bijaktechnology.com" 
           method="POST" 
           enctype="text/plain"
         >
@@ -106,7 +97,7 @@ import Layout from '../../layouts/Layout.astro';
                 id="name" 
                 name="name" 
                 required 
-                placeholder="e.g. Alex Graham"
+                placeholder="e.g. Alex Henderson"
                 class="w-full border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-rose-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
               />
             </div>
@@ -117,32 +108,32 @@ import Layout from '../../layouts/Layout.astro';
                 id="email" 
                 name="email" 
                 required 
-                placeholder="e.g. alex@domain.com"
+                placeholder="e.g. alex@enterprise.com"
                 class="w-full border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-rose-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
               />
             </div>
           </div>
 
           <div class="space-y-1.5">
-            <label for="subject" class="font-bold text-slate-700 dark:text-slate-300 uppercase text-xs">Subject / Purpose</label>
+            <label for="subject" class="font-bold text-slate-700 dark:text-slate-300 uppercase text-xs">Subject / Discussion Topic</label>
             <input 
               type="text" 
               id="subject" 
               name="subject" 
               required 
-              placeholder="e.g. Private Cloud Consulting / ERP Architecture"
+              placeholder="e.g. Enterprise Cloud Architecture / ERP Collaboration"
               class="w-full border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-rose-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
             />
           </div>
 
           <div class="space-y-1.5">
-            <label for="message" class="font-bold text-slate-700 dark:text-slate-300 uppercase text-xs">Your Message</label>
+            <label for="message" class="font-bold text-slate-700 dark:text-slate-300 uppercase text-xs">Your Dispatch</label>
             <textarea 
               id="message" 
               name="message" 
               rows="6" 
               required 
-              placeholder="Detail your question, article topic proposal, or collaboration scope clearly..."
+              placeholder="Provide technical specifics, proposed article topics, or infrastructure collaboration requirements..."
               class="w-full border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-rose-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white resize-none"
             ></textarea>
           </div>
@@ -152,7 +143,7 @@ import Layout from '../../layouts/Layout.astro';
               type="submit" 
               class="w-full bg-slate-950 dark:bg-rose-600 text-white font-bold uppercase tracking-wider py-3.5 rounded-xl hover:bg-rose-600 dark:hover:bg-rose-700 transition-colors shadow-sm"
             >
-              Send Editorial Dispatch (iswanputera@gmail.com)
+              Send Dispatch to Editorial Desk
             </button>
           </div>
         </form>

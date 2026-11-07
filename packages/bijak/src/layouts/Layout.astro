@@ -87,23 +87,17 @@ const globalSchema = {
         "url": "https://bijaktechnology.com/images/logo-bijak-horizontal.png",
         "caption": "Bijak Technology"
       },
-      "email": "iswanputera@gmail.com",
+      "email": "redaksi@bijaktechnology.com",
       "publishingPrinciples": "https://bijaktechnology.com/terms/",
       "correctionsPolicy": "https://bijaktechnology.com/terms/",
       "sameAs": [
-        "https://www.linkedin.com/in/iswanputera/",
         "https://samkarsa.com",
         "https://github.com/bijaktechnology"
       ],
-      "founder": {
-        "@type": "Person",
-        "name": "Iswan Putera",
-        "jobTitle": "Principal Software Architect",
-        "url": "https://www.linkedin.com/in/iswanputera/",
-        "sameAs": [
-          "https://www.linkedin.com/in/iswanputera/",
-          "https://samkarsa.com"
-        ]
+      "author": {
+        "@type": "Organization",
+        "name": "Dewan Redaksi Bijak Technology",
+        "url": "https://bijaktechnology.com/about/"
       }
     },
     {
@@ -582,17 +576,17 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
             </ul>
           </div>
 
-          <!-- Col 3: Ekosistem, Portofolio & Kontak -->
+          <!-- Col 3: Ekosistem & Rekayasa -->
           <div class="space-y-2">
             <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
-              {isEn ? "Portfolio & Engineering" : "Portofolio & Rekayasa"}
+              {isEn ? "Engineering & Ecosystem" : "Ekosistem & Rekayasa"}
             </h4>
             <ul class="text-xs space-y-2 font-medium">
-              <li><a href="https://samkarsa.com" target="_blank" class="hover:text-rose-600 transition-colors font-semibold">{isEn ? "Samkarsa Enterprise Portfolio" : "Samkarsa Enterprise Portfolio"}</a></li>
-              <li><a href="https://www.linkedin.com/in/iswanputera/" target="_blank" rel="noopener noreferrer" class="hover:text-rose-600 transition-colors">LinkedIn: Iswan Putera</a></li>
-              <li><a href="mailto:iswanputera@gmail.com" class="hover:text-rose-600 transition-colors">Email: iswanputera@gmail.com</a></li>
-              <li><a href={isEn ? "/en/tools/" : "/tools/"} class="hover:text-rose-600 transition-colors">{isEn ? "Interactive Calculators" : "Kalkulator TCO & Bisnis"}</a></li>
-              <li><a href="https://github.com/bijaktechnology" target="_blank" rel="noopener noreferrer" class="hover:text-rose-600 transition-colors">GitHub: bijaktechnology</a></li>
+              <li><a href="https://samkarsa.com" target="_blank" class="hover:text-rose-600 transition-colors font-semibold">{isEn ? "Samkarsa Enterprise Systems" : "Samkarsa Solusi Enterprise"}</a></li>
+              <li><a href={isEn ? "/en/tools/" : "/tools/"} class="hover:text-rose-600 transition-colors">{isEn ? "Calculators & Infrastructure Tools" : "Kalkulator TCO & Infrastruktur"}</a></li>
+              <li><a href="/go/hostinger/" target="_blank" rel="noopener sponsored" class="hover:text-rose-600 transition-colors">{isEn ? "Cloud Architecture (Hostinger VPS)" : "Arsitektur Cloud (Hostinger VPS)"}</a></li>
+              <li><a href="https://github.com/bijaktechnology" target="_blank" rel="noopener noreferrer" class="hover:text-rose-600 transition-colors">GitHub Open Source</a></li>
+              <li><a href={isEn ? "/en/contact/" : "/contact/"} class="hover:text-rose-600 transition-colors">{isEn ? "Contact Editorial Desk" : "Hubungi Meja Redaksi"}</a></li>
             </ul>
           </div>
 
