@@ -13,6 +13,7 @@ import VisualTcoInfographic from '../../../components/VisualTcoInfographic.astro
 import VisualInfographic from '../../../components/VisualInfographic.astro';
 import TableOfContents from '../../../components/TableOfContents.astro';
 import RelatedSiloPosts from '../../../components/RelatedSiloPosts.astro';
+import NewsletterBox from '../../../components/NewsletterBox.astro';
 import { getPostImage } from '../../../utils/heroImage';
 
 export async function getStaticPaths() {
@@ -322,6 +323,9 @@ const breadcrumbJsonLd = {
           social={post.data.social}
           lang="en"
         />
+
+        <!-- In-Article Newsletter Lead Capture: Bijak Tech Digest -->
+        <NewsletterBox lang="en" variant="in-article" className="mt-8 mb-4" />
 
         <!-- Tags -->
         {post.data.tags && post.data.tags.length > 0 && (
