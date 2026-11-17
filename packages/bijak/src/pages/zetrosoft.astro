@@ -115,29 +115,43 @@ const orgProfile = {
             rel="noopener noreferrer" 
             class="w-full text-center block bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-4 text-xs uppercase tracking-wider transition-colors duration-300 rounded-lg shadow-sm"
           >
-            GitHub Profile &rarr;
+            GitHub (@zetrosoft) &rarr;
+          </a>
+          <a 
+            href={githubProfile.linkedinUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-full text-center block bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold py-2.5 px-4 text-xs uppercase tracking-wider transition-colors duration-300 rounded-lg shadow-sm"
+          >
+            LinkedIn Profile &rarr;
           </a>
           <a 
             href={githubProfile.portfolioUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
             class="w-full text-center block bg-rose-600 hover:bg-rose-700 text-white font-bold py-2.5 px-4 text-xs uppercase tracking-wider transition-colors duration-300 rounded-lg shadow-sm"
           >
-            Enterprise Portfolio (samkarsa.com) &rarr;
+            Halaman Author &amp; Riset &rarr;
+          </a>
+          <a 
+            href={githubProfile.mediumUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-full text-center block bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 text-xs tracking-wider transition-colors duration-300 rounded-lg"
+          >
+            Medium (@zetrosoft) &rarr;
+          </a>
+          <a 
+            href={githubProfile.twitterUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-full text-center block bg-black hover:bg-zinc-800 text-white font-bold py-2 px-4 text-xs tracking-wider transition-colors duration-300 rounded-lg"
+          >
+            X (@zetrogede) &rarr;
           </a>
           <a 
             href={`mailto:${githubProfile.email}`} 
-            class="w-full text-center block bg-slate-900 hover:bg-slate-800 text-white dark:bg-slate-800 dark:hover:bg-slate-700 font-bold py-2 px-4 text-xs tracking-wider transition-colors duration-300 rounded-lg"
-          >
-            {githubProfile.email}
-          </a>
-          <a 
-            href={githubProfile.githubUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
             class="w-full text-center block bg-neutral-100 hover:bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 font-bold py-2 px-4 text-xs tracking-wider transition-colors duration-300 rounded-lg border border-neutral-300 dark:border-neutral-700"
           >
-            GitHub (@zetrosoft)
+            {githubProfile.email}
           </a>
         </div>
       </div>
