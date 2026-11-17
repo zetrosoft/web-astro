@@ -1,15 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
 
 const title = "Profil Penulis: Iswan Putera - Lead Software Architect & Tech Writer";
 const description = "Mengenal Iswan Putera (zetrosoft), Lead Software Architect dan penulis di balik riset arsitektur sistem, konkurensi, cloud privat, dan modern developer tools di Bijak Technology.";
-
-// Ambil artikel yang ditulis oleh Iswan Putera / koleksi blog teknologi
-const allPosts = await getCollection('blog');
-const authorPosts = allPosts
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 8);
 
 const socialLinks = [
   {
@@ -54,18 +47,6 @@ const githubProjects = [
     name: "github.com/bijaktechnology",
     url: "https://github.com/bijaktechnology",
     desc: "Monorepo publikasi portal web, edge telemetry, dan dokumentasi arsitektur Bijak Technology."
-  },
-  {
-    org: "samkarsa-it",
-    name: "github.com/samkarsa-it",
-    url: "https://github.com/samkarsa-it",
-    desc: "Ekosistem open-source otomasi proses bisnis, modul ERP, dan integritas data enterprise."
-  },
-  {
-    org: "cahayastar",
-    name: "github.com/cahayastar",
-    url: "https://github.com/cahayastar",
-    desc: "Repositori eksperimen rekayasa perangkat lunak, sistem telemetri IoT, dan cloud edge."
   }
 ];
 ---
@@ -172,45 +153,6 @@ const githubProjects = [
             </a>
           ))}
         </div>
-      </div>
-    </div>
-
-    <!-- Artikel Terbaru oleh Iswan Putera -->
-    <div class="space-y-6">
-      <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
-        <h2 class="text-2xl font-black text-slate-950 dark:text-white tracking-tight">
-          Publikasi Riset Terkini oleh Iswan Putera
-        </h2>
-        <a href="/blog/" class="text-xs font-bold text-rose-600 dark:text-rose-400 hover:underline">
-          Lihat Semua Artikel &rarr;
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {authorPosts.map(post => (
-          <article class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 shadow-2xs hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
-            <div class="space-y-2">
-              <div class="flex items-center gap-2 text-[11px] font-bold text-slate-500 font-mono">
-                <span class="text-rose-600 dark:text-rose-400 uppercase">{post.data.category}</span>
-                <span>•</span>
-                <span>{post.data.pubDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-              </div>
-              <h3 class="font-extrabold text-base text-slate-900 dark:text-white leading-snug hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
-                <a href={`/blog/${post.id}/`}>
-                  {post.data.title}
-                </a>
-              </h3>
-              <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
-                {post.data.description}
-              </p>
-            </div>
-            <div class="pt-2">
-              <a href={`/blog/${post.id}/`} class="text-xs font-bold text-rose-600 dark:text-rose-400 hover:underline inline-flex items-center gap-1">
-                Baca Selengkapnya &rarr;
-              </a>
-            </div>
-          </article>
-        ))}
       </div>
     </div>
 

@@ -94,8 +94,6 @@ const globalSchema = {
       "sameAs": [
         "https://github.com/zetrosoft",
         "https://github.com/bijaktechnology",
-        "https://github.com/samkarsa-it",
-        "https://github.com/cahayastar",
         "https://x.com/zetrogede",
         "https://zetrosoft.medium.com"
       ],
@@ -108,9 +106,8 @@ const globalSchema = {
           "https://github.com/zetrosoft",
           "https://x.com/zetrogede",
           "https://zetrosoft.medium.com",
-          "https://github.com/cahayastar",
-          "https://github.com/samkarsa-it",
-          "https://github.com/bijaktechnology"
+          "https://github.com/bijaktechnology",
+          "https://www.linkedin.com/in/iswanputera"
         ]
       },
       "author": {
@@ -516,13 +513,13 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
             </a>
           </li>
           <li>
-            <a href={isEn ? "/en/blog/?category=Cloud+VPS" : "/blog/?category=Cloud+VPS"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
-              AI &amp; Cloud
+            <a href={isEn ? "/en/blog/?category=Software+Architecture" : "/blog/?category=Software+Architecture"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              {isEn ? "Architecture" : "Arsitektur"}
             </a>
           </li>
           <li>
-            <a href={isEn ? "/en/blog/?category=Local+SEO" : "/blog/?category=Local+SEO"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
-              {isEn ? "Business & Retail" : "Bisnis & Ritel"}
+            <a href={isEn ? "/en/blog/?category=Cloud+VPS" : "/blog/?category=Cloud+VPS"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
+              AI &amp; Cloud
             </a>
           </li>
           <li>
@@ -533,11 +530,6 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
           <li>
             <a href={isEn ? "/en/blog/?category=Blockchain" : "/blog/?category=Blockchain"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
               {isEn ? "Web3 & Security" : "Web3 & Keamanan"}
-            </a>
-          </li>
-          <li>
-            <a href={isEn ? "/en/blog/?category=Smart+Living" : "/blog/?category=Smart+Living"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
-              Smart Living &amp; DIY
             </a>
           </li>
           <li>
@@ -595,11 +587,10 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
               {isEn ? "Editorial Sections" : "Rubrik Redaksi"}
             </h4>
             <ul class="text-xs space-y-2 font-medium">
+              <li><a href={isEn ? "/en/blog/?category=Software+Architecture" : "/blog/?category=Software+Architecture"} class="hover:text-rose-600 transition-colors">{isEn ? "Software Architecture" : "Arsitektur Sistem"}</a></li>
               <li><a href={isEn ? "/en/blog/?category=Cloud+VPS" : "/blog/?category=Cloud+VPS"} class="hover:text-rose-600 transition-colors">{isEn ? "AI & Cloud Architecture" : "AI & Cloud Architecture"}</a></li>
-              <li><a href={isEn ? "/en/blog/?category=Local+SEO" : "/blog/?category=Local+SEO"} class="hover:text-rose-600 transition-colors">{isEn ? "Business & Retail Logistics" : "Bisnis & Ritel Sembako"}</a></li>
               <li><a href={isEn ? "/en/blog/?category=ERPNext" : "/blog/?category=ERPNext"} class="hover:text-rose-600 transition-colors">{isEn ? "Enterprise ERP & Frappe" : "ERPNext Enterprise"}</a></li>
               <li><a href={isEn ? "/en/blog/?category=Blockchain" : "/blog/?category=Blockchain"} class="hover:text-rose-600 transition-colors">{isEn ? "Web3 & Digital Security" : "Web3 & Keamanan Digital"}</a></li>
-              <li><a href={isEn ? "/en/blog/?category=Smart+Living" : "/blog/?category=Smart+Living"} class="hover:text-rose-600 transition-colors">{isEn ? "Smart Living & Practical Tech" : "Smart Living & DIY"}</a></li>
               <li><a href={isEn ? "/en/blog/?category=Sains" : "/blog/?category=Sains"} class="hover:text-rose-600 transition-colors">{isEn ? "Stories & Applied Science" : "Kisah & Sains Nusantara"}</a></li>
             </ul>
           </div>

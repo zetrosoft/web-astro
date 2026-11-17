@@ -1,15 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
 
 const title = "Author Profile: Iswan Putera - Lead Software Architect & Tech Writer";
 const description = "Learn about Iswan Putera (zetrosoft), Lead Software Architect and author behind systems engineering research, concurrency, private cloud, and modern developer tools at Bijak Technology.";
-
-// Ambil artikel berbahasa Inggris
-const allPostsEn = await getCollection('blog_en');
-const authorPosts = allPostsEn
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 8);
 
 const socialLinks = [
   {
@@ -54,18 +47,6 @@ const githubProjects = [
     name: "github.com/bijaktechnology",
     url: "https://github.com/bijaktechnology",
     desc: "Core publication monorepo, web portal, edge telemetry, and architecture documentation."
-  },
-  {
-    org: "samkarsa-it",
-    name: "github.com/samkarsa-it",
-    url: "https://github.com/samkarsa-it",
-    desc: "Open-source business process automation ecosystem and enterprise data systems."
-  },
-  {
-    org: "cahayastar",
-    name: "github.com/cahayastar",
-    url: "https://github.com/cahayastar",
-    desc: "Software engineering experiments, edge telemetry systems, and private cloud architectures."
   }
 ];
 ---
@@ -172,45 +153,6 @@ const githubProjects = [
             </a>
           ))}
         </div>
-      </div>
-    </div>
-
-    <!-- Recent Publications by Iswan Putera -->
-    <div class="space-y-6">
-      <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
-        <h2 class="text-2xl font-black text-slate-950 dark:text-white tracking-tight">
-          Recent Research Publications by Iswan Putera
-        </h2>
-        <a href="/en/blog/" class="text-xs font-bold text-rose-600 dark:text-rose-400 hover:underline">
-          View All Articles &rarr;
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {authorPosts.map(post => (
-          <article class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 shadow-2xs hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
-            <div class="space-y-2">
-              <div class="flex items-center gap-2 text-[11px] font-bold text-slate-500 font-mono">
-                <span class="text-rose-600 dark:text-rose-400 uppercase">{post.data.category}</span>
-                <span>•</span>
-                <span>{post.data.pubDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-              </div>
-              <h3 class="font-extrabold text-base text-slate-900 dark:text-white leading-snug hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
-                <a href={`/en/blog/${post.id}/`}>
-                  {post.data.title}
-                </a>
-              </h3>
-              <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
-                {post.data.description}
-              </p>
-            </div>
-            <div class="pt-2">
-              <a href={`/en/blog/${post.id}/`} class="text-xs font-bold text-rose-600 dark:text-rose-400 hover:underline inline-flex items-center gap-1">
-                Read Full Paper &rarr;
-              </a>
-            </div>
-          </article>
-        ))}
       </div>
     </div>
 
