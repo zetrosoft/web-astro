@@ -266,47 +266,49 @@ const breadcrumbJsonLd = {
           </div>
         )}
 
-        <!-- Author Profile Card (E-E-A-T Authority) -->
-        <div class="my-8 p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 not-prose flex flex-col sm:flex-row items-center sm:items-start gap-5 shadow-sm">
-          <div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-slate-900 dark:border-slate-600 shadow-md shrink-0 bg-slate-950">
-            <img 
-              src="https://github.com/zetrosoft.png" 
-              alt="Iswan Putera" 
-              class="w-full h-full object-cover"
-              onerror="this.src='/images/logo-bijak-square.webp'"
-            />
-          </div>
-          <div class="space-y-2 text-center sm:text-left flex-grow">
-            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-              <h3 class="font-extrabold text-lg text-slate-950 dark:text-white">
-                <a href="/author/" class="hover:text-rose-600 transition-colors">Iswan Putera</a>
-              </h3>
-              <span class="text-[10px] font-bold uppercase tracking-wider bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-400 px-2 py-0.5 rounded">
-                Lead Software Architect (@zetrosoft)
-              </span>
+        <!-- Author Profile Card (E-E-A-T Authority - Ditampilkan Selektif agar Tidak Monoton) -->
+        {((post.id.charCodeAt(0) + post.id.length) % 3 === 0) && (
+          <div class="my-8 p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 not-prose flex flex-col sm:flex-row items-center sm:items-start gap-5 shadow-sm">
+            <div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-slate-900 dark:border-slate-600 shadow-md shrink-0 bg-slate-950">
+              <img 
+                src="https://github.com/zetrosoft.png" 
+                alt="Iswan Putera" 
+                class="w-full h-full object-cover"
+                onerror="this.src='/images/logo-bijak-square.webp'"
+              />
             </div>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-sans">
-              Praktisi rekayasa perangkat lunak dan arsitek sistem terdistribusi. Menulis ulasan teknis, benchmark, dan panduan arsitektur sistem berbasis bukti nyata di lingkungan produksi.
-            </p>
-            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-1 text-xs font-semibold">
-              <a href="/author/" class="text-rose-600 dark:text-rose-400 hover:underline">
-                Profil &amp; Portofolio &rarr;
-              </a>
-              <span class="text-slate-300 dark:text-slate-700">•</span>
-              <a href="https://github.com/zetrosoft" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 hover:text-rose-600 hover:underline">
-                GitHub @zetrosoft
-              </a>
-              <span class="text-slate-300 dark:text-slate-700">•</span>
-              <a href="https://zetrosoft.medium.com" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">
-                Medium
-              </a>
-              <span class="text-slate-300 dark:text-slate-700">•</span>
-              <a href="https://x.com/zetrogede" target="_blank" rel="noopener noreferrer" class="text-slate-900 dark:text-white hover:underline">
-                X @zetrogede
-              </a>
+            <div class="space-y-2 text-center sm:text-left flex-grow">
+              <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                <h3 class="font-extrabold text-lg text-slate-950 dark:text-white">
+                  <a href="/author/" class="hover:text-rose-600 transition-colors">Iswan Putera</a>
+                </h3>
+                <span class="text-[10px] font-bold uppercase tracking-wider bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-400 px-2 py-0.5 rounded">
+                  Lead Software Architect (@zetrosoft)
+                </span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-sans">
+                Praktisi rekayasa perangkat lunak dan arsitek sistem terdistribusi. Menulis ulasan teknis, benchmark, dan panduan arsitektur sistem berbasis bukti nyata di lingkungan produksi.
+              </p>
+              <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-1 text-xs font-semibold">
+                <a href="/author/" class="text-rose-600 dark:text-rose-400 hover:underline">
+                  Profil &amp; Portofolio &rarr;
+                </a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="https://github.com/zetrosoft" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 hover:text-rose-600 hover:underline">
+                  GitHub @zetrosoft
+                </a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="https://zetrosoft.medium.com" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">
+                  Medium
+                </a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="https://x.com/zetrogede" target="_blank" rel="noopener noreferrer" class="text-slate-900 dark:text-white hover:underline">
+                  X @zetrogede
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         <!-- Social Share & Ready-to-Post Media Box -->
         <SocialReadyBox 
@@ -315,9 +317,6 @@ const breadcrumbJsonLd = {
           social={post.data.social}
           lang="id"
         />
-
-        <!-- In-Article Newsletter Lead Capture: Bijak Tech Digest -->
-        <NewsletterBox lang="id" variant="in-article" className="mt-8 mb-4" />
 
       </div>
 

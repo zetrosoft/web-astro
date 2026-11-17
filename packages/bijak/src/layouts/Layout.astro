@@ -438,16 +438,18 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
           <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
           <span class="font-bold text-white tracking-wider">LIVE • SYSTEMS ARCHITECTURE &amp; MODERN DEV STACK</span>
         </div>
-        <div class="hidden md:flex items-center gap-4 text-slate-300">
-          <a href={isEn ? "/en/author/" : "/author/"} class="hover:text-rose-400 transition-colors font-medium text-white flex items-center gap-1">
-            <span>✍️</span> {isEn ? "Author: Iswan Putera" : "Penulis: Iswan Putera"}
+        <div class="hidden md:flex items-center gap-3 text-slate-300 text-xs">
+          <a href={isEn ? "/en/about/" : "/about/"} class="hover:text-rose-400 transition-colors font-medium text-slate-200">
+            {isEn ? "Editorial Desk" : "Redaksi"}
           </a>
           <span class="text-slate-600">•</span>
-          <a href="https://github.com/zetrosoft" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors font-medium">GitHub @zetrosoft</a>
+          <a href={isEn ? "/en/about/" : "/about/"} class="hover:text-rose-400 transition-colors font-medium text-slate-200">
+            {isEn ? "About Us" : "Tentang Kami"}
+          </a>
           <span class="text-slate-600">•</span>
-          <a href="https://zetrosoft.medium.com" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors font-medium">Medium Blog</a>
+          <a href="https://github.com/bijaktechnology" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors font-medium">GitHub</a>
           <span class="text-slate-600">•</span>
-          <a href="https://x.com/zetrogede" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors font-medium">X @zetrogede</a>
+          <a href="/rss.xml" class="hover:text-amber-400 transition-colors font-medium">RSS Feed</a>
         </div>
       </div>
     </div>
@@ -535,11 +537,6 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
           <li>
             <a href={isEn ? "/en/blog/?category=Sains" : "/blog/?category=Sains"} class="px-2.5 py-1.5 rounded-lg hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 transition-colors">
               {isEn ? "Stories & Science" : "Kisah & Sains"}
-            </a>
-          </li>
-          <li>
-            <a href={isEn ? "/en/tools/" : "/tools/"} class="px-2.5 py-1.5 rounded-lg text-rose-600 dark:text-rose-400 bg-rose-50/80 dark:bg-rose-950/40 hover:bg-rose-100 hover:text-rose-700 transition-colors flex items-center gap-1 font-bold">
-              <span>⚡</span> {isEn ? "Calculators & Tools" : "Kalkulator & Tools"}
             </a>
           </li>
         </ul>
