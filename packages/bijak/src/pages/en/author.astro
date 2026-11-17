@@ -1,0 +1,218 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const title = "Author Profile: Iswan Putera - Lead Software Architect & Tech Writer";
+const description = "Learn about Iswan Putera (zetrosoft), Lead Software Architect and author behind systems engineering research, concurrency, private cloud, and modern developer tools at Bijak Technology.";
+
+// Ambil artikel berbahasa Inggris
+const allPostsEn = await getCollection('blog_en');
+const authorPosts = allPostsEn
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 8);
+
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    label: "LinkedIn Profile",
+    url: "https://www.linkedin.com/in/iswanputera",
+    icon: `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>`,
+    color: "bg-[#0A66C2] text-white hover:bg-[#084e96]"
+  },
+  {
+    name: "GitHub",
+    label: "@zetrosoft",
+    url: "https://github.com/zetrosoft",
+    icon: `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>`,
+    color: "bg-slate-900 text-white hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600"
+  },
+  {
+    name: "Medium",
+    label: "zetrosoft.medium.com",
+    url: "https://zetrosoft.medium.com",
+    icon: `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>`,
+    color: "bg-emerald-700 text-white hover:bg-emerald-800"
+  },
+  {
+    name: "X / Twitter",
+    label: "@zetrogede",
+    url: "https://x.com/zetrogede",
+    icon: `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+    color: "bg-black text-white hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+  }
+];
+
+const githubProjects = [
+  {
+    org: "zetrosoft",
+    name: "github.com/zetrosoft",
+    url: "https://github.com/zetrosoft",
+    desc: "Primary software engineering research, concurrency primitives, and developer tooling repository."
+  },
+  {
+    org: "bijaktechnology",
+    name: "github.com/bijaktechnology",
+    url: "https://github.com/bijaktechnology",
+    desc: "Core publication monorepo, web portal, edge telemetry, and architecture documentation."
+  },
+  {
+    org: "samkarsa-it",
+    name: "github.com/samkarsa-it",
+    url: "https://github.com/samkarsa-it",
+    desc: "Open-source business process automation ecosystem and enterprise data systems."
+  },
+  {
+    org: "cahayastar",
+    name: "github.com/cahayastar",
+    url: "https://github.com/cahayastar",
+    desc: "Software engineering experiments, edge telemetry systems, and private cloud architectures."
+  }
+];
+---
+
+<Layout title={title} description={description} lang="en">
+  <div class="max-w-4xl mx-auto space-y-12 py-4">
+    
+    <!-- Profile Header Card -->
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8">
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-8">
+        <!-- Profile Avatar Photo -->
+        <div class="relative shrink-0">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-3xl overflow-hidden border-4 border-slate-900 dark:border-slate-700 shadow-xl bg-slate-950">
+            <img 
+              src="https://github.com/zetrosoft.png" 
+              alt="Iswan Putera" 
+              class="w-full h-full object-cover"
+              onerror="this.src='/images/logo-bijak-square.webp'"
+            />
+          </div>
+          <span class="absolute -bottom-2 -right-2 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-rose-600 text-white shadow-md">
+            Architect
+          </span>
+        </div>
+
+        <!-- Info Personal & Title -->
+        <div class="space-y-4 text-center sm:text-left flex-grow">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-400 mb-2">
+              Founder &amp; Principal Author
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-black text-slate-950 dark:text-white tracking-tight">
+              Iswan Putera
+            </h1>
+            <p class="text-base sm:text-lg font-mono text-slate-600 dark:text-slate-400 mt-1 font-semibold">
+              Lead Software Architect &amp; Systems Engineer (@zetrosoft)
+            </p>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
+            Software engineering practitioner and distributed systems architect specializing in high-throughput concurrency (Go, Rust), private cloud infrastructure orchestration (Linux KVM, Traefik v3, Docker, Coolify), database data integrity (PostgreSQL 17, DuckDB), and modern developer tooling.
+          </p>
+
+          <!-- Social Links -->
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 pt-2">
+            {socialLinks.map(s => (
+              <a 
+                href={s.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all transform hover:-translate-y-0.5 shadow-xs ${s.color}`}
+              >
+                <span set:html={s.icon} />
+                <span>{s.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Engineering Philosophy & E-E-A-T Standards -->
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 space-y-4">
+        <h2 class="text-xl font-extrabold text-slate-950 dark:text-white flex items-center gap-2">
+          <span>🏛️</span> Engineering &amp; Editorial Philosophy
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 space-y-2">
+            <h3 class="font-bold text-slate-900 dark:text-white">Evidence-Based Engineering</h3>
+            <p>Every implementation guide, architecture diagram, and latency benchmark published on Bijak Technology is verified on live production KVM VPS environments, rejecting speculative theories or generic rehashed documentation.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 space-y-2">
+            <h3 class="font-bold text-slate-900 dark:text-white">Transparency &amp; Open-Source</h3>
+            <p>Advocating for self-hosted data sovereignty, cloud cost efficiency, and high-performance open-source software standards for engineering teams and modern enterprises.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related GitHub Repositories -->
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 space-y-4">
+        <h2 class="text-xl font-extrabold text-slate-950 dark:text-white flex items-center gap-2">
+          <span>💻</span> GitHub Repositories &amp; Organizations
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          Open-source organizations and research repositories maintained and contributed by Iswan Putera:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+          {githubProjects.map(p => (
+            <a 
+              href={p.url} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="group p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 hover:border-rose-500/50 hover:bg-rose-50/20 dark:hover:bg-rose-950/20 transition-all block space-y-1.5 shadow-2xs"
+            >
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs font-bold text-slate-900 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                  {p.name}
+                </span>
+                <span class="text-slate-400 group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-sans">
+                {p.desc}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Publications by Iswan Putera -->
+    <div class="space-y-6">
+      <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
+        <h2 class="text-2xl font-black text-slate-950 dark:text-white tracking-tight">
+          Recent Research Publications by Iswan Putera
+        </h2>
+        <a href="/en/blog/" class="text-xs font-bold text-rose-600 dark:text-rose-400 hover:underline">
+          View All Articles &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {authorPosts.map(post => (
+          <article class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 shadow-2xs hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-[11px] font-bold text-slate-500 font-mono">
+                <span class="text-rose-600 dark:text-rose-400 uppercase">{post.data.category}</span>
+                <span>•</span>
+                <span>{post.data.pubDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+              </div>
+              <h3 class="font-extrabold text-base text-slate-900 dark:text-white leading-snug hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                <a href={`/en/blog/${post.id}/`}>
+                  {post.data.title}
+                </a>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                {post.data.description}
+              </p>
+            </div>
+            <div class="pt-2">
+              <a href={`/en/blog/${post.id}/`} class="text-xs font-bold text-rose-600 dark:text-rose-400 hover:underline inline-flex items-center gap-1">
+                Read Full Paper &rarr;
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</Layout>

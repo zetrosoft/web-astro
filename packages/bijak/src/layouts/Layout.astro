@@ -92,13 +92,31 @@ const globalSchema = {
       "publishingPrinciples": "https://bijaktechnology.com/terms/",
       "correctionsPolicy": "https://bijaktechnology.com/terms/",
       "sameAs": [
-        "https://samkarsa.com",
-        "https://github.com/bijaktechnology"
+        "https://github.com/zetrosoft",
+        "https://github.com/bijaktechnology",
+        "https://github.com/samkarsa-it",
+        "https://github.com/cahayastar",
+        "https://x.com/zetrogede",
+        "https://zetrosoft.medium.com"
       ],
+      "founder": {
+        "@type": "Person",
+        "name": "Iswan Putera",
+        "jobTitle": "Lead Software Architect",
+        "url": "https://bijaktechnology.com/author/",
+        "sameAs": [
+          "https://github.com/zetrosoft",
+          "https://x.com/zetrogede",
+          "https://zetrosoft.medium.com",
+          "https://github.com/cahayastar",
+          "https://github.com/samkarsa-it",
+          "https://github.com/bijaktechnology"
+        ]
+      },
       "author": {
-        "@type": "Organization",
-        "name": "Dewan Redaksi Bijak Technology",
-        "url": "https://bijaktechnology.com/about/"
+        "@type": "Person",
+        "name": "Iswan Putera",
+        "url": "https://bijaktechnology.com/author/"
       }
     },
     {
@@ -421,14 +439,18 @@ const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'id-ID', {
       <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-          <span class="font-bold text-white tracking-wider">LIVE • TECH, ENTERPRISE ERP &amp; RETAIL AI JOURNAL</span>
+          <span class="font-bold text-white tracking-wider">LIVE • SYSTEMS ARCHITECTURE &amp; MODERN DEV STACK</span>
         </div>
         <div class="hidden md:flex items-center gap-4 text-slate-300">
-          <a href="https://samkarsa.com" target="_blank" class="hover:text-rose-400 transition-colors font-medium">Samkarsa ERPNext</a>
+          <a href={isEn ? "/en/author/" : "/author/"} class="hover:text-rose-400 transition-colors font-medium text-white flex items-center gap-1">
+            <span>✍️</span> {isEn ? "Author: Iswan Putera" : "Penulis: Iswan Putera"}
+          </a>
           <span class="text-slate-600">•</span>
-          <a href="/go/hostinger/" target="_blank" class="hover:text-indigo-400 transition-colors font-medium">Hostinger VPS</a>
+          <a href="https://github.com/zetrosoft" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors font-medium">GitHub @zetrosoft</a>
           <span class="text-slate-600">•</span>
-          <a href="https://maps.google.com/?q=Toko+Sembako+Kusuma+Karanggeneng+Boyolali" target="_blank" class="hover:text-emerald-400 transition-colors font-medium">Toko Sembako Kusuma (Boyolali)</a>
+          <a href="https://zetrosoft.medium.com" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors font-medium">Medium Blog</a>
+          <span class="text-slate-600">•</span>
+          <a href="https://x.com/zetrogede" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors font-medium">X @zetrogede</a>
         </div>
       </div>
     </div>
