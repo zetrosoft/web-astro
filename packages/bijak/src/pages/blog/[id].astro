@@ -239,16 +239,12 @@ const breadcrumbJsonLd = {
         <!-- 2. AdSense Slot 2: Mid-Article / Post-Content Unit (In-Article Ad 6901499930) -->
         <AdSenseUnit variant="in-article" className="my-8" />
 
-        <!-- Dynamic Contextual In-Article AI Advisor (Temporarily Hidden) -->
+        {/* Dynamic Contextual In-Article AI Advisor (Temporarily Hidden) */}
         {/* <InArticleAiAdvisor copilot_config={post.data.copilot_config} category={post.data.category} lang="id" /> */}
 
-        <!-- Smart Contextual Hostinger Partner Box -->
-        <HostingerBox category={post.data.category} variant="in-article" />
-
-        <!-- Official Frappe Cloud Partner Card (Khusus Topik ERP & Software Architecture) -->
-        {isErpOrSaTopic && (
-          <FrappeCloudBox lang="id" />
-        )}
+        {/* Affiliate Promos Hidden during AdSense 3rd Review for Pure Editorial Experience */}
+        {/* <HostingerBox category={post.data.category} variant="in-article" /> */}
+        {/* isErpOrSaTopic && <FrappeCloudBox lang="id" /> */}
 
         <!-- 3. AdSense Slot 3: Bottom In-Article / Pre-Tags Unit -->
         <AdSenseUnit format="auto" className="mt-8 mb-4" />
