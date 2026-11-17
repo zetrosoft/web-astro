@@ -18,21 +18,10 @@ import { getPostImage } from '../../utils/heroImage';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  const paths = [];
-  for (const post of posts) {
-    paths.push({
-      params: { id: post.id },
-      props: { post },
-    });
-    // Backward-compatibility untuk tautan lama v15
-    if (post.id === 'arsitektur-erpnext-v16-distribusi-manufaktur-vps-kvm') {
-      paths.push({
-        params: { id: 'arsitektur-erpnext-v15-distribusi-manufaktur-vps-kvm' },
-        props: { post },
-      });
-    }
-  }
-  return paths;
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post },
+  }));
 }
 
 const { post } = Astro.props;
@@ -94,7 +83,7 @@ const articleJsonLd = {
   "author": {
     "@type": "Person",
     "name": post.data.author,
-    "url": "https://bijaktechnology.com/zetrosoft"
+    "url": "https://bijaktechnology.com/author/"
   },
   "publisher": {
     "@type": "Organization",
